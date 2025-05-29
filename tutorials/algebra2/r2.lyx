@@ -1,0 +1,2255 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\usepackage{diagbox}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+%\definecolor{cyan}{RGB}{0, 180, 180}
+%\definecolor{yellow}{RGB}{211,211,0}
+%\definecolor{red}{RGB}{120,0,0}
+%\definecolor{green}{RGB}{0, 120, 0}
+%\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{shapes, decorations.pathreplacing,calligraphy, automata, positioning, arrows, trees, calc, fit}
+\tikzset{
+	->,
+	>=stealth,
+	node distance=3cm,
+	every state/.style={thick, fill=gray!20,
+						},
+	initial text=$ $,
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont[range=\setminus]{Asana Math}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "David CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+תרגול
+\family roman
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
+\begin_layout Author
+מר' טאהר עודה
+\begin_inset Newline newline
+\end_inset
+
+
+\size normal
+נכתב ע
+\begin_inset Quotes erd
+\end_inset
+
+י בר וייסמן
+\end_layout
+
+\begin_layout Date
+
+\numeric on
+24
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ביולי
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2023
+\end_layout
+
+\begin_layout Section
+פולינום אופייני
+\end_layout
+
+\begin_layout Exercise*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+ ויהי 
+\begin_inset Formula $f\left(x\right)=\alpha_{n}x^{n}+\dots+\alpha_{1}x+\alpha_{0}\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ פולינום.
+\end_layout
+
+\begin_layout Exercise*
+נניח כי 
+\begin_inset Formula $v$
+\end_inset
+
+ ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכיחו שלכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, 
+\begin_inset Formula $v$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A^{n}$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $\beta^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכיחו כי 
+\begin_inset Formula $v$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $f\left(\beta\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נפתור.
+\end_layout
+
+\begin_layout Enumerate
+נוכיח את הטענה באינדוקציה על 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+עבור 
+\begin_inset Formula $n=1$
+\end_inset
+
+, ידוע כי 
+\begin_inset Formula $v$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A^{1}=A$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $\beta^{1}=\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נניח כי 
+\begin_inset Formula $v$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A^{k}$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $\beta^{k}$
+\end_inset
+
+, ונוכיח כי 
+\begin_inset Formula $v$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A^{k+1}$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $\beta^{k+1}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+A^{k+1}v=A\left(A^{k}v\right){\color{gray}\underset{\text{הנחת האינדוקציה}}{\underbrace{{\normalcolor =}}}}A\cdot\beta^{k}v=\beta^{k}\left(Av\right){\color{gray}\underset{\text{נתון}}{\underbrace{{\normalcolor =}}}}\beta^{k}\cdot\beta v=\boxed{\beta^{k+1}v}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+נוכיח כי 
+\begin_inset Formula $f\left(A\right)v=f\left(\beta\right)v$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right)v & =\left(\alpha_{n}A^{n}+\dots+\alpha_{1}A+\alpha_{0}I\right)v\\
+ & =\alpha_{n}A^{n}v+\alpha_{n-1}A^{n-1}v+\dots+\alpha_{1}Av+\alpha_{0}Iv\\
+ & =\alpha_{n}\beta^{n}v+\alpha_{n-1}\beta^{n-1}v+\dots+\alpha_{1}\beta^{1}v+\alpha_{0}v\\
+ & =\left(\alpha_{n}\beta^{n}+\alpha_{n-1}\beta^{n-1}+\dots+\alpha_{1}\beta^{1}+\alpha_{0}\right)v\\
+ & =\boxed{f\left(\beta\right)v}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי 
+\begin_inset Formula $A\in M_{3}\left(\mathbb{C}\right)$
+\end_inset
+
+ מטריצה עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $1,2,2i$
+\end_inset
+
+.
+ מצאו את הפולינום האופייני 
+\begin_inset Formula $\Delta_{A^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+ניעזר בתרגיל הקודם, ונקבל כי הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A^{2}$
+\end_inset
+
+ הם הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ בריבוע: 
+\begin_inset Formula $1,4,-4$
+\end_inset
+
+.
+ מכאן, 
+\begin_inset Formula $A^{2}\in M_{3}\left(\mathbb{C}\right)$
+\end_inset
+
+, הפולינום האופייני של 
+\begin_inset Formula $A$
+\end_inset
+
+ מתוקן וממעלה 
+\begin_inset Formula $3$
+\end_inset
+
+, נקבל כי אין ריבוי:
+\begin_inset Formula 
+\[
+\Longrightarrow\Delta_{A^{2}}\left(x\right)=\left(x-1\right)\left(x-4\right)\left(x+4\right)
+\]
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+ ויהי 
+\begin_inset Formula $f\left(x\right)=\Delta_{A}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תארו את 
+\begin_inset Formula $\Delta_{A+2I_{n}}$
+\end_inset
+
+ באמצעות 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+תארו את 
+\begin_inset Formula $\Delta_{3A}$
+\end_inset
+
+ באמצעות 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נפתור.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\Delta_{A+2I_{n}}\left(x\right) & =\det\left(xI_{n}-\left(A+2I_{n}\right)\right)\\
+ & =\det\left(\left(x-2\right)I_{n}-A\right)\\
+ & =\boxed{f\left(x-2\right)}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Delta_{3A}\left(x\right) & =\det\left(xI_{n}-3A\right)\\
+ & =\det\left(3\left(\frac{1}{3}xI_{n}-A\right)\right)\\
+ & =3^{n}\det\left(\left(\frac{1}{3}x\right)I_{n}-A\right)\\
+ & =\boxed{3^{n}f\left(\frac{1}{3}x\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+לכסון מטריצות
+\end_layout
+
+\begin_layout Theorem*
+מטריצה 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+ לכסינה 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ קיים בסיס 
+\begin_inset Formula $\left\{ v_{1},\dots,v_{n}\right\} $
+\end_inset
+
+ ל-
+\begin_inset Formula $\mathbb{F}^{n}$
+\end_inset
+
+ המורכב מו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+במקרה זה, המטריצה 
+\begin_inset Formula $P=\left[\begin{array}{cccc}
+\vert & \vert &  & \vert\\
+v_{1} & v_{2} & \dots & v_{n}\\
+\vert & \vert &  & \vert
+\end{array}\right]$
+\end_inset
+
+ היא מלכסנת ומתקיים 
+\begin_inset Formula $P^{-1}AP=D$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $D$
+\end_inset
+
+ אלכסונית.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+.
+ אם ל-
+\begin_inset Formula $\Delta_{A}$
+\end_inset
+
+ יש 
+\begin_inset Formula $n$
+\end_inset
+
+ ע
+\begin_inset Quotes erd
+\end_inset
+
+ע שונים אז 
+\begin_inset Formula $A$
+\end_inset
+
+ לכסינה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $A$
+\end_inset
+
+ לכסינה אזי ל-
+\begin_inset Formula $A$
+\end_inset
+
+ יש 
+\begin_inset Formula $n$
+\end_inset
+
+ ע
+\begin_inset Quotes erd
+\end_inset
+
+ע ב-
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+ עם כפילויות )ריבוי אלגברי 
+\begin_inset Formula $1<$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{ccc}
+0 & -1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 2
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+האם 
+\begin_inset Formula $A$
+\end_inset
+
+ לכסינה מעל 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+? אם כן מצאו מטריצה מלכסנת.
+\end_layout
+
+\begin_layout Enumerate
+האם 
+\begin_inset Formula $A$
+\end_inset
+
+ לכסינה מעל 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+? אם כן מצאו מטריצה מלכסנת.
+\end_layout
+
+\begin_layout Enumerate
+חשבו את 
+\begin_inset Formula $A^{2024}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נפתור.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נמצא את הפולינום האופייני של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\Delta_{A}\left(x\right)=\left|\left[\begin{array}{ccc}
+x & -1 & 0\\
+1 & x & 0\\
+0 & 0 & x-2
+\end{array}\right]\right|{\color{gray}\underset{\text{פיתוח לפי \ensuremath{C_{3}}}}{\underbrace{{\normalcolor =}}}}\left(x-2\right)\left(x^{2}+1\right)
+\]
+
+\end_inset
+
+הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ כולל כפילויות הם 
+\begin_inset Formula $2$
+\end_inset
+
+, ומכאן 
+\begin_inset Formula $A$
+\end_inset
+
+ אינה לכסינה מעל 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+כעת קיימים 
+\begin_inset Formula $3$
+\end_inset
+
+ ע
+\begin_inset Quotes erd
+\end_inset
+
+ע שונים ל-
+\begin_inset Formula $A$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+: 
+\begin_inset Formula $2,\pm i$
+\end_inset
+
+.
+ מכאן, 
+\begin_inset Formula $A$
+\end_inset
+
+ לכסינה - נמצא את המטריצה המלכסנת:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נמצא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $2$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+Ker\left(A-2I_{3}\right)=Ker\left[\begin{array}{ccc}
+-2 & -1 & 0\\
+1 & -2 & 0\\
+0 & 0 & 0
+\end{array}\right]\Longrightarrow\left\{ \begin{array}{c}
+-2x-y=0\\
+x-2y=0
+\end{array}\right.\Longrightarrow x=y=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow Ker\left(A-2I_{3}\right)=\left\{ \left[\begin{array}{c}
+0\\
+0\\
+z
+\end{array}\right]\mid z\in\mathbb{C}\right\} =span\left\{ \left[\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right]\right\} \Longrightarrow\boxed{\left[\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נמצא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $i$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+Ker\left(A-iI_{3}\right)=Ker\left[\begin{array}{ccc}
+-i & -1 & 0\\
+1 & -i & 0\\
+0 & 0 & 2-i
+\end{array}\right]\Longrightarrow\left\{ \begin{array}{c}
+-ix-y=0\\
+x-iy=0\\
+\left(2-i\right)z=0
+\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
+-i\left(iy\right)-y=0\\
+x=iy\\
+z=0
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow Ker\left(A-iI_{3}\right)=\left\{ \left[\begin{array}{c}
+iy\\
+y\\
+0
+\end{array}\right]\mid y\in\mathbb{C}\right\} =span\left\{ \left[\begin{array}{c}
+i\\
+1\\
+0
+\end{array}\right]\right\} \Longrightarrow\boxed{\left[\begin{array}{c}
+i\\
+1\\
+0
+\end{array}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נמצא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $-i$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+Ker\left(A-iI_{3}\right)=Ker\left[\begin{array}{ccc}
+i & -1 & 0\\
+1 & i & 0\\
+0 & 0 & 2+i
+\end{array}\right]\Longrightarrow\left\{ \begin{array}{c}
+ix-y=0\\
+x+iy=0\\
+\left(2+i\right)z=0
+\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
+i\left(-iy\right)-y=0\\
+x=-iy\\
+z=0
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow Ker\left(A-iI_{3}\right)=\left\{ \left[\begin{array}{c}
+-iy\\
+y\\
+0
+\end{array}\right]\mid y\in\mathbb{C}\right\} =span\left\{ \left[\begin{array}{c}
+-i\\
+1\\
+0
+\end{array}\right]\right\} \Longrightarrow\boxed{\left[\begin{array}{c}
+-i\\
+1\\
+0
+\end{array}\right]}
+\]
+
+\end_inset
+
+בסך הכל, נבנה את המטריצה המלכסנת:
+\begin_inset Formula 
+\[
+\Longrightarrow\boxed{P=\left[\begin{array}{ccc}
+0 & i & -i\\
+0 & 1 & 1\\
+1 & 0 & 0
+\end{array}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+נחשב את 
+\begin_inset Formula $A^{2024}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+A^{2024} & =\left(PDP^{-1}\right)^{2024}\\
+ & =PD^{2024}P^{-1}\\
+ & =P\left[\begin{array}{ccc}
+2^{2024} & 0 & 0\\
+0 & i^{2024} & 0\\
+0 & 0 & \left(-i\right)^{2024}
+\end{array}\right]P^{-1}\\
+ & =P\left[\begin{array}{ccc}
+2^{2024} & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}\right]P^{-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+אם 
+\begin_inset Formula $A$
+\end_inset
+
+ לכסינה מעל 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $P$
+\end_inset
+
+ מלכסנת את 
+\begin_inset Formula $A$
+\end_inset
+
+ ומקבלים 
+\begin_inset Formula $D=\text{diag}\left(\alpha_{1},\dots,\alpha_{n}\right)$
+\end_inset
+
+ אזי:
+\begin_inset Formula 
+\[
+e^{A}=P\cdot\left[\begin{array}{ccc}
+e^{\alpha_{1}} & 0 & 0\\
+0 & \ddots & 0\\
+0 & 0 & e^{\alpha_{n}}
+\end{array}\right]\cdot P^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+הוכיחו כי המטריצות הבאות דומות, ומצאו מטריצה 
+\begin_inset Formula $P$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $P^{-1}AP=B$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{cc}
+1 & 0\\
+3 & 2
+\end{array}\right];\qquad B=\left[\begin{array}{cc}
+1 & 4\\
+0 & 2
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נוכל להציב 
+\begin_inset Formula $P=\left[\begin{array}{cc}
+x & y\\
+z & w
+\end{array}\right]$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $xw-yz\ne0$
+\end_inset
+
+, ולמצוא תחת התנאי 
+\begin_inset Formula $AP=PB$
+\end_inset
+
+.
+ עם זאת, נפתור עם לכסון:
+\begin_inset Formula 
+\[
+\Delta_{A}\left(x\right)=\left|\left[\begin{array}{cc}
+x-1 & 0\\
+3 & x-2
+\end{array}\right]\right|=\left(x-1\right)\left(x-2\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+מכאן, הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ הם 
+\begin_inset Formula $1,2$
+\end_inset
+
+.
+ נמצא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע לכל ע
+\begin_inset Quotes erd
+\end_inset
+
+ע:
+\begin_inset Formula 
+\[
+\lambda=1\Longrightarrow Ker\left(A-1\cdot I_{2}\right)=Ker\left[\begin{array}{cc}
+0 & 0\\
+3 & 1
+\end{array}\right]\Longrightarrow3x+y=0\Longrightarrow Ker\left(A-I_{2}\right)=span\left\{ \left[\begin{array}{c}
+1\\
+-3
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lambda=2\Longrightarrow Ker\left(A-2\cdot I_{2}\right)=Ker\left[\begin{array}{cc}
+-1 & 0\\
+3 & 0
+\end{array}\right]=span\left\{ \left[\begin{array}{c}
+0\\
+1
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow P_{A}=\left[\begin{array}{cc}
+1 & 0\\
+-3 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Delta_{B}\left(x\right)=\left(x-1\right)\left(x-2\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+מכאן, הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $B$
+\end_inset
+
+ הם 
+\begin_inset Formula $1,2$
+\end_inset
+
+.
+ נמצא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע לכל ע
+\begin_inset Quotes erd
+\end_inset
+
+ע:
+\begin_inset Formula 
+\[
+\lambda=1\Longrightarrow Ker\left(B-1\cdot I_{2}\right)=Ker\left[\begin{array}{cc}
+0 & 4\\
+0 & 1
+\end{array}\right]=span\left\{ \left[\begin{array}{c}
+1\\
+0
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lambda=2\Longrightarrow Ker\left(B-2\cdot I_{2}\right)=Ker\left[\begin{array}{cc}
+-1 & 4\\
+0 & 0
+\end{array}\right]\Longrightarrow-x+4y=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow Ker\left(B-2\cdot I_{2}\right)=span\left\{ \left[\begin{array}{c}
+4\\
+1
+\end{array}\right]\right\} \Longrightarrow P_{B}=\left[\begin{array}{cc}
+1 & 4\\
+0 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left[\begin{array}{cc}
+1 & 0\\
+-3 & 1
+\end{array}\right]^{-1}A\left[\begin{array}{cc}
+1 & 0\\
+-3 & 1
+\end{array}\right]=\left[\begin{array}{cc}
+1 & 0\\
+0 & 2
+\end{array}\right]=\left[\begin{array}{cc}
+1 & 4\\
+0 & 1
+\end{array}\right]^{-1}B\left[\begin{array}{cc}
+1 & 4\\
+0 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow A=\left[\begin{array}{cc}
+1 & 0\\
+-3 & 1
+\end{array}\right]\left[\begin{array}{cc}
+1 & 4\\
+0 & 1
+\end{array}\right]^{-1}B\left[\begin{array}{cc}
+1 & 4\\
+0 & 1
+\end{array}\right]\left[\begin{array}{cc}
+1 & 0\\
+-3 & 1
+\end{array}\right]^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+וכך הוכחנו עבור 
+\begin_inset Formula $\boxed{P=\left[\begin{array}{cc}
+1 & 0\\
+-3 & 1
+\end{array}\right]\left[\begin{array}{cc}
+1 & 4\\
+0 & 1
+\end{array}\right]^{-1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+.
+ נניח כי
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{ccc}
+\alpha_{11} & \cdots & \alpha_{1n}\\
+\vdots & \ddots & \vdots\\
+\alpha_{n1} & \cdots & \alpha_{nn}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+אזי ה
+\bar under
+עקבה
+\bar default
+ של 
+\begin_inset Formula $A$
+\end_inset
+
+ מוגדרת להיות:
+\begin_inset Formula 
+\[
+\text{trace}\left(A\right)=\sum_{i=1}^{n}\alpha_{ii}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+תכונות של
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+trace
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\text{tr}\left(AB\right)=\text{tr}\left(BA\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\text{tr}\left(A+B\right)=\text{tr}\left(A\right)+\text{tr}\left(B\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+בדרך כלל 
+\begin_inset Formula $\text{tr}\left(AB\right)\ne\text{tr}\left(A\right)\cdot\text{tr}\left(B\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+הוכיחו/הפריכו את הטענות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{R}\right)$
+\end_inset
+
+ כך שסכום האיברים בכל שורה שווה לקבוע 
+\begin_inset Formula $k$
+\end_inset
+
+, אז 
+\begin_inset Formula $k$
+\end_inset
+
+ הוא ע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $v,w$
+\end_inset
+
+ ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ אז 
+\begin_inset Formula $v+w$
+\end_inset
+
+ ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נפתור.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הטענה נכונה, עבור 
+\begin_inset Formula $\vec{0}\ne v=\left[\begin{array}{c}
+1\\
+\vdots\\
+1
+\end{array}\right]$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+Av=\left[\begin{array}{ccc}
+a_{11} & \cdots & a_{1n}\\
+\vdots & \ddots & \vdots\\
+a_{n1} & \cdots & a_{nn}
+\end{array}\right]\left[\begin{array}{c}
+1\\
+\vdots\\
+1
+\end{array}\right]=\left[\begin{array}{c}
+\sum_{i=1}^{n}a_{1i}\\
+\vdots\\
+\sum_{i=1}^{n}a_{ni}
+\end{array}\right]=\left[\begin{array}{c}
+k\\
+\vdots\\
+k
+\end{array}\right]=kv
+\]
+
+\end_inset
+
+מכאן, 
+\begin_inset Formula $v$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $k$
+\end_inset
+
+, וכך 
+\begin_inset Formula $k$
+\end_inset
+
+ הוא ע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הטענה לא נכונה, נתבונן במטריצה 
+\begin_inset Formula $A=\left[\begin{array}{cc}
+1 & 0\\
+0 & 0
+\end{array}\right]$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $1$
+\end_inset
+
+, ו-
+\begin_inset Formula $\left[\begin{array}{c}
+0\\
+1
+\end{array}\right]$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]+\left[\begin{array}{c}
+0\\
+1
+\end{array}\right]=\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]\notin span\left\{ \left[\begin{array}{c}
+1\\
+0
+\end{array}\right]\right\} \cup span\left\{ \left[\begin{array}{c}
+0\\
+1
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+וכך 
+\begin_inset Formula $\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]$
+\end_inset
+
+ אינו ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+עכשיו להעתקות לינאריות
+\end_layout
+
+\begin_layout Standard
+פולינום אופייני/דטרמיננטה/עקבה של העתקה לינארית )בהכרח אופרטור( מוגדרים
+ להיות פולינום פולינום אופייני/דטרמיננטה/עקבה של המטריצה המייצגת של ההעתקה
+ עבור בסיס כלשהו.
+\end_layout
+
+\begin_layout Exercise*
+יהי 
+\begin_inset Formula $V=\mathbb{R}_{2}\left[x\right]$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $T\in End\left(V\right)$
+\end_inset
+
+ ע
+\begin_inset Quotes erd
+\end_inset
+
+י:
+\begin_inset Formula 
+\[
+T\left(f\right)=f\left(2x\right)+f\left(x-1\right)
+\]
+
+\end_inset
+
+מצאו את:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Delta_{T}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\det T$
+\end_inset
+
+, 
+\begin_inset Formula $\text{tr}T$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נפתור.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נקבע את הבסיס להיות 
+\begin_inset Formula $E=\left\{ 1,x,x^{2}\right\} $
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+T\left(1\right)=1_{2x}+1_{x-1}=2=2\cdot1+0\cdot x+0\cdot x^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+T\left(x\right)=2x+\left(x-1\right)=3x-1=-1\cdot1+3\cdot x+0\cdot x^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+T\left(x^{2}\right)=4x^{2}+\left(x-1\right)^{2}=5x^{2}-2x+1=1\cdot1+2\cdot x+5\cdot x^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\left[T\right]_{E}=\left[\begin{array}{ccc}
+2 & -1 & 1\\
+0 & 3 & 2\\
+0 & 0 & 5
+\end{array}\right]\Longrightarrow\boxed{\Delta_{T}\left(x\right)=\left(x-2\right)\left(x-3\right)\left(x-5\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+מכאן, הע
+\begin_inset Quotes erd
+\end_inset
+
+ע הם 
+\begin_inset Formula $\boxed{2,3,5}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\det T=2\cdot3\cdot5=\boxed{30}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\text{tr}T=2+3+5=\boxed{10}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+יהיו 
+\begin_inset Formula $\alpha_{0},\dots,\alpha_{n-1}\in\mathbb{F}$
+\end_inset
+
+.
+ נגדיר את המטריצה הנלווית של הפולינום 
+\begin_inset Formula $f\left(x\right)=x^{n}+\alpha_{n-1}x^{n-1}+\dots+\alpha_{0}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{comp}\left(f\right)=\text{comp}\left(\alpha_{0},\dots,\alpha_{n-1}\right)=\left[\begin{array}{ccccccc}
+0 & 1 & 0 & \cdots & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0 & 0 & \vdots\\
+\vdots & 0 & 0 & 0 & \ddots & 0 & 0\\
+0 & 0 & 0 & \cdots & 0 & 1 & 0\\
+0 & 0 & 0 & \cdots & 0 & 0 & 1\\
+-\alpha_{0} & -\alpha_{1} & \cdots & \cdots & \cdots & \cdots & -\alpha_{n-1}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+הראו כי 
+\begin_inset Formula $\Delta_{\text{comp}\left(f\right)}=f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+יהי 
+\begin_inset Formula $\beta$
+\end_inset
+
+ שורש של 
+\begin_inset Formula $f$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+.
+ הוכיחו כי 
+\begin_inset Formula $\left[\begin{array}{c}
+1\\
+\beta\\
+\vdots\\
+\beta^{n-1}
+\end{array}\right]$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $\text{comp}\left(f\right)$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+נניח כי ל-
+\begin_inset Formula $f$
+\end_inset
+
+ יש 
+\begin_inset Formula $n$
+\end_inset
+
+ שורשים שונים 
+\begin_inset Formula $\beta_{1},\dots,\beta_{n}$
+\end_inset
+
+.
+ מצאו מטריצה מלכסנת של 
+\begin_inset Formula $\text{comp}\left(f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נפתור.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נחשב את 
+\begin_inset Formula $\Delta_{\text{comp}\left(f\right)}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\Delta_{\text{comp}\left(f\right)}\left(x\right) & =\left|\left[\begin{array}{ccccc}
+x & -1 & 0 & \dots & 0\\
+0 & x & -1 & \dots & 0\\
+0 & 0 & \ddots & \ddots & 0\\
+0 & 0 & 0 & x & -1\\
+\alpha_{0} & \alpha_{1} & \cdots & \alpha_{n-2} & x+\alpha_{n-1}
+\end{array}\right]\right|\underset{\text{פיתוח לפי \ensuremath{C_{n}}}}{=}\\
+ & =\left(-1\right)^{n-1+n}\cdot\left(-1\right)\cdot C_{n-1,n}+\left(-1\right)^{n+n}\cdot\left(x+\alpha_{n-1}\right)\cdot C_{n,n}\\
+ & =\left|\left[\begin{array}{ccccc}
+x & -1 & 0 & \dots & 0\\
+0 & x & -1 & \dots & 0\\
+0 & 0 & \ddots & \ddots & 0\\
+0 & 0 & 0 & x & -1\\
+\alpha_{0} & \alpha_{1} & \cdots &  & \alpha_{n-2}
+\end{array}\right]\right|+\left(x+\alpha_{n-1}\right){\color{gray}\underset{x^{n-1}}{\underbrace{{\normalcolor \left|\left[\begin{array}{ccccc}
+x & -1 & 0 & \dots & 0\\
+0 & x & -1 & \dots & 0\\
+0 & 0 & \ddots & \ddots & 0\\
+0 & 0 & 0 & x & -1\\
+0 & 0 & \cdots & 0 & x
+\end{array}\right]\right|}}}}\\
+ & =\left|\left[\begin{array}{ccccc}
+x & -1 & 0 & \dots & 0\\
+0 & x & -1 & \dots & 0\\
+0 & 0 & \ddots & \ddots & 0\\
+0 & 0 & 0 & x & -1\\
+\alpha_{0} & \alpha_{1} & \cdots &  & \alpha_{n-2}
+\end{array}\right]\right|+x^{n}+\alpha_{n-1}x^{n-1}\underset{\text{פיתוח לפי \ensuremath{C_{n-1}}}}{=}\\
+ & =\left(-1\right)^{\left(n-2\right)+\left(n-1\right)}\cdot\left(-1\right)\cdot\left|\left[\begin{array}{ccccc}
+x & -1 & 0 & \dots & 0\\
+0 & x & -1 & \dots & 0\\
+0 & 0 & \ddots & \ddots & 0\\
+0 & 0 & 0 & x & -1\\
+\alpha_{0} & \alpha_{1} & \cdots &  & \alpha_{n-3}
+\end{array}\right]\right|+\left(-1\right)^{\left(n-1\right)+\left(n-1\right)}\cdot\alpha_{n-2}\cdot x^{n-2}
+\end{align*}
+
+\end_inset
+
+נמשיך ברקורסיה ונגיע ל-
+\begin_inset Formula $\left|\left[\begin{array}{cc}
+x & -1\\
+\alpha_{0} & \alpha_{1}
+\end{array}\right]\right|=\alpha_{1}x+\alpha_{0}$
+\end_inset
+
+.
+ נסכום, בסה
+\begin_inset Quotes erd
+\end_inset
+
+כ נקבל:
+\begin_inset Formula 
+\[
+\Delta_{\text{comp}\left(f\right)}\left(x\right)=x^{n}+\alpha_{n-1}x^{n-1}+\dots+\alpha_{1}x+\alpha_{0}=f\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נתון כי 
+\begin_inset Formula $f\left(\beta\right)=0$
+\end_inset
+
+, נחשב:
+\begin_inset Formula 
+\[
+\left[\begin{array}{ccccccc}
+0 & 1 & 0 & \cdots & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0 & 0 & \vdots\\
+\vdots & 0 & 0 & 0 & \ddots & 0 & 0\\
+0 & 0 & 0 & \cdots & 0 & 1 & 0\\
+0 & 0 & 0 & \cdots & 0 & 0 & 1\\
+-\alpha_{0} & -\alpha_{1} & \cdots & \cdots & \cdots & \cdots & -\alpha_{n-1}
+\end{array}\right]\left[\begin{array}{c}
+1\\
+\beta\\
+\beta^{2}\\
+\vdots\\
+\beta^{n-1}
+\end{array}\right]=\left[\begin{array}{c}
+\beta\\
+\beta^{2}\\
+\vdots\\
+\beta^{n-1}\\
+-\alpha_{0}-\alpha_{1}\beta-\dots-\alpha_{n-1}\beta^{n-1}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+0=f\left(\beta\right)=\beta^{n}+\alpha_{n-1}\beta^{n-1}+\dots+\alpha_{1}\beta+\alpha_{0}\Longrightarrow\beta^{n}=-\alpha_{0}-\alpha_{1}\beta-\dots-\alpha_{n-1}\beta^{n-1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\left[\begin{array}{c}
+\beta\\
+\beta^{2}\\
+\vdots\\
+\beta^{n-1}\\
+\beta^{n}
+\end{array}\right]=\beta\cdot\left[\begin{array}{c}
+1\\
+\beta\\
+\beta^{2}\\
+\vdots\\
+\beta^{n-1}
+\end{array}\right]
+\]
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $\left[\begin{array}{c}
+1\\
+\beta\\
+\beta^{2}\\
+\vdots\\
+\beta^{n-1}
+\end{array}\right]$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $\text{comp}\left(f\right)$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+למטריצה יש 
+\begin_inset Formula $n$
+\end_inset
+
+ ע
+\begin_inset Quotes erd
+\end_inset
+
+ע שונים מעל 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+ ולכן היא לכסינה מעל 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+.
+ לפי סעיף ב', נקבל שלכל 
+\begin_inset Formula $1\le i\le n$
+\end_inset
+
+ הוקטור 
+\begin_inset Formula $\left[\begin{array}{c}
+1\\
+\beta\\
+\beta^{2}\\
+\vdots\\
+\beta^{n-1}
+\end{array}\right]$
+\end_inset
+
+ הוא ו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $\text{comp}\left(f\right)$
+\end_inset
+
+ עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+.
+ ולכן, מטריצה מלכסנת לדוגמא היא מטריצת וונדרמונדה!
+\begin_inset Formula 
+\[
+V\left(\beta_{1},\dots,\beta_{n}\right)=\left[\begin{array}{cccc}
+1 & 1 & \cdots & 1\\
+\beta_{1} & \beta_{2} & \cdots & \beta_{n}\\
+\vdots & \vdots & \ddots & \vdots\\
+\beta_{1}^{n-1} & \beta_{2}^{n-1} & \cdots & \beta_{n}^{n-1}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

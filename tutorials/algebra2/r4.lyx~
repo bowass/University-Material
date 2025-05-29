@@ -1,0 +1,2918 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\usepackage{diagbox}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{shapes, decorations.pathreplacing,calligraphy, automata, positioning, arrows, trees, calc, fit}
+\tikzset{
+	->,
+	>=stealth,
+	node distance=3cm,
+	every state/.style={thick, fill=gray!20,
+						},
+	initial text=$ $,
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont[range=\setminus]{Asana Math}
+\usepackage{polynom}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "David CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+תרגול
+\family roman
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\end_layout
+
+\begin_layout Author
+מר' טאהר עודה
+\begin_inset Newline newline
+\end_inset
+
+
+\size normal
+נכתב ע
+\begin_inset Quotes erd
+\end_inset
+
+י בר וייסמן
+\end_layout
+
+\begin_layout Date
+
+\numeric on
+8
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+באוגוסט
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2023
+\end_layout
+
+\begin_layout Section
+פולינום מינימלי
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+.
+ פולינום מתוקן 
+\begin_inset Formula $f\left(x\right)\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ נקרא פולינום מינימלי של 
+\begin_inset Formula $A$
+\end_inset
+
+ אם:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f\left(A\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $0\ne g\left(x\right)=\mathbb{F}\left[x\right]$
+\end_inset
+
+ עם 
+\begin_inset Formula $\deg\left(g\right)<\deg\left(f\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $g\left(A\right)\ne0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+הפולינום המינימלי קיים ויחיד, ויסומן ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $m_{A}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\bar under
+תכונות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $m_{A}\left(A\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $f\left(A\right)=0$
+\end_inset
+
+ עבור איזשהו פולינום 
+\begin_inset Formula $f\left(x\right)\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ אזי 
+\begin_inset Formula $m_{A}\left(x\right)\mid f\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+בפרט 
+\begin_inset Formula $m_{A}\mid\Delta_{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $f\left(x\right)\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ פולינום.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ נקרא פולינום 
+\emph on
+פריק
+\emph default
+ אם קיימים 
+\begin_inset Formula $g\left(x\right),h\left(x\right)\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ כך ש:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\deg\left(g\right),\deg\left(h\right)<\deg\left(f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f\left(x\right)=g\left(x\right)\cdot h\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition*
+אחרת, 
+\begin_inset Formula $f$
+\end_inset
+
+ נקרא 
+\emph on
+אי-פריק
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הפולינום 
+\begin_inset Formula $x^{2}+1$
+\end_inset
+
+ אי-פריק ב-
+\begin_inset Formula $\mathbb{R}\left[x\right]$
+\end_inset
+
+, אבל הוא כן פריק ב-
+\begin_inset Formula $\mathbb{C}\left[x\right]$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+x^{2}+1=\left(x-i\right)\left(x+i\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+הפולינום 
+\begin_inset Formula $x^{4}+2x^{2}+1$
+\end_inset
+
+ פריק ב-
+\begin_inset Formula $\mathbb{R}\left[x\right]$
+\end_inset
+
+ כי 
+\begin_inset Formula $x^{4}+2x^{2}+1=\left(x^{2}+1\right)\left(x^{2}+1\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+\bar under
+אזהרה:
+\series default
+\bar default
+ אם ל-
+\begin_inset Formula $f\left(x\right)\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ אין שורשים ב-
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+, אז 
+\begin_inset Formula $f$
+\end_inset
+
+ לא בהכרח אי-פריק.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+יהי 
+\begin_inset Formula $p\left(x\right)\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ פולנום כך ש-
+\begin_inset Formula $\deg\left(p\left(x\right)\right)=2,3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+אזי 
+\begin_inset Formula $p\left(x\right)$
+\end_inset
+
+ פריק ב-
+\begin_inset Formula $\mathbb{F}\left[x\right]$
+\end_inset
+
+ 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ יש ל-
+\begin_inset Formula $p$
+\end_inset
+
+ שורש ב-
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+אם 
+\begin_inset Formula $\Delta_{A}=p_{1}^{s_{1}}\cdot p_{2}^{s_{2}}\cdot\dots\cdot p_{t}^{s_{t}}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $p_{1},\dots,p_{t}$
+\end_inset
+
+ פולינום אי-פריקים מתקונים ושונים, אז
+\begin_inset Formula 
+\[
+m_{A}=p_{1}^{r_{1}}\cdot p_{2}^{r_{2}}\cdot\dots\cdot p_{t}^{r_{t}}
+\]
+
+\end_inset
+
+כך ש-
+\begin_inset Formula $1\le r_{i}\le s_{i}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+במילים אחרות, ל-
+\begin_inset Formula $m_{A}$
+\end_inset
+
+ ול-
+\begin_inset Formula $\Delta_{A}$
+\end_inset
+
+ יש אותם גורמים אי-פריקים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\bar under
+תכונות:
+\bar default
+ בהמשך לתכונות הקודמות.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+השורשים של 
+\begin_inset Formula $m_{A}$
+\end_inset
+
+ 
+\begin_inset Formula $=$
+\end_inset
+
+ השורשים של 
+\begin_inset Formula $\Delta_{A}$
+\end_inset
+
+ 
+\begin_inset Formula $=$
+\end_inset
+
+ הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $m_{A}=m_{B}\Longleftarrow A\sim B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ לכסינה 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $m_{A}$
+\end_inset
+
+ מתפרק למכפלה של גורמים לינאריים שונים.
+ כלומר
+\begin_inset Formula 
+\[
+m_{A}\left(x\right)=\left(x-\lambda_{1}\right)\left(x-\lambda_{2}\right)\cdot\dots\cdot\left(x-\lambda_{r}\right)
+\]
+
+\end_inset
+
+עם 
+\begin_inset Formula $\lambda_{1},\dots,\lambda_{r}$
+\end_inset
+
+ שונים.
+ במקרה זה 
+\begin_inset Formula $\lambda_{1},\dots,\lambda_{r}$
+\end_inset
+
+ הם הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ ו-
+\begin_inset Formula $\Delta_{A}\left(x\right)=\left(x-\lambda_{1}\right)^{t_{1}}\cdot\dots\cdot\left(x-\lambda_{r}\right)^{t_{r}}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ הוא הריבוי האלגברי של 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+איך מוצאים פולינום מינימלי?
+\end_layout
+
+\begin_layout Enumerate
+מחפשים את 
+\begin_inset Formula $\Delta_{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+מפרקים את 
+\begin_inset Formula $\Delta_{A}$
+\end_inset
+
+ לגורמים.
+\end_layout
+
+\begin_layout Enumerate
+בודקים את כל האפשרויות לפולינום 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(x\right)\mid\Delta_{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+בודקים מי מהם מתאפס ע
+\begin_inset Quotes erd
+\end_inset
+
+י הצבת 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+בוחרים את הפולינום בעל הדרגה הקטנה ביותר שמתאפס ע
+\begin_inset Quotes erd
+\end_inset
+
+י הצבת 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+עבור 
+\begin_inset Formula $\Delta_{A}\left(x\right)=\left(x^{2}+1\right)^{2}x^{2}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $A\in M_{6}\left(\mathbb{R}\right)$
+\end_inset
+
+, האפשרויות לפולינום המינימלי הן:
+\begin_inset Formula 
+\[
+x\left(x^{2}+1\right);\quad x^{2}\left(x^{2}+1\right);\quad x\left(x^{2}+1\right)^{2};\quad x^{2}\left(x^{2}+1\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+מצאו את 
+\begin_inset Formula $m_{A}$
+\end_inset
+
+ עבור
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{ccc}
+1 & 1 & 1\\
+2 & 2 & 2\\
+2 & 2 & 2
+\end{array}\right]\in M_{3}\left(\mathbb{R}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נמצא את 
+\begin_inset Formula $\Delta_{A}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+תחילה, 
+\begin_inset Formula $A$
+\end_inset
+
+ אינה הפיכה ולכן לפי משפט 
+\begin_inset Formula $0$
+\end_inset
+
+ הוא ע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בנוסף, 
+\begin_inset Formula $\text{rank}\left(A-0\cdot I_{3}\right)=\text{rank}\left(A\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן הריבוי הגיאומטרי של 
+\begin_inset Formula $0$
+\end_inset
+
+ הוא 
+\begin_inset Formula $2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+הריבוי האלגברי גדול או שווה לריבוי הגיאומטרי, ולכן הר
+\begin_inset Quotes erd
+\end_inset
+
+א של 
+\begin_inset Formula $0$
+\end_inset
+
+ הוא לפחות 
+\begin_inset Formula $2$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+למטריצה יש 
+\begin_inset Formula $3$
+\end_inset
+
+ ערכים עצמיים )כולל ריבויים(, ו-
+\begin_inset Formula $5=\text{tr}A=\sum\lambda_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכאן, בהכרח הר
+\begin_inset Quotes erd
+\end_inset
+
+א של 
+\begin_inset Formula $0$
+\end_inset
+
+ הוא 
+\begin_inset Formula $2$
+\end_inset
+
+ ו-
+\begin_inset Formula $\lambda_{3}=5$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\Longrightarrow\Delta_{A}\left(x\right)=x^{2}\left(x-5\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Solution*
+האפשרויות לפולינום המינימלי הן 
+\begin_inset Formula $x\left(x-5\right),x^{2}\left(x-5\right)$
+\end_inset
+
+.
+ נבדוק האם 
+\begin_inset Formula $A$
+\end_inset
+
+ מאפסת את 
+\begin_inset Formula $x\left(x-5\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+A\left(A-5\cdot I_{3}\right)=\left[\begin{array}{ccc}
+1 & 1 & 1\\
+2 & 2 & 2\\
+2 & 2 & 2
+\end{array}\right]\cdot\left[\begin{array}{ccc}
+-4 & 1 & 1\\
+2 & -3 & 2\\
+2 & 2 & -3
+\end{array}\right]=\left[\begin{array}{ccc}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow m_{A}\left(x\right)=x\left(x-5\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{ccc}
+1 & 2 & 0\\
+0 & 1 & 2\\
+0 & 0 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מצאו את 
+\begin_inset Formula $m_{A}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+חשבו את 
+\begin_inset Formula $A^{5}-A^{4}-2A^{3}+2A^{2}+4A-3I_{3}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מאחר ו-
+\begin_inset Formula $A$
+\end_inset
+
+ משולשית עליונה מתקיים 
+\begin_inset Formula $\Delta_{A}\left(x\right)=\left(x-1\right)^{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכאן, האפשרויות עבור 
+\begin_inset Formula $m_{A}\left(x\right)$
+\end_inset
+
+ הן 
+\begin_inset Formula $x-1,\left(x-1\right)^{2},\Delta_{A}\left(x\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+A-1\cdot I_{3}=\left[\begin{array}{ccc}
+0 & 2 & 0\\
+0 & 0 & 2\\
+0 & 0 & 0
+\end{array}\right]\ne0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(A-1\cdot I_{3}\right)^{2}=\left[\begin{array}{ccc}
+0 & 2 & 0\\
+0 & 0 & 2\\
+0 & 0 & 0
+\end{array}^{2}\right]=\left[\begin{array}{ccc}
+0 & 0 & 4\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}\right]\ne0
+\]
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $m_{A}\left(x\right)=\Delta_{A}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+נחפש את 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ עבור 
+\begin_inset Formula $f\left(x\right)=x^{5}-x^{4}-2x^{3}+2x^{2}+4x-3$
+\end_inset
+
+.
+ נחלק את 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ ב-
+\begin_inset Formula $m_{A}\left(x\right)$
+\end_inset
+
+:
+\end_layout
+
+\end_deeper
+\begin_layout Solution*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+polylongdiv{x^5-x^2-2x^3+2x^2+4x-3}{x^3-3x^2+3x-1} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+ולכן 
+\begin_inset Formula $f\left(x\right)=m_{A}\left(x\right)\cdot\left(x^{2}+2x+1\right)+\left(3x-2\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+f\left(A\right)={\color{gray}\underset{0}{\underbrace{{\normalcolor m_{A}\left(A\right)}}}}\cdot\left(A^{2}+2A+I\right)+3A-2I
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow f\left(A\right)=3\cdot\left[\begin{array}{ccc}
+1 & 2 & 0\\
+0 & 1 & 2\\
+0 & 0 & 1
+\end{array}\right]-2\cdot\left[\begin{array}{ccc}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}\right]=\left[\begin{array}{ccc}
+1 & 6 & 0\\
+0 & 1 & 6\\
+0 & 0 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+.
+ נניח כי 
+\begin_inset Formula $\deg m_{A}=r$
+\end_inset
+
+.
+ הוכיחו כי:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ I,A,A^{2},\dots,A^{r-1}\right\} $
+\end_inset
+
+ בת
+\begin_inset Quotes erd
+\end_inset
+
+ל ב-
+\begin_inset Formula $M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A^{r}\in\text{span}\left\{ I,A,A^{2},\dots,A^{r-1}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+יהיו 
+\begin_inset Formula $\alpha_{0},\alpha_{1},\dots,\alpha_{r-1}\in\mathbb{F}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\alpha_{0}I+\alpha_{1}A+\dots+\alpha_{r-1}A^{r-1}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נוכיח כי 
+\begin_inset Formula $\alpha_{0}=\dots=\alpha_{r-1}=0$
+\end_inset
+
+.
+ נגדיר את הפולינום
+\begin_inset Formula 
+\[
+p\left(x\right)=\alpha_{r-1}x^{r-1}+\dots+\alpha_{1}x+\alpha_{0}
+\]
+
+\end_inset
+
+לפי הדרישה מתקיים 
+\begin_inset Formula $p\left(A\right)=0$
+\end_inset
+
+, אבל 
+\begin_inset Formula $\deg\left(p\left(x\right)\right){\color{gray}\underset{\text{ייתכן כי \ensuremath{\alpha_{r-1}=0}}}{\underbrace{{\normalcolor \le}}}}r-1<r=\deg m_{A}$
+\end_inset
+
+, ולכן בהכרח 
+\begin_inset Formula $p\left(x\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכאן קיבלנו כי 
+\begin_inset Formula $\alpha_{0}=\dots=\alpha_{r-1}=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+נתון כי 
+\begin_inset Formula $\deg m_{A}=r$
+\end_inset
+
+, ולכן קיימים 
+\begin_inset Formula $\beta_{0},\dots,\beta_{r-1}\in\mathbb{F}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+m_{A}\left(x\right)=x^{r}+\beta_{r-1}x^{r-1}+\dots+\beta_{1}x+\beta_{0}
+\]
+
+\end_inset
+
+מאחר ו-
+\begin_inset Formula $m_{A}\left(A\right)=0$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+A^{r}+\beta_{r-1}A^{r-1}+\dots+\beta_{1}A+\beta_{0}I=0\Longrightarrow A^{r}=-\beta_{r-1}A^{r-1}-\dots-\beta_{1}A-\beta_{0}I
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow A^{r}\in\text{span}\left\{ I,A,\dots,A^{r-1}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+ ויהי 
+\begin_inset Formula $r\in\mathbb{N}$
+\end_inset
+
+.
+ נניח שמתקיים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ I,A,\dots,A^{r-1}\right\} $
+\end_inset
+
+ בת
+\begin_inset Quotes erd
+\end_inset
+
+ל.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A^{r}\in\text{span}\left\{ I,A,\dots,A^{r-1}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Exercise*
+הוכיחו כי 
+\begin_inset Formula $\deg m_{A}=r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+קיימים 
+\begin_inset Formula $\beta_{0},\beta_{1},\dots,\beta_{r-1}\in\mathbb{F}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+A^{r}=\beta_{0}I+\beta_{1}A+\dots+\beta_{r-1}A^{r-1}\Longrightarrow0=A^{r}-\beta_{r-1}A^{r-1}-\dots-\beta_{1}A-\beta_{0}I
+\]
+
+\end_inset
+
+נגדיר פולינום 
+\begin_inset Formula $f\left(x\right)=x^{r}-\beta_{r-1}x^{r-1}-\dots-\beta_{1}x-\beta_{0}$
+\end_inset
+
+, אזי 
+\begin_inset Formula $f\left(A\right)=0$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\deg\left(f\right)=r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נוכיח כי 
+\begin_inset Formula $f=m_{A}$
+\end_inset
+
+, כלומר כי לכל 
+\begin_inset Formula $0\ne g\left(x\right)\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ ש-
+\begin_inset Formula $\deg\left(g\right)<r$
+\end_inset
+
+ מקיים 
+\begin_inset Formula $g\left(A\right)\ne0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+g\left(x\right)=\alpha_{r-1}x^{r-1}+\dots+\alpha_{1}x+\alpha_{0}
+\]
+
+\end_inset
+
+לפחות אחד מהמקדמים שונה מ-
+\begin_inset Formula $0$
+\end_inset
+
+ מאחר ו-
+\begin_inset Formula $g\ne0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נניח בשלילה כי 
+\begin_inset Formula $g\left(A\right)=0$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\alpha_{r-1}A^{r-1}+\dots+\alpha_{1}A+\alpha_{0}I=0$
+\end_inset
+
+.מאחר ו-
+\begin_inset Formula $\left\{ I,A,\dots,A^{r-1}\right\} $
+\end_inset
+
+ בת
+\begin_inset Quotes erd
+\end_inset
+
+ל הפתרון היחיד הוא 
+\begin_inset Formula $\alpha_{0}=\dots=\alpha_{r-1}=0$
+\end_inset
+
+, בסתירה לכך ש-
+\begin_inset Formula $g\ne0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+קיבלנו כי 
+\begin_inset Formula $m_{A}=f$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $\boxed{\deg\left(m_{A}\right)=r}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Corollary*
+מההוכחה של התרגיל הקודם מקבלים דרך נוספת למצוא פולינום מינימלי עבור 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מציאת 
+\begin_inset Formula $r\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left\{ I,A,\dots,A^{r-1}\right\} $
+\end_inset
+
+ בת
+\begin_inset Quotes erd
+\end_inset
+
+ל אך 
+\begin_inset Formula $\left\{ I,A,\dots,A^{r}\right\} $
+\end_inset
+
+ ת
+\begin_inset Quotes erd
+\end_inset
+
+ל.
+\end_layout
+
+\begin_layout Enumerate
+מבטאים את 
+\begin_inset Formula $A^{r}$
+\end_inset
+
+ כצ
+\begin_inset Quotes erd
+\end_inset
+
+ל של 
+\begin_inset Formula $\left\{ I,A,\dots,A^{r-1}\right\} $
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+A^{r}=\alpha_{r-1}A^{r-1}+\dots+\alpha_{0}I
+\]
+
+\end_inset
+
+ואז 
+\begin_inset Formula $m_{A}\left(x\right)=x^{r}-\alpha_{r-1}x^{r-1}-\dots-\alpha_{0}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Remark*
+היתרון של שיטה זו הוא שלא צריך למצוא את 
+\begin_inset Formula $\Delta_{A}$
+\end_inset
+
+ או לפרקו לגורמים אי-פריקים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+הטלות
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+ו מעל שדה 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+, ויהי 
+\begin_inset Formula $T\in End\left(V\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ נקרא 
+\emph on
+הטלה
+\emph default
+ אם 
+\begin_inset Formula $T^{2}=T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+באופן זהה עבור מטריצה 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+: 
+\begin_inset Formula $A$
+\end_inset
+
+ היא 
+\emph on
+מטריצת הטלה
+\emph default
+ אם 
+\begin_inset Formula $A^{2}=A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+מספר מטריצות הטלה:
+\begin_inset Formula 
+\[
+I,\qquad\left[\begin{array}{cccc}
+1 & 0 & \vert & 0\\
+0 & 1 & \vert & \vdots\\
+\hline 0 & \cdots & \vert & 0
+\end{array}\right],\qquad\left[\begin{array}{ccc}
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+בהינתן מ
+\begin_inset Quotes erd
+\end_inset
+
+ו 
+\begin_inset Formula $V$
+\end_inset
+
+ מעל שדה 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+ ותתי-מרחבים 
+\begin_inset Formula $U,W\subseteq V$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $V=U\oplus W$
+\end_inset
+
+, אזי ניתן להגדיר הטלה 
+\begin_inset Formula $T:V\to V$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $ImT=U$
+\end_inset
+
+ ו-
+\begin_inset Formula $KerT=W$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark*
+איך עושים זאת? נבחר 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ ונרשום אותו בצורה 
+\begin_inset Formula $v={\color{gray}\underset{\in U}{\underbrace{{\normalcolor u}}}}+{\color{gray}\underset{\in W}{\underbrace{{\normalcolor w}}}}$
+\end_inset
+
+, ואז נגדיר 
+\begin_inset Formula $Tv=u$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Example*
+למשל, 
+\begin_inset Formula $\mathbb{R}^{2}=\text{span}\left\{ \left[\begin{array}{c}
+1\\
+0
+\end{array}\right]\right\} \oplus\text{span}\left\{ \left[\begin{array}{c}
+0\\
+1
+\end{array}\right]\right\} $
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+3\\
+4
+\end{array}\right]=3\cdot{\color{gray}\underset{u}{\underbrace{{\normalcolor \left[\begin{array}{c}
+1\\
+0
+\end{array}\right]}}}}+4\cdot{\color{gray}\underset{w}{\underbrace{{\normalcolor \left[\begin{array}{c}
+0\\
+1
+\end{array}\right]}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+נטיל את הוקטור על ציר ה-
+\lang english
+
+\begin_inset Formula $x$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)כלומר 
+\begin_inset Formula $\text{span}\left\{ \left[\begin{array}{c}
+1\\
+0
+\end{array}\right]\right\} $
+\end_inset
+
+(, ונשאיר רק את 
+\begin_inset Formula $3\cdot\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+מצאו את ההטלה המייצגת את 
+\begin_inset Formula $V=U_{1}\oplus U_{2}$
+\end_inset
+
+ כאשר
+\begin_inset Formula 
+\[
+U_{1}=\text{span}\left\{ \left[\begin{array}{c}
+1\\
+3
+\end{array}\right]\right\} ;\qquad U_{2}=\text{span}\left\{ \left[\begin{array}{c}
+5\\
+4
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+כך ש-
+\begin_inset Formula $ImT=U_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $KerT=U_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נמצא את ההטלה 
+\begin_inset Formula $T$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+T\left[\begin{array}{c}
+1\\
+3
+\end{array}\right]=\left[\begin{array}{c}
+1\\
+3
+\end{array}\right],T\left[\begin{array}{c}
+5\\
+4
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+יהי 
+\begin_inset Formula $\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]\in\mathbb{R}^{2}$
+\end_inset
+
+.
+ נחפש 
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=\alpha\cdot\left[\begin{array}{c}
+1\\
+3
+\end{array}\right]+\beta\cdot\left[\begin{array}{c}
+5\\
+4
+\end{array}\right]\Longrightarrow\left\{ \begin{array}{c}
+\alpha=\frac{-4x+5y}{11}\\
+\beta=\frac{3x-y}{11}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Longrightarrow T\left[\begin{array}{c}
+x\\
+y
+\end{array}\right] & =T\left[\left(\frac{-4x+5y}{11}\right)\cdot\left[\begin{array}{c}
+1\\
+3
+\end{array}\right]+\left(\frac{3x-y}{11}\right)\left[\begin{array}{c}
+5\\
+4
+\end{array}\right]\right]\\
+ & =\left(\frac{-4x+5y}{11}\right)T\left[\begin{array}{c}
+1\\
+3
+\end{array}\right]+\left(\frac{3x-y}{11}\right)T\left[\begin{array}{c}
+5\\
+4
+\end{array}\right]\\
+ & =\left(\frac{-4x+5y}{11}\right)\left[\begin{array}{c}
+1\\
+3
+\end{array}\right]\\
+ & =\boxed{\left[\begin{array}{c}
+\frac{-4x+5y}{11}\\
+\frac{-12x+15y}{11}
+\end{array}\right]}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+שיטה נוספת:
+\bar default
+
+\begin_inset Formula 
+\[
+A\left[\begin{array}{c}
+1\\
+3
+\end{array}\right]=\left[\begin{array}{c}
+1\\
+3
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A\left[\begin{array}{c}
+5\\
+4
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A\left[\begin{array}{cc}
+1 & 5\\
+3 & 4
+\end{array}\right]=\left[\begin{array}{cc}
+1 & 0\\
+3 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+המטריצה 
+\begin_inset Formula $\left[\begin{array}{cc}
+1 & 5\\
+3 & 4
+\end{array}\right]$
+\end_inset
+
+, מאחר ו-
+\begin_inset Formula $V=U_{1}\oplus U_{2}$
+\end_inset
+
+, וכך:
+\begin_inset Formula 
+\begin{align*}
+A & =\left[\begin{array}{cc}
+1 & 0\\
+3 & 0
+\end{array}\right]\left[\begin{array}{cc}
+1 & 5\\
+3 & 4
+\end{array}\right]^{-1}\\
+ & =\boxed{\left[\begin{array}{cc}
+-4\slash11 & 5\slash11\\
+-12\slash11 & 15\slash11
+\end{array}\right]}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A$
+\end_inset
+
+ היא המטריצה המייצגת של ההעתקה שמצאנו קודם לכן.
+\end_layout
+
+\begin_layout Exercise*
+תהי 
+\begin_inset Formula $T:V\to V$
+\end_inset
+
+ הטלה.
+ הוכיחו:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $KerT\oplus ImT=V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $S:V\to V$
+\end_inset
+
+ הטלה כך ש-
+\begin_inset Formula $KerS=KerT$
+\end_inset
+
+ ו-
+\begin_inset Formula $ImS=ImT$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $S=T$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נוכיח את שתי הטענות.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נראה כי 
+\begin_inset Formula $KerT\cap ImT=\left\{ 0\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $KerT+ImT=V$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נוכיח את שני חלקי הטענה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $v\in KerT\cap ImT$
+\end_inset
+
+.
+ נראה כי 
+\begin_inset Formula $v=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+v\in KerT\Longrightarrow Tv=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+v\in ImT\Longrightarrow\exists x\in V:Tx=v
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+v=Tx{\color{gray}\underset{\text{\ensuremath{T} הטלה}}{\underbrace{{\normalcolor =}}}}T^{2}x=T\left({\color{blue}Tx}\right)=T\left({\color{blue}v}\right)=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow v=0
+\]
+
+\end_inset
+
+מכאן, 
+\begin_inset Formula $KerT\cap ImT=\left\{ 0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $v\in V$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $u=Tv$
+\end_inset
+
+ ו-
+\begin_inset Formula $w=v-Tv$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $u\in ImT$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+Tw=T\left(v-Tv\right)=Tv-T^{2}v{\color{gray}\underset{\text{\ensuremath{T} הטלה}}{\underbrace{{\normalcolor =}}}}Tv-Tv=0\Longrightarrow w\in KerT
+\]
+
+\end_inset
+
+הוכחנו כי 
+\begin_inset Formula $v={\color{gray}\underset{\in ImT}{\underbrace{{\normalcolor u}}}}+{\color{gray}\underset{\in KerT}{\underbrace{{\normalcolor w}}}}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $v\in V$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $KerT+ImT=V$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+בסך הכל, הוכחנו כי 
+\begin_inset Formula $\boxed{V=KerT\oplus ImT}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+נראה כי 
+\begin_inset Formula $S$
+\end_inset
+
+ ו-
+\begin_inset Formula $T$
+\end_inset
+
+ מסכימות על כל איבר בתחומן.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+יהי 
+\begin_inset Formula $v\in V$
+\end_inset
+
+, נוכיח כי 
+\begin_inset Formula $Tv=Sv$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+לפי סעיף א', קיימים 
+\begin_inset Formula $u\in KerT$
+\end_inset
+
+ ו-
+\begin_inset Formula $w\in ImT$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $v=u+w$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נראה כי 
+\begin_inset Formula $Su=Tu$
+\end_inset
+
+ וגם 
+\begin_inset Formula $Sw=Tw$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $u\in KerT=KerS$
+\end_inset
+
+, וכך 
+\begin_inset Formula $Tu=Su=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+w\in ImT\Longrightarrow\exists x\in V:Tx=w
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+w=Tx{\color{gray}\underset{\text{\ensuremath{T} הטלה}}{\underbrace{{\normalcolor =}}}}T^{2}x=T\left(Tx\right)=Tw
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+באותו האופן ניתן להראות כי 
+\begin_inset Formula $Sw=w$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $Tw=w=Sw$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Proof
+\begin_inset Formula 
+\[
+Tv=T\left(u+w\right)=Tu+Tw=Su+Sw=S\left(u+w\right)=Sv
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\boxed{Tv=Sv}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Remark*
+במהלך ההוכחה, הוכחנו שלכל 
+\begin_inset Formula $v\in ImT$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $Tv=v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary*
+אם 
+\begin_inset Formula $T:V\to V$
+\end_inset
+
+ הטלה, אזי 
+\begin_inset Formula $KerT\oplus ImT=V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary*
+בנוסף, 
+\begin_inset Formula $T$
+\end_inset
+
+ נקבעת באופן יחיד ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $ImT,KerT$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $U=KerT$
+\end_inset
+
+ ו-
+\begin_inset Formula $W=ImT$
+\end_inset
+
+.
+ נקרא ל-
+\begin_inset Formula $T$
+\end_inset
+
+ ההטלה על 
+\begin_inset Formula $W$
+\end_inset
+
+ במקביל ל-
+\begin_inset Formula $U$
+\end_inset
+
+ )או לאורך 
+\begin_inset Formula $U$
+\end_inset
+
+(, ונסמן 
+\begin_inset Formula $T=\text{pr}_{W}^{U}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+יהי 
+\begin_inset Formula $T\in End\left(V\right)$
+\end_inset
+
+ הטלה.
+ הוכיחו כי 
+\begin_inset Formula $T$
+\end_inset
+
+ לכסין.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+מאחר ו-
+\begin_inset Formula $T$
+\end_inset
+
+ הטלה מתקיים 
+\begin_inset Formula $T^{2}=T$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+לכן, 
+\begin_inset Formula $T^{2}-T=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכאן, 
+\begin_inset Formula $T$
+\end_inset
+
+ מאפס את הפולינום 
+\begin_inset Formula $p\left(x\right)=x\left(x-1\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $m_{T}\mid p\left(x\right)$
+\end_inset
+
+, ולכן האפשרויות לפולינום המינימלי הן 
+\begin_inset Formula $x,x-1,x\left(x-1\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בכל מקרה מבין שלושת המקרים, נקבל שהפולינום המינימלי מתפרק למכפלת גורמים
+ לינאריים שונים.
+\end_layout
+
+\begin_layout Itemize
+לכן, לפי משפט 
+\begin_inset Formula $T$
+\end_inset
+
+ לכסין.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+ע
+\begin_inset Quotes erd
+\end_inset
+
+ע של הטלה נמצאים בקבוצה 
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $a_{1},a_{2},\dots,a_{n}\in\mathbb{F}$
+\end_inset
+
+ מספרים שונים.
+\end_layout
+
+\begin_layout Definition*
+לכל 
+\begin_inset Formula $1\le i\le n$
+\end_inset
+
+, נגדיר
+\begin_inset Formula 
+\[
+\ell_{i}\left(x\right)=\prod_{\begin{array}{c}
+j=1\\
+j\ne i
+\end{array}}^{n}\frac{x-a_{j}}{a_{i}-a_{j}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+לפולינומים 
+\begin_inset Formula $\ell_{1}\left(x\right),\dots,\ell_{n}\left(x\right)$
+\end_inset
+
+ קוראים 
+\bar under
+פולינומי לגראנז'
+\bar default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+נבנה את פולינומי הלגראנז' של 
+\begin_inset Formula $a_{1}=1,a_{2}=-2,a_{3}=7$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\ell_{1}\left(x\right)=\prod_{\begin{array}{c}
+j=1\\
+j\ne1
+\end{array}}^{3}\frac{x-a_{j}}{a_{1}-a_{j}}=\prod_{j=2}^{3}\frac{x-a_{j}}{a_{1}-a_{j}}=\frac{x-a_{2}}{a_{1}-a_{2}}\cdot\frac{x-a_{3}}{a_{1}-a_{3}}=\left(\frac{x+2}{3}\right)\left(\frac{x-7}{6}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\ell_{2}\left(x\right)=\left(\frac{x-1}{-3}\right)\left(\frac{x-7}{-9}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\ell_{3}\left(x\right)=\left(\frac{x-1}{6}\right)\left(\frac{x+2}{9}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+משפט הפירוק הספקטרלי
+\end_layout
+
+\begin_layout Theorem*
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+ו 
+\begin_inset Formula $n$
+\end_inset
+
+-מימדי מעל שדה 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+, ויהי 
+\begin_inset Formula $T\in End\left(V\right)$
+\end_inset
+
+ לכסין עם ע
+\begin_inset Quotes erd
+\end_inset
+
+ע שונים 
+\begin_inset Formula $\lambda_{1},\dots,\lambda_{k}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+V_{i}=V_{A,\lambda_{i}};\quad W_{i}=\bigoplus_{\begin{array}{c}
+j=1\\
+j\ne i
+\end{array}}^{k}V_{j}
+\]
+
+\end_inset
+
+ נסמן ב-
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ את ההטלה על 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+ במקביל ל-
+\begin_inset Formula $W_{i}$
+\end_inset
+
+: 
+\begin_inset Formula $E_{i}=\text{pr}_{V_{i}}^{W_{i}}$
+\end_inset
+
+.
+ אזי:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $V=\bigoplus_{i=1}^{k}V_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Id=\sum_{i=1}^{k}E_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $T=\sum_{i=1}^{k}\lambda_{i}\cdot E_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל פולינום 
+\begin_inset Formula $f\left(x\right)\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+f\left(T\right)=\sum_{i=1}^{k}f\left(\lambda_{i}\right)\cdot E_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $1\le i\le k$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\ell_{i}\left(T\right)=E_{i}
+\]
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $\ell_{i},\dots,\ell_{k}$
+\end_inset
+
+ הם פולינומי לגראנז' עבור הקבוצה 
+\begin_inset Formula $\left\{ \lambda_{1},\dots,\lambda_{k}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הפירוק 
+\begin_inset Formula $T=\sum_{i=1}^{k}\lambda_{i}\cdot E_{i}$
+\end_inset
+
+ הוא יחיד.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{ccc}
+8 & -9 & 0\\
+6 & -7 & 0\\
+-12 & 18 & 2
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+רשמו את 
+\begin_inset Formula $A$
+\end_inset
+
+ כצירוף לינארי של מטריצות הטלה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+תחילה, 
+\begin_inset Formula $A$
+\end_inset
+
+ מוכרחת להיות לכסינה.
+\begin_inset Formula 
+\[
+\Delta_{A}\left(x\right)=\dots=\left(x-2\right)^{2}\left(x+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+לכן הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ הם 
+\begin_inset Formula ${\color{gray}\underset{a_{1}}{\underbrace{{\normalcolor 2}}}},{\color{gray}\underset{a_{2}}{\underbrace{{\normalcolor -1}}}}$
+\end_inset
+
+.
+ פולינומי לגראנז' הם:
+\begin_inset Formula 
+\[
+\ell_{1}\left(x\right)=\frac{x+1}{3},\ell_{2}\left(x\right)=\frac{x-2}{-3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+E_{1}=\ell_{1}\left(A\right)=\frac{1}{3}\left(A+1\cdot I\right)=\left[\begin{array}{ccc}
+3 & -3 & 0\\
+2 & -2 & 0\\
+-4 & 6 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E_{2}=\ell_{2}\left(A\right)=-\frac{1}{3}\left(A-2\cdot I\right)=\left[\begin{array}{ccc}
+-2 & 3 & 0\\
+-2 & 3 & 0\\
+4 & -6 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\boxed{A=2\cdot E_{1}-1\cdot E_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

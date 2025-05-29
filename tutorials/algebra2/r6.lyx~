@@ -1,0 +1,3379 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\usepackage{diagbox}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{shapes, decorations.pathreplacing,calligraphy, automata, positioning, arrows, trees, calc, fit}
+\tikzset{
+	->,
+	>=stealth,
+	node distance=3cm,
+	every state/.style={thick, fill=gray!20,
+						},
+	initial text=$ $,
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont[range=\setminus]{Asana Math}
+\usepackage{polynom}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "David CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+תרגול
+\family roman
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+6
+\end_layout
+
+\begin_layout Author
+מר' טאהר עודה
+\begin_inset Newline newline
+\end_inset
+
+
+\size normal
+נכתב ע
+\begin_inset Quotes erd
+\end_inset
+
+י בר וייסמן
+\end_layout
+
+\begin_layout Date
+
+\numeric on
+21
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+באוגוסט
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2023
+\end_layout
+
+\begin_layout Section
+היטל אורתוגונלי
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ ממ
+\begin_inset Quotes erd
+\end_inset
+
+פ סוף-מימדי ויהי 
+\begin_inset Formula $U\subseteq V$
+\end_inset
+
+ תת-מרחב.
+ אזי 
+\begin_inset Formula $V=U\oplus U^{\perp}$
+\end_inset
+
+.
+ זאת אומרת, לכל 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ קיימים 
+\begin_inset Formula $u\in U$
+\end_inset
+
+ ו-
+\begin_inset Formula $w\in U^{\perp}$
+\end_inset
+
+ יחידים כך ש-
+\begin_inset Formula $v=u+w$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+ההיטל על 
+\begin_inset Formula $U$
+\end_inset
+
+ במקביל ל-
+\begin_inset Formula $U^{\perp}$
+\end_inset
+
+ המסומן ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $\text{Pr}_{U}^{\perp}=\text{Pr}_{U}^{U^{\perp}}$
+\end_inset
+
+)
+\begin_inset Formula $\text{Pr}_{U}^{\perp}:V\to U$
+\end_inset
+
+( המקיים 
+\begin_inset Formula $\text{Pr}_{U}^{\perp}\left(v\right)=u$
+\end_inset
+
+ נקרא 
+\emph on
+היטל אורתוגונלי
+\emph default
+ של 
+\begin_inset Formula $v$
+\end_inset
+
+ על 
+\begin_inset Formula $U$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary*
+יהיו 
+\begin_inset Formula $V$
+\end_inset
+
+ ממ
+\begin_inset Quotes erd
+\end_inset
+
+פ, 
+\begin_inset Formula $U\subseteq V$
+\end_inset
+
+ תת-מרחב ו-
+\begin_inset Formula $\left\{ u_{1},\dots,u_{k}\right\} $
+\end_inset
+
+ בסיס אורתונורמלי של 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ אזי לכל 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\text{Pr}_{U}^{\perp}\left(v\right)=\sum_{i=1}^{k}\alpha_{i}u_{i}
+\]
+
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\alpha_{i}=\left\langle v,u_{i}\right\rangle $
+\end_inset
+
+ )מקדמי פורייה(.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+יהי 
+\begin_inset Formula $V=M_{2}\left(\mathbb{R}\right)$
+\end_inset
+
+ עם המכפלה הפנימית 
+\begin_inset Formula $\left\langle A,B\right\rangle =\text{tr}\left(B^{t}A\right)$
+\end_inset
+
+.
+ נסמן
+\begin_inset Formula 
+\[
+U=\text{span}\left\{ M_{1}=\left[\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right],M_{2}=\left[\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מצאו בסיס ל-
+\begin_inset Formula $U^{\perp}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+מצאו בסיס אורתונורמלי ל-
+\begin_inset Formula $V$
+\end_inset
+
+ ביחס למכפלה הפנימית שהוגדרה.
+\end_layout
+
+\begin_layout Enumerate
+נסמן ב-
+\begin_inset Formula $\text{P}_{U}^{\perp}$
+\end_inset
+
+ את ההיטל האורתוגונלי על 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ מצאו את 
+\begin_inset Formula $\text{P}_{U}^{\perp}\left(\left[\begin{array}{cc}
+2 & 1\\
+3 & 4
+\end{array}\right]\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+מצא את המטריצה המייצגת של 
+\begin_inset Formula $\text{P}_{U}^{\perp}$
+\end_inset
+
+ לפי:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הבסיס הסטנדרטי של 
+\begin_inset Formula $V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הבסיס
+\begin_inset Formula 
+\[
+\left\{ \left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right],\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & -1\slash\sqrt{2}
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+-1\slash\sqrt{2} & 0
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נמצא איבר כללי ב-
+\begin_inset Formula $U^{\perp}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{cc}
+x & y\\
+z & w
+\end{array}\right]\in U^{\perp}\iff\left\langle A,M_{1}\right\rangle =0=\left\langle A,M_{2}\right\rangle 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\langle A,M_{1}\right\rangle =\text{tr}\left(M_{1}^{t}A\right)=\text{tr}\left(\left[\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right]^{t}\left[\begin{array}{cc}
+x & y\\
+z & w
+\end{array}\right]\right)=\text{tr}\left[\begin{array}{cc}
+x & y\\
+z & w
+\end{array}\right]=x+w
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\langle A,M_{2}\right\rangle =\text{tr}\left(M_{2}^{t}A\right)=\text{tr}\left(\left[\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right]^{t}\left[\begin{array}{cc}
+x & y\\
+z & w
+\end{array}\right]\right)=\text{tr}\left[\begin{array}{cc}
+z & w\\
+x & y
+\end{array}\right]=z+y
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\langle A,M_{1}\right\rangle =0=\left\langle A,M_{2}\right\rangle \iff x+w=0=z+y\iff\left(w=ix\wedge z=-y\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\iff A=\left[\begin{array}{cc}
+x & y\\
+-y & -x
+\end{array}\right]\Longrightarrow\boxed{U^{\perp}=\text{span}\left\{ \left[\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\\
+-1 & 0
+\end{array}\right]\right\} }
+\]
+
+\end_inset
+
+ ברור ש-
+\begin_inset Formula $\left[\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\\
+-1 & 1
+\end{array}\right]$
+\end_inset
+
+ בת
+\begin_inset Quotes erd
+\end_inset
+
+ל ולכן מהוות בסיס.
+\end_layout
+
+\begin_layout Enumerate
+מאחר ו-
+\begin_inset Formula $V=U\oplus U^{\perp}$
+\end_inset
+
+, איחוד הבסיסים של 
+\begin_inset Formula $U,U^{\perp}$
+\end_inset
+
+ מהווה בסיס ל-
+\begin_inset Formula $V$
+\end_inset
+
+, נבצע עליו גרם-שמידט:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ננרמל את 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left\langle M_{1},M_{1}\right\rangle =\text{tr}\left(M_{1}^{t}M_{1}\right)=2
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+v_{1}=\frac{1}{\left\Vert M_{1}\right\Vert }\cdot M_{1}=\frac{1}{\sqrt{2}}M_{1}=\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+כעת למטריצה השנייה:
+\begin_inset Formula 
+\[
+\tilde{v_{2}}=M_{2}-\left\langle M_{2},v_{1}\right\rangle \cdot v_{1}=M_{2}-{\color{gray}\underset{0}{\underbrace{{\normalcolor \text{tr}\left(v_{1}^{t}M_{2}\right)}}}}\cdot v_{1}=M_{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\Vert M_{2}\right\Vert =\sqrt{\left\langle M_{2},M_{2}\right\rangle }=\sqrt{\text{tr}\left(M_{2}^{t}M_{2}\right)}=\sqrt{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow v_{2}=\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נעבור ל-
+\begin_inset Formula $v_{3}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\tilde{v_{3}}=M_{3}-\left\langle M_{3},v_{1}\right\rangle \cdot v_{1}-\left\langle M_{3},v_{2}\right\rangle \cdot v_{2}\underset{M_{3}\in U^{\perp}}{=}M_{3}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\Vert M_{3}\right\Vert =\sqrt{\left\langle M_{3},M_{3}\right\rangle }=\sqrt{\text{tr}\left(\left[\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right]^{t}\left[\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right]\right)}=\sqrt{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow v_{3}=\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & -1\slash\sqrt{2}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לבסוף, נמצא את 
+\begin_inset Formula $v_{4}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\tilde{v_{4}}=M_{4}-\sum_{i=1}^{3}\left\langle M_{4},v_{i}\right\rangle \cdot v_{i}=M_{4}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\Vert M_{4}\right\Vert =\sqrt{2}\Longrightarrow v_{4}=\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+-1\slash\sqrt{2} & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\boxed{\left\{ \left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right],\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & -1\slash\sqrt{2}
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+-1\slash\sqrt{2} & 0
+\end{array}\right]\right\} }
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+נפתור בשתי דרכים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נרשום את 
+\begin_inset Formula $\left[\begin{array}{cc}
+2 & 1\\
+3 & 4
+\end{array}\right]$
+\end_inset
+
+ כצירוף לינארי של הבסיסים של 
+\begin_inset Formula $U,U^{\perp}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left[\begin{array}{cc}
+2 & 1\\
+3 & 4
+\end{array}\right]={\color{gray}\underset{\in U}{\underbrace{{\normalcolor 3\cdot\left[\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right]+2\cdot\left[\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right]}}}}{\color{gray}\underset{\in U^{\perp}}{\underbrace{{\normalcolor -\left[\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right]-\left[\begin{array}{cc}
+0 & 1\\
+-1 & 1
+\end{array}\right]}}}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\text{P}_{U}^{\perp}\left(\left[\begin{array}{cc}
+2 & 1\\
+3 & 4
+\end{array}\right]\right)=\left[\begin{array}{cc}
+3 & 2\\
+2 & 3
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+הוקטורים 
+\begin_inset Formula $\left\{ v_{1},v_{2}\right\} $
+\end_inset
+
+ שמצאנו בסעיף הקודם מהווים בסיס אורתונורמלי ל-
+\begin_inset Formula $U$
+\end_inset
+
+, ולכן
+\begin_inset Formula 
+\begin{align*}
+\text{P}_{U}^{\perp}\left(\left[\begin{array}{cc}
+2 & 1\\
+3 & 4
+\end{array}\right]\right) & =\left\langle \left[\begin{array}{cc}
+2 & 1\\
+3 & 4
+\end{array}\right],v_{1}\right\rangle \cdot v_{2}+\left\langle \left[\begin{array}{cc}
+2 & 1\\
+3 & 4
+\end{array}\right],v_{1}\right\rangle \cdot v_{2}\\
+ & =\text{tr}\left(\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]^{t}\left[\begin{array}{cc}
+2 & 1\\
+3 & 4
+\end{array}\right]\right)\cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]\\
+ & \quad+\text{tr}\left(\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]^{t}\left[\begin{array}{cc}
+2 & 1\\
+3 & 4
+\end{array}\right]\right)\cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =\frac{6}{\sqrt{2}}\cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]+\frac{4}{\sqrt{2}}\cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =\left[\begin{array}{cc}
+3 & 2\\
+2 & 3
+\end{array}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נמצא את ההטלה לפי הבסיס הסטנדרטי
+\begin_inset Formula 
+\[
+E=\left\{ e_{1}=\left[\begin{array}{cc}
+1 & 0\\
+0 & 0
+\end{array}\right],e_{2}=\left[\begin{array}{cc}
+0 & 1\\
+0 & 0
+\end{array}\right],e_{3}=\left[\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}\right],e_{4}=\left[\begin{array}{cc}
+0 & 0\\
+0 & 1
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{P}_{U}^{\perp}\left(\left[\begin{array}{cc}
+1 & 0\\
+0 & 0
+\end{array}\right]\right) & =\sum_{i=1}^{2}\left\langle e_{1},v_{i}\right\rangle \cdot v_{i}\\
+ & =\left\langle \left[\begin{array}{cc}
+1 & 0\\
+0 & 0
+\end{array}\right],\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]\right\rangle \cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]\\
+ & \quad+\left\langle \left[\begin{array}{cc}
+1 & 0\\
+0 & 0
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\right\rangle \cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =\frac{1}{\sqrt{2}}\cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]+0\cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =\left[\begin{array}{cc}
+1\slash2 & 0\\
+0 & 1\slash2
+\end{array}\right]=\frac{1}{2}e_{1}+0\cdot e_{2}+0\cdot e_{3}+\frac{1}{2}\cdot e_{4}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{P}_{U}^{\perp}\left(e_{2}\right) & =\sum_{i=1}^{2}\left\langle e_{2},v_{i}\right\rangle \cdot v_{i}\\
+ & =\left\langle \left[\begin{array}{cc}
+0 & 1\\
+0 & 0
+\end{array}\right],\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]\right\rangle \cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]\\
+ & \quad+\left\langle \left[\begin{array}{cc}
+0 & 1\\
+0 & 0
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\right\rangle \cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =0\cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]+\frac{1}{\sqrt{2}}\cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =\left[\begin{array}{cc}
+0 & 1\slash2\\
+1\slash2 & 0
+\end{array}\right]=0\cdot e_{1}+\frac{1}{2}e_{2}+\frac{1}{2}e_{3}+e_{4}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{P}_{U}^{\perp}\left(e_{3}\right) & =\sum_{i=1}^{2}\left\langle e_{3},v_{i}\right\rangle \cdot v_{i}\\
+ & =\left\langle \left[\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}\right],\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]\right\rangle \cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]\\
+ & \quad+\left\langle \left[\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\right\rangle \cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =0\cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]+\frac{1}{\sqrt{2}}\cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =\left[\begin{array}{cc}
+0 & 1\slash2\\
+1\slash2 & 0
+\end{array}\right]=0\cdot e_{1}+\frac{1}{2}e_{2}+\frac{1}{2}e_{3}+e_{4}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{P}_{U}^{\perp}\left(e_{4}\right) & =\sum_{i=1}^{2}\left\langle e_{4},v_{i}\right\rangle \cdot v_{i}\\
+ & =\left\langle \left[\begin{array}{cc}
+0 & 0\\
+0 & 1
+\end{array}\right],\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]\right\rangle \cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]\\
+ & \quad+\left\langle \left[\begin{array}{cc}
+0 & 0\\
+0 & 1
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\right\rangle \cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =\frac{1}{\sqrt{2}}\cdot\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right]+0\cdot\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right]\\
+ & =\left[\begin{array}{cc}
+1\slash2 & 0\\
+0 & 1\slash2
+\end{array}\right]=\frac{1}{2}e_{1}+0\cdot e_{2}+0\cdot e_{3}+\frac{1}{2}\cdot e_{4}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\left[\text{P}_{U}^{\perp}\right]_{E}=\left[\begin{array}{cccc}
+1\slash2 & 0 & 0 & 1\slash2\\
+0 & 1\slash2 & 1\slash2 & 0\\
+0 & 1\slash2 & 1\slash2 & 0\\
+1\slash2 & 0 & 0 & 1\slash2
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נמצא את ההטלה לפי הבסיס
+\begin_inset Formula 
+\[
+B=\left\{ \left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & 1\slash\sqrt{2}
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+1\slash\sqrt{2} & 0
+\end{array}\right],\left[\begin{array}{cc}
+1\slash\sqrt{2} & 0\\
+0 & -1\slash\sqrt{2}
+\end{array}\right],\left[\begin{array}{cc}
+0 & 1\slash\sqrt{2}\\
+-1\slash\sqrt{2} & 0
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מאחר ו-
+\begin_inset Formula $v_{3},v_{4}\in U^{\perp}$
+\end_inset
+
+, ברור כי וקטורי הקואורדינטות שלהם הם 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+עבור 
+\begin_inset Formula $v_{1},v_{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\sum_{i=1}^{2}\left\langle v_{1},v_{i}\right\rangle \cdot v_{i}=\left\langle v_{1},v_{1}\right\rangle \cdot v_{1}+{\color{gray}\underset{0}{\underbrace{{\normalcolor \left\langle v_{1},v_{2}\right\rangle \cdot v_{2}}}}}=v_{1}
+\]
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $\text{P}_{U}^{\perp}\left(v_{1}\right)=v_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\text{P}_{U}^{\perp}\left(v_{2}\right)=v_{2}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\left[\text{P}_{U}^{\perp}\right]_{B}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+אם 
+\begin_inset Formula $V$
+\end_inset
+
+ ממ
+\begin_inset Quotes erd
+\end_inset
+
+פ 
+\begin_inset Formula $n$
+\end_inset
+
+-מימדי ו-
+\begin_inset Formula $U\subseteq V$
+\end_inset
+
+ תת-מרחב 
+\begin_inset Formula $k$
+\end_inset
+
+-מימדי עם בסיס א
+\begin_inset Quotes erd
+\end_inset
+
+נ 
+\begin_inset Formula $\left\{ v_{1},\dots,v_{k}\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $\left\{ u_{1},\dots,u_{n-k}\right\} $
+\end_inset
+
+ בסיס של 
+\begin_inset Formula $U^{\perp}$
+\end_inset
+
+.
+ אזי המטריצה המייצגת של 
+\begin_inset Formula $\text{P}_{U}^{\perp}$
+\end_inset
+
+ לפי איחוד הבסיסים של 
+\begin_inset Formula $U,U^{\perp}$
+\end_inset
+
+ היא
+\begin_inset Formula 
+\[
+\left[\begin{array}{ccc}
+{\color{red}I_{k}} & \mid & 0\\
+\hline 0 & \mid & {\color{red}0_{n-k}}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+)
+\begin_inset Formula $I_{k}$
+\end_inset
+
+ היא מטריצת היחידה מגודל 
+\begin_inset Formula $k\times k$
+\end_inset
+
+, ו-
+\begin_inset Formula $0_{n-k}$
+\end_inset
+
+ היא מטריצת האפס מגודל 
+\begin_inset Formula $\left(n-k\right)\times\left(n-k\right)$
+\end_inset
+
+(
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+אם מבקשים למצוא את פונקציית ההטלה 
+\begin_inset Formula $\text{P}_{U}^{\perp}$
+\end_inset
+
+ באופן מפורש אז:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+בוחרים בסיס כלשהו ומחשבים את ההטלה של כל וקטור בבסיס.
+\end_layout
+
+\begin_layout Enumerate
+לוקחים וקטור כללי במרחב ורושמים אותו כצירוף לינארי של הבסיס שבחרנו.
+\end_layout
+
+\begin_layout Enumerate
+מפעילים על הצירוף הלינארי את 
+\begin_inset Formula $\text{P}_{U}^{\perp}$
+\end_inset
+
+.
+ למשל, עבור השאלה הקודמת:
+\end_layout
+
+\end_deeper
+\begin_layout Remark*
+תהי 
+\begin_inset Formula $\left[\begin{array}{cc}
+x & y\\
+z & w
+\end{array}\right]\in V$
+\end_inset
+
+, אזי 
+\begin_inset Formula $\left[\begin{array}{cc}
+x & y\\
+z & w
+\end{array}\right]=x\cdot e_{1}+y\cdot e_{2}+z\cdot e_{3}+w\cdot e_{4}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\text{P}_{U}^{\perp}\left(\left[\begin{array}{cc}
+x & y\\
+z & w
+\end{array}\right]\right)\underset{\text{\ensuremath{\text{P}_{U}^{\perp}} אופרטור}}{=}x\cdot\text{P}_{U}^{\perp}\left(e_{1}\right)+y\cdot\text{P}_{U}^{\perp}\left(e_{2}\right)+z\cdot\text{P}_{U}^{\perp}\left(e_{3}\right)+w\cdot\text{P}_{U}^{\perp}\left(e_{4}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+תבניות ומכפלה פנימית כללית
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+ו מעל שדה 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+.
+ פונקציה 
+\begin_inset Formula $f:V\times V\to\mathbb{F}$
+\end_inset
+
+ נקראת 
+\emph on
+תבנית
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+אם 
+\begin_inset Formula $f:V\times V\to\mathbb{F}$
+\end_inset
+
+ תבנית, אזי ל-
+\begin_inset Formula $f$
+\end_inset
+
+ קוראים 
+\emph on
+תבנית בילינארית
+\emph default
+ אם מתקיים לכל 
+\begin_inset Formula $u,v,w\in V$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $\alpha\in\mathbb{F}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אדיטיביות במשתנה השמאלי: 
+\begin_inset Formula $f\left(u+v,w\right)=f\left(u,w\right)+f\left(v,w\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הומוגניות במשתנה השמאלי: 
+\begin_inset Formula $f\left(\alpha u,v\right)=\alpha f\left(u,v\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אדיטיביות במשתנה הימני: 
+\begin_inset Formula $f\left(u,v+w\right)=f\left(u,v\right)+f\left(u,w\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הומוגניות במשתנה הימני: 
+\begin_inset Formula $f\left(u,\alpha v\right)=\alpha f\left(u,v\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+מכפלה פנימית מעל 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ היא תבנית בילינארית.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+מכפלה פנימית מרוכבת )מעל 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+( היא תבנית אשר מקיימת את שלושת התכונות הראשונות, ומקיימת את התכונה הרביעית
+ עם הצמדה:
+\begin_inset Formula 
+\[
+f\left(u,\alpha v\right)=\overline{\alpha}f\left(u,v\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+לתבנית כזו קוראים תבנית 
+\emph on
+
+\begin_inset Formula $1\frac{1}{2}$
+\end_inset
+
+-לינארית
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $B=\left(v_{1},\dots,v_{n}\right)$
+\end_inset
+
+ בסיס סדור של 
+\begin_inset Formula $\mathbb{F}^{n}$
+\end_inset
+
+ ותהי 
+\begin_inset Formula $f:\mathbb{F}^{n}\times\mathbb{F}^{n}\to\mathbb{F}$
+\end_inset
+
+ תבנית )כלומר, בילינארית או 
+\begin_inset Formula $1\frac{1}{2}$
+\end_inset
+
+-לינארית(.
+ המטריצה של התבנית 
+\begin_inset Formula $f$
+\end_inset
+
+ מוגדרת להיות
+\begin_inset Formula 
+\[
+A_{f}=\left[A_{f}\right]_{B}=\left(a_{ij}\right)_{i,j=1}^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+כאשר 
+\begin_inset Formula $a_{ij}=f\left(v_{j},v_{i}\right)$
+\end_inset
+
+ )האינדקסים הפוכים!(.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+עבור התבנית 
+\begin_inset Formula $f:\mathbb{R}^{2}\times\mathbb{R}^{2}\to\mathbb{R}$
+\end_inset
+
+ המוגדרת ע
+\begin_inset Quotes erd
+\end_inset
+
+י:
+\begin_inset Formula 
+\[
+f\left(\left[\begin{array}{c}
+x_{1}\\
+x_{2}
+\end{array}\right],\left[\begin{array}{c}
+y_{1}\\
+y_{2}
+\end{array}\right]\right)=x_{1}y_{1}-x_{2}y_{2}-x_{2}y_{1}+3x_{2}y_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+מצאו את 
+\begin_inset Formula $\left[A_{f}\right]_{E},\left[A_{f}\right]_{B}$
+\end_inset
+
+ כאשר:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $B=\left\{ v_{1}=\left[\begin{array}{c}
+1\\
+-1
+\end{array}\right],v_{2}=\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E=\left\{ e_{1}=\left[\begin{array}{c}
+1\\
+0
+\end{array}\right],e_{2}=\left[\begin{array}{c}
+0\\
+1
+\end{array}\right]\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נמצא את 
+\begin_inset Formula $\left[A_{f}\right]_{B}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+a_{11}=f\left(v_{1},v_{1}\right)=6
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a_{12}=f\left(v_{2},v_{1}\right)=-2
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a_{21}=f\left(v_{1},v_{2}\right)=-2
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a_{22}=f\left(v_{2},v_{2}\right)=2
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\boxed{\left[A_{f}\right]_{B}=\left[\begin{array}{cc}
+6 & -2\\
+-2 & 2
+\end{array}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נמצא את 
+\begin_inset Formula $\left[A_{f}\right]_{E}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+b_{11}=f\left(e_{1},e_{1}\right)=1
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+b_{12}=f\left(e_{2},e_{1}\right)=-1
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+b_{21}=f\left(e_{1},e_{2}\right)=-1
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+b_{22}=f\left(e_{2},e_{2}\right)=3
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\boxed{\left[A_{f}\right]_{E}=\left[\begin{array}{cc}
+1 & -1\\
+-1 & 3
+\end{array}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+מטריצות שמייצגות את אותה תבנית לפי בסיסים שונים הן 
+\emph on
+חופפות
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+מטריצה שמייצגת מכפלה פנימית היא הרמיטית )או סימטרית, מעל 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+( ומוגדרת חיובית.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $A^{\ast}=\overline{A^{t}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+)ב-
+\begin_inset Formula $M_{n}\left(\mathbb{R}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $A^{\ast}=A^{t}$
+\end_inset
+
+(
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+\begin_inset Formula 
+\[
+\left[\begin{array}{cc}
+1 & 2-3i\\
+1+4i & 5
+\end{array}\right]^{\ast}=\left[\begin{array}{cc}
+1 & 1-4i\\
+2+3i & 5
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\bar under
+תכונות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(A\pm B\right)^{\ast}=A^{\ast}\pm B^{\ast}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\alpha A\right)^{\ast}=\overline{\alpha}A^{\ast}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(AB\right)^{\ast}=B^{\ast}A^{\ast}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(A^{n}\right)^{\ast}=\left(A^{\ast}\right)^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A$
+\end_inset
+
+ הפיכה אז 
+\begin_inset Formula $\left(A^{-1}\right)^{\ast}=\left(A^{\ast}\right)^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ נקראת 
+\emph on
+הרמיטית
+\emph default
+ אם 
+\begin_inset Formula $A^{\ast}=A$
+\end_inset
+
+ )מעל 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+: סימטרית(.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ נקראת 
+\emph on
+אנטי-הרמיטית
+\emph default
+ אם 
+\begin_inset Formula $A^{\ast}=-A$
+\end_inset
+
+ )מעל 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+: אנטי-סימטרית(.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+הוכיחו שלכל 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+ קיימות 
+\begin_inset Formula $X$
+\end_inset
+
+ הרמיטית, 
+\begin_inset Formula $Y$
+\end_inset
+
+ אנטי-הרמיטית כך ש-
+\begin_inset Formula $A=X+Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+.
+ נחפש 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $A=X+Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+במקרה זה, נקבל
+\begin_inset Formula 
+\begin{align*}
+A^{\ast} & =X^{\ast}+Y^{\ast}\\
+ & =X-Y
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+A+A^{\ast}=2X\\
+A-A^{\ast}=2Y
+\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
+X=\frac{1}{2}\left(A+A^{\ast}\right)\\
+Y=\frac{1}{2}\left(A-A^{\ast}\right)
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נגדיר 
+\begin_inset Formula $X=\frac{1}{2}\left(A+A^{\ast}\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $Y=\frac{1}{2}\left(A-A^{\ast}\right)$
+\end_inset
+
+: ברור כי 
+\begin_inset Formula $X+Y=A$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+X^{\ast}=\left(\frac{1}{2}\left(A+A^{\ast}\right)\right)^{\ast}=\frac{1}{2}\left(A+A^{\ast}\right)^{\ast}=\frac{1}{2}\left(A^{\ast}+A^{\ast\ast}\right)=\frac{1}{2}\left(A^{\ast}+A\right)=X
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Y^{\ast}=\left(\frac{1}{2}\left(A-A^{\ast}\right)\right)^{\ast}=\frac{1}{2}\left(A-A^{\ast}\right)^{\ast}=\frac{1}{2}\left(A^{\ast}-A^{\ast\ast}\right)=-\frac{1}{2}\left(A^{\ast}-A\right)=-Y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+ולכן 
+\begin_inset Formula $X$
+\end_inset
+
+ הרמיטית ו-
+\begin_inset Formula $Y$
+\end_inset
+
+ אנטי-הרמיטית.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+ מטריצה הרמיטית )סימטרית מעל 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+(.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\emph on
+מוגדרת חיובית 
+\emph default
+אם לכל 
+\begin_inset Formula $\vec{0}\ne v\in\mathbb{C}^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $v^{\ast}Av>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\emph on
+מוגדרת אי-שלילית 
+\emph default
+אם לכל 
+\begin_inset Formula $v\in\mathbb{C}^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $v^{\ast}Av\ge0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\emph on
+מוגדרת שלילית 
+\emph default
+אם לכל 
+\begin_inset Formula $\vec{0}\ne v\in\mathbb{C}^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $v^{\ast}Av<0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+כל תבנית 
+\begin_inset Formula $f$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathbb{F}^{n}$
+\end_inset
+
+ ניתנת ע
+\begin_inset Quotes erd
+\end_inset
+
+י הנוסחא
+\begin_inset Formula 
+\[
+f\left(u,v\right)=v^{\ast}Au
+\]
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $A=\left(a_{ij}\right)_{i,j=1}^{n}$
+\end_inset
+
+ ו-
+\begin_inset Formula $a_{ij}=f\left(e_{j},e_{i}\right)$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\left\{ e_{1},\dots,e_{n}\right\} $
+\end_inset
+
+ הוא הבסיס הסטנדרטי.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+כל מכפלה פנימית מעל 
+\begin_inset Formula $\mathbb{C}^{n}$
+\end_inset
+
+ מוגדרת ע
+\begin_inset Quotes erd
+\end_inset
+
+י מטריצה הרמיטית מוגדרת חיובית 
+\begin_inset Formula $A$
+\end_inset
+
+ לפי הבסיס הסטנדרטי 
+\begin_inset Formula $\left\{ e_{1},\dots,e_{n}\right\} $
+\end_inset
+
+, כאשר
+\begin_inset Formula 
+\[
+a_{ij}=\left\langle e_{j},e_{i}\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+ מטריצה הרמיטית.
+ אזי:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+כל הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ ממשיים.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ מוגדרת חיובית 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ כל הע
+\begin_inset Quotes erd
+\end_inset
+
+ע שלה חיוביים.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+כל הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של מטריצה אנטי-הרמיטית הם מדומים טהורים.
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+ )או 
+\begin_inset Formula $T\in End\left(\mathbb{C}^{n}\right)$
+\end_inset
+
+(.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\emph on
+אוניטרית
+\emph default
+ אם 
+\begin_inset Formula $A^{\ast}A=I_{n}$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $A^{-1}=A^{\ast}$
+\end_inset
+
+ )אם 
+\begin_inset Formula $A$
+\end_inset
+
+ ממשית אז 
+\emph on
+אורתוגונלית
+\emph default
+(.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\emph on
+נורמלית
+\emph default
+ 
+\begin_inset Formula $A^{\ast}A=AA^{\ast}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+.
+ הוכח/הפרך:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A^{2}$
+\end_inset
+
+ נורמלית אז 
+\begin_inset Formula $A$
+\end_inset
+
+ נורמלית.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A^{\ast}A$
+\end_inset
+
+ הרמיטית אז 
+\begin_inset Formula $A$
+\end_inset
+
+ נורמלית.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A$
+\end_inset
+
+ בעלת ע
+\begin_inset Quotes erd
+\end_inset
+
+ע מדומים טהורים אז 
+\begin_inset Formula $A$
+\end_inset
+
+ אנטי-הרמיטית.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נפריך את הטענה, דוגמא נגדית: 
+\begin_inset Formula $A=\left[\begin{array}{cc}
+0 & 1\\
+0 & 0
+\end{array}\right]$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $A^{2}=\left[\begin{array}{cc}
+0 & 0\\
+0 & 0
+\end{array}\right]$
+\end_inset
+
+ מטריצה נורמלית, אבל 
+\begin_inset Formula $AA^{\ast}\ne A^{\ast}A$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $A$
+\end_inset
+
+ לא נורמלית.
+ 
+\end_layout
+
+\begin_layout Enumerate
+נפריך את הטענה: לכל מטריצה 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $A^{\ast}A$
+\end_inset
+
+ הרמיטית: 
+\begin_inset Formula $\left(A^{\ast}A\right)^{\ast}=A^{\ast}A^{\ast\ast}$
+\end_inset
+
+, אבל לא כל מטריצה 
+\begin_inset Formula $A$
+\end_inset
+
+ היא נורמלית.
+\end_layout
+
+\begin_layout Enumerate
+נפריך את הטענה, דוגמא נגדית: 
+\begin_inset Formula $A=\left[\begin{array}{cc}
+i & 5\\
+0 & i
+\end{array}\right]$
+\end_inset
+
+.
+ הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $A$
+\end_inset
+
+ מדומים טהורים )
+\begin_inset Formula $i$
+\end_inset
+
+(, והמטריצה לא אנטי-הרמיטית.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהיינה 
+\begin_inset Formula $A,B\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+ הרמיטיות.
+ הוכיחו כי 
+\begin_inset Formula $AB$
+\end_inset
+
+ הרמיטית 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $AB=BA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+נוכיח את שני הכיוונים.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\Longleftarrow$
+\end_inset
+
+: 
+\begin_inset Formula $AB$
+\end_inset
+
+ הרמיטית ולכן 
+\begin_inset Formula $AB=\left(AB\right)^{\ast}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+AB=\left(AB\right)^{\ast}=B^{\ast}A^{\ast}\underset{\text{\ensuremath{A,B} הרמיטיות}}{=}BA\Longrightarrow AB=BA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Longrightarrow$
+\end_inset
+
+: נתון כי 
+\begin_inset Formula $AB=BA$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left(AB\right)^{\ast}=\left(BA\right)^{\ast}=A^{\ast}B^{\ast}\underset{\text{\ensuremath{A,B} הרמיטיות}}{=}AB
+\]
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $AB$
+\end_inset
+
+ הרמיטית.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+צורה כללית למטריצות אורתוגונליות ב-
+\begin_inset Formula $M_{2}\left(\mathbb{R}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{cc}
+\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{array}\right],A=\left[\begin{array}{cc}
+-\cos\theta & \sin\theta\\
+\sin\theta & \cos\theta
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כאשר 
+\begin_inset Formula $0\le\theta\le2\pi$
+\end_inset
+
+.
+ בנוסף, תמיד מתקיים 
+\begin_inset Formula $A^{t}A=I$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\left|A\right|^{2}=\left|A^{t}\right|\left|A\right|=\left|A^{t}A\right|=\left|I\right|=1
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow\det A=\pm1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+אם 
+\begin_inset Formula $\det A=1$
+\end_inset
+
+ אז המטריצה היא מטריצת סיבוב, ואחרת שיקוף.
+\end_layout
+
+\begin_layout Remark*
+עבור 
+\begin_inset Formula $A$
+\end_inset
+
+ אורתוגונלית:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\det\left(A\right)=\pm1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\det\left(A\right)=1$
+\end_inset
+
+ אז 
+\begin_inset Formula $A$
+\end_inset
+
+ היא מטריצת סיבוב.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\det\left(A\right)=-1$
+\end_inset
+
+ אז 
+\begin_inset Formula $A$
+\end_inset
+
+ היא מטריצת שיקוף.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי 
+\begin_inset Formula $A=\left[\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right]$
+\end_inset
+
+.
+ מצאו את ציר השיקוף של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נחפש 
+\begin_inset Formula $0\ne\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=v\in\mathbb{R}^{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $Av=v$
+\end_inset
+
+, כלומר ו
+\begin_inset Quotes erd
+\end_inset
+
+ע עבור ע
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\text{Ker}\left(A-I\right)=\text{Ker}\left[\begin{array}{cc}
+-2 & 0\\
+0 & 0
+\end{array}\right]\Longrightarrow v=\left[\begin{array}{c}
+0\\
+1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+ולכן ציר השיקוף הוא ציר ה-
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+העתקה לינארית דואלית
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ ממ
+\begin_inset Quotes erd
+\end_inset
+
+פ סוף-מימדי ותהי 
+\begin_inset Formula $T\in End\left(V\right)$
+\end_inset
+
+.
+ אזי קיימים ויחיד אופרטור 
+\begin_inset Formula $T^{\ast}:V\to V$
+\end_inset
+
+ המקיים לכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left\langle Tu,v\right\rangle =\left\langle u,T^{\ast}v\right\rangle 
+\]
+
+\end_inset
+
+ל-
+\begin_inset Formula $T^{\ast}$
+\end_inset
+
+ קוראים 
+\emph on
+האופרטור הצמוד
+\emph default
+ של 
+\begin_inset Formula $T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+אם 
+\begin_inset Formula $B$
+\end_inset
+
+ בסיס אורתונורמלי של 
+\begin_inset Formula $V$
+\end_inset
+
+ אזי
+\begin_inset Formula 
+\[
+\left[T^{\ast}\right]_{B}=\left[T\right]_{B}^{\ast}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+יהי 
+\begin_inset Formula $V=\mathbb{C}^{2}$
+\end_inset
+
+ עם המכפלה הפנימית הסטדנדרטית.
+ יהי 
+\begin_inset Formula $T\in End\left(V\right)$
+\end_inset
+
+ המוגדר ע
+\begin_inset Quotes erd
+\end_inset
+
+י
+\begin_inset Formula 
+\[
+T\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=\left[\begin{array}{cc}
+1 & -i\\
+3+i & 1+i
+\end{array}\right]\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+הבסיס הסטנדרטי של 
+\begin_inset Formula $\mathbb{C}^{2}$
+\end_inset
+
+ הוא אורתונורמלי ביחס למכפלה הפנימית הסטנדרטית.
+ לכן:
+\begin_inset Formula 
+\[
+\left[T^{\ast}\right]_{E}=\left[T\right]_{E}^{\ast}=\left[\begin{array}{cc}
+1 & -i\\
+3+i & 1+i
+\end{array}\right]^{\ast}=\left[\begin{array}{cc}
+1 & 3-i\\
+i & 1-i
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow T^{\ast}\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=\left[\begin{array}{cc}
+1 & 3-i\\
+i & 1-i
+\end{array}\right]\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ ממ
+\begin_inset Quotes erd
+\end_inset
+
+פ סוף-מימדי ויהי 
+\begin_inset Formula $T:V\to V$
+\end_inset
+
+.
+ הוכיחו כי 
+\begin_inset Formula $\text{Ker}T^{\ast}=\left(\text{Im}T\right)^{\perp}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+נוכיח ע
+\begin_inset Quotes erd
+\end_inset
+
+י הכלה דו-כיוונית.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\text{Ker}T^{\ast}\subseteq\left(\text{Im}T\right)^{\perp}$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $z\in\text{Ker}T^{\ast}$
+\end_inset
+
+.
+ צ
+\begin_inset Quotes erd
+\end_inset
+
+ל כי 
+\begin_inset Formula $z\in\left(\text{Im}T\right)^{\perp}$
+\end_inset
+
+ כלומר שלכל 
+\begin_inset Formula $u\in\text{Im}T$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left\langle z,u\right\rangle =0$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $u\in\text{Im}T$
+\end_inset
+
+, ולכן קיים 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $Tv=u$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\left\langle u,z\right\rangle =\left\langle Tv,z\right\rangle =\left\langle v,T^{\ast}z\right\rangle \underset{z\in\text{Ker}T^{\ast}}{=}\left\langle v,0\right\rangle =0
+\]
+
+\end_inset
+
+לכן 
+\begin_inset Formula $z\in\left(\text{Im}T\right)^{\perp}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\text{Im}T\right)^{\perp}\subseteq\text{Ker}T^{\ast}$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $u\in\left(\text{Im}T\right)^{\perp}$
+\end_inset
+
+.
+ כלומר לכל 
+\begin_inset Formula $v\in\text{Im}T$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left\langle v,u\right\rangle =0$
+\end_inset
+
+.
+ צ
+\begin_inset Quotes erd
+\end_inset
+
+ל כי 
+\begin_inset Formula $u\in\text{Ker}T^{\ast}$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $T^{\ast}u=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\left\langle T^{\ast}u,T^{\ast}u\right\rangle =\left\langle {\color{gray}\underset{\in\text{Im}T}{\underbrace{{\normalcolor T\left(T^{\ast}u\right)}}}},{\color{gray}\underset{\in\left(\text{Im}T\right)^{\perp}}{\underbrace{{\normalcolor u}}}}\right\rangle =0\Longrightarrow T^{\ast}u=0
+\]
+
+\end_inset
+
+בסך הכל, הוכחנו כי 
+\begin_inset Formula $\text{Ker}T^{\ast}=\left(\text{Im}T\right)^{\ast}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ ממ
+\begin_inset Quotes erd
+\end_inset
+
+פ.
+ הראו שאם 
+\begin_inset Formula $T\in End\left(V\right)$
+\end_inset
+
+ נורמלי )
+\begin_inset Formula $TT^{\ast}=T^{\ast}T$
+\end_inset
+
+( אזי לכל 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left\Vert T^{\ast}v\right\Vert =\left\Vert Tv\right\Vert $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+מאחר ו-
+\begin_inset Formula $\left\Vert \cdot\right\Vert \ge0$
+\end_inset
+
+, נראה כי 
+\begin_inset Formula $\left\Vert T^{\ast}v\right\Vert ^{2}=\left\Vert Tv\right\Vert ^{2}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left\Vert Tv\right\Vert ^{2} & =\left\langle Tv,Tv\right\rangle \\
+ & =\left\langle v,T^{\ast}Tv\right\rangle \\
+ & =\left\langle v,TT^{\ast}v\right\rangle \\
+ & =\overline{\left\langle TT^{\ast}v,v\right\rangle }\\
+ & =\overline{\left\langle T^{\ast}v,T^{\ast}v\right\rangle }\\
+ & =\left\langle T^{\ast}v,T^{\ast}v\right\rangle \\
+ & =\left\Vert T^{\ast}v\right\Vert ^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+לכסון ושילוש אוניטרי
+\end_layout
+
+\begin_layout Definition*
+שתי מטריצות 
+\begin_inset Formula $A,B\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+ נקראות 
+\emph on
+דומות אוניטרית
+\emph default
+ אם קיימת 
+\begin_inset Formula $P\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+ אוניטרית כך ש-
+\begin_inset Formula $P^{\ast}AP=B$
+\end_inset
+
+ )
+\begin_inset Formula $P^{\ast}=P^{-1}$
+\end_inset
+
+ כי 
+\begin_inset Formula $P$
+\end_inset
+
+ אוניטרית(.
+\end_layout
+
+\begin_layout Definition*
+ב-
+\begin_inset Formula $M_{n}\left(\mathbb{R}\right)$
+\end_inset
+
+ קוראים לזה 
+\emph on
+דומות אורתוגונלית
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+)שור(
+\end_layout
+
+\begin_layout Theorem*
+תהי 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+.
+ אזי:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ דומה אוניטרית למטריצה משולשת עליונה.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A\in M_{n}\left(\mathbb{R}\right)$
+\end_inset
+
+ וניתנת ושילוש אז 
+\begin_inset Formula $A$
+\end_inset
+
+ דומה אורתוגולית למטריצה משולשת עליונה.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+אלגוריתם לשילוש אוניטרי
+\end_layout
+
+\begin_layout Enumerate
+משלשים את 
+\begin_inset Formula $A$
+\end_inset
+
+ - מוצאים 
+\begin_inset Formula $P$
+\end_inset
+
+ הפיכה כך ש-
+\begin_inset Formula $P^{-1}AP$
+\end_inset
+
+ משולשת עליונה.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P=\left[\begin{array}{ccccc}
+v_{1} & \mid & \dots & \mid & v_{n}\end{array}\right]$
+\end_inset
+
+.
+ מבצעים תהליך גרם-שמידט על 
+\begin_inset Formula $v_{1},\dots,v_{n}$
+\end_inset
+
+ )ביחס למכפלה פנימית סטנדרטית( ומקבלים
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בסיס אורתונורמלי 
+\begin_inset Formula $e_{1},\dots,e_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+כותבים 
+\begin_inset Formula $Q=\left[\begin{array}{ccccc}
+e_{1} & \mid & \dots & \mid & e_{n}\end{array}\right]$
+\end_inset
+
+ ואז מובטח כי 
+\begin_inset Formula $Q^{\ast}AQ$
+\end_inset
+
+ משולשת עליונה.
+\end_layout
+
+\begin_layout Remark*
+באופן סימטרי 
+\emph on
+ניתן
+\emph default
+ לבצע לכסון אוניטרי.
+ עבור לכסון, כאשר מוצאים את הו
+\begin_inset Quotes erd
+\end_inset
+
+ע מהמ
+\begin_inset Quotes erd
+\end_inset
+
+ע להרכבת 
+\begin_inset Formula $P$
+\end_inset
+
+ נוכל לבחור ו
+\begin_inset Quotes erd
+\end_inset
+
+ע שיהוו בסיס א
+\begin_inset Quotes erd
+\end_inset
+
+נ ישירות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+אופרטור 
+\begin_inset Formula $T$
+\end_inset
+
+ בממ
+\begin_inset Quotes erd
+\end_inset
+
+פ סוף-מימדי 
+\begin_inset Formula $V$
+\end_inset
+
+ הוא לכסין אוניטרית 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ נורמלי.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $A\in M_{n}\left(\mathbb{C}\right)$
+\end_inset
+
+ לכסינה אוניטרית 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ נורמלית.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A\in M_{n}\left(\mathbb{R}\right)$
+\end_inset
+
+ לכסינה אורתוגונלית 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ סימטרית.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

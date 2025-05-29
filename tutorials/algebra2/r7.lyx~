@@ -1,0 +1,2474 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\usepackage{diagbox}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+%\definecolor{cyan}{RGB}{0, 180, 180}
+%\definecolor{yellow}{RGB}{211,211,0}
+%\definecolor{red}{RGB}{120,0,0}
+%\definecolor{green}{RGB}{0, 120, 0}
+%\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{shapes, decorations.pathreplacing,calligraphy, automata, positioning, arrows, trees, calc, fit}
+\tikzset{
+	->,
+	>=stealth,
+	node distance=3cm,
+	every state/.style={thick, fill=gray!20,
+						},
+	initial text=$ $,
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont[range=\setminus]{Asana Math}
+\usepackage{polynom}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "David CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+תרגול
+\family roman
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+7
+\end_layout
+
+\begin_layout Author
+מר טאהר עודה
+\begin_inset Newline newline
+\end_inset
+
+
+\size normal
+נכתב ע
+\begin_inset Quotes erd
+\end_inset
+
+י בר וייסמן
+\end_layout
+
+\begin_layout Date
+
+\numeric on
+24
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+באוגוסט
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2023
+\end_layout
+
+\begin_layout Section*
+מבוא לתורת החבורות
+\end_layout
+
+\begin_layout Definition*
+קבוצה לא ריקה 
+\begin_inset Formula $G$
+\end_inset
+
+ ביחד עם פעולה בינארית 
+\begin_inset Formula $\ast:G\times G\to G$
+\end_inset
+
+ נקראת חבורה אם מתקיים לכל 
+\begin_inset Formula $a,b,c\in G$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אסוציאטיביות: 
+\begin_inset Formula $a\ast\left(b\ast c\right)=\left(a\ast b\right)\ast c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+קיים איבר 
+\begin_inset Formula $e\in G$
+\end_inset
+
+ המקיים 
+\begin_inset Formula $\forall x\in G$
+\end_inset
+
+, 
+\begin_inset Formula $x=e\ast x=x\ast e$
+\end_inset
+
+.
+ )ל-
+\begin_inset Formula $e$
+\end_inset
+
+ קוראים 
+\emph on
+אדיש
+\emph default
+(.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $x\in G$
+\end_inset
+
+ קיים 
+\begin_inset Formula $b\in G$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\ast b=e$
+\end_inset
+
+.
+ )את 
+\begin_inset Formula $b$
+\end_inset
+
+ מסמנים ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $b=x^{-1}$
+\end_inset
+
+(.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+חבורה 
+\begin_inset Formula $\left(G,\ast\right)$
+\end_inset
+
+ נקראת 
+\emph on
+אבלית
+\emph default
+ )
+\lang english
+Abel
+\lang hebrew
+( אם לכל 
+\begin_inset Formula $a,b\in G$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+a\ast b=b\ast a
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{N},+\right)$
+\end_inset
+
+ אינה חבורה.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{Z},+\right)$
+\end_inset
+
+ היא חבורה אבלית.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{Z},\ast\right)$
+\end_inset
+
+ אינה חבורה )אין הופכי לכל 
+\begin_inset Formula $x\in\mathbb{Z}$
+\end_inset
+
+ אשר שונה מ-
+\begin_inset Formula $\pm1$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{F},+\right)$
+\end_inset
+
+ היא חבורה אבלית, לכל שדה 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+ ופעולת החיבור המוגדרת עליו.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{F},\ast\right)$
+\end_inset
+
+ אינה חבורה )אין הופכי ל-
+\begin_inset Formula $0$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{F}\setminus\left\{ 0_{\mathbb{F}}\right\} ,\ast\right)$
+\end_inset
+
+ היא חבורה אבלית.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\left\{ \pm1\right\} ,\ast\right)$
+\end_inset
+
+ היא חבורה אבלית.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(n\mathbb{Z},+\right)$
+\end_inset
+
+ היא חבורה אבלית )
+\begin_inset Formula $n\mathbb{Z}=\left\{ \dots,-2n,-n,0,n,2n,\dots\right\} $
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{Z}_{n},+_{\mod n}\right)$
+\end_inset
+
+ היא חבורה אבלית.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{Z}_{n},{}_{\mod n}\right)$
+\end_inset
+
+ אינה חבורה.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+סדר של חבורה הוא מספר האיברים שיש בה, כלומר 
+\begin_inset Formula $\left|G\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+אם יש בה מספר סופי של איברים, אז 
+\begin_inset Formula $G$
+\end_inset
+
+ נקראת 
+\emph on
+חבורה סופית
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition*
+אחרת, היא נקראת 
+\emph on
+חבורה אינסופית
+\emph default
+ )לא נתייחס לעוצמת החבורה - 
+\begin_inset Formula $\aleph_{0}$
+\end_inset
+
+/
+\begin_inset Formula $\aleph$
+\end_inset
+
+/...(.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+שתי חבורות חשובות:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $GL_{n}\left(\mathbb{F}\right)=\left\{ A\in M_{n}\left(\mathbb{F}\right)\mid\left|A\right|\ne0\right\} $
+\end_inset
+
+ ביחד עם פעולת כפל מטריצות מהווה חבורה.
+ זו חבורה לא אבלית עבור 
+\begin_inset Formula $n>1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $SL_{n}\left(\mathbb{F}\right)=\left\{ A\in M_{n}\left(\mathbb{F}\right)\mid\left|A\right|=1\right\} $
+\end_inset
+
+ ביחד עם פעולת כפל מטריצות מהווה חבורה לא אבלית.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+תכונות:
+\bar default
+ )לכל 
+\begin_inset Formula $m,n\in\mathbb{Z}$
+\end_inset
+
+(
+\end_layout
+
+\begin_layout Enumerate
+האדיש בכל חבורה הוא יחיד.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(a^{-1}\right)^{-1}=a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(a^{-1}\right)^{n}=\left(a^{n}\right)^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $a^{m+n}=a^{m}\ast a^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(a\ast b\right)^{-1}=b^{-1}\ast a^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+חוק הצמצום: 
+\begin_inset Formula $a=c\Longleftarrow a\ast b=c\ast b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(a^{m}\right)^{n}=a^{m\cdot n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+הראו שאם בחבורה 
+\begin_inset Formula $G$
+\end_inset
+
+ כל איבר הופכי לעצמו )
+\begin_inset Formula $b^{-1}=b$
+\end_inset
+
+( אז 
+\begin_inset Formula $G$
+\end_inset
+
+ אבלית.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+יהיו 
+\begin_inset Formula $a,b\in G$
+\end_inset
+
+, נוכיח כי 
+\begin_inset Formula $ab=ba$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+ab=\left(ab\right)^{-1}=b^{-1}a^{-1}=ba
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ולכן 
+\begin_inset Formula $G$
+\end_inset
+
+ אבלית.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+תהי 
+\begin_inset Formula $G$
+\end_inset
+
+ חבורה.
+ האם לכל 
+\begin_inset Formula $a,b\in G$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(ab\right)^{-2}=b^{-2}a^{-2}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+נעלה את הביטוי בחזקת 
+\begin_inset Formula $-1$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+abab=\left(ab\right)^{2}\underset{7}{=}=\left(\left(ab\right)^{-2}\right)^{-1}=\left(b^{-2}a^{-2}\right)^{-1}=\left(a^{-2}\right)^{-1}\left(b^{-2}\right)^{-1}=a^{2}b^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+abab=a^{2}b^{2}\iff ba=ab
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+ולכן זה נכון רק בחבורות אבליות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+לכל שדה 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+, נגדיר 
+\begin_inset Formula $\mathbb{F}^{\ast}\coloneqq\mathbb{F}\setminus\left\{ 0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Exercise*
+האם 
+\begin_inset Formula $\left(\mathbb{Q}\setminus\left\{ 0\right\} ,\ast\right)$
+\end_inset
+
+ מהווה חבורה, כאשר 
+\begin_inset Formula $a\ast b\coloneqq\frac{a\cdot b}{2}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תחילה, ברור כי הקבוצה אינה ריקה.
+ נבדוק סגירות - יהיו 
+\begin_inset Formula $a,b\in\mathbb{Q}\setminus\left\{ 0\right\} $
+\end_inset
+
+.
+ אזי
+\begin_inset Formula 
+\[
+a\ast b=\frac{a\cdot b}{2}{\color{gray}\underset{\text{בשדה אין מחלקי \ensuremath{0}}}{\underbrace{{\normalcolor \in}}}}\mathbb{Q}\setminus\left\{ 0\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נבדוק אסוציאטיביות: יהיו 
+\begin_inset Formula $a,b,c\in\mathbb{Q}^{\ast}$
+\end_inset
+
+, אזי
+\begin_inset Formula 
+\[
+\left(a\ast b\right)\ast c=\frac{a\cdot b}{2}\ast c=\frac{\frac{a\cdot b}{2}\cdot c}{2}=\frac{abc}{4}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a\ast\left(b\ast c\right)=a\ast\frac{b\cdot c}{2}=\frac{a\cdot\frac{b\cdot c}{2}}{2}=\frac{abc}{4}=\left(a\ast b\right)\ast c
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+קיום אדיש: נחפש 
+\begin_inset Formula $x\in\mathbb{Q}\setminus\left\{ 0\right\} $
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $y\in\mathbb{Q}\setminus\left\{ 0\right\} $
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\ast y=y$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+x\ast y=\frac{x\cdot y}{2}=y\Longrightarrow x=2
+\]
+
+\end_inset
+
+מכאן, 
+\begin_inset Formula $2$
+\end_inset
+
+ הוא האיבר האדיש.
+\end_layout
+
+\begin_layout Enumerate
+קיום הופכי: יהי 
+\begin_inset Formula $x\in\mathbb{Q}\setminus\left\{ 0\right\} $
+\end_inset
+
+, מחפשים 
+\begin_inset Formula $y\in\mathbb{Q}\setminus\left\{ 0\right\} $
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+x\ast y=2\Longrightarrow\frac{x\cdot y}{2}=2\Longrightarrow y=\frac{4}{x}\in\mathbb{Q}\setminus\left\{ 0\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $\left(G,\ast\right)$
+\end_inset
+
+ חבורה.
+ תת-קבוצה 
+\begin_inset Formula $\emptyset\ne H\subseteq G$
+\end_inset
+
+ נקראת 
+\emph on
+תת-חבורה
+\emph default
+ אם 
+\begin_inset Formula $\left(H,\ast\right)$
+\end_inset
+
+ מהווה חבורה.
+ מסמנים 
+\begin_inset Formula $H<G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Formula $H<G$
+\end_inset
+
+ 
+\begin_inset Formula $\iff$
+\end_inset
+
+ התנאים הבאים מתקיימים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $e_{G}\in H$
+\end_inset
+
+ )שקול ל-
+\begin_inset Formula $H\ne\emptyset$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $a,b\in H$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $ab\in H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $a\in H$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a^{-1}\in H$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+לכל חבורה 
+\begin_inset Formula $G$
+\end_inset
+
+ יש שתי תת-חבורות 
+\emph on
+טריוויאליות
+\emph default
+: 
+\begin_inset Formula $\left\{ e_{G}\right\} ,G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $n\mathbb{Z}<\mathbb{Z}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $SL_{n}\left(\mathbb{F}\right)<GL_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $D\left(GL_{n}\left(\mathbb{F}\right)\right)<GL_{n}\left(\mathbb{F}\right)$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)מטריצות הפיכות אלכסוניות(.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $G$
+\end_inset
+
+ חבורה ו-
+\begin_inset Formula $g\in G$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\left\langle g\right\rangle =\left\{ g^{k}\mid k\in\mathbb{Z}\right\} $
+\end_inset
+
+ היא תת-חבורה של 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+)נקראת תת-החבורה הציקלית של הנוצרת ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $g$
+\end_inset
+
+(
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+\begin_inset Formula $\left\langle g\right\rangle $
+\end_inset
+
+ היא תמיד תת-חבורה אבלית:
+\begin_inset Formula 
+\[
+g^{k_{1}}\ast g^{k_{2}}=g^{k_{1}+k_{2}}=g^{k_{2}+k_{1}}=g^{k_{2}}\ast g^{k_{1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $G$
+\end_inset
+
+ חבורה ויהי 
+\begin_inset Formula $g\in G$
+\end_inset
+
+.
+ 
+\emph on
+הסדר של 
+\begin_inset Formula $g$
+\end_inset
+
+
+\emph default
+ הוא המספר הטבעי הקטן ביותר 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+{\color{gray}\underset{\text{\ensuremath{n} פעמים}}{\underbrace{{\normalcolor g\ast g\ast\dots\ast g}}}}=g^{n}=e_{G}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+מסמנים 
+\begin_inset Formula $o\left(g\right)=n$
+\end_inset
+
+, ואם לא קיים 
+\begin_inset Formula $n$
+\end_inset
+
+ כזה מסמנים 
+\begin_inset Formula $o\left(g\right)=\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+\begin_inset Formula $\mathbb{Z}_{6}=\left\{ 0,1,2,3,4,5\right\} $
+\end_inset
+
+.
+ האדיש הוא 
+\begin_inset Formula $0$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $o\left(0\right)=1$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\begin{array}{c}
+o\left(1\right)=6\\
+o\left(2\right)=3\\
+o\left(3\right)=2\\
+o\left(4\right)=3\\
+o\left(5\right)=6
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+אם 
+\begin_inset Formula $e\ne x\in\mathbb{Z}_{n}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\gcd\left(x,n\right)=1$
+\end_inset
+
+ )כלומר, 
+\begin_inset Formula $x$
+\end_inset
+
+ ו-
+\begin_inset Formula $n$
+\end_inset
+
+ זרים( אזי 
+\begin_inset Formula $o\left(x\right)=n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\left|G\right|<\infty$
+\end_inset
+
+ אזי לכל 
+\begin_inset Formula $g\in G$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $o\left(g\right)<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\left|G\right|=\infty$
+\end_inset
+
+ אזי לכל 
+\begin_inset Formula $g\in G$
+\end_inset
+
+, 
+\begin_inset Formula $o\left(g\right)\le\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $g^{n}=e$
+\end_inset
+
+ אז 
+\begin_inset Formula $o\left(g\right)\mid n$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+מצאו את הסדרים של האיברים הבאים בחבורות המתאימות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $i\in\mathbb{C}^{\ast}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left[\begin{array}{cc}
+0 & 1\\
+-1 & 0
+\end{array}\right]\in SL_{n}\left(\mathbb{R}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הפעולה היא כפל, 
+\begin_inset Formula $i^{1},i^{2},i^{3}\ne1$
+\end_inset
+
+ אבל 
+\begin_inset Formula $i^{4}=1$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $o\left(i\right)=4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הפעולה היא כפל מטריצות, ולכן
+\begin_inset Formula 
+\[
+A^{2}=\left[\begin{array}{cc}
+0 & 1\\
+-1 & 0
+\end{array}\right]^{2}=\left[\begin{array}{cc}
+-1 & 0\\
+0 & -1
+\end{array}\right]\ne I
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow A^{4}=\left[\begin{array}{cc}
+-1 & 0\\
+0 & -1
+\end{array}\right]^{2}=I
+\]
+
+\end_inset
+
+מכאן 
+\begin_inset Formula $o\left(A\right)\mid4$
+\end_inset
+
+, ולכן לא ייתכן שהסדר הוא 
+\begin_inset Formula $3$
+\end_inset
+
+, ומתקיים 
+\begin_inset Formula $o\left(A\right)=4$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+יהיו 
+\begin_inset Formula $a,b\in G$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $o\left(a\right)=o\left(b\right)=5$
+\end_inset
+
+ וגם 
+\begin_inset Formula $a^{3}=b^{3}$
+\end_inset
+
+.
+ הוכיחו כי 
+\begin_inset Formula $a=b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a^{3}=b^{3}\Longrightarrow a^{6}=b^{6}\Longrightarrow a\cdot{\color{gray}\underset{e}{\underbrace{{\normalcolor a^{5}}}}}=b\cdot{\color{gray}\underset{e}{\underbrace{{\normalcolor b^{5}}}}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow a=b
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+לכל 
+\begin_inset Formula $x,y\in G$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $o\left(x\right)=o\left(yxy^{-1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+נוכיח עבור סדרים סופיים.
+\end_layout
+
+\begin_layout Proof
+נסמן 
+\begin_inset Formula $o\left(x\right)=n$
+\end_inset
+
+ ו-
+\begin_inset Formula $o\left(yxy^{-1}\right)=m$
+\end_inset
+
+.
+ נראה כי 
+\begin_inset Formula $m\mid n\wedge n\mid m$
+\end_inset
+
+, ומכך בגלל ש-
+\begin_inset Formula $n,m\in\mathbb{N}$
+\end_inset
+
+ נקבל 
+\begin_inset Formula $n=m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+\left(yxy^{-1}\right)^{n} & =\left(yxy^{-1}\right)\left(yxy^{-1}\right)\cdots\left(yxy^{-1}\right)\\
+ & =yx^{n}y^{-1}=yey^{-1}=e\Longrightarrow m\mid n
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+e=\left(yxy^{-1}\right)^{m}=yx^{m}y^{-1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow y^{-1}ey=x^{m}\Longrightarrow x^{m}=e\Longrightarrow n\mid m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+בסך הכל, קיבלנו כי 
+\begin_inset Formula $n=m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+באותו האופן בדיוק ניתן להוכיח כי 
+\begin_inset Formula $o\left(x\right)=o\left(x^{-1}\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $x\in G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $2\le n\in\mathbb{N}$
+\end_inset
+
+ פונקציית אוילר היא פונקצייה 
+\begin_inset Formula $\varphi:\mathbb{N}\to\mathbb{N}$
+\end_inset
+
+ המוגדרת ע
+\begin_inset Quotes erd
+\end_inset
+
+י
+\begin_inset Formula 
+\[
+\varphi\left(n\right)=\left|\left\{ x\in\mathbb{Z}_{n}\mid\gcd\left(x,n\right)=1\right\} \right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\varphi\left(8\right)=\left|\left\{ x\in\mathbb{Z}_{8}\mid\gcd\left(x,8\right)=1\right\} \right|=\left|\left\{ 1,3,5,7\right\} \right|=4
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\varphi\left(10\right)=\left|\left\{ 1,3,7,9\right\} \right|=4
+\]
+
+\end_inset
+
+ 
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+\begin_inset Formula 
+\[
+\varphi\left(p\right)=p-1
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\varphi\left(p^{n}\right)=p^{n}-p^{n-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+אם 
+\begin_inset Formula $\gcd\left(m,n\right)=1$
+\end_inset
+
+ אז 
+\begin_inset Formula $\varphi\left(m\cdot n\right)=\varphi\left(m\right)\cdot\varphi\left(n\right)$
+\end_inset
+
+.
+ למשל:
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(65\right) & =\varphi\left(13\cdot5\right)\\
+ & =\varphi\left(13\right)\cdot\varphi\left(5\right)\\
+ & =12\cdot4=48
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ נגדיר את 
+\emph on
+חבורת אוילר
+\emph default
+ להיות
+\begin_inset Formula 
+\[
+\mathbb{Z}_{n}^{\ast}=U_{n}=\left\{ x\in\mathbb{Z}_{n}\mid\gcd\left(x,n\right)=1\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+עם פעולת כפל מודולו 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ למשל, 
+\begin_inset Formula $\mathbb{Z}_{8}^{\ast}=\left\{ 1,3,5,7\right\} $
+\end_inset
+
+.
+ שימו לב:
+\begin_inset Formula 
+\[
+\left|U_{n}\right|=\varphi\left(n\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+נסתכל על 
+\begin_inset Formula $U_{10}=\left\{ 1,3,7,9\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+האדיש הוא 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+ההופכי של 
+\begin_inset Formula $3$
+\end_inset
+
+ הוא 
+\begin_inset Formula $7$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+ההופכי של 
+\begin_inset Formula $7$
+\end_inset
+
+ הוא 
+\begin_inset Formula $3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+ההופכי של 
+\begin_inset Formula $9$
+\end_inset
+
+ הוא 
+\begin_inset Formula $9$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+חבורות ציקליות
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $G$
+\end_inset
+
+ חבורה.
+ 
+\begin_inset Formula $G$
+\end_inset
+
+ נקראת 
+\emph on
+חבורה ציקלית
+\emph default
+ אם קיים 
+\begin_inset Formula $g\in G$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+G=\left\langle g\right\rangle =\left\{ g^{k}\mid k\in\mathbb{Z}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+לאיבר 
+\begin_inset Formula $g$
+\end_inset
+
+ קוראים יוצר של 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{Z},+\right)$
+\end_inset
+
+ היא ציקלית: 
+\begin_inset Formula $\left\langle 1\right\rangle =\left\langle -1\right\rangle =\mathbb{Z}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $n\in\mathbb{Z}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbb{Z}_{n}$
+\end_inset
+
+ ציקלית.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+כל תת-חבורה של חבורה ציקלית היא ציקלית.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+הוכיחו או הפריכו:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $G$
+\end_inset
+
+ ציקלית אז 
+\begin_inset Formula $G$
+\end_inset
+
+ אבלית.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbb{Q},+\right)$
+\end_inset
+
+ ציקלית.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכחנו לפני כן.
+\end_layout
+
+\begin_layout Enumerate
+לא נכון.
+ נניח בשלילה שקיים 
+\begin_inset Formula $\frac{p}{q}\in\mathbb{Q}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left\langle \frac{p}{q}\right\rangle =\mathbb{Q}$
+\end_inset
+
+.
+ נתבונן באיבר 
+\begin_inset Formula $\frac{1}{2q}\in\mathbb{Q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+כיוון ש-
+\begin_inset Formula $\left\langle \frac{p}{q}\right\rangle =\mathbb{Q}$
+\end_inset
+
+, מתקיים
+\begin_inset Formula 
+\[
+\left(\frac{p}{q}\right)^{k}=\frac{1}{2q}\Longrightarrow\frac{kp}{q}=\frac{1}{2q}\Longrightarrow kp=\frac{1}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+סתירה! )סגירות כפל ב-
+\begin_inset Formula $\mathbb{Z}$
+\end_inset
+
+(.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\bar under
+כללים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\left|G\right|=n$
+\end_inset
+
+ ו-
+\begin_inset Formula $G$
+\end_inset
+
+ ציקלית אזי מספר היוצרים של 
+\begin_inset Formula $G$
+\end_inset
+
+ הוא 
+\begin_inset Formula $\varphi\left(n\right)$
+\end_inset
+
+.
+ ולכל 
+\begin_inset Formula $d\mid n$
+\end_inset
+
+ קיימים ב-
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\begin_inset Formula $\varphi\left(d\right)$
+\end_inset
+
+ איברים בעלי סדר 
+\begin_inset Formula $d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+משפט לגרנז' )ניסוח חלקי(: אם 
+\begin_inset Formula $G$
+\end_inset
+
+ חבורה סופית ו-
+\begin_inset Formula $H<G$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\left|H\right|\mid\left|G\right|$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\bar under
+תזכורת:
+\bar default
+ 
+\begin_inset Formula $o\left(g\right)=\left|\left\langle g\right\rangle \right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary*
+אם 
+\begin_inset Formula $G$
+\end_inset
+
+ סופית אז לכל 
+\begin_inset Formula $g\in G$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $o\left(g\right)\mid\left|G\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+מצאו את כל תתי-החבורות של 
+\begin_inset Formula $\mathbb{Z}_{8}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+מאחר ו-
+\begin_inset Formula $\mathbb{Z}_{8}$
+\end_inset
+
+ ציקלית, כל תת-חבורה שלה היא גם ציקלית.
+ מכאן, נוכל לבדוק את כל החבורות הנוצרות ע
+\begin_inset Quotes erd
+\end_inset
+
+י האיברים:
+\begin_inset Formula 
+\[
+\left\langle 0\right\rangle =\left\{ 0\right\} ,\left\langle 1\right\rangle =\mathbb{Z}_{8}=\left\langle 3\right\rangle =\left\langle 5\right\rangle =\left\langle 7\right\rangle ,\left\langle 2\right\rangle =\left\langle 6\right\rangle =\left\{ 0,2,4,6\right\} ,\left\langle 4\right\rangle =\left\{ 0,4\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Formula $U_{n}$
+\end_inset
+
+ ציקלית 
+\begin_inset Formula $\iff$
+\end_inset
+
+ 
+\begin_inset Formula $n=1,2,4,p^{k},2p^{k}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $p$
+\end_inset
+
+ ראשוני אי-זוגי ו-
+\begin_inset Formula $k\ge1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+חבורת התמורות
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ קבוצה סופית, ונניח כי 
+\begin_inset Formula $\Omega=\left\{ 1,\dots,n\right\} $
+\end_inset
+
+.
+ 
+\emph on
+תמורה
+\emph default
+ על 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ היא פונקציה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע ועל 
+\begin_inset Formula $\sigma:\Omega\to\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+את אוסף כל התמורות על קבוצה בת 
+\begin_inset Formula $n$
+\end_inset
+
+ איברים מסמנים ב-
+\begin_inset Formula $S_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+שימו לב, 
+\begin_inset Formula $\left|S_{n}\right|=n!$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+הקבוצה 
+\begin_inset Formula $S_{n}$
+\end_inset
+
+ יחד עם פעולת הרכבת פונקציות מהווה חבורה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\bar under
+תזכורת:
+\bar default
+ צורה מטריציונית של תמורה היא, למשל עבור 
+\begin_inset Formula $\Omega=\left\{ 1,2,3\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $\sigma$
+\end_inset
+
+ מעבירה 
+\begin_inset Formula $1\to3,2\to2,3\to1$
+\end_inset
+
+, היא
+\begin_inset Formula 
+\[
+\left(\begin{array}{ccc}
+1 & 2 & 3\\
+3 & 2 & 1
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+הצורה המעגלית של תמורה זו מתוארת כך: 
+\begin_inset Formula $\left(\begin{array}{cc}
+1 & 3\end{array}\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $2$
+\end_inset
+
+ הוא נקודת שבת ולכן לא מצוין.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\begin{array}{cccccccccc}
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+5 & 3 & 2 & 4 & 9 & 10 & 8 & 6 & 1 & 7
+\end{array}\right)\Longrightarrow\left(\begin{array}{ccc}
+1 & 5 & 9\end{array}\right)\left(\begin{array}{cc}
+2 & 3\end{array}\right)\left(\begin{array}{cccc}
+6 & 10 & 7 & 8\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+התמורה ההופכית של 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ היא 
+\begin_inset Formula $\left(\begin{array}{ccc}
+3 & 2 & 1\\
+1 & 2 & 3
+\end{array}\right)$
+\end_inset
+
+ )הופכים את השורות(, בצורה מעגלית 
+\begin_inset Formula $\left(\begin{array}{cc}
+3 & 1\end{array}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+\begin_inset Formula $\left(\begin{array}{cc}
+x & y\end{array}\right)=\left(\begin{array}{cc}
+y & x\end{array}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example*
+תמורה הופכית.
+\begin_inset Formula 
+\[
+\left(\begin{array}{cccc}
+1 & 2 & 3 & 4\end{array}\right)^{-1}=\left(\begin{array}{cccc}
+1 & 4 & 3 & 2\end{array}\right)=\left(\begin{array}{cccc}
+4 & 3 & 2 & 1\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\begin{array}{cccc}
+1 & 2 & 3 & 4\end{array}\right)\left(\begin{array}{cccc}
+1 & 4 & 3 & 2\end{array}\right)=\left(\begin{array}{c}
+1\end{array}\right)\left(\begin{array}{c}
+4\end{array}\right)\left(\begin{array}{c}
+3\end{array}\right)\left(\begin{array}{c}
+2\end{array}\right)=id
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+נמצא את התמורה ההופכית של 
+\begin_inset Formula $\left(\begin{array}{ccc}
+1 & 5 & 9\end{array}\right)\left(\begin{array}{cc}
+2 & 3\end{array}\right)\left(\begin{array}{cccc}
+6 & 10 & 7 & 8\end{array}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left(\left(\begin{array}{ccc}
+1 & 5 & 9\end{array}\right)\left(\begin{array}{cc}
+2 & 3\end{array}\right)\left(\begin{array}{cccc}
+6 & 10 & 7 & 8\end{array}\right)\right)^{-1}=\left(\begin{array}{ccc}
+1 & 9 & 5\end{array}\right)\left(\begin{array}{cc}
+2 & 3\end{array}\right)\left(\begin{array}{cccc}
+6 & 8 & 7 & 10\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+הרכבת תמורות בצורה מעגלית.
+\end_layout
+
+\begin_layout Example*
+\begin_inset Formula 
+\[
+\left(\begin{array}{cccc}
+1 & 2 & 4 & 7\end{array}\right)\left(\begin{array}{cc}
+6 & 8\end{array}\right)\circ\left(\begin{array}{cccccc}
+6 & 9 & 1 & 3 & 2 & 7\end{array}\right)\circ\left(\begin{array}{cc}
+8 & 10\end{array}\right)=\left(\begin{array}{ccccccccc}
+8 & 10 & 6 & 9 & 2 & 1 & 3 & 4 & 7\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\begin{array}{cc}
+1 & 4\end{array}\right)\left(\begin{array}{cc}
+2 & 3\end{array}\right)\circ\left(\begin{array}{cc}
+1 & 2\end{array}\right)\left(\begin{array}{cc}
+3 & 4\end{array}\right)=\left(\begin{array}{cc}
+1 & 3\end{array}\right)\left(\begin{array}{cc}
+2 & 4\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document
