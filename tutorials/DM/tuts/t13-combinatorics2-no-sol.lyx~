@@ -1,0 +1,931 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 11"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+13
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ קומבינטוריקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2/3
+\numeric off
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהיינה 
+\begin_inset Formula $A,B$
+\end_inset
+
+ קבוצות סופיות כך ש-
+\begin_inset Formula $\left|A\right|=m$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left|B\right|=n$
+\end_inset
+
+ (
+\begin_inset Formula $m\ge n$
+\end_inset
+
+).
+ חשבו כמה פונקציות 
+\emph on
+על
+\emph default
+ יש מ-
+\begin_inset Formula $A$
+\end_inset
+
+ ל-
+\begin_inset Formula $B$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $A=\left\{ a_{1},\dots,a_{m}\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $B=\left\{ b_{1},\dots,b_{n}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נמצא כמה פונקציות שאינן על קיימות:
+\begin_inset Formula 
+\[
+\left\{ f:A\rightarrow B\mid\left|\text{Im}\left(f\right)\right|<n\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נפתור באמצעות הכלה והדחה:
+ לכל 
+\begin_inset Formula $1\le r\le n$
+\end_inset
+
+,
+ נרצה לחשב את מספר הפונקציות שתמונתן בגודל 
+\begin_inset Formula $r$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+F_{r}=\left\{ f:A\rightarrow B\mid\left|\text{Im}\left(f\right)\right|\le r\right\} .
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left|F_{r}\right|={n \choose r}\cdot r^{m}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n^{m}=x+\sum_{r=1}^{n-1}\left(-1\right)^{r+1}\left|F_{r}\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+נתון חדר ובו 
+\begin_inset Formula $3n$
+\end_inset
+
+ כדורים צבעוניים ו-
+\begin_inset Formula $n$
+\end_inset
+
+ תינוקות (שונים).
+ מצא את מספר הדרכים ניתן לחלק לכל תינוק 
+\begin_inset Formula $3$
+\end_inset
+
+ כדורים בדיוק (אין סדר בין הכדורים של כל תינוק).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+{3n \choose 3}\cdot{3n-3 \choose 3}\cdot\dots\cdot{3 \choose 3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נסדר את התינוקות בשורה שרירותית.
+ נסתכל על 
+\begin_inset Formula $\left(3n\right)!$
+\end_inset
+
+ הסידורים האפשריים של הכדורים,
+ ונחלק את השלושה הראשונים לתינוק הראשון,
+ הבאים לשני וכן הלאה.
+ לבסוף,
+ נוריד ספירה כפולה בכל תינוק - אין חשיבות לסדר הפנימי של הכדורים שיש לכל אחד:
+ 
+\begin_inset Formula $3!$
+\end_inset
+
+ לכל תינוק,
+ בסך הכל:
+\begin_inset Formula 
+\[
+\frac{\left(3n\right)!}{\left(3!\right)^{n}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+מצא את מספר הפתרונות הטבעיים של המשוואה
+\begin_inset Formula 
+\[
+x_{1}+x_{2}+x_{3}=14,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+כאשר 
+\begin_inset Formula $0\le x_{1}\le10$
+\end_inset
+
+,
+ 
+\begin_inset Formula $-2\le x_{2}\le8$
+\end_inset
+
+ ו-
+\begin_inset Formula $-5\le x_{3}\le19$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נגדיר משתנים חדשים:
+\begin_inset Formula 
+\[
+y_{1}=x_{1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y_{2}=x_{2}+2
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y_{3}=x_{3}+5
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y_{1}+\left(y_{2}-2\right)+\left(y_{3}-5\right)=14
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+0\le y_{1}\le10
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+0\le y_{2}\le10
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+0\le y_{3}\le24
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y_{1}+y_{2}+y_{3}=21
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נפתור באמצעות הכלה והדחה:
+ נסתכל על עולם הפתרונות 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ שמכיל 
+\begin_inset Formula ${21+3-1 \choose 3-1}$
+\end_inset
+
+ פתרונות.
+ נגדיר את 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ להיות אוסף הפתרונות כך ש-
+\begin_inset Formula $y_{1}>10$
+\end_inset
+
+,
+ באופן דומה 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ היא אוסף הפתרונות כאשר 
+\begin_inset Formula $y_{2}>10$
+\end_inset
+
+ ו-
+\begin_inset Formula $A_{3}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $y_{3}>24$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\left|A_{1}^{c}\cap A_{2}^{c}\cap A_{3}^{c}\right|= & \left|\mathcal{U}\right|-\left|A_{1}\right|-\left|A_{2}\right|-\left|A_{3}\right|\\
+ & +\left|A_{1}\cap A_{2}\right|+\left|A_{1}\cap A_{3}\right|+\left|A_{3}\cap A_{2}\right|\\
+ & -\left|A_{1}\cap A_{2}\cap A_{3}\right|.
+\end{align*}
+
+\end_inset
+
+מכיוון ש-
+\begin_inset Formula $24\ge21$
+\end_inset
+
+,
+ נקבל שאין פתרונות בהם 
+\begin_inset Formula $y_{3}>24$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $\left|A_{3}\right|,\left|A_{1}\cap A_{2}\cap A_{3}\right|,\left|A_{1}\cap A_{3}\right|,\left|A_{3}\cap A_{2}\right|=0$
+\end_inset
+
+.
+ עבור 
+\begin_inset Formula $A_{1}\cap A_{2}$
+\end_inset
+
+,
+ נקבל ש-
+\begin_inset Formula $y_{1}\ge11$
+\end_inset
+
+ וגם 
+\begin_inset Formula $y_{2}\ge11$
+\end_inset
+
+.
+ לכן הסכום של 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $y_{2}$
+\end_inset
+
+ הוא יותר מ-
+\begin_inset Formula $21$
+\end_inset
+
+,
+ ואין פתרון למשוואה.
+ נפתור בה
+\begin_inset Quotes erd
+\end_inset
+
+כ עבור 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+:
+ ידוע כי 
+\begin_inset Formula $y_{1}\ge11$
+\end_inset
+
+,
+ נגדיר 
+\begin_inset Formula $z=y_{1}-11$
+\end_inset
+
+ ונקבל
+\begin_inset Formula 
+\[
+z+y_{2}+y_{3}=10,\qquad z,y_{2},y_{3}\ge0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+{10+3-1 \choose 3-1}={12 \choose 2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\implies{23 \choose 2}-2\cdot{12 \choose 2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+מצא את מספר הפתרונות הטבעיים של אי-השוויון הבא:
+\begin_inset Formula 
+\[
+x_{1}+x_{2}+\dots+x_{n}\le k,\quad\forall1\le i\le k:x_{i}\ge0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+אי-השוויון המקורי שקול למשוואה:
+ נוסיף משתנה חדש למשוואה 
+\begin_inset Formula $y$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\left(x_{1}+\dots+x_{n}\right)+y=k,\quad\forall1\le i\le k:x_{i}\ge0,y\ge0
+\]
+
+\end_inset
+
+כעת,
+ מספר הפתרונות של המשוואה הוא
+\begin_inset Formula 
+\[
+{n+k \choose n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+נתונים 
+\begin_inset Formula $n$
+\end_inset
+
+ זוגות של אנשים ושולחן עגול בן 
+\begin_inset Formula $2n$
+\end_inset
+
+ מקומות.
+ נרצה להושיב את הזוגות בשולחן כך שאף אדם לא ישב על יד בן זוגו.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נרצה לספור כמה סידורים יש כך שקיים לפחות זוג אחד שיושבים אחד על יד השני.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+(הבינום של ניוטון) יהיו 
+\begin_inset Formula $a,b\in\mathbb{R}$
+\end_inset
+
+ ויהי 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ אזי,
+\begin_inset Formula 
+\[
+\left(a+b\right)^{n}=\sum_{k=0}^{n}{n \choose k}a^{k}b^{n-k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכיח באופן קומבינטורי ואלגברי כי
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{n \choose k}^{2}={2n \choose n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+(זהות פסקל)
+\begin_inset Formula 
+\[
+{n \choose k}={n-1 \choose k}+{n-1 \choose k-1}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכיח באופן קומבינטורי ואלגברי כי
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{m+k \choose k}={m+n+1 \choose n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכח כי מספר הזוגות של קבוצות 
+\begin_inset Formula $A,B$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $A\subseteq B\subseteq\left\{ 1,\dots,n\right\} $
+\end_inset
+
+ הוא 
+\begin_inset Formula $3^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

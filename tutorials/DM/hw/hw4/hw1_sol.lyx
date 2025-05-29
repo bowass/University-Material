@@ -1,0 +1,853 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\end_preamble
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\bullet 0 0 14 -1
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+מתמטיקה דיסקרטית - תרגיל בית
+\family roman
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\numeric off
+ 
+\color red
+עם פתרון
+\end_layout
+
+\begin_layout Author
+הגשה ליום חמישי,
+
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+22/8
+\numeric off
+ בשעה
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+23:57
+\numeric off
+,
+ לפי ההנחיות במודל
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+1
+\series bold
+\numeric off
+.
+ 
+\series default
+בכל סעיף נתונה קבוצה ויחס מעליה.
+ קבעו (והוכיחו) האם היחס הוא יחס שקילות,
+ יחס סדר חלקי או יחס סדר מלא.
+ במידה והיחס הוא יחס שקילות,
+ מצאו את קבוצת המנה.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $A=\left\{ 1,\dots,n\right\} ^{2}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כלשהו,
+ בו לכל 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a+b=c+d\iff\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a\mathrel{S}b$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ השבר 
+\begin_inset Formula $a/b$
+\end_inset
+
+ לאחר צמצום,
+ מכיל מונה ומכנה אי-זוגיים (למשל,
+ 
+\begin_inset Formula $80/48$
+\end_inset
+
+ לאחר צמצום הוא 
+\begin_inset Formula $5/3$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(80,48\right)\in S$
+\end_inset
+
+,
+ אבל 
+\begin_inset Formula $76/24$
+\end_inset
+
+ הוא 
+\begin_inset Formula $19/6$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(76,24\right)\notin S$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+,
+ בו לכל 
+\begin_inset Formula $A,B\in\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $A\mathrel{\alpha}B$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $A\triangle B$
+\end_inset
+
+ סופית.
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $\beta$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathcal{P}\left(\mathbb{R}\right)\times\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+,
+ בו לכל 
+\begin_inset Formula $\left(A,B\right),\left(C,D\right)\in\mathcal{P}\left(\mathbb{R}\right)\times\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(A,B\right)\mathrel{\beta}\left(C,D\right)$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\left(A\triangle B\right)\cup\left(C\triangle D\right)$
+\end_inset
+
+ סופית.
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\left(\mathbb{N}^{+}\setminus\left\{ 1\right\} \right)^{2}$
+\end_inset
+
+,
+ בו לכל 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in\mathbb{N}^{+}\setminus\left\{ 1\right\} $
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $a\le c$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b\mid d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כלשהו,
+ בו לכל 
+\begin_inset Formula $u,v\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $u\mathrel{R}v$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ סכום האותיות ב-
+\begin_inset Formula $u$
+\end_inset
+
+ שווה לסכום האותיות ב-
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כלשהו,
+ בו לכל 
+\begin_inset Formula $u,v\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $u\mathrel{R}v$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ מספר ה-
+\begin_inset Formula $0$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $u$
+\end_inset
+
+ קטן ממש ממספר ה-
+\begin_inset Formula $0$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+2
+\series bold
+\numeric off
+.
+ 
+\series default
+הוכיחו או הפריכו כל אחד מהסעיפים הבאים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ויהיו 
+\begin_inset Formula $R,S$
+\end_inset
+
+ יחסי שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ מתרגיל בית
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ניתן להסיק כי גם 
+\begin_inset Formula $T=R\cap S$
+\end_inset
+
+ הוא יחס שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי,
+ לכל מחלקת שקילות 
+\begin_inset Formula $K$
+\end_inset
+
+ של 
+\begin_inset Formula $T$
+\end_inset
+
+,
+ קיימות מחלת שקילות 
+\begin_inset Formula $L$
+\end_inset
+
+ של 
+\begin_inset Formula $R$
+\end_inset
+
+ ומחלקת שקילות 
+\begin_inset Formula $M$
+\end_inset
+
+ של 
+\begin_inset Formula $S$
+\end_inset
+
+ ש-
+\begin_inset Formula $K\subseteq L\cap M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ויהי 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי מתקיים
+\begin_inset Formula 
+\[
+R=\bigcup_{K\in\nicefrac{A}{R}}K^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:q3"
+
+\end_inset
+
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה ותהי 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ חלוקה של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי קיים יחס שקילות 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\nicefrac{A}{R}=\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\series bold
+
+\begin_inset space \space{}
+\end_inset
+
+
+\series default
+\numeric on
+3
+\series bold
+\numeric off
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכיחו את משפט 
+\color blue
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:q3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\color inherit
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכיחו את הכיוון ההפוך של משפט 
+\color blue
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:q3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\color inherit
+:
+ לכל קבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ ויחס שקילות 
+\begin_inset Formula $R$
+\end_inset
+
+ מעליה,
+ קיימת חלוקה 
+\begin_inset Formula $\mathcal{F}\subseteq\mathcal{P}\left(A\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\nicefrac{A}{R}=\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

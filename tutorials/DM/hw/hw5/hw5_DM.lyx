@@ -1,0 +1,1079 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\bullet 0 0 14 -1
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+מתמטיקה דיסקרטית - תרגיל בית
+\family roman
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\end_layout
+
+\begin_layout Author
+הגשה ליום חמישי,
+
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+29/8
+\numeric off
+ בשעה
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+23:57
+\numeric off
+,
+ לפי ההנחיות במודל
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+1
+\series bold
+\numeric off
+.
+ 
+\series default
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ויהיו 
+\begin_inset Formula $R_{1},R_{2}$
+\end_inset
+
+ יחסים מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $R_{2}$
+\end_inset
+
+ יחסי שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ אז גם 
+\begin_inset Formula $R_{1}\cup R_{2}$
+\end_inset
+
+ יחס שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $R_{2}$
+\end_inset
+
+ יחס סדר חלקי מעל 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ אז גם 
+\begin_inset Formula $R_{1}\cup R_{2}$
+\end_inset
+
+ יחס סדר חלקי מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $R_{2}$
+\end_inset
+
+ יחסי שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ אז גם 
+\begin_inset Formula $R_{1}\triangle R_{2}$
+\end_inset
+
+ יחס שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $R_{2}$
+\end_inset
+
+ יחס סדר חלקי מעל 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ אז גם 
+\begin_inset Formula $R_{1}\triangle R_{2}$
+\end_inset
+
+ יחס סדר חלקי מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+2
+\series bold
+\numeric off
+.
+ 
+\series default
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ויהי 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נניח ש-
+\begin_inset Formula $R$
+\end_inset
+
+ הוא יחס סדר מלא,
+ ויהי 
+\begin_inset Formula $m\in A$
+\end_inset
+
+ איבר מינימלי.
+ אזי 
+\begin_inset Formula $m$
+\end_inset
+
+ איבר קטן ביותר.
+ 
+\end_layout
+
+\begin_layout Enumerate
+נגדיר יחס 
+\begin_inset Formula $S$
+\end_inset
+
+ מעל 
+\begin_inset Formula $A$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $x,y\in A$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+x\mathrel{S}y\iff\exists z\in A:x\mathrel{R}z\wedge z\mathrel{R}y.
+\]
+
+\end_inset
+
+אזי 
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $S\subseteq R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+נניח ש-
+\begin_inset Formula $R$
+\end_inset
+
+ סימטרי וטרנזיטיבי.
+ אזׁי,
+ 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס שקילות אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ קיים 
+\begin_inset Formula $y\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\mathrel{R}y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+3
+\series bold
+\numeric off
+.
+ 
+\series default
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ותהי 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ קבוצת כל החלוקות של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ נגדיר יחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ באופן הבא:
+ לכל 
+\begin_inset Formula $\mathcal{F}_{1},\mathcal{F}_{2}\in\mathcal{H}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left(\mathcal{F}_{1},\mathcal{F}_{2}\right)\in R$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\mathcal{F}_{1}$
+\end_inset
+
+ היא עידון של 
+\begin_inset Formula $\mathcal{F}_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+כתבו במפורש את 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $A=\left\{ 1,2,3,4\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכיחו כי 
+\begin_inset Formula $R$
+\end_inset
+
+ הוא יחס סדר חלקי.
+\end_layout
+
+\begin_layout Enumerate
+מצאו איבר מינימלי ומקסימלי ב-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+יחס הרישא
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה.
+ נסמן ב-
+\begin_inset Formula $A^{\ast}$
+\end_inset
+
+ את כל הסדרות באורך סופי של איברי 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ כלומר,
+ 
+\begin_inset Formula $A^{\ast}$
+\end_inset
+
+ היא קבוצת כל ה-
+\begin_inset Formula $n$
+\end_inset
+
+-יות הסדורות 
+\begin_inset Formula $\left(a_{1},\dots,a_{n}\right)$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ ו-
+\begin_inset Formula $a_{1},\dots,a_{n}\in A$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+A^{\ast} & =\left\{ \left(a_{1},\dots,a_{n}\right)\mid n\in\mathbb{N},a_{1},\dots,a_{n}\in A\right\} \\
+ & =\bigcup_{n\in\mathbb{N}}\left\{ \left(a_{1},\dots,a_{n}\right)\mid a_{1},\dots,a_{n}\in A\right\} =\bigcup_{n\in\mathbb{N}}A^{n}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+נסמן ב-
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ את ה-
+\begin_inset Quotes erd
+\end_inset
+
+סדרה הריקה
+\begin_inset Quotes erd
+\end_inset
+
+ - המקרה בו 
+\begin_inset Formula $n=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה.
+ 
+\emph on
+יחס הרישא
+\emph default
+ 
+\begin_inset Formula $\le_{\text{pre}}$
+\end_inset
+
+ מעל 
+\begin_inset Formula $A^{\ast}$
+\end_inset
+
+ מוגדר באופן הבא:
+ לכל 
+\begin_inset Formula 
+\[
+\left(a_{1},\dots,a_{n}\right),\left(b_{1},\dots,b_{m}\right)\in A^{\ast},
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\left(a_{1},\dots,a_{n}\right)\le_{\text{pre}}\left(b_{1},\dots,b_{m}\right)$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $m\ge n$
+\end_inset
+
+ וגם לכל 
+\begin_inset Formula $1\le i\le n$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a_{i}=b_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+אינטואיציה:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+אם 
+\begin_inset Formula $\left(a_{1},\dots,a_{n}\right)\le_{\text{pre}}\left(b_{1},\dots,b_{m}\right)$
+\end_inset
+
+ אז איברי 
+\begin_inset Formula $\left(a_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ מופיעים בתחילת הסדרה 
+\begin_inset Formula $\left(b_{i}\right)_{i=1}^{m}$
+\end_inset
+
+.
+ היחס 
+\begin_inset Formula $\le_{\text{pre}}$
+\end_inset
+
+ הוא יחס סדר מלא אם 
+\begin_inset Formula $\left|A\right|=1$
+\end_inset
+
+,
+ אך לא יחס סדר מלא אם 
+\begin_inset Formula $\left|A\right|>1$
+\end_inset
+
+:
+ אם ב-
+\begin_inset Formula $a$
+\end_inset
+
+ יש שני איברים שונים,
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ ו-
+\begin_inset Formula $\beta$
+\end_inset
+
+,
+ אז הסדרות 
+\begin_inset Formula $\left(\alpha\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left(\beta\right)$
+\end_inset
+
+ מקיימות 
+\begin_inset Formula $\left(\alpha\right)\not\le_{\text{pre}}\left(\beta\right)$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(\beta\right)\not\le_{\text{pre}}\left(\alpha\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset CommandInset label
+LatexCommand label
+name "clm:prefix-relation"
+
+\end_inset
+
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה.
+ אזי היחס 
+\begin_inset Formula $\le_{\text{pre}}$
+\end_inset
+
+ מעל 
+\begin_inset Formula $A^{\ast}$
+\end_inset
+
+ הוא יחס סדר חלקי.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+4
+\series bold
+\numeric off
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכיחו את טענה 
+\color blue
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "clm:prefix-relation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\color inherit
+.
+\end_layout
+
+\begin_layout Enumerate
+האם קיים איבר מינימלי ב-
+\begin_inset Formula $A^{\ast}$
+\end_inset
+
+?
+ אם כן,
+ מצאו אחד כזה.
+\end_layout
+
+\begin_layout Enumerate
+האם קיים איבר מקסימלי ב-
+\begin_inset Formula $A^{\ast}$
+\end_inset
+
+?
+ אם כן,
+ מצאו אחד כזה.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+5
+\series bold
+\numeric off
+.
+ 
+\series default
+בדקו האם כל אחת מהפונקציות הבאות היא חח
+\begin_inset Quotes erd
+\end_inset
+
+ע/על (האם בהכרח חח
+\begin_inset Quotes erd
+\end_inset
+
+ע,
+ בהכרח לא חח
+\begin_inset Quotes erd
+\end_inset
+
+ע או ייתכן שחח
+\begin_inset Quotes erd
+\end_inset
+
+ע,
+ וכנ
+\begin_inset Quotes erd
+\end_inset
+
+ל לעל) במידה והפונקציה הפיכה,
+ מצאו את הפונקציה ההופכית.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f:\left(1,\infty\right)\rightarrow\left(0,1\right)$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $x\in\left(1,\infty\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(x\right)=1-1/x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g:\left(0,\infty\right)\rightarrow\left(0,\infty\right)$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $x\in\left(0,\infty\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $g\left(x\right)=1/x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h:\mathcal{P}\left(\mathbb{R}\right)\rightarrow\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $A\in\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $h\left(A\right)=A\triangle\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+פונקציה 
+\begin_inset Formula $f:A\rightarrow B$
+\end_inset
+
+ כלשהי עבור קבוצות סופיות 
+\begin_inset Formula $A,B$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left|A\right|<\left|B\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+פונקציה 
+\begin_inset Formula $f:A\rightarrow B$
+\end_inset
+
+ כלשהי עבור קבוצות סופיות 
+\begin_inset Formula $A,B$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left|A\right|>\left|B\right|$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

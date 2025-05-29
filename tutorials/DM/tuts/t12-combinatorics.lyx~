@@ -1,0 +1,1450 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 11"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+12
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ קומבינטוריקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1/3
+\numeric off
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+שיטות ספירה.
+\end_layout
+
+\begin_layout Itemize
+עיקרון הסכום:
+ עבור קבוצות סופיות זרות 
+\begin_inset Formula $A,B$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left|A\cup B\right|=\left|A\right|+\left|B\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+עיקרון ההפרש:
+ עבור קבוצות סופיות 
+\begin_inset Formula $A,B$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $B\subseteq A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left|A\setminus B\right|=\left|A\right|-\left|B\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+עיקרון הכפל:
+ עבור קבוצות 
+\begin_inset Formula $A_{1},\dots,A_{k}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\left|\bigtimes_{i=1}^{k}A_{i}\right|=\prod_{i=1}^{k}\left|A_{i}\right|.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+מספר הדרכים לסדר 
+\begin_inset Formula $n$
+\end_inset
+
+ אנשים בשורה הוא 
+\begin_inset Formula $n!$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מספר הדרכים לסדר 
+\begin_inset Formula $n$
+\end_inset
+
+ אנשים במעגל הוא 
+\begin_inset Formula $\left(n-1\right)!$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכל 
+\begin_inset Formula $n,k\in\mathbb{N}$
+\end_inset
+
+ נגדיר
+\begin_inset Formula 
+\[
+{n \choose k}:=\begin{cases}
+\frac{n!}{k!\left(n-k\right)!} & 0\le k\le n\\
+0 & \text{אחרת}
+\end{cases}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהי 
+\begin_inset Formula $V$
+\end_inset
+
+ קבוצה סופית כך ש-
+\begin_inset Formula $\left|V\right|=n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מה מספר היחסים הבינאריים השונים על 
+\begin_inset Formula $V$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+מה מספר הגרפים הפשוטים 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ (לא מכוונים)?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מספר הזוגות הסדורים הוא בדיוק 
+\begin_inset Formula $\left|V^{2}\right|=\left|V\times V\right|=n^{2}$
+\end_inset
+
+.
+ מספר היחסים השונים הוא כמספר תתי-הקבוצות השונות של 
+\begin_inset Formula $V^{2}$
+\end_inset
+
+.
+ לכן,
+ מספר היחסים השונים הוא
+\begin_inset Formula 
+\[
+\left|\mathcal{P}\left(V^{2}\right)\right|=2^{n^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+יש 
+\begin_inset Formula ${n \choose 2}$
+\end_inset
+
+ קשתות אפשריות ל-
+\begin_inset Formula $G$
+\end_inset
+
+.
+ 
+\begin_inset Formula $E$
+\end_inset
+
+ יכולה להיות כל תת-קבוצה של קשתות,
+ וכל קבוצה כזו מגדירה גרף שונה.
+ לכן,
+\begin_inset Formula 
+\[
+2^{{n \choose 2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+מצאו את מספר הפתרונות למשוואה
+\begin_inset Formula 
+\[
+x_{1}+\dots+x_{k}=n,\quad\forall1\le i\le k:x_{i}\ge1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+ראינו בהרצאה כי מספר הפתרונות למשוואה
+\begin_inset Formula 
+\[
+x_{1}+\dots+x_{k}=n,\quad\forall1\le i\le k:x_{i}\ge0
+\]
+
+\end_inset
+
+הוא 
+\begin_inset Formula ${n+k-1 \choose k-1}$
+\end_inset
+
+.
+ לכל 
+\begin_inset Formula $1\le i\le k$
+\end_inset
+
+ נגדיר 
+\begin_inset Formula $y_{i}=x_{i}-1$
+\end_inset
+
+.
+ כעת,
+ המשוואה המקורית שקולה ל-
+\begin_inset Formula 
+\[
+\left(y_{1}+1\right)+\dots+\left(y_{k}+1\right)=n,\quad\forall1\le i\le k:y_{i}\ge0.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y_{1}+\dots+y_{k}+k=n\iff y_{1}+\dots+y_{k}=n-k.
+\]
+
+\end_inset
+
+נשתמש בפתרון מההרצאה ונקבל שמספר הפתרונות למשוואה לעיל הוא
+\begin_inset Formula 
+\[
+{\left(n-k\right)+k-1 \choose k-1}={n-1 \choose k-1}.
+\]
+
+\end_inset
+
+מכיוון שהמשוואה האחרונה שקולה למקורית,
+ נקבל שמספר הפתרונות למשוואה המקורית הוא בדיוק 
+\begin_inset Formula ${n-1 \choose k-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+מספר הדרכים לבחור 
+\begin_inset Formula $k$
+\end_inset
+
+ איברים מתוך קבוצה בת 
+\begin_inset Formula $n$
+\end_inset
+
+ איברים:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ללא חזרות
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+עם חזרות
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{n!}{\left(n-k\right)!}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n^{k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+עם חשיבות לסדר
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${n \choose k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${n+k-1 \choose k-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ללא חשיבות לסדר
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+מספר הדרכים לבחירת 
+\begin_inset Formula $k$
+\end_inset
+
+ איברים מתוך 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+באופן שקול,
+ מספר הדרכים לחלק 
+\begin_inset Formula $k$
+\end_inset
+
+ כדורים ל-
+\begin_inset Formula $t$
+\end_inset
+
+ תאים (
+\begin_inset Formula $k\le t$
+\end_inset
+
+)?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+בכל תא כדור אחד לכל היותר
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+אין הגבלה על מספר הכדורים בתא
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{t!}{\left(t-k\right)!}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t^{k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+כדורים שונים
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${t \choose k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${t+k-1 \choose k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+כדורים זהים
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+מספר הדרכים לחלק 
+\begin_inset Formula $k$
+\end_inset
+
+ כדורים ל-
+\begin_inset Formula $t$
+\end_inset
+
+ תאים.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+עבור כל אחד מהסעיפים הבאים,
+ חשבו בכמה דרכים ניתן לחלק 
+\begin_inset Formula $2n$
+\end_inset
+
+ כדורים לבנים ו-
+\begin_inset Formula $n$
+\end_inset
+
+ כדורים צבעוניים.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ל-
+\begin_inset Formula $3n$
+\end_inset
+
+ תאים,
+ כדור אחד בדיוק בכל תא.
+\end_layout
+
+\begin_layout Enumerate
+ל-
+\begin_inset Formula $3n$
+\end_inset
+
+ תאים,
+ כדור לבן אחד לכל היותר בכל תא.
+\end_layout
+
+\begin_layout Enumerate
+ל-
+\begin_inset Formula $n$
+\end_inset
+
+ תאים,
+ כדור לבן אחד לפחות לכל תא.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תחילה נסדר את הצבעוניים.
+ יש 
+\begin_inset Formula $n$
+\end_inset
+
+ כדורים צבעוניים ו-
+\begin_inset Formula $3n$
+\end_inset
+
+ תאים.
+ לכן,
+\begin_inset Formula 
+\[
+\frac{\left(3n\right)!}{\left(3n-n\right)!}=\frac{\left(3n\right)!}{\left(2n\right)!}.
+\]
+
+\end_inset
+
+מכאן כל הכדורים הלבנים מסתדרים מכיוון שהם זהים.
+ בסך הכל,
+ מספר האפשרויות האו
+\begin_inset Formula 
+\[
+\frac{\left(3n\right)!}{\left(2n\right)!}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+תחילה,
+ נבחר 
+\begin_inset Formula $2n$
+\end_inset
+
+ תאים עבור 
+\begin_inset Formula $2n$
+\end_inset
+
+ הכדורים הלבנים - 
+\begin_inset Formula ${3n \choose 2n}$
+\end_inset
+
+ דרכים.
+ עבור הצ',
+ בחירה עם חזרות ועם חשיבות לסדר - לכן יש 
+\begin_inset Formula $\left(3n\right)^{n}$
+\end_inset
+
+ דרכים.
+ בסך הכל,
+\begin_inset Formula 
+\[
+{3n \choose 2n}\cdot\left(3n\right)^{n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+תחילה,
+ נחלק 
+\begin_inset Formula $n$
+\end_inset
+
+ כדורים לבנים - אחד בכל תא.
+ כעת אין הגבלות נוספות - נותרו 
+\begin_inset Formula $n$
+\end_inset
+
+ לבנים ו-
+\begin_inset Formula $n$
+\end_inset
+
+ צ'.
+ לכן,
+ מספר הדרכים הוא
+\begin_inset Formula 
+\[
+\underset{\text{לבנים}}{\underbrace{{n+n-1 \choose n-1}}}\cdot\underset{\text{צבעוניים}}{\underbrace{n^{n}}}={2n-1 \choose n-1}\cdot n^{n}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $n\in\mathbb{N}^{+}$
+\end_inset
+
+.
+ צירוף (
+\lang english
+compositions
+\lang hebrew
+) של 
+\begin_inset Formula $n$
+\end_inset
+
+ הוא סדרת טבעיים חיוביים 
+\begin_inset Formula $\left(x_{i}\right)_{i=1}^{k}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $k\in\mathbb{N}^{+}$
+\end_inset
+
+ כלשהו כך ש-
+\begin_inset Formula 
+\[
+\sum_{i=1}^{k}x_{i}=n.
+\]
+
+\end_inset
+
+מצא את מספר הצירופים השונים של 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נפתור את השאלה בשתי דרכים:
+\end_layout
+
+\begin_layout Itemize
+אינדוקציה:
+ ננחש שהפתרון הוא 
+\begin_inset Formula $2^{n-1}$
+\end_inset
+
+,
+ ונוכיח באינדוקציה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס האינדוקציה:
+ עבור 
+\begin_inset Formula $n=1$
+\end_inset
+
+,
+ הצירוף היחיד הוא 
+\begin_inset Formula $1$
+\end_inset
+
+,
+ ולכן מספר הצירופים הוא 
+\begin_inset Formula $1=2^{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+צעד האינדוקציה:
+ יהי 
+\begin_inset Formula $\left(x_{i}\right)_{i=1}^{k}$
+\end_inset
+
+ צירוף של 
+\begin_inset Formula $n-1$
+\end_inset
+
+.
+ ניצור את שני הצירופים הבאים:
+\begin_inset Formula 
+\[
+x_{1}+\dots+x_{k}+1=n
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x_{1}+\dots+\left(x_{k}+1\right)=n
+\]
+
+\end_inset
+
+יהי 
+\begin_inset Formula $\left(y_{i}\right)_{i=1}^{l}$
+\end_inset
+
+ צירוף כלשהו של 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $y_{l}=1$
+\end_inset
+
+,
+ אזי הצירוף 
+\begin_inset Formula $\left(y_{i}\right)_{i=1}^{l-1}$
+\end_inset
+
+ הוא צירוף של 
+\begin_inset Formula $n-1$
+\end_inset
+
+,
+ שמוביל בבנייה שעשינו ל-
+\begin_inset Formula $n$
+\end_inset
+
+.
+ אחרת,
+ הצירוף
+\begin_inset Formula 
+\[
+y_{1}+\dots+y_{l-1}+\left(y_{l}-1\right)=n-1
+\]
+
+\end_inset
+
+הוא צירוף של 
+\begin_inset Formula $n-1$
+\end_inset
+
+ שמוביל בבנייה שלנו ל-
+\begin_inset Formula $n$
+\end_inset
+
+.
+ בנוסף,
+ הצירופים מהסוג הראשון מסתיימים ב-
+\begin_inset Formula $1$
+\end_inset
+
+,
+ ומהסוג השני לא מסתיימים ב-
+\begin_inset Formula $1$
+\end_inset
+
+,
+ ולכן לא תהיה ספירה כפולה.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+הוכחה נוספת:
+ נשים 
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\begin_inset Formula $1$
+\end_inset
+
+-ים בשורה.
+ ביניהם,
+ נמקם ריבועים ריקים בין כל זוג 
+\begin_inset Formula $1$
+\end_inset
+
+-ים רצופים,
+ בהם יכול להיות 
+\begin_inset Formula $+$
+\end_inset
+
+ או 
+\begin_inset Formula $,$
+\end_inset
+
+.
+ כל השמה של 
+\begin_inset Formula $+$
+\end_inset
+
+-ים ו-
+\begin_inset Formula $,$
+\end_inset
+
+-ים בריבועים הריקים מביאה לצירוף יחיד של 
+\begin_inset Formula $n$
+\end_inset
+
+ באופן הפיך.
+ לכן,
+ מספר הצירופים השונים של 
+\begin_inset Formula $n$
+\end_inset
+
+ הוא כמספר השיבוצים השונים:
+ יש 
+\begin_inset Formula $n-1$
+\end_inset
+
+ ריבועים,
+ ולכל אחד שתי אפשרויות.
+ בסך הכל 
+\begin_inset Formula $2^{n-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left|A\cup B\right|=\left|A\right|+\left|B\right|-\left|A\cap B\right|
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left|\bigcup_{i=1}^{n}A_{i}\right|=\sum_{k=1}^{n}\left(-1\right)^{k-1}\sum_{S\subseteq\left\{ 1,\dots,n\right\} ,\left|S\right|=k}\left|\bigcap_{i\in S}A_{i}\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהיינה 
+\begin_inset Formula $A,B$
+\end_inset
+
+ קבוצות סופיות כך ש-
+\begin_inset Formula $\left|A\right|=m$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left|B\right|=n$
+\end_inset
+
+ (
+\begin_inset Formula $m\ge n$
+\end_inset
+
+).
+ חשבו כמה פונקציות 
+\emph on
+על
+\emph default
+ יש מ-
+\begin_inset Formula $A$
+\end_inset
+
+ ל-
+\begin_inset Formula $B$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $A=\left\{ a_{1},\dots,a_{m}\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $B=\left\{ b_{1},\dots,b_{n}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+
+\series bold
+(שגוי)
+\series default
+ יש 
+\begin_inset Formula $m^{n}$
+\end_inset
+
+ פונקציות מ-
+\begin_inset Formula $A$
+\end_inset
+
+ ל-
+\begin_inset Formula $B$
+\end_inset
+
+.
+ תחילה,
+ נבחר לכל תמונה בטווח מקור בתחום:
+ זו בחירה ללא חזרות ועם חשיבות לסדר,
+ לכן 
+\begin_inset Formula ${m \choose n}n!$
+\end_inset
+
+ דרכים.
+ כעת ניתן לבחור את שאר התמונות ללא הגבלה:
+ נותרו 
+\begin_inset Formula $m-n$
+\end_inset
+
+ מקורות ולכל אחד 
+\begin_inset Formula $m$
+\end_inset
+
+ תמונות אפשריות.
+ לכן,
+ מספר הדרכים הוא
+\begin_inset Formula 
+\[
+{m \choose n}n!\cdot m^{m-n}.
+\]
+
+\end_inset
+
+פתרון זה 
+\series bold
+אינו נכון
+\series default
+,
+ ומכיל ספירה כפולה.
+ למשל,
+ עבור 
+\begin_inset Formula $A=\left\{ 1,2,3\right\} ,B=\left\{ 1,2\right\} $
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נוכל לבחור את המקורות 
+\begin_inset Formula $1,2$
+\end_inset
+
+ ולמפות 
+\begin_inset Formula $1\mapsto1,2\mapsto2$
+\end_inset
+
+,
+ וכעת נבחר 
+\begin_inset Formula $3\mapsto1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אפשרות אחרת שתיספר היא לבחור את 
+\begin_inset Formula $1,3$
+\end_inset
+
+,
+ למפות 
+\begin_inset Formula $3\mapsto1,2\mapsto2$
+\end_inset
+
+ ולבסוף 
+\begin_inset Formula $1\mapsto1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Solution
+פתרון באמצעות הכלה והדחה:
+ נספור את מספר הפונקציות שהן לא על,
+ כלומר קיים 
+\begin_inset Formula $b\in B$
+\end_inset
+
+ כך שהתמונה של הפונקציה מוכלת ב-
+\begin_inset Formula $B\setminus\left\{ b\right\} $
+\end_inset
+
+ - המשך בתרגול הבא.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{violet}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

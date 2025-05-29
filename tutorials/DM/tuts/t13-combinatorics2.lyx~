@@ -1,0 +1,1349 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 13"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+13
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ קומבינטוריקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2/3
+\numeric off
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהיינה 
+\begin_inset Formula $A,B$
+\end_inset
+
+ קבוצות סופיות כך ש-
+\begin_inset Formula $\left|A\right|=m$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left|B\right|=n$
+\end_inset
+
+ (
+\begin_inset Formula $m\ge n$
+\end_inset
+
+).
+ חשבו כמה פונקציות 
+\emph on
+על
+\emph default
+ יש מ-
+\begin_inset Formula $A$
+\end_inset
+
+ ל-
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נפתור את השאלה באמצעות עיקרון ההכלה וההדחה.
+ פונקציה היא על אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל תמונה קיים מקור שממופה אליה.
+ אוסף כל הפונקציות מ-
+\begin_inset Formula $A$
+\end_inset
+
+ ל-
+\begin_inset Formula $B$
+\end_inset
+
+ הוא בן 
+\begin_inset Formula $n^{m}$
+\end_inset
+
+ פונקציות.
+ תחילה בשיטת המשלים - כמה פונקציות לא על קיימות - כלומר קיימת לפחות תמונה אחת שאין מקור הממופה אליה.
+ נפריד לפי מספר המקורות שלא מכוסים:
+\end_layout
+
+\begin_layout Itemize
+תחילה,
+ נספור את כל הפונקציות שהתמונה שלהן לא מכילה איבר אחד לפחות:
+ נבחר איבר 
+\begin_inset Formula $b\in B$
+\end_inset
+
+ (
+\begin_inset Formula ${n \choose 1}$
+\end_inset
+
+ אפשרויות),
+ ונספור את כל הפונקציות מ-
+\begin_inset Formula $A$
+\end_inset
+
+ ל-
+\begin_inset Formula $B\setminus\left\{ b\right\} $
+\end_inset
+
+ - יש 
+\begin_inset Formula $\left(n-1\right)^{m}$
+\end_inset
+
+ כאלה.
+\end_layout
+
+\begin_layout Itemize
+כעת,
+ נוריד ספירה כפולה ע
+\begin_inset Quotes erd
+\end_inset
+
+י הסרת כל הפונקציות שתמונתן לא מכילה שני איברים לפחות:
+\begin_inset Formula 
+\[
+\left(-1\right){n \choose 2}\cdot\left(n-2\right)^{m}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+נמשיך בתהליך ונקבל שמספר הפונקציות שאינן על הוא
+\begin_inset Formula 
+\[
+\sum_{r=1}^{n-1}\left(-1\right)^{n-1-r}{n \choose r}r^{m},
+\]
+
+\end_inset
+
+ולכן מספר הפונקציות שהן על הוא
+\begin_inset Formula 
+\[
+n^{m}-\sum_{r=1}^{n-1}\left(-1\right)^{n-1-r}{n \choose r}r^{m}=\sum_{r=1}^{n}\left(-1\right)^{n-r}{n \choose r}r^{m}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+נתון חדר ובו 
+\begin_inset Formula $3n$
+\end_inset
+
+ כדורים צבעוניים ו-
+\begin_inset Formula $n$
+\end_inset
+
+ תינוקות (שונים).
+ מצא את מספר הדרכים ניתן לחלק לכל תינוק 
+\begin_inset Formula $3$
+\end_inset
+
+ כדורים בדיוק (אין סדר בין הכדורים של כל תינוק).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נפתור את השאלה בשתי דרכים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נבחר את הכדורים תינוק-תינוק.
+ מספר הדרכים הוא
+\begin_inset Formula 
+\[
+\underset{\text{תינוק \ensuremath{1}}}{\underbrace{{3n \choose 3}}}\cdot\underset{\text{תינוק \ensuremath{2}}}{\underbrace{{3n-3 \choose 3}}}\cdot\dots\cdot\underset{\text{תינוק \ensuremath{n}}}{\underbrace{{3 \choose 3}}}.
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+נסדר את התינוקות בשורה באופן שרירותי.
+ כעת,
+ נסתכל על כל הסידורים האפשריים של הכדורים בשורה (
+\begin_inset Formula $\left(3n\right)!$
+\end_inset
+
+ כאלה).
+ עבור כל סידור,
+ נתאים את שלושת הכדורים הראשונים לתינוק הראשון,
+ ה-
+\begin_inset Formula $3$
+\end_inset
+
+ הבאים לשני וכן הלאה.
+ מכיוון שאין סדר בין הכדורים של כל תינוק,
+ נצטרך לחלק בסדר הפנימי לכל שלשה.
+ בסך הכל,
+ מספר הדרכים הוא
+\begin_inset Formula 
+\[
+\frac{\left(3n\right)!}{\left(3!\right)^{n}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+מצא את מספר הפתרונות הטבעיים של המשוואה
+\begin_inset Formula 
+\[
+x_{1}+x_{2}+x_{3}=14,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+כאשר 
+\begin_inset Formula $0\le x_{1}\le10$
+\end_inset
+
+,
+ 
+\begin_inset Formula $-2\le x_{2}\le8$
+\end_inset
+
+ ו-
+\begin_inset Formula $-5\le x_{3}\le19$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+תחילה,
+ נגדיר משתנים חדשים ונמיר את השאלה למשתנים אי-שליליים:
+\begin_inset Formula 
+\[
+y_{1}=x_{1},\quad y_{2}=x_{2}+2,\quad y_{3}=x_{3}+5.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\implies0\le y_{1}\le10,\quad0\le y_{2}\le10,\quad0\le y_{3}\le24
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+כעת המשוואה היא 
+\begin_inset Formula $y_{1}+\left(y_{2}-2\right)+\left(y_{3}-5\right)=14$
+\end_inset
+
+,
+ כלומר
+\begin_inset Formula 
+\[
+y_{1}+y_{2}+y_{3}=21,\quad0\le y_{1}\le10,\quad0\le y_{2}\le10,\quad0\le y_{3}\le24.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נפתור באצמעות הכלה והדחה - נגדיר קבוצות באופן הבא:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ היא אוסף כל הפתרונות עבורם 
+\begin_inset Formula $y_{1}>10$
+\end_inset
+
+,
+ 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $y_{2}>10$
+\end_inset
+
+ ו-
+\begin_inset Formula $A_{3}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $y_{3}>20$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+העולם 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ הוא אוסף כל הפתרונות של 
+\begin_inset Formula $y_{1}+y_{2}+y_{3}=21$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $y_{1},y_{2},y_{3}\ge0$
+\end_inset
+
+.
+ לכן מספר הפתרונות הוא
+\begin_inset Formula 
+\begin{align*}
+\left|A_{1}^{c}\cap A_{2}^{c}\cap A_{3}^{c}\right|= & \left|\mathcal{U}\right|-\left(\left|A_{1}\right|+\left|A_{2}\right|+\left|A_{3}\right|\right)\\
+ & +\left(\left|A_{1}\cap A_{2}\right|+\left|A_{1}\cap A_{3}\right|+\left|A_{2}\cap A_{3}\right|\right)-\left(\left|A_{1}\cap A_{2}\cap A_{3}\right|\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ראינו בעבר כי 
+\begin_inset Formula $\left|\mathcal{U}\right|={21+3-1 \choose 3-1}={23 \choose 2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לא קיים פתרון בו 
+\begin_inset Formula $y_{3}>24$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $A_{3}=A_{1}\cap A_{3}=A_{2}\cap A_{3}=A_{1}\cap A_{2}\cap A_{3}=\emptyset$
+\end_inset
+
+.
+ באופן דומה 
+\begin_inset Formula $A_{1}\cap A_{2}=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+כעת,
+ נחשב למשל את 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+:
+ אוסף כל הפתרונות של 
+\begin_inset Formula $y_{1}+y_{2}+y_{3}=21$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $y_{1}>10$
+\end_inset
+
+.
+ הדבר שקול לאוסף כל הפתרונות של
+\begin_inset Formula 
+\[
+z+y_{2}+y_{3}=21-10-1,\quad z,y_{2},y_{3}\ge0.
+\]
+
+\end_inset
+
+מספר הפתרונות של הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל הוא 
+\begin_inset Formula ${\left(21-10-1\right)+3-1 \choose 3-1}={12 \choose 2}$
+\end_inset
+
+.
+ באופן דומה נקבל ש-
+\begin_inset Formula $\left|A_{2}\right|={12 \choose 2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בסך הכל,
+ מספר הפתרונות של המשוואה הוא
+\begin_inset Formula 
+\[
+{23 \choose 2}-2\cdot{12 \choose 2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+מצא את מספר הפתרונות הטבעיים של אי-השוויון הבא:
+\begin_inset Formula 
+\[
+x_{1}+x_{2}+\dots+x_{n}\le k,\quad\forall1\le i\le k:x_{i}\ge0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+אי השוויון שקול ל-
+\begin_inset Formula $y=k-\left(x_{1}+x_{2}+\dots+x_{n}\right)\ge0$
+\end_inset
+
+.
+ לכן,
+ נהפוך את אי-השוויון למשוואה ע
+\begin_inset Quotes erd
+\end_inset
+
+י הוספת המשתנה 
+\begin_inset Formula $y$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+x_{1}+\dots+x_{n}+y=k,\quad\forall1\le i\le k:x_{i}\ge0,y\ge0.
+\]
+
+\end_inset
+
+לכן,
+ מספר הפתרונות של המשוואה הוא
+\begin_inset Formula 
+\[
+{n+k \choose n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+נתונים 
+\begin_inset Formula $n$
+\end_inset
+
+ זוגות של אנשים ושולחן עגול בן 
+\begin_inset Formula $2n$
+\end_inset
+
+ מקומות.
+ נרצה להושיב את הזוגות בשולחן כך שאף אדם לא ישב על יד בן זוגו.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נפתור את השאלה באמצעות הכלה והדחה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+יש 
+\begin_inset Formula $\left(2n-1\right)!$
+\end_inset
+
+ סידורים אפשריים של 
+\begin_inset Formula $2n$
+\end_inset
+
+ האנשים במעגל.
+\end_layout
+
+\begin_layout Itemize
+לכל 
+\begin_inset Formula $1\le r\le n$
+\end_inset
+
+,
+ נסתכל על מספר הסידורים בהם 
+\begin_inset Formula $r$
+\end_inset
+
+ זוגות יושבים אחד ליד השני:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+תחילה,
+ נבחר את 
+\begin_inset Formula $r$
+\end_inset
+
+ הזוגות:
+ 
+\begin_inset Formula ${n \choose r}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נתייחס לכל זוג כאובייקט אחד.
+ נותרנו עם 
+\begin_inset Formula $2n-r$
+\end_inset
+
+ אובייקטים,
+ ולכן מספר הדרכים לסדר אותם במעגל הוא 
+\begin_inset Formula $\left(2n-r-1\right)!$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בנוסף,
+ לכל זוג יש 
+\begin_inset Formula $2!$
+\end_inset
+
+ אפשרויות לסידור הפנימי.
+ בסך הכל,
+\begin_inset Formula 
+\[
+{n \choose r}2^{r}\left(2n-r-1\right)!.
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+לכן,
+ מספר הסידורים הטובים הוא
+\begin_inset Formula 
+\[
+\left(2n-1\right)!-\sum_{r=1}^{n}\left(-1\right)^{r+1}{n \choose r}2^{r}\left(2n-r-1\right)!=\sum_{r=0}^{n}\left(-1\right)^{r}{n \choose r}2^{r}\left(2n-r-1\right)!..
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+(הבינום של ניוטון) יהיו 
+\begin_inset Formula $a,b\in\mathbb{R}$
+\end_inset
+
+ ויהי 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ אזי,
+\begin_inset Formula 
+\[
+\left(a+b\right)^{n}=\sum_{k=0}^{n}{n \choose k}a^{k}b^{n-k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכיח באופן קומבינטורי ואלגברי כי
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{n \choose k}^{2}={2n \choose n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+הוכחה קומבינטורית:
+ נגדיר את הבעיה הבאה:
+ נתונים 
+\begin_inset Formula $n$
+\end_inset
+
+ גברים ו-
+\begin_inset Formula $n$
+\end_inset
+
+ נשים,
+ ונרצה לבחור קבוצה של 
+\begin_inset Formula $n$
+\end_inset
+
+ אנשים מתוכם.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מצד אחד,
+ ברור כי התשובה היא 
+\begin_inset Formula ${2n \choose n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מצד שני - נפריד למקרים לפי מספר הנשים שנבחרו:
+ אם נבחרו 
+\begin_inset Formula $k$
+\end_inset
+
+ נשים,
+ נצטרך לבחור 
+\begin_inset Formula $k$
+\end_inset
+
+ גברים שלא ייבחרו לקבוצה,
+ ושאר הגברים ילכו לקבוצה.
+ לכן יש 
+\begin_inset Formula ${n \choose k}\cdot{n \choose k}$
+\end_inset
+
+ דרכים,
+ ובסך הכל
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{n \choose k}^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+הוכחה אלגברית:
+ מהבינום של ניוטון נקבל ש-
+\begin_inset Formula 
+\[
+\left(1+x\right)^{n}=\sum_{k=0}^{n}{n \choose k}x^{n-k}=\sum_{k=0}^{n}{n \choose k}x^{k},
+\]
+
+\end_inset
+
+ולכן
+\begin_inset Formula 
+\[
+\sum_{k=0}^{2n}{2n \choose k}x^{k}=\left(1+x\right)^{2n}=\left(\left(1+x\right)^{n}\right)^{2}=\sum_{i=0}^{n}{n \choose i}x^{i}\cdot\sum_{i=0}^{n}{n \choose i}x^{i}.
+\]
+
+\end_inset
+
+נחשב את המקדם של 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+ בשני האגפים:
+ באגף שמאל המקדם הוא 
+\begin_inset Formula ${2n \choose n}$
+\end_inset
+
+.
+ באגף ימין,
+ המקדם נסכם מ-
+\begin_inset Formula $x^{k}$
+\end_inset
+
+ ו-
+\begin_inset Formula $x^{n-k}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $k$
+\end_inset
+
+ כלשהו.
+ לכן המקדם הוא
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{n \choose k}\cdot{n \choose n-k}=\sum_{k=0}^{n}{n \choose k}^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+(זהות פסקל)
+\begin_inset Formula 
+\[
+{n \choose k}={n-1 \choose k}+{n-1 \choose k-1}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכיח באופן קומבינטורי ואלגברי כי
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{m+k \choose k}={m+n+1 \choose n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+הוכחה קומבינטורית:
+ סידור 
+\begin_inset Formula $m+1$
+\end_inset
+
+ 
+\begin_inset Formula $0$
+\end_inset
+
+-ים ו-
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\begin_inset Formula $1$
+\end_inset
+
+-ים בשורה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מצד אחד,
+ ברור שהפתרון הוא 
+\begin_inset Formula ${m+n+1 \choose n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מצד שני:
+ לכל סידור,
+ נסתכל על ה-
+\begin_inset Formula $0$
+\end_inset
+
+ הימני ביותר בו.
+ משמאל ל-
+\begin_inset Formula $0$
+\end_inset
+
+ נמצאים 
+\begin_inset Formula $0\le k\le n$
+\end_inset
+
+ 
+\begin_inset Formula $1$
+\end_inset
+
+-ים ו-
+\begin_inset Formula $m$
+\end_inset
+
+ 
+\begin_inset Formula $0$
+\end_inset
+
+-ים,
+ ומימין לו רק 
+\begin_inset Formula $1$
+\end_inset
+
+-ים.
+ לכן,
+ נותר לרצף את 
+\begin_inset Formula $k$
+\end_inset
+
+ ה-
+\begin_inset Formula $1$
+\end_inset
+
+-ים ו-
+\begin_inset Formula $m$
+\end_inset
+
+ ה-
+\begin_inset Formula $0$
+\end_inset
+
+-ים:
+ 
+\begin_inset Formula ${m+k \choose k}$
+\end_inset
+
+ דרכים.
+ בסך הכל נקבל
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{m+k \choose k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+הוכחה אלגברית - באינדוקציה על 
+\begin_inset Formula $n$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+עבור 
+\begin_inset Formula $n=0$
+\end_inset
+
+ נקבל 
+\begin_inset Formula ${m+0 \choose 0}=1={m+1 \choose 0}$
+\end_inset
+
+ והשוויון מתקיים.
+\end_layout
+
+\begin_layout Itemize
+נניח את נכונות הטענה עבור 
+\begin_inset Formula $n$
+\end_inset
+
+ ונוכיח עבור 
+\begin_inset Formula $n+1$
+\end_inset
+
+:
+ נניח שמתקיים
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{m+k \choose k}={m+n+1 \choose n}.
+\]
+
+\end_inset
+
+כעת,
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=0}^{n+1}{m+k \choose k} & =\sum_{k=0}^{n}{m+k \choose k}+{m+n+1 \choose n+1}\\
+\left(\text{הנחת האינדוקציה}\right) & ={m+n+1 \choose n}+{m+n+1 \choose n+1}\\
+\left(\text{זהות פסקל}\right) & ={m+n+2 \choose n+1}\\
+ & ={m+\left(n+1\right)+1 \choose \left(n+1\right)},
+\end{align*}
+
+\end_inset
+
+והוכחנו את הטענה עבור 
+\begin_inset Formula $n+1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכח כי מספר הזוגות של קבוצות 
+\begin_inset Formula $A,B$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $A\subseteq B\subseteq\left\{ 1,\dots,n\right\} $
+\end_inset
+
+ הוא 
+\begin_inset Formula $3^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נסתכל על מספר הזוגות הסדורים הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל כאשר 
+\begin_inset Formula $\left|B\right|=k$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+תחילה,
+ נבחר 
+\begin_inset Formula $k$
+\end_inset
+
+ איברים ל-
+\begin_inset Formula $B$
+\end_inset
+
+:
+ 
+\begin_inset Formula ${n \choose k}$
+\end_inset
+
+ דרכים.
+\end_layout
+
+\begin_layout Itemize
+כעת,
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ יכולה להיות כל תת-קבוצה של 
+\begin_inset Formula $B$
+\end_inset
+
+:
+ יש 
+\begin_inset Formula $2^{k}$
+\end_inset
+
+ אפשרויות.
+\end_layout
+
+\begin_layout Standard
+בסך הכל,
+ מספר האפשרויות הוא
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{n \choose k}2^{k}=\sum_{k=0}^{n}{n \choose k}\cdot2^{k}\cdot1^{n-k}=\left(2+1\right)^{n}=3^{n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

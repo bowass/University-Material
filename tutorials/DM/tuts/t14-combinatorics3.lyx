@@ -1,0 +1,1057 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 14"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+14
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ קומבינטוריקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3/3
+\numeric off
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+מצא את מספר הפתרונות של המשוואה
+\begin_inset Formula 
+\[
+\sum_{i=1}^{k}x_{i}=0,\qquad\forall1\le i\le k:x_{i}\in\left\{ 0,1\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+כדי שיהיה פתרון,
+ נצטרך שיהיה מספר שווה של 
+\begin_inset Formula $1$
+\end_inset
+
+-ים ו-
+\begin_inset Formula $\left(-1\right)$
+\end_inset
+
+-ים שייסכמו.
+ לכן,
+ אם 
+\begin_inset Formula $k$
+\end_inset
+
+ זוגי אין פתרונות למשוואה.
+ אחרת,
+ נצטרך לבחור את המקומות בהם 
+\begin_inset Formula $x_{i}=1$
+\end_inset
+
+ - יש בדיוק 
+\begin_inset Formula $k/2$
+\end_inset
+
+ כאלה,
+ ולכן מספר הפתרונות הוא 
+\begin_inset Formula ${k \choose k/2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה בת 
+\begin_inset Formula $11$
+\end_inset
+
+ מספרים שלמים.
+ הוכח שקיימים ב-
+\begin_inset Formula $A$
+\end_inset
+
+ שני שלמים שונים שההפרש ביניהם מתחלק ב-
+\begin_inset Formula $10$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה בת 
+\begin_inset Formula $5$
+\end_inset
+
+ מספרים שלמים,
+ כך שאף אחד מהם לא מתחלק ב-
+\begin_inset Formula $5$
+\end_inset
+
+.
+ הוכח שקיימים ב-
+\begin_inset Formula $A$
+\end_inset
+
+ שני שלמים שונים שההפרש ביניהם מתחלק ב-
+\begin_inset Formula $10$
+\end_inset
+
+,
+ או שקיימים שני שלמים שונים ב-
+\begin_inset Formula $A$
+\end_inset
+
+ שסכומם מתחלק ב-
+\begin_inset Formula $10$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נחלק את 
+\begin_inset Formula $A$
+\end_inset
+
+ ל-
+\begin_inset Formula $10$
+\end_inset
+
+ קבוצות 
+\begin_inset Formula $X_{0},\dots,X_{9}$
+\end_inset
+
+,
+ כך שלכל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $0\le i\le9$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+X_{i}=\left\{ a\in A\mid a\equiv i\mod{10}\right\} .
+\]
+
+\end_inset
+
+נשים לב כי כל איבר ב-
+\begin_inset Formula $A$
+\end_inset
+
+ נמצא בקבוצה כלשהי:
+ לכל 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\in X_{a\mathrel{\text{mod}}10}$
+\end_inset
+
+.
+ לכן,
+ יש 
+\begin_inset Formula $11$
+\end_inset
+
+ מספרים שמתחלקים ל-
+\begin_inset Formula $10$
+\end_inset
+
+ קבוצות.
+ לכן,
+ לפי עיקרון שובך היונים קיים 
+\begin_inset Formula $i$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left|X_{i}\right|\ge2$
+\end_inset
+
+.
+ יהיו 
+\begin_inset Formula $x_{1}\ne x_{2}\in X_{i}$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $x_{1}-x_{2}\equiv0\mod{10}$
+\end_inset
+
+,
+ ולכן הההפרש של 
+\begin_inset Formula $x_{1},x_{2}$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $10$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+נניח שב-
+\begin_inset Formula $A$
+\end_inset
+
+ אין זוג איברים שונים שההפרש שלהם מתחלק ב-
+\begin_inset Formula $10$
+\end_inset
+
+.
+ לכן,
+ ספרת האחדות של כל שני מספרים שונים ב-
+\begin_inset Formula $A$
+\end_inset
+
+ היא שונה.
+ נסתכל על הקבוצות
+\begin_inset Formula 
+\[
+\left\{ 1,9\right\} ,\left\{ 2,8\right\} ,\left\{ 3,7\right\} ,\left\{ 4,6\right\} .
+\]
+
+\end_inset
+
+לכל 
+\begin_inset Formula $a\in A$
+\end_inset
+
+,
+ מכיוון ש-
+\begin_inset Formula $a$
+\end_inset
+
+ אינו מתחלק ב-
+\begin_inset Formula $5$
+\end_inset
+
+ נקבל שספרת האחדות של 
+\begin_inset Formula $a$
+\end_inset
+
+ אינה ב-
+\begin_inset Formula $\left\{ 0,5\right\} $
+\end_inset
+
+.
+ לכן נמפה את 
+\begin_inset Formula $a$
+\end_inset
+
+ לאחת מהקבוצות לעיל,
+ לפי ספרת האחדות שלו.
+ מכיוון שמיפינו 
+\begin_inset Formula $5$
+\end_inset
+
+ איברים ל-
+\begin_inset Formula $4$
+\end_inset
+
+ קבוצות,
+ לפי עיקרון שובך היונים קיימים שני מספרים שממופים לאותה קבוצה.
+ מכיוון שאין שני איברים בעלי ספרת אחדות זהה,
+ נקבל שספרת האחדות של אחד היא 
+\begin_inset Formula $k$
+\end_inset
+
+ ושל השני 
+\begin_inset Formula $10-k$
+\end_inset
+
+,
+ ולכן סכומם מתחלק ב-
+\begin_inset Formula $10$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהי 
+\begin_inset Formula $X\subseteq\left[2n\right]$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left|X\right|=n+1$
+\end_inset
+
+.
+ הוכח/הפרך כי קיימים 
+\begin_inset Formula $x_{1},x_{2}\in X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x_{1},x_{2}$
+\end_inset
+
+ זרים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+באופן דומה לתרגיל הקודם,
+ נסתכל על המשפחה
+\begin_inset Formula 
+\[
+\left\{ \left\{ k,k+1\right\} \mid\exists0\le l\le n:k=2l+1\right\} .
+\]
+
+\end_inset
+
+יש במשפחה 
+\begin_inset Formula $n$
+\end_inset
+
+ קבוצות,
+ וכל קבוצה בה מכילה מספרים זרים (
+\begin_inset Formula $\ast$
+\end_inset
+
+).
+ לפי עיקרון שובך היונים,
+ קיימים ב-
+\begin_inset Formula $X$
+\end_inset
+
+ שני מספרים שונים הממופים לאותה הקבוצה,
+ ושני אלה זרים.
+ כעת,
+ נראה ש-
+\begin_inset Formula $k,k+1$
+\end_inset
+
+ זרים:
+ יהי 
+\begin_inset Formula $\alpha>1$
+\end_inset
+
+ מחלק של 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $k=\alpha\cdot c$
+\end_inset
+
+ עבור 
+\begin_inset Formula $c$
+\end_inset
+
+ טבעי כלשהו.
+ המספר הקטן ביותר שגדול מ-
+\begin_inset Formula $k$
+\end_inset
+
+ ומתחלק ב-
+\begin_inset Formula $\alpha$
+\end_inset
+
+ הוא
+\begin_inset Formula 
+\[
+\alpha\cdot\left(c+1\right)=\alpha\cdot c+\alpha>k+1,
+\]
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $k+1$
+\end_inset
+
+ לא מתחלק ב-
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ באופן דומה ניתן להראות שכל מחלק שגדול מ-
+\begin_inset Formula $1$
+\end_inset
+
+ של 
+\begin_inset Formula $k+1$
+\end_inset
+
+ אינו מחלק של 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+מצא את מספר המטריצות 
+\begin_inset Formula $2\times n$
+\end_inset
+
+,
+ כך שכל אחד מאיברי המטריצה ב-
+\begin_inset Formula $\left[2n\right]$
+\end_inset
+
+ ומופיע פעם אחת לפחות,
+ כך ש:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ללא הגבלות נוספות.
+\end_layout
+
+\begin_layout Enumerate
+אין עמודה שמופיעים בה שני מספרים ב-
+\begin_inset Formula $\left[n\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אין עמודה ששני מספריה הם 
+\begin_inset Formula $\left\{ j,n+j\right\} $
+\end_inset
+
+ לכל 
+\begin_inset Formula $1\le j\le n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+השורה השנייה היא סדרה עולה ממש.
+\end_layout
+
+\begin_layout Enumerate
+אין מספר זוגי המופיע בעמודה זוגית.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הדבר שקול למספר התמורות על 
+\begin_inset Formula $2n$
+\end_inset
+
+ מספרים,
+ ולכן יש 
+\begin_inset Formula $\left(2n\right)!$
+\end_inset
+
+ דרכים.
+\end_layout
+
+\begin_layout Enumerate
+בכל עמודה מופיע מספר אחד מ-
+\begin_inset Formula $\left\{ 1,\dots,n\right\} $
+\end_inset
+
+,
+ והשני מ-
+\begin_inset Formula $\left\{ n+1,\dots,2n\right\} $
+\end_inset
+
+.
+ נסתכל על כל סידור של 
+\begin_inset Formula $\left\{ 1,\dots,n\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $\left\{ n+1,\dots,2n\right\} $
+\end_inset
+
+.
+ כעת,
+ נבחר את העמודה ה-
+\begin_inset Formula $i$
+\end_inset
+
+ להיות האיברים ה-
+\begin_inset Formula $i$
+\end_inset
+
+ משני הסידורים,
+ יש 
+\begin_inset Formula $2$
+\end_inset
+
+ דרכים לכל עמודה.
+ בסך הכל:
+\begin_inset Formula 
+\[
+\underset{\text{\ensuremath{\text{סי}ד\text{ור}}\left\{  1,\dots,n\right\}  }}{\underbrace{n!}}\cdot\underset{\text{סידור \ensuremath{\left\{ n+1,\dots,2n\right\} }}}{\underbrace{n!}}\cdot\underset{\text{סדר פנימי בכל עמודה}}{\underbrace{2^{n}}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נפתור באמצעות הכלה והדחה,
+ על מספר העמודות שמכילות 
+\begin_inset Formula $\left\{ j,n+j\right\} $
+\end_inset
+
+ עבור 
+\begin_inset Formula $1\le j\le n$
+\end_inset
+
+ כלשהו.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מספר הסידורים ללא הגבלה הוא 
+\begin_inset Formula $\left(2n\right)!$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נניח שקיימות 
+\begin_inset Formula $r$
+\end_inset
+
+ עמודות שמכילות 
+\begin_inset Formula $\left\{ j,n+j\right\} $
+\end_inset
+
+.
+ תחילה,
+ נבחר את העמודות ואת ערכי ה-
+\begin_inset Formula $j$
+\end_inset
+
+:
+ 
+\begin_inset Formula ${n \choose r}^{2}$
+\end_inset
+
+.
+ יש 
+\begin_inset Formula $r!\cdot2^{r}$
+\end_inset
+
+ דרכים לחלק את הזוגות על עמודות אלה.
+ כעת,
+ נותרנו עם 
+\begin_inset Formula $2n-2r$
+\end_inset
+
+ איברים ללא הגבלה נוספת.
+ לכן,
+ מספר האפשרויות הוא
+\begin_inset Formula 
+\[
+\sum_{r=0}^{n}{n \choose r}^{2}\cdot r!\cdot2^{r}\cdot\left(2n-2r\right)!.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+השורה השנייה היא סדרה עולה ממש,
+ ולכן מכילה רישא עולה ממש של מספרים מ-
+\begin_inset Formula $\left\{ 1,\dots,n\right\} $
+\end_inset
+
+,
+ ולאחר מכן אחת מ-
+\begin_inset Formula $\left\{ n+1,\dots,2n\right\} $
+\end_inset
+
+.
+ נניח שבחרנו 
+\begin_inset Formula $k$
+\end_inset
+
+ איברים מ-
+\begin_inset Formula $\left[n\right]$
+\end_inset
+
+ לשורה השנייה (
+\begin_inset Formula ${n \choose k}$
+\end_inset
+
+ דרכים) - יש דרך אחת לסדר אותן.
+ עלינו לבחור 
+\begin_inset Formula $n-k$
+\end_inset
+
+ איברים מ-
+\begin_inset Formula $\left\{ n+1,\dots,2n\right\} $
+\end_inset
+
+,
+ ויש דרך אחת לסדר אותם גם כן.
+ כעת נותרו 
+\begin_inset Formula $n$
+\end_inset
+
+ מספרים שנוכל לסדר ללא הגבלה.
+ בסך הכל,
+ מספר הדרכים הוא
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{n \choose k}\cdot{n \choose n-k}\cdot n!.
+\]
+
+\end_inset
+
+באופן שקול (הוכחנו זהות שקולה בתרגול הקודם),
+ נבחר 
+\begin_inset Formula $n$
+\end_inset
+
+ מתוך 
+\begin_inset Formula $2n$
+\end_inset
+
+ איברים לשורה השנייה.
+ יש דרך אחת לסדר את השורה השנייה,
+ ואין הגבלות על סידור השורה הראשונה.
+ בסך הכל:
+\begin_inset Formula 
+\[
+{2n \choose n}\cdot n!.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $n$
+\end_inset
+
+ זוגי,
+ יש 
+\begin_inset Formula $n$
+\end_inset
+
+ מקומות זוגיים ו-
+\begin_inset Formula $n$
+\end_inset
+
+ מקומות אי-זוגיים.
+ לכן,
+ 
+\begin_inset Formula $n!$
+\end_inset
+
+ דרכים לחלוקת הזוגיים ו-
+\begin_inset Formula $n!$
+\end_inset
+
+ עבור האי-זוגיים.
+ בסך הכל
+\begin_inset Formula 
+\[
+\left(n!\right)^{2}.
+\]
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $n$
+\end_inset
+
+ אי-זוגי,
+ יש 
+\begin_inset Formula $n-1$
+\end_inset
+
+ מקומות בעמודות זוגיות,
+ ו-
+\begin_inset Formula $\left(n+1\right)$
+\end_inset
+
+ בעמודות אי-זוגיות.
+ תחילה,
+ נבחר את המקום בו הזוגיים לא נמצאים בו בעמודות האי-זוגיות:
+ 
+\begin_inset Formula $\left(n+1\right)$
+\end_inset
+
+ אפשרויות.
+\begin_inset Formula 
+\[
+\left(n!\right)^{2}\cdot\left(n+1\right)=n!\cdot\left(n+1\right)!.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

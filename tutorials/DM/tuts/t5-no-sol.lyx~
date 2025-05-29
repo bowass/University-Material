@@ -1,0 +1,2274 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 5"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family sans
+\series bold
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ יחסי סדר.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+יחסי סדר
+\end_layout
+
+\begin_layout Definition
+יחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל קבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ הוא 
+\emph on
+יחס סדר חלקי
+\emph default
+ אם הוא רפלקסיבי,
+ אנטי-סימטרי חלש וטרנזיטיבי.
+ הזוג 
+\begin_inset Formula $\left(A,R\right)$
+\end_inset
+
+ מהווה קבוצה סדורה חלקית (קס
+\begin_inset Quotes erd
+\end_inset
+
+ח,
+ או באנגלית
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Poset
+\lang hebrew
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל קבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ הוא 
+\emph on
+יחס סדר חזק
+\emph default
+ אם הוא אנטי-רפלקסיבי,
+ אנטי-סימטרי חזק וטרנזיטיבי (כמו 
+\begin_inset Formula $<$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל קבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ הוא 
+\emph on
+יחס סדר מלא/לינארי
+\emph default
+ אם הוא יחס סדר חלקי וגם לכל 
+\begin_inset Formula $a\ne b\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\mathrel{R}b$
+\end_inset
+
+ או 
+\begin_inset Formula $b\mathrel{R}a$
+\end_inset
+
+.
+ נאמר ש-
+\begin_inset Formula $\left(A,R\right)$
+\end_inset
+
+ היא קבוצה סדורה לינארית (קס
+\begin_inset Quotes erd
+\end_inset
+
+ל).ּ
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+בכל סעיף נתונה קבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ ויחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעליה - בדקו האם 
+\begin_inset Formula $\left(A,R\right)$
+\end_inset
+
+ קס
+\begin_inset Quotes erd
+\end_inset
+
+ח או קס
+\begin_inset Quotes erd
+\end_inset
+
+ל.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{N}^{2}$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\left(a<c\wedge b<d\right)\vee\left(a=c\wedge b=d\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ 0,1\right\} ^{10}$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $x,y\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\mathrel{R}y$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ מספר ה-
+\begin_inset Formula $1$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $x$
+\end_inset
+
+ קטן ממש ממספר ה-
+\begin_inset Formula $1$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathcal{P}\left(\mathbb{N}\right)$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $X,Y\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $X\mathrel{R}Y$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{R}$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $\alpha,\beta\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\alpha\mathrel{R}\beta$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\alpha=\beta$
+\end_inset
+
+ או 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי:
+ יהי 
+\begin_inset Formula $\left(a,b\right)\in A$
+\end_inset
+
+.
+ ברור כי 
+\begin_inset Formula $a=a\wedge b=b$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(a,b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ אנטי-סימטרי חלש:
+ יהיו 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(c,d\right)\mathrel{R}\left(a,b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+,
+ מתקיים 
+\begin_inset Formula $\left(a<c\wedge b<d\right)\vee\left(a=c\wedge b=d\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בנוסף,
+ באותו האופן מתקיים 
+\begin_inset Formula $\left(c<a\wedge d<b\right)\vee\left(c=a\wedge d=b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לא ייתכן ש-
+\begin_inset Formula $\left(a<c\wedge b<d\right)\wedge\left(c<a\wedge d<b\right)$
+\end_inset
+
+ מכיוון שנקבל 
+\begin_inset Formula $a<c\wedge c<a$
+\end_inset
+
+ - סתירה.
+\end_layout
+
+\begin_layout Itemize
+לכן לפחות אחד מהביטויים לא מתקיים,
+ וכך 
+\begin_inset Formula $c=a\wedge d=b$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(a,b\right)=\left(c,d\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right),\left(e,f\right)\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)\wedge\left(c,d\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+ נקבל 
+\begin_inset Formula $\left(a<c\wedge b<d\right)\vee\left(a=c\wedge b=d\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $\left(c,d\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+ נקבל 
+\begin_inset Formula $\left(c<e\wedge d<f\right)\vee\left(c=e\wedge d=f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נפריד למקרים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $\left(a=c\wedge b=d\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\left(a,b\right)=\left(c,d\right)$
+\end_inset
+
+.
+ ולכן,
+ מכיוון ש-
+\begin_inset Formula $\left(c,d\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+באופן זהה,
+ אם 
+\begin_inset Formula $\left(c=e\wedge d=f\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ נקבל ש-
+\begin_inset Formula $a<c\wedge b<d$
+\end_inset
+
+ וגם 
+\begin_inset Formula $c<e\wedge d<f$
+\end_inset
+
+.
+ מטרנזיטיביות 
+\begin_inset Formula $<$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $a<e\wedge b<f$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ לא יחס סדר מלא:
+ 
+\begin_inset Formula $\left(\left(4,1\right),\left(2,3\right)\right)\notin R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(\left(2,3\right),\left(4,1\right)\right)\notin R$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ אנטי-רפלקסיבי.
+ בנוסף 
+\begin_inset Formula $R$
+\end_inset
+
+ אנטי-סימטרי חזק וטרנזיטיבי ולכן הוא יחס סדר חזק.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathcal{P}\left(\mathbb{N}\right)$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $X,Y\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $X\mathrel{R}Y$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי:
+ לכל 
+\begin_inset Formula $X\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $X\subseteq X$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(X,X\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ אנטי-סימטרי חלש:
+ לכל 
+\begin_inset Formula $X,Y\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(X,Y\right)\in R\wedge\left(Y,X\right)\in R$
+\end_inset
+
+,
+ מתקיים 
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+ וגם 
+\begin_inset Formula $X\subseteq Y$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $X=Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $X,Y,Z\in\mathcal{P}\left(\mathbb{N}\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(X,Y\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(Y,Z\right)\in R$
+\end_inset
+
+.
+ אזי,
+ 
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+ וגם 
+\begin_inset Formula $Z\subseteq Y$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $z\in Z$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $Z\subseteq Y$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $z\in Y$
+\end_inset
+
+.
+ בנוסף,
+ מכיוון ש-
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $z\in X$
+\end_inset
+
+.
+ בסך הכל 
+\begin_inset Formula $Z\subseteq X$
+\end_inset
+
+ ולכן מהגדרת 
+\begin_inset Formula $R$
+\end_inset
+
+ ממתקיים 
+\begin_inset Formula $\left(X,Z\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ לא יחס סדר מלא:
+ עבור 
+\begin_inset Formula $X=\left\{ 1\right\} ,Y=\left\{ 2\right\} $
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(X,Y\right)\notin R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(Y,X\right)\notin R$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{R}$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $\alpha,\beta\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\alpha\mathrel{R}\beta$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\alpha=\beta$
+\end_inset
+
+ או 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי:
+ לכל 
+\begin_inset Formula $\alpha\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\alpha=\alpha$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\alpha\mathrel{R}\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ אנטי-סימטרי חלש:
+ יהיו 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(b,a\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $a\mathrel{R}b$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a=b$
+\end_inset
+
+ או 
+\begin_inset Formula $b=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+באופן דומה,
+ 
+\begin_inset Formula $b=a$
+\end_inset
+
+ או 
+\begin_inset Formula $a=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $a=b$
+\end_inset
+
+ סיימנו.
+ אחרת,
+ 
+\begin_inset Formula $b=0$
+\end_inset
+
+ וגם 
+\begin_inset Formula $a=0$
+\end_inset
+
+,
+ ולכן בכל מקרה מתקיים 
+\begin_inset Formula $a=b$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $a,b,c\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(b,c\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מכיוון ש-
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a=b\vee b=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+מכיוון ש-
+\begin_inset Formula $\left(b,c\right)\in R$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $b=c\vee c=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+נפריד למקרים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $a=b$
+\end_inset
+
+,
+ מכיוון ש-
+\begin_inset Formula $\left(b,c\right)\in R$
+\end_inset
+
+ אז ברור כי 
+\begin_inset Formula $\left(a,c\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אחרת 
+\begin_inset Formula $b=0$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $b=c\vee c=0$
+\end_inset
+
+ שקול ל-
+\begin_inset Formula $0=c\vee c=0$
+\end_inset
+
+,
+ והנ
+\begin_inset Quotes erd
+\end_inset
+
+ל שקול ל-
+\begin_inset Formula $c=0$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $c=0$
+\end_inset
+
+,
+ ומהגדרת 
+\begin_inset Formula $R$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left(a,c\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(2,3\right)\notin R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(3,2\right)\notin R$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $R$
+\end_inset
+
+ לא יחס סדר מלא.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $\left(A,R\right)$
+\end_inset
+
+ קס
+\begin_inset Quotes erd
+\end_inset
+
+ח ויהיו 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+.
+ נאמר ש-
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $a$
+\end_inset
+
+ 
+\bar under
+קטן או שווה
+\bar default
+ ל-
+\begin_inset Formula $b$
+\end_inset
+
+,
+ ו-
+\begin_inset Formula $b$
+\end_inset
+
+ 
+\bar under
+גדול או שווה
+\bar default
+ ל-
+\begin_inset Formula $a$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $a\mathrel{R}b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם בנוסף מתקיים 
+\begin_inset Formula $a\ne b$
+\end_inset
+
+,
+ נאמר ש-
+\begin_inset Formula $a$
+\end_inset
+
+ 
+\bar under
+קטן ממש
+\bar default
+ מ-
+\begin_inset Formula $b$
+\end_inset
+
+,
+ או 
+\begin_inset Formula $b$
+\end_inset
+
+ 
+\bar under
+גדול ממש
+\bar default
+ מ-
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a$
+\end_inset
+
+ הוא איבר 
+\bar under
+מינימלי
+\bar default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל 
+\begin_inset Formula $b\in A$
+\end_inset
+
+ מתקיים ש-
+\begin_inset Formula $b$
+\end_inset
+
+ לא 
+\bar under
+קטן ממש
+\bar default
+ מ-
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a$
+\end_inset
+
+ הוא 
+\series bold
+\bar under
+מינימום
+\series default
+\bar default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל 
+\begin_inset Formula $b\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\mathrel{R}b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a$
+\end_inset
+
+ הוא איבר 
+\bar under
+מקסימלי
+\bar default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל 
+\begin_inset Formula $b\in A$
+\end_inset
+
+ מתקיים ש-
+\begin_inset Formula $b$
+\end_inset
+
+ לא 
+\bar under
+גדול ממש
+\bar default
+ מ-
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a$
+\end_inset
+
+ הוא 
+\series bold
+\bar under
+מקסימום
+\series default
+\bar default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל 
+\begin_inset Formula $b\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $b\mathrel{R}a$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+עבור יחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל קבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\emph on
+היחס ההופכי
+\emph default
+ 
+\begin_inset Formula $R^{-1}$
+\end_inset
+
+ מוגדר להיות
+\begin_inset Formula 
+\[
+R^{-1}:=\left\{ \left(y,x\right)\in A^{2}\mid x\mathrel{R}y\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהי 
+\begin_inset Formula $\left(A,R\right)$
+\end_inset
+
+ קס
+\begin_inset Quotes erd
+\end_inset
+
+ח.
+ הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+קיים 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a$
+\end_inset
+
+ איבר מקסימלי ב-
+\begin_inset Formula $R$
+\end_inset
+
+ או 
+\begin_inset Formula $a$
+\end_inset
+
+ איבר מינימלי ב-
+\begin_inset Formula $R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם קיימים 
+\begin_inset Formula $a\ne b\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b$
+\end_inset
+
+ מינימליים,
+ אז אין בקבוצה מינימום.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(A,R^{-1}\right)$
+\end_inset
+
+ הוא קס
+\begin_inset Quotes erd
+\end_inset
+
+ח.
+\end_layout
+
+\begin_layout Enumerate
+יהי 
+\begin_inset Formula $S$
+\end_inset
+
+ יחס סדר חלקי מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $R\cap S$
+\end_inset
+
+ יחס סדר חלקי מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+נניח כי 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס סדר מלא,
+ ויהי 
+\begin_inset Formula $S$
+\end_inset
+
+ יחס סדר מלא מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(A,R\cap S\right)$
+\end_inset
+
+ קס
+\begin_inset Quotes erd
+\end_inset
+
+ל.
+ 
+\end_layout
+
+\begin_layout Enumerate
+קיים יחס סדר חלקי 
+\begin_inset Formula $S$
+\end_inset
+
+ מעל 
+\begin_inset Formula $A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $R\subset S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+יהיו 
+\begin_inset Formula $B,C\subseteq A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\forall b\in B\exists c\in C:c\mathrel{R}b$
+\end_inset
+
+,
+ וגם 
+\begin_inset Formula $\forall c\in C\exists b\in B:b\mathrel{R}c$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $B,C$
+\end_inset
+
+ זרות אז לא קיים 
+\begin_inset Formula $m\in B$
+\end_inset
+
+ כך שלא קיים 
+\begin_inset Formula $m\ne b\in B$
+\end_inset
+
+ שמקיים 
+\begin_inset Formula $b\mathrel{R}m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם קיים ל-
+\begin_inset Formula $R$
+\end_inset
+
+ איבר מינימלי יחיד ב-
+\begin_inset Formula $A$
+\end_inset
+
+,
+ הוא מינימום.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+קיים 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a$
+\end_inset
+
+ איבר מקסימלי ב-
+\begin_inset Formula $R$
+\end_inset
+
+ או 
+\begin_inset Formula $a$
+\end_inset
+
+ איבר מינימלי ב-
+\begin_inset Formula $R$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הטענה לא נכונה:
+ נבחר 
+\begin_inset Formula $A=\mathbb{Z}$
+\end_inset
+
+ ו-
+\begin_inset Formula $R$
+\end_inset
+
+ להיות 
+\begin_inset Formula $\le$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+נניח בשלילה שקיים איבר מקסימלי 
+\begin_inset Formula $n\in A$
+\end_inset
+
+ של 
+\begin_inset Formula $A$
+\end_inset
+
+ ב-
+\begin_inset Formula $R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+עם זאת,
+ 
+\begin_inset Formula $n\le n+1\in A$
+\end_inset
+
+ - בסתירה להגדרת איבר מקסימלי.
+\end_layout
+
+\begin_layout Enumerate
+באופן דומה ניתן להוכיח שאין איבר מינימלי.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+אם קיימים 
+\begin_inset Formula $a\ne b\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b$
+\end_inset
+
+ מינימליים,
+ אז אין בקבוצה מינימום.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נראה בה
+\begin_inset Quotes erd
+\end_inset
+
+כ כי 
+\begin_inset Formula $a$
+\end_inset
+
+ לא מינימום:
+ מכיוון ש-
+\begin_inset Formula $b$
+\end_inset
+
+ מינימלי,
+ לכל 
+\begin_inset Formula $b\ne c\in A$
+\end_inset
+
+ לא מתקיים 
+\begin_inset Formula $c\mathrel{R}b$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בפרט,
+ נציב 
+\begin_inset Formula $c=a$
+\end_inset
+
+ לא מתקיים 
+\begin_inset Formula $a\mathrel{R}b$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $a$
+\end_inset
+
+ לא מינימום לפי הגדרה.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+באופן זהה ניתן להראות ש-
+\begin_inset Formula $b$
+\end_inset
+
+ לא מינימום.
+\end_layout
+
+\begin_layout Enumerate
+נניח בשלילה שקיים 
+\begin_inset Formula $c\in A\setminus\left\{ a,b\right\} $
+\end_inset
+
+ מינימום בקבוצה.
+ אזי מהגדרת מינימום מתקיים 
+\begin_inset Formula $c\mathrel{R}a$
+\end_inset
+
+,
+ סתירה מכיוון ש-
+\begin_inset Formula $c\ne a$
+\end_inset
+
+:
+ לכן 
+\begin_inset Formula $c$
+\end_inset
+
+ קטן ממש מ-
+\begin_inset Formula $a$
+\end_inset
+
+,
+ בסתירה לכך ש-
+\begin_inset Formula $a$
+\end_inset
+
+ מינימלי.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(A,R^{-1}\right)$
+\end_inset
+
+ הוא קס
+\begin_inset Quotes erd
+\end_inset
+
+ח.
+ הוכחה:
+ נראה 
+\begin_inset Formula $R^{-1}$
+\end_inset
+
+ הוא יחס סדר חלקי.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נוכיח כי 
+\begin_inset Formula $R^{-1}$
+\end_inset
+
+ רפלקסיבי:
+ לכל 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(x,x\right)\in R$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\left(x,x\right)\in R^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נוכיח כי 
+\begin_inset Formula $R^{-1}$
+\end_inset
+
+ אנטי-סימטרי חלש:
+ יהיו 
+\begin_inset Formula $x,y\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(x,y\right)\in R^{-1}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(y,x\right)\in R^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $\left(x,y\right)\in R^{-1}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(y,x\right)\in R$
+\end_inset
+
+.
+ באופן דומה 
+\begin_inset Formula $\left(x,y\right)\in R$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $R$
+\end_inset
+
+ אנטי-סימטרי חלש נקבל ש-
+\begin_inset Formula $x=y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+נוכיח כי 
+\begin_inset Formula $R^{-1}$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $x,y,z\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(x,y\right)\in R^{-1}\wedge\left(y,z\right)\in R^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אזי 
+\begin_inset Formula $\left(y,x\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(z,y\right)\in R$
+\end_inset
+
+.
+ מטרנזיטיביות 
+\begin_inset Formula $R$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $\left(z,x\right)\in R$
+\end_inset
+
+ - ולכן 
+\begin_inset Formula $\left(x,z\right)\in R^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+יהי 
+\begin_inset Formula $S$
+\end_inset
+
+ יחס סדר חלקי מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $R\cap S$
+\end_inset
+
+ יחס סדר חלקי מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R\cap S$
+\end_inset
+
+ רפלקסיבי:
+ יהיו 
+\begin_inset Formula $x\in A$
+\end_inset
+
+.
+ מרפלקסיביות 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ נקבל 
+\begin_inset Formula $\left(x,x\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(x,x\right)\in S$
+\end_inset
+
+.
+ מהגדרת חיתוך 
+\begin_inset Formula $\left(x,x\right)\in R\cap S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R\cap S$
+\end_inset
+
+ אנטי-סימטרי חלש:
+ יהיו 
+\begin_inset Formula $x,y\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(x,y\right)\in R\cap S$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(y,x\right)\in R\cap S$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(x,y\right)\in S$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(y,x\right)\in S$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $S$
+\end_inset
+
+ אנטי-סימטרי חלש נקבל 
+\begin_inset Formula $x=y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R\cap S$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $x,y,z\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(x,y\right)\in R\cap S\wedge\left(y,z\right)\in R\cap S$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(x,y\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(y,z\right)\in R$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(x,z\right)\in R$
+\end_inset
+
+.
+ באופן דומה נקבל ש-
+\begin_inset Formula $\left(x,z\right)\in S$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(x,z\right)\in R\cap S$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+נניח כי 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס סדר מלא,
+ ויהי 
+\begin_inset Formula $S$
+\end_inset
+
+ יחס סדר מלא מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(A,R\cap S\right)$
+\end_inset
+
+ קס
+\begin_inset Quotes erd
+\end_inset
+
+ל.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $A=\mathbb{N}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $R='\le'$
+\end_inset
+
+ ו-
+\begin_inset Formula $S='\ge'$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(2,3\right)\notin R\cap S$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(3,2\right)\notin R\cap S$
+\end_inset
+
+ ולכן היחס אינו יחס סדר מלא.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+קיים יחס סדר חלקי 
+\begin_inset Formula $S$
+\end_inset
+
+ מעל 
+\begin_inset Formula $A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $R\subset S$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל יחס סדר חלקי 
+\begin_inset Formula $R$
+\end_inset
+
+ קיים יחס סדר חלקי 
+\begin_inset Formula $S$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $R\subset S$
+\end_inset
+
+?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ יחס סדר מלא.
+ נניח שבשלילה שקיים יחס סדר חלקי 
+\begin_inset Formula $S$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $R\subset S$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אזי קיימים 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in S\setminus R$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $R$
+\end_inset
+
+ יחס משווה,
+ מתקיים 
+\begin_inset Formula $\left(b,a\right)\in R$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(b,a\right)\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+מכיוון ש-
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי,
+ לא ייתכן ש-
+\begin_inset Formula $a=b$
+\end_inset
+
+ (אחרת 
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+).
+ אזי קיבלנו סתירה לכך ש-
+\begin_inset Formula $S$
+\end_inset
+
+ אנטי-סימטרי חלש.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+יהיו 
+\begin_inset Formula $B,C\subseteq A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\forall b\in B\exists c\in C:c\mathrel{R}b$
+\end_inset
+
+,
+ וגם 
+\begin_inset Formula $\forall c\in C\exists b\in B:b\mathrel{R}c$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $B,C$
+\end_inset
+
+ זרות אז לא קיים 
+\begin_inset Formula $m\in B$
+\end_inset
+
+ כך שלא קיים 
+\begin_inset Formula $m\ne b\in B$
+\end_inset
+
+ שמקיים 
+\begin_inset Formula $b\mathrel{R}m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם קיים ל-
+\begin_inset Formula $R$
+\end_inset
+
+ איבר מינימלי יחיד ב-
+\begin_inset Formula $A$
+\end_inset
+
+,
+ הוא מינימום.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

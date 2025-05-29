@@ -1,0 +1,2044 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+enumitem
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\bullet 0 0 14 -1
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+מתמטיקה דיסקרטית - תרגיל בית
+\family roman
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+8
+\family roman
+\shape up
+\size largest
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color red
+עם פתרון
+\end_layout
+
+\begin_layout Author
+הגשה ליום חמישי,
+
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+19/9
+\numeric off
+ בשעה
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+23:57
+\numeric off
+,
+ לפי ההנחיות במודל
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ 
+\emph on
+מסלול המילטוני
+\emph default
+ ב-
+\begin_inset Formula $G$
+\end_inset
+
+ הוא מסלול פשוט שעובר בכל הקודקודים ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+ אם ב-
+\begin_inset Formula $G$
+\end_inset
+
+ קיים מסלול המילטוני,
+ נאמר ש-
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\emph on
+המילטוני
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+1
+\series bold
+\numeric off
+.
+ 
+\series default
+עבור כל אחד מהגרפים הבאים,
+ האם הוא המילטוני?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+יהי 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $V=\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+,
+ ולכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ (
+\begin_inset Formula $v=\left(v_{i}\right)_{i=1}^{n},u=\left(u_{i}\right)_{i=1}^{n}$
+\end_inset
+
+) מתקיים 
+\begin_inset Formula $\left\{ u,v\right\} \in E$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $u$
+\end_inset
+
+ ו-
+\begin_inset Formula $v$
+\end_inset
+
+ נבדלים בתו אחד בדיוק.
+ באופן שקול,
+\begin_inset Formula 
+\[
+\left|v\oplus u\right|=\sum_{i=1}^{n}v_{i}\oplus u_{i}=1.
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $G=\left(V,R\right)$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $V=\left[n\right]=\left\{ 1,\dots,n\right\} $
+\end_inset
+
+ עבור 
+\begin_inset Formula $n\in\mathbb{N}^{+}$
+\end_inset
+
+ כלשהו,
+ ו-
+\begin_inset Formula $R$
+\end_inset
+
+ יחס משווה ואנטי-סימטרי חזק על 
+\begin_inset Formula $V$
+\end_inset
+
+ (שימו לב ש-
+\begin_inset Formula $R$
+\end_inset
+
+ מכוון).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הגרף המילטוני - נוכיח באינדוקציה על 
+\begin_inset Formula $n$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס:
+ עבור 
+\begin_inset Formula $n=0$
+\end_inset
+
+ נקבל שהגרף מכיל צומת אחד בלבד:
+ 
+\begin_inset Formula $V=\left\{ \varepsilon\right\} $
+\end_inset
+
+.
+ לכן המסלול הריק הוא מסלול המילטוני בגרף.
+\end_layout
+
+\begin_layout Itemize
+צעד:
+ נניח שקיים מסלול המילטוני בגרף כזה עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+,
+ ונוכיח עבור 
+\begin_inset Formula $n+1$
+\end_inset
+
+:
+ יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף כאשר 
+\begin_inset Formula $V=\left\{ 0,1\right\} ^{n+1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $E$
+\end_inset
+
+ כנתון בשאלה.
+ מהנחת האינדוקציה,
+ עבור כזה כאשר הקודקודים הם 
+\begin_inset Formula $\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ קיים מסלול המילטוני.
+ נסמנו ב-
+\begin_inset Formula $u_{0},\dots,u_{2^{n}-1}$
+\end_inset
+
+.
+ נשים לב ש-
+\begin_inset Formula $V_{1},V_{2}$
+\end_inset
+
+ מהווים חלוקה של 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ מהגדרגת הגרף נקבל ש-
+\begin_inset Formula $0\circ u_{0},\dots,0\circ u_{2^{n}-1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $1\circ u_{0},\dots,1\circ u_{2^{n}-1}$
+\end_inset
+
+ הם מסלולים המילטוניים ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+ בנוסף,
+ מכיוון שהגרף לא מכוון,
+ גם 
+\begin_inset Formula $0\circ u_{2^{n}-1},\dots,0\circ u_{0}$
+\end_inset
+
+ הוא מסלול המילטוני ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+ לבסוף,
+ נשים לב ש-
+\begin_inset Formula 
+\[
+\left|\left(0\circ u_{0}\right)\oplus\left(1\circ u_{0}\right)\right|=1,
+\]
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $\left\{ 0\circ u_{0},1\circ u_{0}\right\} \in E$
+\end_inset
+
+.
+ בסך הכל,
+ המסלול
+\begin_inset Formula 
+\[
+0\circ u_{2^{n}-1},\dots,0\circ u_{0},1\circ u_{0},\dots,1\circ u_{2^{n}-1}
+\]
+
+\end_inset
+
+הוא מסלול המילטוני ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+הגרף המילטוני - נוכיח כי לכל קבוצה סופית 
+\begin_inset Formula $V$
+\end_inset
+
+ בגודל 
+\begin_inset Formula $n$
+\end_inset
+
+ הטענה מתקיימת,
+ באינדוקציה על 
+\begin_inset Formula $n$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס:
+ עבור 
+\begin_inset Formula $n=1$
+\end_inset
+
+ נקבל שהמסלול הריק הוא מסלול המילטוני בגרף.
+\end_layout
+
+\begin_layout Itemize
+צעד:
+ נניח שהטענה מתקיימת עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ תהי 
+\begin_inset Formula $V$
+\end_inset
+
+ קבוצה בגודל 
+\begin_inset Formula $n+1$
+\end_inset
+
+ ויהי 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס משווה ואנטי-סימטרי חזק על 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $G=\left(V,R\right)$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $V$
+\end_inset
+
+ סופית קיים ב-
+\begin_inset Formula $G$
+\end_inset
+
+ מקסימום,
+ נסמנו ב-
+\begin_inset Formula $M$
+\end_inset
+
+.
+ נגדיר גרף 
+\begin_inset Formula $G^{\prime}=\left(V^{\prime},R^{\prime}\right)$
+\end_inset
+
+ הנוצר מ-
+\begin_inset Formula $G$
+\end_inset
+
+ לאחר הסרת 
+\begin_inset Formula $M$
+\end_inset
+
+ וכל הקשתות שנוגעות בו.
+ ניתן להוכיח ש-
+\begin_inset Formula $R^{\prime}$
+\end_inset
+
+ הוא יחס משווה ואנטי-סימטרי חזק על 
+\begin_inset Formula $V^{\prime}$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $\left|V^{\prime}\right|=n$
+\end_inset
+
+,
+ מהנחת האינדוקציה נקבל שקיים מסלול המילטוני 
+\begin_inset Formula $v_{1},\dots,v_{n}$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $R^{\prime}\subseteq R$
+\end_inset
+
+ ו-
+\begin_inset Formula $M$
+\end_inset
+
+ מקסימום ב-
+\begin_inset Formula $G$
+\end_inset
+
+ (לכן 
+\begin_inset Formula $\left(v_{n},M\right)\in R$
+\end_inset
+
+) נקבל שהמסלול 
+\begin_inset Formula $v_{1},\dots,v_{n},M$
+\end_inset
+
+ הוא מסלול המילטוני ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+2
+\series bold
+\numeric off
+.
+ 
+\series default
+יהיו 
+\begin_inset Formula $n,k\in\mathbb{N}^{+}$
+\end_inset
+
+ ויהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף קשיר בעל 
+\begin_inset Formula $n$
+\end_inset
+
+ צמתים ו-
+\begin_inset Formula $n+k-1$
+\end_inset
+
+ קשתות.
+ הוכיחו כי ב-
+\begin_inset Formula $G$
+\end_inset
+
+ יש לפחות 
+\begin_inset Formula $k$
+\end_inset
+
+ מעגלים שונים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את הטענה באינדוקציה על 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ למען הנוחות,
+ נוכיח את הטענה לכל 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס האינדוקציה:
+ עבור 
+\begin_inset Formula $k=0$
+\end_inset
+
+,
+ ברור שלכל גרף יש לפחות 
+\begin_inset Formula $0$
+\end_inset
+
+ מעגלים שונים.
+\end_layout
+
+\begin_layout Itemize
+צעד האינדוקציה:
+ נניח את נכונות הטענה עבור 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף קשיר עם 
+\begin_inset Formula $n$
+\end_inset
+
+ צמתים ב-
+\begin_inset Formula $n+\left(k-1\right)+1=n+k$
+\end_inset
+
+ קשתות.
+ נשים לב ש-
+\begin_inset Formula $n+k>n-1$
+\end_inset
+
+,
+ ולכן מכיוון ש-
+\begin_inset Formula $G$
+\end_inset
+
+ קשיר קיים בו מעגל 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ תהי 
+\begin_inset Formula $e$
+\end_inset
+
+ קשת על המעגל הזה,
+ ונסמן 
+\begin_inset Formula $G^{\prime}=G\setminus\left\{ e\right\} $
+\end_inset
+
+.
+ ראינו בהרצאה כי 
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ קשיר.
+ בנוסף,
+ ב-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ יש 
+\begin_inset Formula $n$
+\end_inset
+
+ צמתים ו-
+\begin_inset Formula $n+k-1$
+\end_inset
+
+ קשתות.
+ מהנחת האינדוקציה נקבל שקיימים ב-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ לפחות 
+\begin_inset Formula $k$
+\end_inset
+
+ מעגלים שונים.
+ מעגלים אלו נמצאים ב-
+\begin_inset Formula $G$
+\end_inset
+
+ ולא מכילים את 
+\begin_inset Formula $e$
+\end_inset
+
+,
+ מכיוון ש-
+\begin_inset Formula $e$
+\end_inset
+
+ לא ב-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+.
+ לכן כולם שונים מ-
+\begin_inset Formula $C$
+\end_inset
+
+.
+ בסך הכל,
+ נקבל ש-
+\begin_inset Formula $k$
+\end_inset
+
+ המעגלים לעיל יחד עם 
+\begin_inset Formula $C$
+\end_inset
+
+ מהווים 
+\begin_inset Formula $k+1$
+\end_inset
+
+ מעגלים שונים ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+3
+\series bold
+\numeric off
+.
+ 
+\series default
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף בעל 
+\begin_inset Formula $n$
+\end_inset
+
+ צמתים ו-
+\begin_inset Formula $n-1$
+\end_inset
+
+ קשתות.
+ הוכיחו שקיים ב-
+\begin_inset Formula $G$
+\end_inset
+
+ רכיב קשירות שהוא עץ.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נסמן את רכיבי הקשירות של 
+\begin_inset Formula $G$
+\end_inset
+
+ ב-
+\begin_inset Formula $G_{1},\dots,G_{k}$
+\end_inset
+
+.
+ לכל 
+\begin_inset Formula $1\le i\le k$
+\end_inset
+
+,
+ נסמן את מספר הצמתים והקשתות ב-
+\begin_inset Formula $G_{i}$
+\end_inset
+
+ ב-
+\begin_inset Formula $n_{i}$
+\end_inset
+
+ ו-
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ בהתאמה.
+ נניח בשלילה שלא קיים ב-
+\begin_inset Formula $G$
+\end_inset
+
+ רכיב קשירות שהוא עץ.
+ לכל 
+\begin_inset Formula $1\le i\le k$
+\end_inset
+
+,
+ 
+\begin_inset Formula $G_{i}$
+\end_inset
+
+ גרף קשיר.
+ אזי 
+\begin_inset Formula $m_{i}\ge n_{i}$
+\end_inset
+
+:
+ מכיוון שהגרף קשיר מתקיים 
+\begin_inset Formula $m_{i}\ge n_{i}-1$
+\end_inset
+
+,
+ ואם היה מתקיים שוויון אז 
+\begin_inset Formula $G_{i}$
+\end_inset
+
+ היה עץ.
+ אזי,
+\begin_inset Formula 
+\[
+\left|E\right|=\sum_{i=1}^{k}m_{i}\ge\sum_{i=1}^{k}n_{i}=n,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+בסתירה לכך ש-
+\begin_inset Formula $\left|E\right|=n-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+4
+\series bold
+\numeric off
+.
+ 
+\series default
+תהי 
+\begin_inset Formula $V\ne\emptyset$
+\end_inset
+
+ קבוצה ויהיו 
+\begin_inset Formula $T_{1}=\left(V,E_{1}\right),T_{2}=\left(V,E_{2}\right)$
+\end_inset
+
+ עצים.
+ תהי 
+\begin_inset Formula $e\in E_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכיחו כי קיימת 
+\begin_inset Formula $f\in E_{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(T_{1}\setminus\left\{ e\right\} \right)\cup\left\{ f\right\} $
+\end_inset
+
+ הוא עץ.
+\end_layout
+
+\begin_layout Enumerate
+הוכיחו כי קיימת 
+\begin_inset Formula $f\in E_{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(T_{1}\setminus\left\{ e\right\} \right)\cup\left\{ f\right\} $
+\end_inset
+
+ הוא עץ וגם 
+\begin_inset Formula $\left(T_{2}\setminus\left\{ f\right\} \right)\cup\left\{ e\right\} $
+\end_inset
+
+ הוא עץ.
+\end_layout
+
+\begin_layout Description
+רמז:
+ התחילו מהטענה הבאה (יש להוכיח):
+ יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ בעל שני רכיבי קשירות,
+ ויהיו 
+\begin_inset Formula $x,y\in V$
+\end_inset
+
+ צמתים ברכיבי קשירות שונים.
+ במידה ונוסיף את הקשת 
+\begin_inset Formula $\left\{ x,y\right\} $
+\end_inset
+
+ לגרף נקבל גרף קשיר.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+תחילה,
+ עבור 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף עם שני רכיבי קשירות ו-
+\begin_inset Formula $x,y\in V$
+\end_inset
+
+ צמתים ברכיבי קשירות שונים,
+ 
+\begin_inset Formula $G\cup\left\{ \left\{ x,y\right\} \right\} $
+\end_inset
+
+ הוא גרף קשיר:
+ יהיו 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $u,v$
+\end_inset
+
+ באותו רכיב קשירות ב-
+\begin_inset Formula $G$
+\end_inset
+
+ קיים מסלול ביניהם.
+ אחרת,
+ בה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $x$
+\end_inset
+
+ ברכיב הקשירות של 
+\begin_inset Formula $u$
+\end_inset
+
+ ו-
+\begin_inset Formula $y$
+\end_inset
+
+ של 
+\begin_inset Formula $v$
+\end_inset
+
+,
+ והמסלול הבא הוא מסלול בגרף החדש מ-
+\begin_inset Formula $u$
+\end_inset
+
+ ל-
+\begin_inset Formula $v$
+\end_inset
+
+:
+ 
+\begin_inset Formula $u\leadsto x\rightarrow y\leadsto v$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הגרף 
+\begin_inset Formula $T_{1}\setminus\left\{ e\right\} $
+\end_inset
+
+ מכיל 
+\begin_inset Formula $n-2$
+\end_inset
+
+ קשתות.
+ מכיוון שאין בגרף מעגלים,
+ ב-
+\begin_inset Formula $T_{1}\setminus\left\{ e\right\} $
+\end_inset
+
+ יש שני רכיבי קשירות (ראינו בהרצאה).
+ נסמן את קבוצות הצמתים ברכיבי הקשירות השונים ב-
+\begin_inset Formula $V_{1},V_{2}$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ קשיר,
+ קיימים 
+\begin_inset Formula $v\in V_{1},u\in V_{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f=\left\{ u,v\right\} \in E_{2}$
+\end_inset
+
+.
+ אזי,
+ מהטענה שהוכחנו לעיל נקבל ש-
+\begin_inset Formula $\left(T_{1}\setminus\left\{ e\right\} \right)\cup\left\{ f\right\} $
+\end_inset
+
+ קשיר.
+ בנוסף,
+ מספר הקשתות הוא כמספר הקשתות בעץ 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+,
+ ולכן הגרף החדש הוא עץ.
+\end_layout
+
+\begin_layout Enumerate
+נסמן 
+\begin_inset Formula $e=\left\{ u,v\right\} $
+\end_inset
+
+.
+ הגרף 
+\begin_inset Formula $T_{1}\setminus\left\{ e\right\} $
+\end_inset
+
+ מכיל 
+\begin_inset Formula $n-2$
+\end_inset
+
+ קשתות.
+ מכיוון שאין בגרף מעגלים,
+ ב-
+\begin_inset Formula $T_{1}\setminus\left\{ e\right\} $
+\end_inset
+
+ יש שני רכיבי קשירות (ראינו בהרצאה).
+ נסמן את קבוצות הצמתים ברכיבי הקשירות השונים ב-
+\begin_inset Formula $V_{1},V_{2}$
+\end_inset
+
+.
+ נניח בה
+\begin_inset Quotes erd
+\end_inset
+
+כ כי 
+\begin_inset Formula $u\in V_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $v\in V_{2}$
+\end_inset
+
+.
+ נסתכל על המסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+ ב-
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ (קיים כזה כי 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ קשיר).
+ המסלול מורכב מרישא של קודקודים ב-
+\begin_inset Formula $V_{1}$
+\end_inset
+
+ (החל מ-
+\begin_inset Formula $u$
+\end_inset
+
+),
+ ומסיפא של קודקודים ב-
+\begin_inset Formula $V_{2}$
+\end_inset
+
+ (שמסתיימת ב-
+\begin_inset Formula $v$
+\end_inset
+
+).
+ נסמן ב-
+\begin_inset Formula $x$
+\end_inset
+
+ את הקודקוד האחרון שמבקרים בו ב-
+\begin_inset Formula $V_{1}$
+\end_inset
+
+,
+ וב-
+\begin_inset Formula $y$
+\end_inset
+
+ את הצומת העוקב לו (
+\begin_inset Formula $y\in V_{2}$
+\end_inset
+
+).
+ נבחר 
+\begin_inset Formula $f=\left\{ x,y\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+באופן דומה לסעיף הקודם מתקיים ש-
+\begin_inset Formula $\left(T_{1}\setminus\left\{ e\right\} \right)\cup\left\{ f\right\} $
+\end_inset
+
+ הוא עץ.
+\end_layout
+
+\begin_layout Itemize
+כעת נוכיח ש-
+\begin_inset Formula $\left(T_{2}\setminus\left\{ f\right\} \right)\cup\left\{ e\right\} $
+\end_inset
+
+ הוא עץ.
+ מכיוון שמספר הקשתות בגרף הוא כשל 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+,
+ יש להוכיח שהגרף החדש קשיר.
+ נסמן 
+\begin_inset Formula $T=T_{2}\cup\left\{ e\right\} $
+\end_inset
+
+.
+ נשים לב שב-
+\begin_inset Formula $T$
+\end_inset
+
+ קיים המעגל 
+\begin_inset Formula $x\leadsto u\underset{e}{\rightarrow}v\leadsto y\underset{f}{\rightarrow}x$
+\end_inset
+
+,
+ ולכן הקשת 
+\begin_inset Formula $f$
+\end_inset
+
+ נמצאת על מעגל ב-
+\begin_inset Formula $T$
+\end_inset
+
+.
+ מטענה שראינו בהרצאה נקבל ש-
+\begin_inset Formula $T\setminus\left\{ f\right\} =\left(T_{2}\setminus\left\{ f\right\} \right)\cup\left\{ e\right\} $
+\end_inset
+
+ הוא קשיר.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+5
+\series bold
+\numeric off
+.
+ 
+\series default
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף קשיר ותהי 
+\begin_inset Formula $\emptyset\ne F\subseteq E$
+\end_inset
+
+ קבוצת קשתות.
+ נסמן 
+\begin_inset Formula $H=G\setminus F$
+\end_inset
+
+.
+ הוכיחו כי בכל רכיב קשירות של 
+\begin_inset Formula $H$
+\end_inset
+
+ קיים צומת שאחת מקשתותיו ב-
+\begin_inset Formula $G$
+\end_inset
+
+ ב-
+\begin_inset Formula $F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+אם 
+\begin_inset Formula $H$
+\end_inset
+
+ קשיר,
+ ברור שהטענה מתקיימת (יש רכיב קשירות - הגרף כולו,
+ הדבר יעבוד לכל קשת ב-
+\begin_inset Formula $F$
+\end_inset
+
+).
+ אחרת,
+ נניח בשלילה שקיים רכיב קשירות של 
+\begin_inset Formula $H$
+\end_inset
+
+,
+ 
+\begin_inset Formula $U\subset V$
+\end_inset
+
+,
+ בו אין צומת שאחת מקשתותית ב-
+\begin_inset Formula $G$
+\end_inset
+
+ ב-
+\begin_inset Formula $F$
+\end_inset
+
+.
+ כלומר,
+ 
+\begin_inset Formula $F$
+\end_inset
+
+ לא מכילה קשתות שנוגעת בקודקודי 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $v\in V\setminus U\ne\emptyset$
+\end_inset
+
+ כלשהו.
+ מכיוון ש-
+\begin_inset Formula $v$
+\end_inset
+
+ נמצא ברכיב קשירות אחר ב-
+\begin_inset Formula $H$
+\end_inset
+
+,
+ נקבל שאין קשת בין אף אחד מקודקודי 
+\begin_inset Formula $U$
+\end_inset
+
+ ל-
+\begin_inset Formula $v$
+\end_inset
+
+ ב-
+\begin_inset Formula $H$
+\end_inset
+
+.
+ בנוסף,
+ מההנחה בשלילה,
+ נקבל שאין אף קשת כזו גם ב-
+\begin_inset Formula $F$
+\end_inset
+
+.
+ לכן נקבל שאין קשתות ב-
+\begin_inset Formula $G$
+\end_inset
+
+ בין 
+\begin_inset Formula $U$
+\end_inset
+
+ ו-
+\begin_inset Formula $V\setminus U$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $G$
+\end_inset
+
+ אינו קשיר - סתירה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+6
+\series bold
+\numeric off
+.
+ 
+\series default
+הסטודנט נועם נמצא בראשית הצירים על השריג 
+\begin_inset Formula $\mathbb{Z}^{2}$
+\end_inset
+
+.
+ נועם רוצה לבקר את הוריו הנמצאים בנקודה 
+\begin_inset Formula $\left(n,m\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n,m\in\mathbb{N}$
+\end_inset
+
+,
+ ויכול לצעוד ימינה או מעלה בלבד (למשל,
+ צעד ימינה מ-
+\begin_inset Formula $\left(0,0\right)$
+\end_inset
+
+ יביא את נועם ל-
+\begin_inset Formula $\left(0,1\right)$
+\end_inset
+
+,
+ וצעד מעלה ל-
+\begin_inset Formula $\left(1,0\right)$
+\end_inset
+
+).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מצאו את מספר המסלולים האפשריים השונים של נועם מראשית הצירים להוריו.
+\end_layout
+
+\begin_layout Enumerate
+יהי יפתח חבר כלשהו של נועם,
+ הנמצא במיקום 
+\begin_inset Formula $\left(i,j\right)$
+\end_inset
+
+.
+ מצאו את מספר המסלולים האפשריים השונים של נועם מראשית הצירים להוריו,
+ כך שהוא לא יפגוש ביפתח.
+\end_layout
+
+\begin_layout Enumerate
+נניח ש-
+\begin_inset Formula $n=m$
+\end_inset
+
+.
+ חשבו את מספר המסלולים השונים של נועם מראשית הצירים להוריו שלא מכילים שני צעדי ימין רצופים.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+יהיו 
+\begin_inset Formula $n$
+\end_inset
+
+ צעדי ימינה ו-
+\begin_inset Formula $m$
+\end_inset
+
+ צעדי מעלה,
+ ללא תלות בסדר ביניהם.
+ לכן,
+ נבחר את המקומות בהם יהיו צעד ימינה,
+ ושאר המקומות יהיו צעד מעלה.
+ מספר הדרכים הוא
+\begin_inset Formula 
+\[
+{m+n \choose n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+תחילה,
+ נחשב את מספר המסלולים האפשריים כך שנועם יפגוש ביפתח.
+ אזי נועם צריך להגיע ל-
+\begin_inset Formula $\left(i,j\right)$
+\end_inset
+
+,
+ ומשם ל-
+\begin_inset Formula $\left(n,m\right)$
+\end_inset
+
+.
+ לכן,
+ מספר המסלולים האלה הוא
+\begin_inset Formula 
+\[
+\underset{\text{הגעה ליפתח}}{\underbrace{{i+j \choose i}}}\cdot\underset{\text{מיפתח לנועם}}{\underbrace{{\left(n-i\right)+\left(m-j\right) \choose n-i}}},
+\]
+
+\end_inset
+
+ומספר המסלולים בהם השניים לא נפגשים הוא
+\begin_inset Formula 
+\[
+{m+n \choose n}-{i+j \choose i}\cdot{\left(n-i\right)+\left(m-j\right) \choose n-i}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+בין כל שני צעדי ימינה קיים צעד אחד מעלה לפחות.
+ לכן,
+ יש שתי אפשרויות:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+המסלול מתחיל בצעד מעלה.
+ במקרה זה נותרו 
+\begin_inset Formula $n$
+\end_inset
+
+ צעדי ימינה ו-
+\begin_inset Formula $\left(n-1\right)$
+\end_inset
+
+ צעדי מעלה.
+ לכן יש אפשרות אחת לשאר המסלול:
+ ימינה/מעלה לסירוגין.
+\end_layout
+
+\begin_layout Itemize
+המסלול מתחיל בצעד ימינה.
+ במקרה זה,
+ המסלול יהיה מסלול ימינה/מעלה לסירוגין,
+ יש שתי אפשרויות:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+המסלול ימשיך כך עד הסוף ויסתיים בצעד מעלה.
+\end_layout
+
+\begin_layout Itemize
+המסלול יסתיים בצעד ימינה,
+ וקיים זוג יחיד של צעדי ימינה סמוכים (לא רצופים) ביניהם יש שני צעדי עלייה.
+\end_layout
+
+\begin_layout Standard
+יש 
+\begin_inset Formula $n$
+\end_inset
+
+ מסלולים כאלה בסך הכל.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+לכן,
+ בסך הכל יש 
+\begin_inset Formula $n+1$
+\end_inset
+
+ מסלולים כאלה.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+7
+\series bold
+\numeric off
+.
+ 
+\series default
+יהי 
+\begin_inset Formula $m\in\mathbb{N}^{+}$
+\end_inset
+
+.
+ במסעדת הסרטן הפריך 
+\begin_inset Formula $m$
+\end_inset
+
+ שולחנות עגולים שונים,
+ כך שבכל שולחן יש בדיוק 
+\begin_inset Formula $m$
+\end_inset
+
+ מקומות ישיבה זהים.
+ 
+\begin_inset Formula $m^{2}$
+\end_inset
+
+ הסטודנטים בקורס מתמטיקה דיסקרטית חגגו את סיום הסמסטר במסעדה.
+ כל סטודנט בוחר מקום ישיבה אחד.
+ עבור כל אחד מהסעיפים הבאים (בלתי תלויים),
+ מצאו את מספר האפשרויות להושיב את הסטודנטים בכיסאות.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ללא תנאים נוספים.
+\end_layout
+
+\begin_layout Enumerate
+דני ודנה,
+ שני סטונדטים בקורס,
+ לא יכולים לשבת אחד על יד השנייה.
+\end_layout
+
+\begin_layout Enumerate
+הסטונדטים ישבו ללא תנאים נוספים ביום א'.
+ ביום ב',
+ הם התיישבו כך שאין אף שולחן בו התיישבו הסטונדטים כמו ביום א'.
+ כלומר,
+ לכל שולחן,
+ אוסף הסטודנטים שישבו בו ביום א' שונה מאוסף הסטודנטים שישבו בו ביום ב'.
+\end_layout
+
+\begin_layout Enumerate
+השולחנות אינם עגולים,
+ אלא שורות.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נבחר את הסטודנטים לשולחנות,
+ שולחן אחר שולחן:
+\begin_inset Formula 
+\[
+\underset{\text{בחירה לשולחן 1}}{\underbrace{{m^{2} \choose m}}}\cdot\underset{\text{סדר פנימי שולחן 1}}{\underbrace{\left(m-1\right)!}}\cdot{m^{2}-m \choose m}\cdot\left(m-1\right)!\cdot\dots\cdot{m \choose m}\cdot\left(m-1\right)!.
+\]
+
+\end_inset
+
+באופן שקול,
+ נסתכל על כל הסידורים הסטודנטים בשורה:
+ 
+\begin_inset Formula $\left(m^{2}\right)!$
+\end_inset
+
+.
+ נחלק את ה-
+\begin_inset Formula $m$
+\end_inset
+
+ הראשונים לשולחן הראשון,
+ הבאים לשני וכן הלאה.
+ הדבר שקול לחלוקה של הסטונדטים לשורות.
+ לבסוף,
+ מכיוון שהשולחנות מעגליים,
+ נחלק בסדר הפנימי (
+\begin_inset Formula $m$
+\end_inset
+
+) עבור כל שולחן:
+\begin_inset Formula 
+\[
+\frac{\left(m^{2}\right)!}{m^{m}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נסתכל על כל הסידורים בהם דני ודנה יושבים אחד על יד השנייה.
+ תחילה,
+ נבחר את השולחן בו דני ודנה יושבים:
+ 
+\begin_inset Formula $m$
+\end_inset
+
+ אפשרויות.
+ נבחר 
+\begin_inset Formula $m-2$
+\end_inset
+
+ סטונדטים נוספים לשולחן.
+ נתייחס לדני ודנה כאובייקט אחד,
+ ונסדר את 
+\begin_inset Formula $m-1$
+\end_inset
+
+ הסטונדטים במעגל:
+ 
+\begin_inset Formula $\left(m-2\right)!$
+\end_inset
+
+ אפשרויות.
+ בנוסף,
+ נכפיל ב-
+\begin_inset Formula $2$
+\end_inset
+
+ עבור הסדר הפנימי של דני ודנה.
+ כעת נותר לסדר את 
+\begin_inset Formula $m^{2}-m$
+\end_inset
+
+ הסטונדטים הנותרים ב-
+\begin_inset Formula $m-1$
+\end_inset
+
+ השולחנות ללא הגבלה,
+ כמו בסעיף א'.
+ בסך הכל,
+ מספר הסידורים הרעים הוא
+\begin_inset Formula 
+\[
+m\cdot{m^{2} \choose m}\cdot\left(m-2\right)!\cdot2\cdot\frac{\left(m^{2}-m\right)!}{m^{m-1}},
+\]
+
+\end_inset
+
+ולכן מספר הסידורים בהם דני ודנה לא יושבים אחד על יד השנייה הוא
+\begin_inset Formula 
+\[
+\frac{\left(m^{2}\right)!}{m^{m}}-m\cdot{m^{2} \choose m}\cdot\left(m-2\right)!\cdot2\cdot\frac{\left(m^{2}-m\right)!}{m^{m-1}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+תחילה,
+ יש 
+\begin_inset Formula $\frac{\left(m^{2}\right)!}{m^{m}}$
+\end_inset
+
+ אפשרויות לישיבה ביום א'.
+ כעת,
+ נחשב את מספר הסידורים האפשריים ביום ב' באמצעות הכלה והדחה:
+ נסתכל על המקרה בו קיימים לפחות 
+\begin_inset Formula $r$
+\end_inset
+
+ (
+\begin_inset Formula $0\le r\le m$
+\end_inset
+
+) שולחנות בהם אוסף הסטודנטים שישבו ביום א' זהה לאוסף הסטונדטים שישבו ביום ב'.
+ נבחר את 
+\begin_inset Formula $r$
+\end_inset
+
+ השולחנות:
+ 
+\begin_inset Formula ${m \choose r}$
+\end_inset
+
+.
+ כעת,
+ אוסף הסטודנטים שיושבים בכל אחד משולחנות אלה קבוע,
+ ויש 
+\begin_inset Formula $\left(m-1\right)!$
+\end_inset
+
+ סידורים אפשריים שלהם בכל שולחן.
+ אין הגבלה עבור שאר השולחנות,
+ ונותר ליישב בהם 
+\begin_inset Formula $m^{2}-mr$
+\end_inset
+
+ סטודנטים ב-
+\begin_inset Formula $m-r$
+\end_inset
+
+ שולחנות.
+ לכן,
+ מספר הדרכים הוא
+\begin_inset Formula 
+\[
+{m \choose r}\left(\left(m-1\right)!\right)^{r}\cdot\frac{\left(m^{2}-mr\right)!}{m^{m-r}},
+\]
+
+\end_inset
+
+ובסך הכל,
+ באמצעות הכלה והדחה:
+\begin_inset Formula 
+\[
+\underset{\text{יום א'}}{\underbrace{\frac{\left(m^{2}\right)!}{m^{m}}}}\cdot\underset{\text{יום ב'}}{\underbrace{\sum_{r=0}^{m}\left(-1\right)^{r}{m \choose r}\left(\left(m-1\right)!\right)^{r}\cdot\frac{\left(m^{2}-mr\right)!}{m^{m-r}}}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+באופן דומה לסעיף א',
+ אך כעת אין צורך לחלק בסדר הפנימי:
+ 
+\begin_inset Formula $\left(m^{2}\right)!$
+\end_inset
+
+ אפשרויות.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,1812 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\bullet 0 0 14 -1
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+מתמטיקה דיסקרטית - תרגיל בית
+\family roman
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+9
+\numeric off
+ 
+\color red
+עם פתרון
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+1
+\series bold
+\numeric off
+.
+ 
+\series default
+מצאו את מספר הדרכים לחלק את 
+\begin_inset Formula $\left[n\right]=\left\{ 1,\dots,n\right\} $
+\end_inset
+
+ ל-
+\begin_inset Formula $3$
+\end_inset
+
+ קבוצות (אין סדר בין הקבוצות,
+ וקבוצה יכולה להיות ריקה).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+תחילה,
+ יש 
+\begin_inset Formula $3^{n}$
+\end_inset
+
+ דרכים לחלק את האיברים לקבוצות סדורות.
+ כעת,
+ נרצה לחלק בסדר הפנימי.
+ כאשר הקבוצות שונות אחת מהשנייה,
+ נכון יהיה לחלק ב-
+\begin_inset Formula $3!=6$
+\end_inset
+
+.
+ לעומת זאת,
+ יש מקרה בודד יש שוויון בין חלק מהקבוצות:
+ כאשר קבוצה אחת מכילה את כל האיברים ושתי הקבוצות האחרות ריקות - מקרה זה נספר 
+\begin_inset Formula $3$
+\end_inset
+
+ פעמים (
+\begin_inset Formula $3$
+\end_inset
+
+ אופציות עבור הקבוצה המלאה).
+ לכן,
+ ב-
+\begin_inset Formula $3^{n}-3$
+\end_inset
+
+ מהמקרים נחלק ב-
+\begin_inset Formula $6$
+\end_inset
+
+,
+ ואת מקרה הקצה נספור פעם אחת.
+ בסך הכל:
+\begin_inset Formula 
+\[
+\frac{3^{n}-3}{6}+1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+2
+\series bold
+\numeric off
+.
+ 
+\series default
+יהיו 
+\begin_inset Formula $k,n\in\mathbb{N}^{+}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $k\ge n$
+\end_inset
+
+.
+ מצא את מספר הפתרונות ה
+\bar under
+שלמים
+\bar default
+ של המשוואה
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n}\left|x_{i}\right|=k,
+\]
+
+\end_inset
+
+כאשר לכל 
+\begin_inset Formula $1\le i\le n$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left|x_{i}\right|\ge1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+לכל 
+\begin_inset Formula $1\le i\le n$
+\end_inset
+
+ נגדיר 
+\begin_inset Formula $y_{i}=\left|x_{i}\right|-1$
+\end_inset
+
+.
+ אזי המשוואה שקולה ל-
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n}\left(y_{i}+1\right)=k\iff\sum_{i=1}^{n}y_{i}=k-n,
+\]
+
+\end_inset
+
+והתנאי לכל 
+\begin_inset Formula $1\le i\le n$
+\end_inset
+
+ הוא 
+\begin_inset Formula $y_{i}\ge0$
+\end_inset
+
+.
+ למשוואה לעיל יש 
+\begin_inset Formula ${\left(k-n\right)+n-1 \choose n-1}$
+\end_inset
+
+ פתרונות.
+ כעת,
+ לכל 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ מתאימים שני ערכים אפשריים של 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+:
+ שלילי וחיובי (תמיד לא 
+\begin_inset Formula $0$
+\end_inset
+
+).
+ לכן,
+ בסך הכל,
+ מספר הפתרונות הוא
+\begin_inset Formula 
+\[
+{k-1 \choose n-1}\cdot2^{n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+3
+\series bold
+\numeric off
+.
+ 
+\series default
+הוכח באופן קומבינטורי את הזהויות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $2\le k\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+k=\sum_{i=0}^{n-1}\left(-1\right)^{i}{n-1 \choose i}k^{n-i}\left(k-1\right)^{i}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $n,k\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\sum_{r=0}^{k}\left(-1\right)^{r}{k \choose r}{n+\left(k-r\right)-1 \choose n}={k+\left(n-k\right)-1 \choose n-k}.
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $n,k\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\sum_{k=1}^{n}k={n+1 \choose 2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $n>m$
+\end_inset
+
+ אז
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{n \choose k}{n-k \choose m-k}=2^{m}{n \choose m}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+בעיה:
+ נתונים 
+\begin_inset Formula $n-1$
+\end_inset
+
+ אנשים,
+ ועלינו לחלק לכל אדם צבע,
+ המיוצג על ידי מספר בין 
+\begin_inset Formula $1$
+\end_inset
+
+ ו-
+\begin_inset Formula $k$
+\end_inset
+
+,
+ עבור 
+\begin_inset Formula $k\ge2$
+\end_inset
+
+,
+ כך שכל האנשים יקבלו את אותו הצבע.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+גישה א':
+ ברור שקיימות בדיוק 
+\begin_inset Formula $k$
+\end_inset
+
+ אפשרויות.
+\end_layout
+
+\begin_layout Itemize
+גישה ב':
+ הכלה והדחה.
+ נסתכל על הקבוצה ה-
+\begin_inset Formula $i$
+\end_inset
+
+,
+ בה קיימים לפחות 
+\begin_inset Formula $i$
+\end_inset
+
+ אנשים שלא קיבלנו את הצבע ה-
+\begin_inset Formula $j$
+\end_inset
+
+ עבור 
+\begin_inset Formula $1\le j\le k$
+\end_inset
+
+ כלשהו.
+ תחילה,
+ נבחר 
+\begin_inset Formula $i$
+\end_inset
+
+ אנשים מתוך 
+\begin_inset Formula $n-1$
+\end_inset
+
+ ואת הצבע 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ כעת,
+ 
+\begin_inset Formula $i$
+\end_inset
+
+ האנשים האלו יכולים לקבל כל צבע פרט ל-
+\begin_inset Formula $j$
+\end_inset
+
+ (
+\begin_inset Formula $\left(k-1\right)^{i}$
+\end_inset
+
+ אפשרויות),
+ ואין הגבלה על שאר האנשים.
+ לכן מספר הדרכים הוא
+\begin_inset Formula 
+\[
+{n-1 \choose i}\cdot k\cdot\left(k-1\right)^{i}\cdot k^{n-1-i},
+\]
+
+\end_inset
+
+וכך מהכלה והדחה ונקבל שמספר הסידורים הטובים הוא
+\begin_inset Formula 
+\[
+\sum_{i=0}^{n-1}\left(-1\right)^{i}{n-1 \choose i}k^{n-i}\left(k-1\right)^{i}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+בעיה:
+ מספר הפתרונות השלמים למשוואה
+\begin_inset Formula 
+\[
+x_{1}+\dots+x_{k}=n,\quad\forall1\le i\le k:x_{i}>0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+גישה א':
+ כפי שראינו בתרגול,
+ לכל 
+\begin_inset Formula $1\le i\le k$
+\end_inset
+
+ נגדיר 
+\begin_inset Formula $y_{i}=x_{i}-1$
+\end_inset
+
+,
+ ונקבל שהמשוואה שקולה ל-
+\begin_inset Formula $\sum_{i=1}^{k}y_{i}=n-k$
+\end_inset
+
+.
+ לכן מספר הפתרונות הוא
+\begin_inset Formula 
+\[
+{\left(n-k\right)+k-1 \choose n-k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+גישה ב':
+ הכלה והדחה.
+ נסתכל על המשוואה כאשר הדרישות הן 
+\begin_inset Formula $x_{i}\ge0$
+\end_inset
+
+,
+ ונפסול את הפתרונות הרעים.
+ נסתכל על מספר הפתרונות כאשר קיימים לפחות 
+\begin_inset Formula $r$
+\end_inset
+
+ אינדקסים 
+\begin_inset Formula $I=\left\{ i_{1},\dots,i_{r}\right\} $
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x_{i_{j}}=0$
+\end_inset
+
+ לכל 
+\begin_inset Formula $1\le j\le r$
+\end_inset
+
+.
+ תחילה,
+ נבחר את 
+\begin_inset Formula $I$
+\end_inset
+
+:
+ 
+\begin_inset Formula ${k \choose r}$
+\end_inset
+
+ אפשרויות.
+ כעת המשוואה שקולה למשוואה
+\begin_inset Formula 
+\[
+\sum_{i\notin I}x_{i}=n,\quad\forall i\notin I:x_{i}\ge0.
+\]
+
+\end_inset
+
+נשים לב שמספר הנסכמים הוא 
+\begin_inset Formula $k-r$
+\end_inset
+
+.
+ לכן,
+ מספר הפתרונות של המשוואה הוא 
+\begin_inset Formula ${n+\left(k-r\right)-1 \choose n}$
+\end_inset
+
+.
+ בסך הכל,
+ מספר הפתרונות התקינים הוא
+\begin_inset Formula 
+\[
+\sum_{r=0}^{k}\left(-1\right)^{r}{k \choose r}{n+\left(k-r\right)-1 \choose n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+בעיה:
+ בחירת 
+\begin_inset Formula $2$
+\end_inset
+
+ אנשים מתוך 
+\begin_inset Formula $n+1$
+\end_inset
+
+ אנשים.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+גישה א':
+ ברור כי מספר האפשרויות הוא 
+\begin_inset Formula ${n+1 \choose 2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+גישה ב':
+ נמספר את האנשים מ-
+\begin_inset Formula $0$
+\end_inset
+
+ עד 
+\begin_inset Formula $n$
+\end_inset
+
+ (כולל).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נניח שאנו בוחרים תחילה את האדם עם המספר הגדול יותר.
+\end_layout
+
+\begin_layout Itemize
+כאשר בחרנו בהתחלה את המספר ה-
+\begin_inset Formula $k$
+\end_inset
+
+,
+ יש בדיוק 
+\begin_inset Formula $k$
+\end_inset
+
+ אנשים לפניו,
+ ולכן יש 
+\begin_inset Formula $k$
+\end_inset
+
+ אפשרויות לבחירת זוג איברים כאשר 
+\begin_inset Formula $k$
+\end_inset
+
+ הוא האיבר הגדול יותר.
+\end_layout
+
+\begin_layout Itemize
+לכן,
+ מספר האפשרויות הוא 
+\begin_inset Formula $\sum_{k=1}^{n}k$
+\end_inset
+
+ (
+\begin_inset Formula $0$
+\end_inset
+
+ לא יכול להיבחר להיות הגדול).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+בעיה:
+ נתונים 
+\begin_inset Formula $n$
+\end_inset
+
+ אנשים ושתי כיתות.
+ נרצה לבחור 
+\begin_inset Formula $m$
+\end_inset
+
+ אנשים מתוכם ולחלק אותם באופן כלשהו לשתי הכיתות.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+גישה א':
+ נבחר את 
+\begin_inset Formula $m$
+\end_inset
+
+ האנשים (
+\begin_inset Formula ${n \choose m}$
+\end_inset
+
+),
+ ועל כל אדם להשתבץ לכיתה:
+ 
+\begin_inset Formula $2$
+\end_inset
+
+ אפשרויות לאחד.
+ בסך הכל 
+\begin_inset Formula $2^{m}{n \choose m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+גישה ב':
+ נניח שבחרנו 
+\begin_inset Formula $k$
+\end_inset
+
+ אנשים לכיתה הראשונה.
+ כעת,
+ נותרו 
+\begin_inset Formula $n-k$
+\end_inset
+
+ אנשים,
+ ואנו רוצים לבחור מהם 
+\begin_inset Formula $m-k$
+\end_inset
+
+ אנשים לכיתה השנייה.
+ בסך הכל,
+ עבור כל ערכי ה-
+\begin_inset Formula $k$
+\end_inset
+
+ האפשריים (כלל הסכום):
+\begin_inset Formula 
+\[
+\sum_{k=0}^{n}{n \choose k}{n-k \choose m-k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+4
+\series bold
+\numeric off
+.
+ 
+\series default
+נתון משולש שווה-צלעות שאורך צלעו 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ הוכיחו כי לכל בחירה אפשרית של 
+\begin_inset Formula $5$
+\end_inset
+
+ נקודות במשולש (כולל נקודות על הצלעות),
+ קיימות שתי נקודות שהמרחק ביניהן הוא לכל היותר 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נסתכל על המשולש והבנייה באיור 
+\color blue
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:q5"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\color inherit
+.
+ נשים לב שכל אחד מארבעת המשולשים הקטנים הוא משולש שווה-צלעות עם אורך צלע 
+\begin_inset Formula $0.5$
+\end_inset
+
+,
+ ולכן המרחק המקסימלי בין שתי נקודות בו הוא 
+\begin_inset Formula $0.5$
+\end_inset
+
+.
+ מעיקרון שובך היונים קיימות שתי נקודות שנמצאות באותו תת-משולש,
+ ולכן המרחק בין שתי אלו הוא לכל היותר 
+\begin_inset Formula $0.5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[-]
+\end_layout
+
+\begin_layout Plain Layout
+
+	(-2,0) -- (2,0)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(-2,0) -- (0,3.465)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(2,0) -- (0,3.465)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	(-2*0.5,0+3.465/2) -- (2*0.5,0+3.465/2)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(-2*0.5,0+3.465/2) -- (0,3.465*0.5-3.465/2)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(2*0.5,0+3.465/2) -- (0,3.465*0.5-3.465/2)
+\end_layout
+
+\begin_layout Plain Layout
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+משולש שווה-צלעות.
+\color blue
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:q5"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+5
+\series bold
+\numeric off
+.
+ 
+\series default
+נתונים 
+\begin_inset Formula $n$
+\end_inset
+
+ כדורים זהים,
+ ויהי 
+\begin_inset Formula $k\le n$
+\end_inset
+
+.
+ הוכיחו כי מספר החלוקות השונות של הכדורים ללכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ מחלקות לא-ריקות שווה למספר החלוקות בהן בכל קבוצה יש לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ כדורים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נגדיר מיפוי הפיך מאחת לשנייה.
+ נסמן ב-
+\begin_inset Formula $A$
+\end_inset
+
+ את אוסף החלוקות הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל ללכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ מחלקות לא-ריקות,
+ וב-
+\begin_inset Formula $B$
+\end_inset
+
+ את אוסף החלוקות הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל בהן בכל קבוצה יש לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ כדורים.
+ נגדיר 
+\begin_inset Formula $f:A\rightarrow B$
+\end_inset
+
+ באופן הבא:
+ לכל 
+\begin_inset Formula $A\ni a=a_{1}+\dots+a_{l}$
+\end_inset
+
+,
+ ולכל 
+\begin_inset Formula $1\le j\le l$
+\end_inset
+
+,
+ נגדיר
+\begin_inset Formula 
+\[
+b_{j}=\left|\left\{ 1\le i\le l\mid a_{i}\ge j\right\} \right|.
+\]
+
+\end_inset
+
+באופן אחר,
+ נייצג את החלוקה בתור שורות של כדורים הממוינות מגדול לקטן.
+ למשל,
+ נייצג את 
+\begin_inset Formula $8=3+2+2+1$
+\end_inset
+
+ באמצעות
+\begin_inset Formula 
+\[
+\begin{matrix}\blacksmiley & \blacksmiley & \blacksmiley\\
+\blacksmiley & \blacksmiley\\
+\blacksmiley & \blacksmiley\\
+\blacksmiley
+\end{matrix}
+\]
+
+\end_inset
+
+המיפוי יהיה פעולת שחלוף של המטריצה:
+ נחליף את השורות והעמודות.
+ למשל עבור החלוקה לעיל:
+\begin_inset Formula 
+\[
+\begin{matrix}\blacksmiley & \blacksmiley & \blacksmiley & \blacksmiley\\
+\blacksmiley & \blacksmiley & \blacksmiley\\
+\blacksmiley
+\end{matrix}
+\]
+
+\end_inset
+
+מספר הכדורים הגדול ביותר בחלוקה הוא רוחב הטבלה,
+ ומספר הקבוצות הוא גובה הטבלה.
+ לכן,
+ לאחר שחלוף חלוקה בה היו לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ כדורים בקבוצה,
+ נקבל חלוקה עם לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ קבוצות,
+ ולהיפך.
+ בנוסף,
+ נשים לב שהפעלת המיפוי פעמיים הוא הזהות,
+ ולכן מיפוי זה הוא אינבולוציה (ההופכי של עצמו),
+ והוא הפיך.
+ מצאנו מיפוי הפיך מאוסף החלוקות עם לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ מחלקות ואוסף החלוקות בהן בכל קבוצה יש לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ כדורים,
+ ולכן הקבוצות שוות גודל.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+6
+\series bold
+\numeric off
+.
+ 
+\series default
+נתונות 
+\begin_inset Formula $n\in\mathbb{N}^{+}$
+\end_inset
+
+ אבני לגו זהות.
+ שני מגדלי לגו שונים זה מזה אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ מספר האבנים מהם הם בנויים שונה.
+ בכמה דרכים ניתן להרכיב מגדלי לגו 
+\series bold
+מסודרים
+\series default
+ על ידי שימוש בכל אבני הלגו,
+ כך שאף מגדל אינו ריק.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+מכיוון שיש סדר בין המגדלים השונים,
+ והסדר בתוך מגדל לא משנה,
+ יהיה שקול להסתכל על מספר האבנים במגדל במקום המגדל עצמו.
+ כעת נקבל שאנו סופרים בדיוק את מספר הצירופים של 
+\begin_inset Formula $n$
+\end_inset
+
+,
+ ולכן (ראינו בתרגיל הבית) מספר הסידורים האפשריים הוא 
+\begin_inset Formula $2^{n-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+7
+\series bold
+\numeric off
+.
+ 
+\series default
+גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ הוא 
+\emph on
+מעגל פלוס
+\emph default
+ אם קיימת קשת יחידה 
+\begin_inset Formula $e\in E$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $G^{\prime}=\left(V,E\setminus\left\{ e\right\} \right)$
+\end_inset
+
+ הוא מעגל פשוט.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מצא את מספר הגרפים שהם 
+\emph on
+מעגל פלוס
+\emph default
+ בעלי 
+\begin_inset Formula $n$
+\end_inset
+
+ צמתים שונים.
+\end_layout
+
+\begin_layout Enumerate
+הוכח כי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ הוא 
+\emph on
+מעגל פלוס
+\emph default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ קיימים 
+\begin_inset Formula $u\ne v\in V$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\deg\left(u\right)=\deg\left(v\right)=3$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $w\in V\setminus\left\{ v,u\right\} $
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\deg\left(w\right)=2$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\{ u,v\right\} \in E$
+\end_inset
+
+ וגם 
+\begin_inset Formula $G^{\prime}=\left(V,E\setminus\left\{ u,v\right\} \right)$
+\end_inset
+
+ הינו קשיר.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תחילה נסדר את הצמתים במעגל,
+ ונחבר קשת בין כל שני צמתים סמוכים (
+\begin_inset Formula $\left(n-1\right)!$
+\end_inset
+
+ אפשרויות).
+ כעת,
+ נבחר זוג צמתים שאינם שכנים ונחבר ביניהם קשת:
+ נבחר צומת 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ (
+\begin_inset Formula $n$
+\end_inset
+
+ אפשרויות),
+ וצומת נוסף שאינו שכן של 
+\begin_inset Formula $v$
+\end_inset
+
+ במעגל (
+\begin_inset Formula $n-3$
+\end_inset
+
+ אפשרויות).
+ לבסוף,
+ נחלק בסדר הפנימי (
+\begin_inset Formula $2!$
+\end_inset
+
+) ונקבל שמספר הגרפים הוא
+\begin_inset Formula 
+\[
+\left(n-1\right)!\cdot\frac{n\left(n-3\right)}{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נוכיח את שני כיווני הטענה:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(
+\begin_inset Formula $\impliedby$
+\end_inset
+
+) יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ מעגל פלוס.
+ נסמן ב-
+\begin_inset Formula $e=\left\{ u,v\right\} \in E$
+\end_inset
+
+ את הקשת היחידה שמקיימת ש-
+\begin_inset Formula $G^{\prime}=G\setminus\left\{ e\right\} $
+\end_inset
+
+ הוא מעגל פשוט.
+ מכיוון ש-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ הוא מעגל פשוט,
+ הוא קשיר ודרגה של כל צומת בו היא 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ לכן,
+ הדרגה ב-
+\begin_inset Formula $G$
+\end_inset
+
+ של כל צומת 
+\begin_inset Formula $w\notin\left\{ u,v\right\} $
+\end_inset
+
+ היא 
+\begin_inset Formula $2$
+\end_inset
+
+,
+ ושל 
+\begin_inset Formula $u,v$
+\end_inset
+
+ היא 
+\begin_inset Formula $3$
+\end_inset
+
+ (נוספה הקשת 
+\begin_inset Formula $e$
+\end_inset
+
+ לשניהם).
+\end_layout
+
+\begin_layout Itemize
+(
+\begin_inset Formula $\implies$
+\end_inset
+
+) יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ נניח שקיימים 
+\begin_inset Formula $u\ne v\in V$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\deg\left(u\right)=\deg\left(v\right)=3$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $w\in V\setminus\left\{ v,u\right\} $
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\deg\left(w\right)=2$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\{ u,v\right\} \in E$
+\end_inset
+
+ וגם 
+\begin_inset Formula $G^{\prime}=G\setminus\left\{ e\right\} $
+\end_inset
+
+ הינו קשיר.
+ קל להוכיח שמכיוון שדרגת כל הצמתים ב-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ היא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $2$
+\end_inset
+
+ ו-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ קשיר,
+ מתקיים ש-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ הוא מעגל פשוט (למשל באינדוקציה).
+ לכן 
+\begin_inset Formula $G$
+\end_inset
+
+ מורכב מהמעגל הפשוט 
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ ועוד קשת אחת (
+\begin_inset Formula $e$
+\end_inset
+
+),
+ ולכן הוא מעגל פלוס.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+8
+\series bold
+\numeric off
+.
+ 
+\series default
+תהי 
+\begin_inset Formula $x_{1},\dots,x_{11}$
+\end_inset
+
+ סדרת שלמים.
+ הוכיחו שקיימים 
+\begin_inset Formula $1\le i\le j\le11$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+\sum_{k=i}^{j}x_{k}\equiv0\mod{10}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נסתכל על הסכומים הבאים:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+x_{1}\\
+x_{1}+x_{2}\\
+x_{1}+x_{2}+x_{3}\\
+\vdots\\
+x_{1}+\dots+x_{11}
+\end{array}
+\]
+
+\end_inset
+
+אלו 
+\begin_inset Formula $11$
+\end_inset
+
+ סכומים אפשריים.
+ נסתכל על שארית החלוקה ב-
+\begin_inset Formula $10$
+\end_inset
+
+ של כל אחד מהם.
+ לפי עיקרון שובך היונים,
+ קיימים 
+\begin_inset Formula $i<j$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+x_{1}+\dots+x_{i}\equiv x_{1}+\dots+x_{j}\mod{10},
+\]
+
+\end_inset
+
+ולכן מתקיים
+\begin_inset Formula 
+\[
+\sum_{k=i+1}^{j}x_{k}\equiv0\mod{10}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+9
+\series bold
+\numeric off
+.
+ 
+\series default
+הוכיחו כי קיים 
+\begin_inset Formula $n\in\mathbb{N}^{+}$
+\end_inset
+
+ המורכב מהספרות 
+\begin_inset Formula $0$
+\end_inset
+
+ ו-
+\begin_inset Formula $7$
+\end_inset
+
+ בלבד כך ש-
+\begin_inset Formula $n\equiv0\mod{359}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נסתכל על המספרים 
+\begin_inset Formula $a_{k}=\underset{\text{\ensuremath{k} פעמים}}{\underbrace{77\cdots7}}$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $1\le k\le360$
+\end_inset
+
+.
+ נסתכל על שאריות החלוקה ב-
+\begin_inset Formula $359$
+\end_inset
+
+ של כל אחד מהמספרים.
+ מכיוון שיש 
+\begin_inset Formula $360$
+\end_inset
+
+ מספרים,
+ מעיקרון שובך היונים קיימים 
+\begin_inset Formula $i<j$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a_{i}\equiv a_{j}\mod{359}$
+\end_inset
+
+.
+ לכן,
+ המספר 
+\begin_inset Formula $a_{j}-a_{i}$
+\end_inset
+
+,
+ שמכיל את הספרות 
+\begin_inset Formula $0$
+\end_inset
+
+ ו-
+\begin_inset Formula $7$
+\end_inset
+
+ בלבד,
+ מתחלק ב-
+\begin_inset Formula $359$
+\end_inset
+
+ ללא שארית.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

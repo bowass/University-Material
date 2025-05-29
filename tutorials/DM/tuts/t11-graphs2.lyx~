@@ -1,0 +1,1477 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 11"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+11
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ גרפים
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ הוא עץ אם הוא קשיר וחסר מעגלים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ הוא עץ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ שניים מתוך שלושת התנאים הבאים מתקיימים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $G$
+\end_inset
+
+ קשיר.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $G$
+\end_inset
+
+ חסר מעגלים.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left|E\right|=\left|V\right|-1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ הוכיחו כי 
+\begin_inset Formula $G$
+\end_inset
+
+ הוא עץ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ קיים מסלול יחיד בין כל זוג קודקודים בגרף.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את שני כיווני הטענה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(
+\begin_inset Formula $\impliedby$
+\end_inset
+
+) נניח כי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ הוא עץ.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $G$
+\end_inset
+
+ קשיר,
+ קיים מסלול בין כל זוג קודקודים בגרף.
+\end_layout
+
+\begin_layout Itemize
+נניח בשלילה שקיימים 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ כך שיש שני מסלולים 
+\begin_inset Formula $P,Q$
+\end_inset
+
+ שונים 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+.
+ נסמן:
+\begin_inset Formula 
+\[
+P=u,v_{1},\dots,v_{k},v
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Q=u,u_{1},\dots,u_{l},v
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $P,Q$
+\end_inset
+
+ מתחילים ב-
+\begin_inset Formula $u$
+\end_inset
+
+ ומסתיימים ב-
+\begin_inset Formula $v$
+\end_inset
+
+,
+ יש להם רישא (
+\lang english
+prefix
+\lang hebrew
+) משותפת וסיפא (
+\lang english
+suffix
+\lang hebrew
+) משותפת.
+ נסמן ב-
+\begin_inset Formula $x$
+\end_inset
+
+ את הקודקוד האחרון ברישא המשותפת,
+ וב-
+\begin_inset Formula $y$
+\end_inset
+
+ את הקודקוד הראשון בסיפא המשותפת.
+ לכן,
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ ו-
+\begin_inset Formula $y$
+\end_inset
+
+ מופיעים ב-
+\begin_inset Formula $P$
+\end_inset
+
+ וגם ב-
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מהצורה שבה בחרנו את 
+\begin_inset Formula $x$
+\end_inset
+
+ ו-
+\begin_inset Formula $y$
+\end_inset
+
+,
+ אין קודקודים משותפים על תת-המסלול 
+\begin_inset Formula $x\leadsto y$
+\end_inset
+
+ ב-
+\begin_inset Formula $P$
+\end_inset
+
+ או ב-
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן,
+ המסלול הבא הוא מעגל פשוט:
+ 
+\begin_inset Formula $x\underset{P}{\leadsto}y\underset{Q}{\leadsto}x$
+\end_inset
+
+:
+ נקודת ההתחלה והסיום זהות,
+ וגם כל הקודקודים באמצע מופיעים לכל היותר פעם אחת - בסתירה לכך ש-
+\begin_inset Formula $G$
+\end_inset
+
+ עץ.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(
+\begin_inset Formula $\implies$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכיוון שקיים מסלול יחיד בין כל זוג קודקודים בגרף,
+ ברור כי הגרף קשיר.
+\end_layout
+
+\begin_layout Itemize
+נניח בשלילה שקיים מעגל פשוט 
+\begin_inset Formula $C=v_{0},\dots,v_{k}$
+\end_inset
+
+ (
+\begin_inset Formula $v_{0}=v_{k}$
+\end_inset
+
+) ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נסתכל על זוג הקודקודים 
+\begin_inset Formula $v_{0},v_{1}$
+\end_inset
+
+.
+ מחד גיסא,
+ המסלול 
+\begin_inset Formula $v_{0},v_{1}$
+\end_inset
+
+ הוא מסלול 
+\begin_inset Formula $v_{0}\leadsto v_{1}$
+\end_inset
+
+ בגרף.
+\end_layout
+
+\begin_layout Itemize
+מאידך,
+ המסלול 
+\begin_inset Formula $v_{0},v_{k-1},\dots,v_{1}$
+\end_inset
+
+ הוא מסלול נוסף בגרף (מכיוון ש-
+\begin_inset Formula $k\ge2$
+\end_inset
+
+).
+ מכאן,
+ קיימים שני מסלולים שונים בין 
+\begin_inset Formula $v_{0},v_{1}$
+\end_inset
+
+ - סתירה.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $T=\left(V,E\right)$
+\end_inset
+
+ עץ ויהיו 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $e=\left\{ u,v\right\} \notin E$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $G=\left(V,E\cup\left\{ e\right\} \right)$
+\end_inset
+
+.
+ הוכיחו כי קיים ב-
+\begin_inset Formula $G$
+\end_inset
+
+ מעגל פשוט יחיד.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח שקיים מעגל יחיד בגרף.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $T$
+\end_inset
+
+ קשיר,
+ קיים מסלול פשוט 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+ ב-
+\begin_inset Formula $T$
+\end_inset
+
+,
+ ולכן שאינו מכיל את 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ אזי,
+ המסלול 
+\begin_inset Formula $u\underset{T}{\leadsto}v\underset{e}{\rightarrow}u$
+\end_inset
+
+ הוא מעגל פשוט ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נניח בשלילה שקיימים שני מעגלים שונים בגרף 
+\begin_inset Formula $C_{1}\ne C_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+תחילה,
+ שני המעגלים מכילים את 
+\begin_inset Formula $e$
+\end_inset
+
+,
+ מכיוון ש-
+\begin_inset Formula $T$
+\end_inset
+
+ חסר מעגלים.
+\end_layout
+
+\begin_layout Itemize
+במידה ונוריד את 
+\begin_inset Formula $e$
+\end_inset
+
+ מכל אחד מהמעגלים נקבל מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $C_{1}\ne C_{2}$
+\end_inset
+
+,
+ ו-
+\begin_inset Formula $e$
+\end_inset
+
+ מופיעה בשניהם,
+ לאחר הורדת 
+\begin_inset Formula $e$
+\end_inset
+
+ שני המסלולים שונים.
+\end_layout
+
+\begin_layout Itemize
+קיבלנו שקיימים שני מסלולים שונים 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+ בגרף - סתירה.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $T=\left(V,E\right)$
+\end_inset
+
+ עץ כך ש-
+\begin_inset Formula $\left|V\right|\ge2$
+\end_inset
+
+.
+ הוכיחו שב-
+\begin_inset Formula $T$
+\end_inset
+
+ יש עלה (צומת שדרגתו 
+\begin_inset Formula $1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נשתמש בעיקרון המינימום:
+\begin_inset Formula 
+\[
+\frac{\sum_{i=1}^{n}a_{i}}{n}\ge\frac{\sum_{i=1}^{n}\min_{1\le j\le n}a_{j}}{n}=\frac{n\cdot\min_{1\le j\le n}a_{j}}{n}=\min_{1\le j\le n}a_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\sum_{v\in V}\deg\left(v\right)}{n}=\frac{2\left(n-1\right)}{n}=\frac{2n-2}{n}=2-\frac{2}{n}<2
+\]
+
+\end_inset
+
+מעיקרון המינימום,
+ קיים קודקוד שדרגתו לכל היותר 
+\begin_inset Formula $2-\frac{2}{n}<2$
+\end_inset
+
+.
+ מכיוון שהדרגה שלמה,
+ נקבל שהאפשרויות הן 
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+,
+ ומכיוון ש-
+\begin_inset Formula $T$
+\end_inset
+
+ קשיר הדרגה לפחות 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ בסך הכל,
+ קיים עלה בעץ.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ 
+\emph on
+מסלול אוילר
+\emph default
+ ב-
+\begin_inset Formula $G$
+\end_inset
+
+ הוא מסלול בו כל קשת 
+\begin_inset Formula $e\in E$
+\end_inset
+
+ מופיעה פעם אחת בדיוק.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+מעגל הוא מסלול,
+ ולכן מעגל אוילר הוא מסלול אוילר.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף קשיר.
+ ב-
+\begin_inset Formula $G$
+\end_inset
+
+ קיים מסלול אוילר אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ מספר הקודקודים בעלי דרגה אי-זוגית הוא 
+\begin_inset Formula $0$
+\end_inset
+
+ או 
+\begin_inset Formula $2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+נוכיח את שני כיווני הטענה:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(
+\begin_inset Formula $\implies$
+\end_inset
+
+) נפריד למקרים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+במקרה שבו יש 
+\begin_inset Formula $0$
+\end_inset
+
+ קודקודים בעלי דרגה אי-זוגית,
+ כל הקודקודים בעלי דרגה זוגית,
+ ולכן קיים מעגל אוילר - סיימנו.
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ קיימים 
+\begin_inset Formula $u\ne v\in V$
+\end_inset
+
+ בעלי דרגה אי-זוגית,
+ כאשר כל שאר הקודקודים בעלי דרגה זוגית.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נוסיף קודקוד חדש 
+\begin_inset Formula $w$
+\end_inset
+
+ גרף,
+ יחד עם הקשתות 
+\begin_inset Formula $\left\{ u,w\right\} ,\left\{ v,w\right\} $
+\end_inset
+
+.
+ כעת,
+ דרגות 
+\begin_inset Formula $u,v,w$
+\end_inset
+
+ הן זוגיות,
+ ודרגות כל שאר הקודקודים לא השתנו.
+ לכן קיים מעגל אוילר בגרף החדש,
+ נסמנו ב-
+\begin_inset Formula 
+\[
+e_{1},\dots,e_{i},\left\{ v,w\right\} ,\left\{ u,w\right\} ,e_{i+2},\dots,e_{\left|E\right|+2}.
+\]
+
+\end_inset
+
+לכן,
+ מכיוון שהמסלול לעיל הוא מעגל,
+ המסלול
+\begin_inset Formula 
+\[
+e_{i+2},\dots,e_{\left|E\right|+2},e_{1},\dots,e_{i}
+\]
+
+\end_inset
+
+הינו מסלול אוילר בגרף המקורי (ל-
+\begin_inset Formula $e_{\left|E\right|+2},e_{1}$
+\end_inset
+
+ יש קודקוד משותף).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+(
+\begin_inset Formula $\impliedby$
+\end_inset
+
+) נניח שב-
+\begin_inset Formula $G$
+\end_inset
+
+ קיים מסלול אוילר.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם מסלול האוילר מעגלי,
+ לפי משפט דרגות כל הקודקודים זוגיות וסיימנו.
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ נסמן את נקודות ההתחלה והסיום של המסלול ב-
+\begin_inset Formula $u$
+\end_inset
+
+ ו-
+\begin_inset Formula $v$
+\end_inset
+
+ בהתאמה (
+\begin_inset Formula $u\ne v$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+לכל קודקוד בפנים המסלול (שונה מ-
+\begin_inset Formula $u,v$
+\end_inset
+
+),
+ בכניסה לקודקוד וביציאה ממנו נספור שתי קשתות.
+ מכיוון שכל קשת של הקודקודים נספרת בדיוק פעם אחת,
+ נקבל שהדרגה הוא כפעמיים מספר המופעים.
+ לכן,
+ דרגת כל הקודקודים פרט ל-
+\begin_inset Formula $u,v$
+\end_inset
+
+ זוגית.
+\end_layout
+
+\begin_layout Itemize
+מכיוון שכל הופעה של קודקוד בפנים המסלול מוסיפה שתי קשתות בדיוק,
+ הדבר אינו משפיע על זוגיות הדרגה שלו.
+ בנוסף,
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ ו-
+\begin_inset Formula $v$
+\end_inset
+
+ סופרים קשת אחת נוספת:
+ הקשת הראשונה והאחרונה של המסלול בהתאמה.
+ לכן דרגתם של 
+\begin_inset Formula $u$
+\end_inset
+
+ ו-
+\begin_inset Formula $v$
+\end_inset
+
+ אי-זוגית.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ תת-גרף 
+\begin_inset Formula $T=\left(V^{\prime},E^{\prime}\right)$
+\end_inset
+
+ של 
+\begin_inset Formula $G$
+\end_inset
+
+ הוא 
+\emph on
+עץ פורש
+\emph default
+ אם 
+\begin_inset Formula $V^{\prime}=V$
+\end_inset
+
+ וגם 
+\begin_inset Formula $T$
+\end_inset
+
+ הוא עץ.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ הוכיחו כי 
+\begin_inset Formula $G$
+\end_inset
+
+ קשיר אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ קיים ל-
+\begin_inset Formula $G$
+\end_inset
+
+ עץ פורש.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את שני כיווני הטענה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(
+\begin_inset Formula $\implies$
+\end_inset
+
+) יהי 
+\begin_inset Formula $T$
+\end_inset
+
+ עץ פורש של 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $T$
+\end_inset
+
+ קשיר וגם 
+\begin_inset Formula $V\left(T\right)=V$
+\end_inset
+
+,
+ קיים מסלול המשתמש בקשתות 
+\begin_inset Formula $T$
+\end_inset
+
+ בלבד בין כל זוג קודקודים ב-
+\begin_inset Formula $V$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $T$
+\end_inset
+
+ הוא תת-גרף של 
+\begin_inset Formula $G$
+\end_inset
+
+,
+ נקבל ש-
+\begin_inset Formula $G$
+\end_inset
+
+ קשיר (כל מסלול שקיים ב-
+\begin_inset Formula $T$
+\end_inset
+
+ קיים גם ב-
+\begin_inset Formula $G$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+(
+\begin_inset Formula $\impliedby$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אלגוריתם:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נפריד למקרים:
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $G$
+\end_inset
+
+ הוא עץ,
+ סיימנו - 
+\begin_inset Formula $G$
+\end_inset
+
+ הוא עץ פורש של עצמו.
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ מכיוון ש-
+\begin_inset Formula $G$
+\end_inset
+
+ כבר קשיר,
+ קיים מעגל פשוט 
+\begin_inset Formula $C$
+\end_inset
+
+ בגרף.
+\end_layout
+
+\begin_layout Itemize
+ראינו כי במידה ומסירים קשת ממעגל פשוט בגרף קשיר,
+ הקשירות נשמרת.
+\end_layout
+
+\begin_layout Itemize
+נסיר קשת שרירותית מ-
+\begin_inset Formula $C$
+\end_inset
+
+ מהגרף,
+ ונחזור חלילה.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+מכיוון שהגרף סופי,
+ ובכל צעד אנו מורידים קשת אחד בדיוק,
+ בסופו של דבר נגיע למצב בו 
+\begin_inset Formula $\left|E\right|=\left|V\right|-1$
+\end_inset
+
+ ונקבל עץ פורש.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ הוא 
+\emph on
+דו-צדדי
+\emph default
+ אם קיימת חלוקה 
+\begin_inset Formula $\mathcal{F}=\left\{ A,B\right\} \subseteq\mathcal{P}\left(V\right)$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $e=\left\{ u,v\right\} \in E$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $u\in A\wedge v\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Exercise
+הוכיחו כי גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ הוא דו-צדדי אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לא קיים ב-
+\begin_inset Formula $G$
+\end_inset
+
+ מעגל באורך אי-זוגי.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את שני כיווני הטענה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(
+\begin_inset Formula $\impliedby$
+\end_inset
+
+) נניח ש-
+\begin_inset Formula $G$
+\end_inset
+
+ גרף דו-צדדי,
+ ונניח בשלילה שקיים מעגל ב-
+\begin_inset Formula $G$
+\end_inset
+
+ באורך אי-זוגי.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נסמן את המעגל ב-
+\begin_inset Formula $v_{1},\dots,v_{k}$
+\end_inset
+
+ (
+\begin_inset Formula $v_{1}=v_{k}$
+\end_inset
+
+),
+ ונניח בה
+\begin_inset Quotes erd
+\end_inset
+
+כ כי 
+\begin_inset Formula $v_{1}\in A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $\left\{ v_{1},v_{2}\right\} \in E$
+\end_inset
+
+,
+ מתקיים 
+\begin_inset Formula $v_{2}\in B$
+\end_inset
+
+.
+ באופן דומה,
+ כל קודקוד במרחק זוגי במעגל מ-
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ שייך ל-
+\begin_inset Formula $A$
+\end_inset
+
+,
+ והשאר ל-
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+הצומת 
+\begin_inset Formula $v_{k-1}$
+\end_inset
+
+ במרחק זוגי מ-
+\begin_inset Formula $v_{1}$
+\end_inset
+
+,
+ לכן 
+\begin_inset Formula $v_{k-1}\in A$
+\end_inset
+
+.
+ בנוסף 
+\begin_inset Formula $\left\{ v_{k-1},v_{1}\right\} \in E$
+\end_inset
+
+ - בסתירה לכך שהגרף דו-צדדי (
+\begin_inset Formula $v_{1},v_{k-1}\in A$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(
+\begin_inset Formula $\implies$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+לכל רכיב קשירות 
+\begin_inset Formula $K\subseteq V$
+\end_inset
+
+ נפעל באופן הבא:
+ יהי 
+\begin_inset Formula $v\in K$
+\end_inset
+
+ שרירותי.
+ נגדיר את הקבוצות הבאות:
+\begin_inset Formula 
+\[
+A_{K}=\left\{ u\in V\mid\text{dist}\left(v,u\right)\equiv0\mod 2\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B_{K}=\left\{ u\in V\mid\text{dist}\left(v,u\right)\equiv1\mod 2\right\} 
+\]
+
+\end_inset
+
+נניח בשלילה שקיימת 
+\begin_inset Formula $e=\left(x,y\right)\in E$
+\end_inset
+
+ כך שבה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $x,y\in A_{K}$
+\end_inset
+
+.
+ אזי קיימים מסלולים באורכים זוגיים 
+\begin_inset Formula $v\leadsto x$
+\end_inset
+
+ ו-
+\begin_inset Formula $v\leadsto y$
+\end_inset
+
+.
+ אזי,
+ המסלול 
+\begin_inset Formula 
+\[
+v\leadsto x\rightarrow y\leadsto v
+\]
+
+\end_inset
+
+הוא באורך אי-זוגי - סתירה.
+ ברור כי 
+\begin_inset Formula $A_{K},B_{K}$
+\end_inset
+
+ זרות.
+\end_layout
+
+\begin_layout Itemize
+בסך הכל,
+ נגדיר את הקבוצות 
+\begin_inset Formula $A,B$
+\end_inset
+
+ להיות:
+\begin_inset Formula 
+\[
+A=\bigcup A_{K}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B=\bigcup B_{K}
+\]
+
+\end_inset
+
+ברור ש-
+\begin_inset Formula $A,B$
+\end_inset
+
+ היא חלוקה.
+ בנוסף,
+ מכיוון שאין קשתות בין רכיבי קשירות שונים,
+ תכונת הדו-צדדיות נשמרת.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

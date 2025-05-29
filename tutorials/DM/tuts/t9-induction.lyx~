@@ -1,0 +1,1631 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 6"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+9
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ אינדוקציה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+בעיה:
+ נניח שאנו רוצים להוכיח טענה מהצורה:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n\ge a$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $P\left(n\right)$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $a\in\mathbb{N}$
+\end_inset
+
+ ו-
+\begin_inset Formula $P\left(n\right)$
+\end_inset
+
+ הוא פרדיקט.
+ ניתן להוכיח טענה זו בשיטת האינדוקציה,
+ שכוללת את הוכחת שתי הטענות הבאות:
+\end_layout
+
+\begin_layout Enumerate
+טענת הבסיס:
+ 
+\begin_inset Formula $P\left(a\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+טענת האינדוקציה:
+ לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n>a$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $P\left(n-1\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $P\left(n\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+במידה והוכחנו שתי טענות אלו,
+ הוכחנו את הטענה המקורית.
+\end_layout
+
+\begin_layout Description
+אינדוקציה
+\begin_inset space \space{}
+\end_inset
+
+חזקה:
+ באופן דומה לאינדוקציה רגילה,
+ כדי להוכיח 
+\begin_inset Quotes eld
+\end_inset
+
+לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n\ge a$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $P\left(n\right)$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ שקול להוכיח את:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+טענות הבסיס:
+ 
+\begin_inset Formula $P\left(a\right),P\left(a+1\right),\dots,P\left(b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+טענת האינדוקציה:
+ לכל 
+\begin_inset Formula $b<k\in\mathbb{Z}$
+\end_inset
+
+,
+ אם לכל 
+\begin_inset Formula $a\le i<k$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $P\left(i\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $P\left(k\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכיחו באינדוקציה שלכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n-1}i\cdot2^{n-i-1}=2^{n}-n-1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את הטענה באינדוקציה על 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס האינדוקציה:
+ עבור 
+\begin_inset Formula $n=0$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n-1}i\cdot2^{n-i-1}=0=2^{n}-n-1,
+\]
+
+\end_inset
+
+ולכן הבסיס מתקיים.
+\end_layout
+
+\begin_layout Itemize
+צעד האינדוקציה:
+ נניח שהטענה מתקיימת עבור 
+\begin_inset Formula $n$
+\end_inset
+
+,
+ ונוכיח עבור 
+\begin_inset Formula $n+1$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\sum_{i=1}^{\left(n+1\right)-1}i\cdot2^{\left(n+1\right)-i-1} & =\sum_{i=1}^{n}i\cdot2\cdot2^{n-i-1}\\
+ & =2\cdot\left(\sum_{i=1}^{n-1}i\cdot2^{n-i-1}+n\cdot2^{-1}\right)\\
+\left(\text{הנחת האינדוקציה}\right) & =2\cdot\left(\left(2^{n}-n-1\right)+n\cdot2^{-1}\right)\\
+ & =2\cdot2^{n}-2n-2+n\\
+ & =2^{n+1}-\left(n+1\right)-1.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+בסך הכל,
+ הוכחנו את בסיס וצעד האינדוקציה ולכן הטענה מתקיימת לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכיחו שלכל 
+\begin_inset Formula $n\in\mathbb{N}^{+}$
+\end_inset
+
+ מתקיים ש-
+\begin_inset Formula $7\mid\left(3^{2n+1}+4^{2n+1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את הטענה באינדוקציה על 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס האינדוקציה - 
+\begin_inset Formula $n=1$
+\end_inset
+
+:
+ עבור 
+\begin_inset Formula $n=1$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $3^{2n+1}+4^{2n+1}=3^{3}+4^{3}=91=7\cdot13$
+\end_inset
+
+ ולכן הבסיס מתקיים.
+\end_layout
+
+\begin_layout Itemize
+צעד האינדוקציה:
+ נניח כי 
+\begin_inset Formula $7\mid\left(3^{2n+1}+4^{2n+1}\right)$
+\end_inset
+
+ ונוכיח כי 
+\begin_inset Formula $7\mid\left(3^{2\left(n+1\right)+1}+4^{2\left(n+1\right)+1}\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+3^{2\left(n+1\right)+1}+4^{2\left(n+1\right)+1} & =3^{2n+1+2}+4^{2n+1+2}\\
+ & =9\cdot3^{2n+1}+16\cdot4^{2n+1}\\
+ & =9\cdot3^{2n+1}+9\cdot4^{2n+1}+7\cdot4^{2n+1}\\
+ & =9\cdot\left(3^{2n+1}+4^{2n+1}\right)+7\cdot4^{2n+1}.
+\end{align*}
+
+\end_inset
+
+מהנחת האינדוקציה מתקיים 
+\begin_inset Formula $7\mid\left(3^{2n+1}+4^{2n+1}\right)$
+\end_inset
+
+ - נסמן ב-
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ טבעי המקיים 
+\begin_inset Formula $3^{2n+1}+4^{2n+1}=7k$
+\end_inset
+
+.
+ אזי
+\begin_inset Formula 
+\begin{align*}
+3^{2\left(n+1\right)+1}+4^{2\left(n+1\right)+1} & =9\cdot\left(3^{2n+1}+4^{2n+1}\right)+7\cdot4^{2n+1}\\
+ & =9\cdot7k+7\cdot4^{2n+1}\\
+ & =7\cdot\left(9k+4^{2n+1}\right),
+\end{align*}
+
+\end_inset
+
+ומכיוון ש-
+\begin_inset Formula $9k+4^{2n+1}\in\mathbb{Z}$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $7\mid\left(3^{2\left(n+1\right)+1}+4^{2\left(n+1\right)+1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בסך הכל,
+ הוכחנו את בסיס וצעד האינדוקציה ולכן הטענה מתקיימת לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+(הוכחת עיקרון שובך היונים) תהיינה 
+\begin_inset Formula $A,B$
+\end_inset
+
+ קבוצות סופיות כך ש-
+\begin_inset Formula $\left|A\right|>\left|B\right|$
+\end_inset
+
+,
+ ותהי 
+\begin_inset Formula $f:A\rightarrow B$
+\end_inset
+
+ פונקציה.
+ הוכיחו כי 
+\begin_inset Formula $f$
+\end_inset
+
+ אינה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את הטענה באינדוקציה על 
+\begin_inset Formula $\left|B\right|$
+\end_inset
+
+.
+ נוכיח שלכל 
+\begin_inset Formula $n\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $\left|B\right|=n$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left|A\right|>n$
+\end_inset
+
+ אז 
+\begin_inset Formula $f:A\rightarrow B$
+\end_inset
+
+ אינה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס האינדוקציה:
+ עבור 
+\begin_inset Formula $n=1$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $B=\left\{ b\right\} $
+\end_inset
+
+ עבור 
+\begin_inset Formula $b$
+\end_inset
+
+ כלשהו.
+ מכיוון ש-
+\begin_inset Formula $\left|A\right|>1$
+\end_inset
+
+ ב-
+\begin_inset Formula $A$
+\end_inset
+
+ יש לפחות שני מקורות,
+ ששניהם חייבים להיות ממופים ל-
+\begin_inset Formula $b$
+\end_inset
+
+ (זו התמונה היחידה) - ולכן 
+\begin_inset Formula $f$
+\end_inset
+
+ אינה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע.
+\end_layout
+
+\begin_layout Itemize
+צעד האינדוקציה:
+ נניח כי הטענה מתקיימת עבור 
+\begin_inset Formula $n-1$
+\end_inset
+
+ עבור 
+\begin_inset Formula $n>1$
+\end_inset
+
+ ונוכיח עבור 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $a\in A$
+\end_inset
+
+,
+ נסמן 
+\begin_inset Formula $b=f\left(a\right)$
+\end_inset
+
+.
+ אם קיים ל-
+\begin_inset Formula $b$
+\end_inset
+
+ מקור 
+\begin_inset Formula $a\ne a^{\prime}\in A$
+\end_inset
+
+,
+ נקבל ש-
+\begin_inset Formula $f$
+\end_inset
+
+ אינה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע וסיימנו.
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ 
+\begin_inset Formula $a$
+\end_inset
+
+ הוא המקור היחיד של 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $A^{\prime}=A\setminus\left\{ a\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $B^{\prime}=B\setminus\left\{ b\right\} $
+\end_inset
+
+,
+ ונגדיר פונקציה 
+\begin_inset Formula $f^{\prime}:A^{\prime}\rightarrow B^{\prime}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $a\in A^{\prime}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f^{\prime}\left(a\right)=f\left(a\right)$
+\end_inset
+
+.
+ נשים לב כי 
+\begin_inset Formula $\left|B^{\prime}\right|=n-1$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left|X^{\prime}\right|=\left|X\right|-1>n-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מהנחת האינדוקציה נקבל ש-
+\begin_inset Formula $f^{\prime}$
+\end_inset
+
+ אינה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע - כלומר קיימים 
+\begin_inset Formula $a_{1}\ne a_{2}\in A^{\prime}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f^{\prime}\left(a_{1}\right)=f^{\prime}\left(a_{2}\right)$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $f\left(a_{1}\right)=f\left(a_{2}\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $f$
+\end_inset
+
+ אינה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $n\in\mathbb{N}^{+}$
+\end_inset
+
+ וקבוצה של 
+\begin_inset Formula $n$
+\end_inset
+
+ סוסים 
+\begin_inset Formula $H$
+\end_inset
+
+,
+ אזי כל הסוסים ב-
+\begin_inset Formula $H$
+\end_inset
+
+ באותו הצבע.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+נוכיח את הטענה באינדוקציה על 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס האינדוקציה:
+ עבור 
+\begin_inset Formula $n=1$
+\end_inset
+
+,
+ ברור שהסוס היחיד בקבוצה באותו הצבע כמו עצמו,
+ ולכן יש צבע אחד לכל סוסי הקבוצה.
+\end_layout
+
+\begin_layout Itemize
+צעד האינדוקציה:
+ נניח כי הטענה נכונה עבור 
+\begin_inset Formula $n-1\ge1$
+\end_inset
+
+,
+ ונוכיח עבור 
+\begin_inset Formula $n$
+\end_inset
+
+ - תהי 
+\begin_inset Formula $H=\left\{ h_{1},\dots,h_{n}\right\} $
+\end_inset
+
+ קבוצה בת 
+\begin_inset Formula $n$
+\end_inset
+
+ סוסים.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נגדיר שתי קבוצות חדשות בנות 
+\begin_inset Formula $n-1$
+\end_inset
+
+ סוסים:
+\begin_inset Formula 
+\[
+A=\left\{ h_{1},h_{2},\dots,h_{n-1}\right\} ,B=\left\{ h_{2},h_{3},\dots,h_{n}\right\} .
+\]
+
+\end_inset
+
+מצעד האינדוקציה נקבל שכל הסוסים ב-
+\begin_inset Formula $A$
+\end_inset
+
+ הם באותו הצבע,
+ וכל הסוסים ב-
+\begin_inset Formula $B$
+\end_inset
+
+ באותו הצבע.
+ נשים לב ש-
+\begin_inset Formula $h_{2}\in A$
+\end_inset
+
+ וגם 
+\begin_inset Formula $h_{2}\in B$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $h_{2}\in A\cap B$
+\end_inset
+
+.
+ לכן כל הסוסים ב-
+\begin_inset Formula $A$
+\end_inset
+
+ וב-
+\begin_inset Formula $B$
+\end_inset
+
+ הם באותו הצבע כמו 
+\begin_inset Formula $h_{2}$
+\end_inset
+
+.
+ בסך הכל,
+ קיבלנו כי כל הסוסים ב-
+\begin_inset Formula $H$
+\end_inset
+
+ באותו הצבע.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+בסך הכל,
+ הוכחנו כי הטענה לכל קבוצה בת 
+\begin_inset Formula $n\ge1$
+\end_inset
+
+ סוסים.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+כל הסוסים בעולם בעלי אותו הצבע.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+איפה השגיאה בהוכחה?
+ עבור 
+\begin_inset Formula $n=2$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $A=\left\{ h_{1}\right\} ,B=\left\{ h_{2}\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $A\cap B=\emptyset$
+\end_inset
+
+,
+ לכן היה צריך להוכיח את בסיס האינדוקציה גם עבור 
+\begin_inset Formula $n=2$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+(דבר שאינו אפשרי כמובן).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהי 
+\begin_inset Formula $M$
+\end_inset
+
+ מטריצה מסדר 
+\begin_inset Formula $m\times n$
+\end_inset
+
+ שמכילה 
+\begin_inset Formula $0$
+\end_inset
+
+-ים ו-
+\begin_inset Formula $1$
+\end_inset
+
+-ים בלבד.
+ נאמר כי התא ה-
+\begin_inset Formula $\left(i,j\right)$
+\end_inset
+
+ ב-
+\begin_inset Formula $M$
+\end_inset
+
+ הוא טוב אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ הוא מכיל 
+\begin_inset Formula $1$
+\end_inset
+
+ (כלומר 
+\begin_inset Formula $M_{i,j}=1$
+\end_inset
+
+) וגם מתקיים לפחות אחד משלושת התנאים הבאים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+התא נמצא בשורה הראשונה (כלומר 
+\begin_inset Formula $i=1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+התא נמצא בעמודה הראשונה (כלומר 
+\begin_inset Formula $j=1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+מתקיים ש-
+\begin_inset Formula $i,j>1$
+\end_inset
+
+ וגם 
+\begin_inset Formula $M_{i,j-1}=M_{i-1,j}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+הוכיחו כי אם 
+\begin_inset Formula $M_{m,n}=1$
+\end_inset
+
+ אז קיים במטריצה תא טוב.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את הטענה באינדוקציה על 
+\begin_inset Formula $s=n+m$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס האינדוקציה:
+ עבור 
+\begin_inset Formula $s=2$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $n=m=1$
+\end_inset
+
+.
+ ידוע כי 
+\begin_inset Formula $M_{m,n}=1$
+\end_inset
+
+,
+ ומכיוון ש-
+\begin_inset Formula $m=1$
+\end_inset
+
+ 
+\begin_inset Formula $\left(1,1\right)$
+\end_inset
+
+ הוא תא טוב.
+\end_layout
+
+\begin_layout Itemize
+צעד האינדוקציה:
+ נניח שהטענה נכונה עבור 
+\begin_inset Formula $s-1\ge2$
+\end_inset
+
+ ונוכיח עבור 
+\begin_inset Formula $s$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $\left(m,n\right)$
+\end_inset
+
+ הוא תא טוב,
+ סיימנו.
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ מכיוון ש-
+\begin_inset Formula $M_{m,n}=1$
+\end_inset
+
+ בוודאות 
+\begin_inset Formula $m>1$
+\end_inset
+
+ וגם 
+\begin_inset Formula $n>1$
+\end_inset
+
+ (אחרת אחד משני התנאים הראשונים היו מתקיימים),
+ ובנוסף 
+\begin_inset Formula $M_{m-1,n}=1$
+\end_inset
+
+ או 
+\begin_inset Formula $M_{n-1,m}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $M_{n-1,m}=1$
+\end_inset
+
+ (המקרה שבו 
+\begin_inset Formula $M_{m-1,n}=1$
+\end_inset
+
+ זהה),
+ תהי 
+\begin_inset Formula $M^{\prime}$
+\end_inset
+
+ המטריצה המתקבלת ממחיקת השורה ה-
+\begin_inset Formula $m$
+\end_inset
+
+ מ-
+\begin_inset Formula $M$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $M$
+\end_inset
+
+ מסדר 
+\begin_inset Formula $\left(m-1\right)\times n$
+\end_inset
+
+ וגם 
+\begin_inset Formula $M_{m-1,n}^{\prime}=M_{m-1,n}=1$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $\left(m-1\right)+n=s-1$
+\end_inset
+
+,
+ מהנחת האינדוקציה נקבל כי קיים ב-
+\begin_inset Formula $M^{\prime}$
+\end_inset
+
+ תא טוב.
+ מכיוון שהתנאים לא מתייחסים לנמצא מימין או מתחת לתא טוב,
+ אותו תא הוא טוב גם ב-
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהי 
+\begin_inset Formula $f:\mathbb{N}^{+}\rightarrow\mathbb{N}^{+}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(2\right)=2$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $n,m\in\mathbb{N}^{+}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(mn\right)=f\left(m\right)f\left(n\right)$
+\end_inset
+
+ וגם אם 
+\begin_inset Formula $n<m$
+\end_inset
+
+ אז 
+\begin_inset Formula $f\left(n\right)<f\left(m\right)$
+\end_inset
+
+.
+ הוכיחו כי 
+\begin_inset Formula $f=I_{\mathbb{N}^{+}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את הטענה באינדוקציה על 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס האינדוקציה:
+ עבור 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ נשים לב כי מתקיים 
+\begin_inset Formula $f\left(1\cdot1\right)=f\left(1\right)\cdot f\left(1\right)$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $f\left(1\right)=1$
+\end_inset
+
+ (כי 
+\begin_inset Formula $0\notin\text{range}\left(f\right)$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+צעד האינדוקציה:
+ יהי 
+\begin_inset Formula $n>1$
+\end_inset
+
+.
+ נניח את נכונות הטענה לכל 
+\begin_inset Formula $1\le k\le n$
+\end_inset
+
+,
+ ונוכיח עבור 
+\begin_inset Formula $n+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אזי לכל 
+\begin_inset Formula $1\le k\le n$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(k\right)=k$
+\end_inset
+
+.
+ נפריד למקרים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $n$
+\end_inset
+
+ אי-זוגי,
+ נקבל ש-
+\begin_inset Formula $n+1$
+\end_inset
+
+ זוגי,
+ ולכן קיים 
+\begin_inset Formula $1\le k\le n$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\begin{align*}
+f\left(n+1\right) & =f\left(2k\right)\\
+ & =f\left(2\right)\cdot f\left(k\right)\\
+\left(\text{הנחת האינדוקציה}\right) & =2k\\
+ & =n+1.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ זוגי ולכן 
+\begin_inset Formula $n+1$
+\end_inset
+
+ אי-זוגי.
+ אזי קיים 
+\begin_inset Formula $1\le k<n$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n=2k$
+\end_inset
+
+.
+ אזי,
+\begin_inset Formula 
+\[
+2k\underset{\left(\ast\right)}{=}f\left(2k\right)<f\left(2k+1\right)<f\left(2k+2\right)=f\left(2\cdot\left(k+1\right)\right)\underset{\left(\ast\right)}{=}f\left(2\right)\cdot f\left(k+1\right)=2k+2
+\]
+
+\end_inset
+
+כאשר מעברים המסומנים ב-
+\begin_inset Formula $\left(\ast\right)$
+\end_inset
+
+ נובעים מההנחת האינדוקציה.
+ לכן
+\begin_inset Formula 
+\[
+2k<f\left(n+1\right)<2k+2\implies f\left(n+1\right)=2k+1=n+1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+נגדיר סדרה 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a_{0}=0,a_{1}=1$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $n\ge2$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a_{n}=a_{n-1}+a_{n-2}$
+\end_inset
+
+ (סדרת פיבונאצ'י).
+ הוכיחו כי לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+a_{n}=\frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{n}-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את הטענה באינדוקציה מעל 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ נגדיר סדרה 
+\begin_inset Formula $b_{n}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+b_{n}=\frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{n}-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\right),
+\]
+
+\end_inset
+
+ונוכיח כי לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a_{n}=b_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס האינדוקציה:
+ עבור 
+\begin_inset Formula $n=0$
+\end_inset
+
+ ו-
+\begin_inset Formula $n=1$
+\end_inset
+
+,
+ נקבל
+\begin_inset Formula 
+\[
+b_{0}=\frac{1}{\sqrt{5}}\left(1-1\right)=0=a_{0}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+b_{1}=\frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)-\left(\frac{1-\sqrt{5}}{2}\right)\right)=1=a_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+צעד האינדוקציה:
+ נניח כי לכל 
+\begin_inset Formula $n>k\in\mathbb{N}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a_{k}=b_{k}$
+\end_inset
+
+,
+ ונוכיח כי 
+\begin_inset Formula $a_{n}=b_{n}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+a_{n}=b_{n}\iff a_{n-1}+a_{n-2}=b_{n}\iff b_{n-1}+b_{n-2}=b_{n}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\iff & \frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{n-1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n-1}\right)+\frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{n-2}-\left(\frac{1-\sqrt{5}}{2}\right)^{n-2}\right)\\
+ & =\frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{n}-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\right).
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\iff & \left(\frac{1+\sqrt{5}}{2}\right)^{n-1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n-1}+\left(\frac{1+\sqrt{5}}{2}\right)^{n-2}-\left(\frac{1-\sqrt{5}}{2}\right)^{n-2}\\
+ & =\left(\frac{1+\sqrt{5}}{2}\right)^{n}-\left(\frac{1-\sqrt{5}}{2}\right)^{n}.
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\iff & \left(\frac{1+\sqrt{5}}{2}\right)^{n-1}-\left(\frac{1+\sqrt{5}}{2}\right)^{n}+\left(\frac{1+\sqrt{5}}{2}\right)^{n-2}\\
+ & =\left(\frac{1-\sqrt{5}}{2}\right)^{n-1}+\left(\frac{1-\sqrt{5}}{2}\right)^{n-2}-\left(\frac{1-\sqrt{5}}{2}\right)^{n}.
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\iff & \left(\frac{1+\sqrt{5}}{2}\right)^{n-2}\left(\underset{0}{\underbrace{\left(\frac{1+\sqrt{5}}{2}\right)^{1}-\left(\frac{1+\sqrt{5}}{2}\right)^{2}+1}}\right)\\
+ & =\left(\frac{1-\sqrt{5}}{2}\right)^{n-2}\left(\underset{0}{\underbrace{\left(\frac{1-\sqrt{5}}{2}\right)^{1}+1-\left(\frac{1-\sqrt{5}}{2}\right)^{2}}}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\iff0=0
+\]
+
+\end_inset
+
+ולכן הטענה נכונה.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

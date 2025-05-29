@@ -1,0 +1,1939 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 3"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ תורת הקבוצות,
+ יחסים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+תורת הקבוצות
+\end_layout
+
+\begin_layout Description
+תזכורת:
+ עבור קבוצות 
+\begin_inset Formula $A,B$
+\end_inset
+
+,
+ ההפרש הסימטרי של 
+\begin_inset Formula $A$
+\end_inset
+
+ ו-
+\begin_inset Formula $B$
+\end_inset
+
+ יסומן ב-
+\begin_inset Formula $A\triangle B$
+\end_inset
+
+ או 
+\begin_inset Formula $A\oplus B$
+\end_inset
+
+,
+ ומוגדר להיות
+\begin_inset Formula 
+\begin{align*}
+A\triangle B & =\left\{ x\mid\left(x\in A\wedge x\notin B\right)\vee\left(x\in B\wedge x\notin A\right)\right\} \\
+ & =\left\{ x\mid\left(x\in A\right)\oplus\left(x\in B\right)\right\} \\
+ & =\left(A\setminus B\right)\cup\left(B\setminus A\right)\\
+ & =\left(A\cup B\right)\setminus\left(A\cap B\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(A\setminus B\right)\setminus C\subseteq A\setminus\left(B\setminus C\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(A\cup B\right)\setminus C=\left(A\setminus C\right)\cup\left(B\setminus C\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\triangle C\subseteq\left(A\triangle B\right)\cup\left(B\triangle C\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכחה:
+\begin_inset Formula 
+\begin{align*}
+x\in\left(A\setminus B\right)\setminus C & \iff x\in\left(A\setminus B\right)\wedge x\notin C\\
+{\color{purple}{\normalsize \mathrm{\mathrm{\mathrm{\left(\text{הגדרת הפרש}\right)}}}}} & \iff\left(x\in A\wedge x\notin B\right)\wedge x\notin C\\
+{\color{purple}{\normalsize \mathrm{\mathrm{\mathrm{\left(\text{אסוציאטיביות של \ensuremath{\wedge}}\right)}}}}} & \iff x\in A\wedge\left(x\notin B\wedge x\notin C\right)\\
+{\color{purple}{\normalsize \mathrm{\mathrm{\mathrm{\left(\text{הגדרת הפרש}\right)}}}}} & \implies x\in A\wedge x\notin\left(B\setminus C\right)\\
+{\color{purple}{\normalsize \mathrm{\mathrm{\mathrm{\left(\text{הגדרת הפרש}\right)}}}}} & \iff x\in A\setminus\left(B\setminus C\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+הוכחה - כדי להראות שוויון בין הקבוצות,
+ נראה הכלה דו כיוונית.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(A\cup B\right)\setminus C\subseteq\left(A\setminus C\right)\cup\left(B\setminus C\right)$
+\end_inset
+
+:
+ יהי 
+\begin_inset Formula $x\in\left(A\cup B\right)\setminus C$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מהגדרת הפרש מתקיים 
+\begin_inset Formula $x\in A\cup B$
+\end_inset
+
+ (כלומר 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ או 
+\begin_inset Formula $x\in B$
+\end_inset
+
+) וגם 
+\begin_inset Formula $x\notin C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $x\in A$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $x\in A\setminus C$
+\end_inset
+
+,
+ ואם 
+\begin_inset Formula $x\in B$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $x\in B\setminus C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בכל מקרה,
+ 
+\begin_inset Formula $x\in\left(A\setminus C\right)\cup\left(B\setminus C\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(A\setminus C\right)\cup\left(B\setminus C\right)\subseteq\left(A\cup B\right)\setminus C$
+\end_inset
+
+:
+ יהי 
+\begin_inset Formula $x\in\left(A\setminus C\right)\cup\left(B\setminus C\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מהגדרת איחוד מתקיים 
+\begin_inset Formula $x\in A\setminus C$
+\end_inset
+
+ או 
+\begin_inset Formula $x\in B\setminus C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $x\in A\setminus C$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ (ולכן 
+\begin_inset Formula $x\in A\cup B$
+\end_inset
+
+) וגם 
+\begin_inset Formula $x\notin C$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $x\in\left(A\cup B\right)\setminus C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $x\in B\setminus C$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $x\in B$
+\end_inset
+
+ (ולכן 
+\begin_inset Formula $x\in A\cup B$
+\end_inset
+
+) וגם 
+\begin_inset Formula $x\notin C$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $x\in\left(A\cup B\right)\setminus C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בכל מקרה,
+ 
+\begin_inset Formula $x\in\left(A\cup B\right)\setminus C$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+הוכחה:
+ יהי 
+\begin_inset Formula $x\in A\triangle C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן 
+\begin_inset Formula $x\in A\setminus C\cup C\setminus A$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $\left(x\in A\setminus C\right)\vee\left(x\in C\setminus A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $x\in A\setminus C$
+\end_inset
+
+,
+ מתקיים 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ וגם 
+\begin_inset Formula $x\notin C$
+\end_inset
+
+.
+ נפריד למקרים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $x\in B$
+\end_inset
+
+,
+ נקבל ש-
+\begin_inset Formula $x\in B\triangle C$
+\end_inset
+
+,
+ ואחרת נקבל ש-
+\begin_inset Formula $x\in A\triangle B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בכל מקרה מתקיים 
+\begin_inset Formula $x\in\left(A\triangle B\right)\cup\left(B\triangle C\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+המקרה בו 
+\begin_inset Formula $x\in C\setminus A$
+\end_inset
+
+ זהה.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהיינה 
+\begin_inset Formula $A,B$
+\end_inset
+
+ קבוצות.
+ 
+\emph on
+המכפלה הקרטזית
+\emph default
+ של 
+\begin_inset Formula $A,B$
+\end_inset
+
+ מוגדרת להיות
+\begin_inset Formula 
+\[
+A\times B=\left\{ \underset{\text{זוג סדור}}{\underbrace{\left(a,b\right)}}\mid a\in A\wedge b\in B\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+עבור 
+\begin_inset Formula $A=\left\{ \emptyset,\text{יפתח}\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $B=\left\{ 1,2\right\} $
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+A\times B=\left\{ \left(\text{יפתח},1\right),\left(\text{יפתח},2\right),\left(\emptyset,1\right),\left(\emptyset,2\right)\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+בנוסף,
+ לכל קבוצה 
+\begin_inset Formula $X$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\emptyset\times A=A\times\emptyset=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+באופן כללי,
+ עבור קבוצות 
+\begin_inset Formula $A_{1},\dots,A_{n}$
+\end_inset
+
+,
+ אזי
+\begin_inset Formula 
+\[
+A_{1}\times\dots\times A_{n}=\bigtimes_{i=1}^{n}A_{i}=\left\{ \underset{\text{\ensuremath{n}-יה סדורה}}{\underbrace{\left(a_{1},\dots,a_{n}\right)}}\mid a_{1}\in A_{1},\dots,a_{n}\in A_{n}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+בנוסף,
+ אם 
+\begin_inset Formula $A=A_{1}=\dots=A_{n}$
+\end_inset
+
+,
+ אזי
+\begin_inset Formula 
+\[
+\underset{\text{\ensuremath{n} פעמים}}{\underbrace{A\times A\times\dots\times A}}=A^{n}=\left\{ \left(a_{1},\dots,a_{n}\right)\mid a_{1}\dots,a_{n}\in A\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+עבור קבוצות 
+\begin_inset Formula $A_{1},A_{2},\dots$
+\end_inset
+
+,
+ נגדיר
+\begin_inset Formula 
+\[
+A_{1}\cup A_{2}\cup\dots=\bigcup_{i=1}^{\infty}A_{i}=\bigcup_{i\in\mathbb{N}^{+}}A_{i}=\left\{ x\mid\exists i\in\mathbb{N}^{+}:x\in A_{i}\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A_{1}\cap A_{2}\cap\dots=\bigcap_{i=1}^{\infty}A_{i}=\bigcap_{i\in\mathbb{N}^{+}}A_{i}=\left\{ x\mid\forall i\in\mathbb{N}^{+}:x\in A_{i}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהיינה 
+\begin_inset Formula $\mathcal{A}=\left\{ A_{i}\right\} _{i\in\mathbb{N}^{+}},\mathcal{B}=\left\{ B_{i}\right\} _{i\in\mathbb{N}^{+}}$
+\end_inset
+
+ משפחות (אוסף קבוצות).
+ הוכח כי
+\begin_inset Formula 
+\[
+\left(\bigcup_{i=1}^{\infty}A_{i}\right)\setminus\left(\bigcup_{i=1}^{\infty}B_{i}\right)\subseteq\bigcup_{i\in\mathbb{N}^{+}}\left(A_{i}\setminus B_{i}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+יהי 
+\begin_inset Formula $x\in\left(\bigcup_{i=1}^{\infty}A_{i}\right)\setminus\left(\bigcup_{i=1}^{\infty}B_{i}\right)$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $x\in\left(\bigcup_{i=1}^{\infty}A_{i}\right)$
+\end_inset
+
+ וגם 
+\begin_inset Formula $x\notin\left(\bigcup_{i=1}^{\infty}B_{i}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+קיים 
+\begin_inset Formula $j\in\mathbb{N}^{+}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\in A_{j}$
+\end_inset
+
+,
+ וגם לכל 
+\begin_inset Formula $i\in\mathbb{N}^{+}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\not\in B_{i}$
+\end_inset
+
+.
+ בפרט,
+ מתקיים
+\begin_inset Formula 
+\[
+x\in A_{j}\setminus B_{J}\implies x\in\bigcup_{i\in\mathbb{N}^{+}}\left(A_{i}\setminus B_{i}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה.
+ 
+\begin_inset Formula $\mathcal{F}\subseteq\mathcal{P}\left(A\right)$
+\end_inset
+
+ היא 
+\emph on
+חלוקה
+\emph default
+ של 
+\begin_inset Formula $A$
+\end_inset
+
+ אם שלוש התכונות הבאות מתקיימות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+כל איבר ב-
+\begin_inset Formula $A$
+\end_inset
+
+ נמצא במחלקה כלשהי:
+\begin_inset Formula 
+\[
+\bigcup_{S\in\mathcal{F}}S=A.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אין חיתוך בין מחלקות שונות:
+\begin_inset Formula 
+\[
+\forall S,T\in\mathcal{F}:S\ne T\rightarrow S\cap T=\emptyset.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אף מחלקה ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ אינה ריקה:
+ 
+\begin_inset Formula 
+\[
+\forall S\in\mathcal{F}:S\ne\emptyset.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ויהיו 
+\begin_inset Formula $\mathcal{F}_{1},\mathcal{F}_{2}$
+\end_inset
+
+ חלוקות של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathcal{F}_{1}$
+\end_inset
+
+ היא 
+\emph on
+עידון
+\emph default
+ של 
+\begin_inset Formula $\mathcal{F}_{2}$
+\end_inset
+
+ אם
+\begin_inset Formula 
+\[
+\forall S\in\mathcal{F}_{1}\exists T\in\mathcal{F}_{2}:S\subseteq T.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+עבור 
+\begin_inset Formula $A=\left\{ 1,2,3,4\right\} $
+\end_inset
+
+ והחלוקות
+\begin_inset Formula 
+\[
+\mathcal{F}_{1}=\left\{ \left\{ 1\right\} ,\left\{ 2,3\right\} ,\left\{ 4\right\} \right\} ,\quad\mathcal{F}_{2}=\left\{ \left\{ 1,2,3\right\} ,\left\{ 4\right\} \right\} ,
+\]
+
+\end_inset
+
+נקבל ש-
+\begin_inset Formula $\mathcal{F}_{1}$
+\end_inset
+
+ היא עידון של 
+\begin_inset Formula $\mathcal{F}_{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+עבור 
+\begin_inset Formula $\left\{ 1\right\} \in\mathcal{F}_{1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\{ 1,2,3\right\} \in\mathcal{F}_{2}$
+\end_inset
+
+ ומתקיים 
+\begin_inset Formula $\left\{ 1\right\} \subseteq\left\{ 1,2,3\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+עבור 
+\begin_inset Formula $\left\{ 2,3\right\} \in\mathcal{F}_{1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\{ 1,2,3\right\} \in\mathcal{F}_{2}$
+\end_inset
+
+ ומתקיים 
+\begin_inset Formula $\left\{ 2,3\right\} \subseteq\left\{ 1,2,3\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+עבור 
+\begin_inset Formula $\left\{ 4\right\} \in\mathcal{F}_{1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\{ 4\right\} \in\mathcal{F}_{2}$
+\end_inset
+
+ ומתקיים 
+\begin_inset Formula $\left\{ 4\right\} \subseteq\left\{ 4\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ויהיו 
+\begin_inset Formula $\mathcal{F}_{1},\mathcal{F}_{2}$
+\end_inset
+
+ חלוקות של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ נגדיר משפחת קבוצות 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ על ידי
+\begin_inset Formula 
+\[
+\mathcal{G}=\left\{ S\cap T\mid\left(S,T\right)\in\mathcal{F}_{1}\times\mathcal{F}_{2},S\cap T\ne\emptyset\right\} .
+\]
+
+\end_inset
+
+הוכיחו כי 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ היא חלוקה של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את שלוש התכונות של חלוקה:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נראה כי 
+\begin_inset Formula $\bigcup_{L\in\mathcal{G}}L=A$
+\end_inset
+
+ באמצעות הכלה דו-כיוונית:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\bigcup_{L\in\mathcal{G}}L\subseteq A$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $x\in\bigcup_{L\in\mathcal{G}}L$
+\end_inset
+
+.
+ מהגדרת איחוד,
+ קיים 
+\begin_inset Formula $L^{\prime}\in\mathcal{G}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\in L^{\prime}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מהגדרת 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+,
+ קיימים 
+\begin_inset Formula $S^{\prime}\in\mathcal{F}_{1},T^{\prime}\in\mathcal{F}_{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $S^{\prime}\cap T^{\prime}=L^{\prime}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מהגדרת החיתוך,
+ נקבל ש-
+\begin_inset Formula $x\in S^{\prime}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $x\in T^{\prime}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $S^{\prime}\in\mathcal{F}_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mathcal{F}_{1}$
+\end_inset
+
+ חלוקה של 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ מתקיים 
+\begin_inset Formula $S^{\prime}\subseteq A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מהגדרת הכלה נקבל ש-
+\begin_inset Formula $x\in A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A\subseteq\bigcup_{L\in\mathcal{G}}L$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $a\in A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $\mathcal{F}_{1},\mathcal{F}_{2}$
+\end_inset
+
+ חלוקות של 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ קיימות 
+\begin_inset Formula $S^{\prime}\in\mathcal{F}_{1},T^{\prime}\in\mathcal{F}_{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\in S^{\prime}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $x\in T^{\prime}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מהגדרת חיתוך נקבל ש-
+\begin_inset Formula $x\in S^{\prime}\cap T^{\prime}$
+\end_inset
+
+,
+ ובפרט 
+\begin_inset Formula $S^{\prime}\cap T^{\prime}\ne\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מהגדרת 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $S^{\prime}\cap T^{\prime}\in\mathcal{G}$
+\end_inset
+
+,
+ ולכן מהגדרת איחוד נקבל ש-
+\begin_inset Formula $S^{\prime}\cap T^{\prime}\subseteq\bigcup_{L\in\mathcal{G}}L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מהגדרת הכלה נקבל ש-
+\begin_inset Formula $x\in\bigcup_{L\in\mathcal{G}}L$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+כעת נוכיח שאין חיתוך בין מחלקות שונות:
+ נוכיח שלכל 
+\begin_inset Formula $M,K\in\mathcal{G}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $M\ne K$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $M\cap K=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נניח בשלילה שקיימים 
+\begin_inset Formula $M,K\in\mathcal{G}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $M\ne K$
+\end_inset
+
+ וגם 
+\begin_inset Formula $M\cap K\ne\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $M,K\in\mathcal{G}$
+\end_inset
+
+,
+ מהגדרת 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ קיימות קבוצות 
+\begin_inset Formula $S_{1},S_{2}\in\mathcal{F}_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $T_{1},T_{2}\in\mathcal{F}_{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+M=S_{1}\cap T_{1},\quad K=S_{2}\cap T_{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $M\cap K\ne\emptyset$
+\end_inset
+
+,
+ קיים 
+\begin_inset Formula $x$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\in M\cap K$
+\end_inset
+
+,
+ ומהגדרת חיתוך מתקיים 
+\begin_inset Formula $x\in M$
+\end_inset
+
+ וגם 
+\begin_inset Formula $x\in K$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $M=S_{1}\cap T_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $K=S_{2}\cap T_{2}$
+\end_inset
+
+,
+ מהגדרת חיתוך נקבל ש-
+\begin_inset Formula 
+\[
+x\in S_{1}\wedge x\in S_{2}\wedge x\in T_{1}\wedge x\in T_{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+מהגדרת חיתוך נקבל ש-
+\begin_inset Formula $x\in S_{1}\cap S_{2}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $x\in T_{1}\cap T_{2}$
+\end_inset
+
+,
+ ולכן נקבל ש-
+\begin_inset Formula $S_{1}\cap S_{2}\ne\emptyset$
+\end_inset
+
+ וגם 
+\begin_inset Formula $T_{1}\cap T_{2}\ne\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $\mathcal{F}_{1},\mathcal{F}_{2}$
+\end_inset
+
+ חלוקות נקבל ש-
+\begin_inset Formula $S_{1}=S_{2}$
+\end_inset
+
+ (אחרת 
+\begin_inset Formula $S_{1}\cap S_{2}=\emptyset$
+\end_inset
+
+) וגם 
+\begin_inset Formula $T_{1}=T_{2}$
+\end_inset
+
+,
+ ומכאן נובע ש-
+\begin_inset Formula 
+\[
+M=S_{1}\cap T_{1}=S_{2}\cap T_{2}=K,
+\]
+
+\end_inset
+
+בסתירה לכך ש-
+\begin_inset Formula $M\ne K$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+לבסוף,
+ נוכיח כי לכל 
+\begin_inset Formula $L\in\mathcal{G}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $L\ne\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מהגדרת 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+,
+ קיימות 
+\begin_inset Formula $S\in\mathcal{F}_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $T\in\mathcal{F}_{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $S\cap T\ne\emptyset$
+\end_inset
+
+ ו-
+\begin_inset Formula $L=S\cap T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכאן נקבל ש-
+\begin_inset Formula $L\ne\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+יחסים
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה.
+ 
+\emph on
+יחס בינארי
+\emph default
+ 
+\begin_inset Formula $R$
+\end_inset
+
+ על 
+\begin_inset Formula $A$
+\end_inset
+
+ הוא תת-קבוצה של 
+\begin_inset Formula $A\times A$
+\end_inset
+
+ (אוסף של זוגות סדורים).
+ לכל 
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+ נאמר ש-
+\bar under
+
+\begin_inset Formula $a$
+\end_inset
+
+ הוא ביחס 
+\begin_inset Formula $R$
+\end_inset
+
+ עם 
+\begin_inset Formula $b$
+\end_inset
+
+
+\bar default
+,
+ ונסמן 
+\begin_inset Formula $a\mathrel{R}b$
+\end_inset
+
+ או 
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה ויהי 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס מעל 
+\begin_inset Formula $A$
+\end_inset
+
+ (כלומר 
+\begin_inset Formula $R\subseteq A^{2}$
+\end_inset
+
+).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ 
+\emph on
+רפלקסיבי
+\emph default
+ אם לכל 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a,a\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ 
+\emph on
+אנטי-רפלקסיבי
+\emph default
+ אם לכל 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a,a\right)\notin R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ 
+\emph on
+סימטרי
+\emph default
+ אם לכל 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+\left(a,b\right)\in R\rightarrow\left(b,a\right)\in R.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ 
+\emph on
+אנטי-סימטרי חלש
+\emph default
+ אם לכל 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+\left(a\mathrel{R}b\wedge b\mathrel{R}a\right)\rightarrow a=b.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ 
+\emph on
+אנטי-סימטרי חזק
+\emph default
+ אם לכל 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+a\mathrel{R}b\rightarrow\neg\left(b\mathrel{R}a\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ 
+\emph on
+טרנזיטיבי
+\emph default
+ אם לכל 
+\begin_inset Formula $a,b,c\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+\left(a\mathrel{R}b\wedge b\mathrel{R}c\right)\rightarrow a\mathrel{R}c.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+עבור כל אחד מהיחסים הבאים,
+ בדקו אילו תכונות היחס מקיים.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R=\left\{ \left(1,2\right),\left(2,1\right),\left(1,3\right),\left(3,1\right)\right\} $
+\end_inset
+
+,
+ מעל 
+\begin_inset Formula $\left\{ 1,2,3\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(x,y\right)\in S$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $x\cdot y=2$
+\end_inset
+
+,
+ מעל 
+\begin_inset Formula $\mathbb{Z}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ אנטי-רפלקסיבי:
+ 
+\begin_inset Formula $\left(1,1\right),\left(2,2\right),\left(3,3\right)\notin R$
+\end_inset
+
+,
+ ולכן בפרט לא רפלקסיבי.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ סימטרי:
+ 
+\begin_inset Formula $\left(1,2\right),\left(2,1\right)\in R$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left(1,3\right),\left(3,1\right)\in R$
+\end_inset
+
+ ואף זוג אחר לא ביחס.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ לא אנטי-סימטרי חלש:
+ 
+\begin_inset Formula $1\ne2$
+\end_inset
+
+ אבל 
+\begin_inset Formula $\left(1,2\right)\in R\wedge\left(2,1\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ניתן להסיק מאותה הדוגמא הנגדית ש-
+\begin_inset Formula $R$
+\end_inset
+
+ אינו אנטי-סימטרי חזק.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ לא טרנזיטיבי:
+ 
+\begin_inset Formula $\left(1,2\right)\in R\wedge\left(2,1\right)\in R$
+\end_inset
+
+ אבל 
+\begin_inset Formula $\left(1,1\right)\notin R$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $S$
+\end_inset
+
+ אנטי-רפלקסיבי:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נניח בשלילה שקיים 
+\begin_inset Formula $x\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\cdot x=2$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $x=\sqrt{2}\notin\mathbb{Z}$
+\end_inset
+
+ והגענו לסתירה.
+\end_layout
+
+\begin_layout Itemize
+מכאן 
+\begin_inset Formula $S$
+\end_inset
+
+ בפרט אינו רפלקסיבי.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $S$
+\end_inset
+
+ סימטרי:
+ נובע מקומוטטיביות הכפל.
+ לכל 
+\begin_inset Formula $x,y\in\mathbb{Z}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+x\mathrel{S}y\iff x\cdot y=2\iff y\cdot x=2\iff y\mathrel{S}x.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S$
+\end_inset
+
+ אינו אנטי-סימטרי חלש:
+ 
+\begin_inset Formula $\left(1,2\right)\in S$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(2,1\right)\in S$
+\end_inset
+
+ אבל 
+\begin_inset Formula $1\ne2$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ניתן להסיק מאותה הדוגמא הנגדית ש-
+\begin_inset Formula $R$
+\end_inset
+
+ אינו אנטי-סימטרי חזק.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $S$
+\end_inset
+
+ לא טרנזיטיבי:
+ 
+\begin_inset Formula $\left(1,2\right)\in S\wedge\left(2,1\right)\in S$
+\end_inset
+
+ אבל 
+\begin_inset Formula $\left(2,2\right)\notin S$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

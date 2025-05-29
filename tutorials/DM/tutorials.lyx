@@ -1,0 +1,550 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Hadasim CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Advanced Algorithms Lectures"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+חוברת תרגולים במתמטיקה דיסקרטית
+\end_layout
+
+\begin_layout Subtitle
+החוג למדעי המחשב,
+ אוניברסיטת חיפה
+\end_layout
+
+\begin_layout Author
+בר וייסמן
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+אכתוב את זה בקבצים נפרדים ואחכ אשים פה הכל.
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+12
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+תרגולים בסה
+\begin_inset Quotes erd
+\end_inset
+
+כ:
+\end_layout
+
+\begin_layout Enumerate
+לוגיקה ותורת הקבוצות.
+\end_layout
+
+\begin_layout Enumerate
+תורת הקבוצות ותחילת יחסים.
+\end_layout
+
+\begin_layout Enumerate
+יחסים ויחסי שקילות.
+\end_layout
+
+\begin_layout Enumerate
+יחסי שקילות ויחסי סדר.
+\end_layout
+
+\begin_layout Enumerate
+פונקציות.
+\end_layout
+
+\begin_layout Enumerate
+פונקציות ואינדוקציה.
+\end_layout
+
+\begin_layout Enumerate
+עוצמות.
+ (אולי בסוף?)
+\end_layout
+
+\begin_layout Enumerate
+עוצמות ושובך היונים.
+\end_layout
+
+\begin_layout Enumerate
+שובך היונים וקומבינטוריקה (בסיס).
+\end_layout
+
+\begin_layout Enumerate
+קומבינטוריקה (כולל עיקרון ההכלה וההדחה) ותחילת תורת הגרפים.
+\end_layout
+
+\begin_layout Enumerate
+תורת הגרפים.
+\end_layout
+
+\begin_layout Enumerate
+תורת הגרפים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+פונקציות יוצרות העשרה!!!
+\end_layout
+
+\begin_layout Chapter
+מבוא
+\end_layout
+
+\begin_layout Section
+לוגיקה
+\end_layout
+
+\begin_layout Section
+אינדוקציה
+\end_layout
+
+\begin_layout Chapter
+מבוא לתורת הקבוצות
+\end_layout
+
+\begin_layout Section
+הגדרות
+\end_layout
+
+\begin_layout Section
+יחסים
+\end_layout
+
+\begin_layout Section
+פונקציות
+\end_layout
+
+\begin_layout Chapter
+קומבינטוריקה
+\end_layout
+
+\begin_layout Section
+שיטות ספירה בסיסיות
+\end_layout
+
+\begin_layout Section
+עיקרון שובך היונים
+\end_layout
+
+\begin_layout Section
+הכלה והדחה
+\end_layout
+
+\begin_layout Chapter
+גרפים
+\end_layout
+
+\begin_layout Section
+הגדרות
+\end_layout
+
+\begin_layout Section
+עצים
+\end_layout
+
+\begin_layout Chapter
+העשרה
+\end_layout
+
+\begin_layout Section
+פונקציות יוצרות
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset Formula 
+\[
+{\color{blue}\phantom{}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+מה מלמדים בגרפים?
+ כל אחד אחר עוד ידע כללי:
+\end_layout
+
+\begin_layout Standard
+לפחות שני תרגולים מלאים על תורת הגרפים
+\end_layout
+
+\begin_layout Itemize
+בסיסיים
+\end_layout
+
+\begin_layout Itemize
+קשירות
+\end_layout
+
+\begin_layout Itemize
+עצים
+\end_layout
+
+\begin_layout Itemize
+אולי אוילר
+\end_layout
+
+\begin_layout Itemize
+ממש להקפיד על פורמליות וכתיבה מדויקת:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+אנחנו שונאים מידע נוסף מיותר
+\begin_inset Quotes erd
+\end_inset
+
+ וקשוח
+\end_layout
+
+\begin_layout Itemize
+מבחינת תרגולים טאהר תרגל במתמטיקה,
+ הוא ישלח את שלו
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+המרצה שלימד זה אלק
+\end_layout
+
+\begin_layout Itemize
+אנחנו
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+12
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+שבועות,
+ בכל מקרה בנוסף לשבועות האלה תהיה השלמת הרצאה.
+ במידה ויהיה בסדר אז אוקי.
+ אחרת נוסיף תרגול?
+\end_layout
+
+\begin_layout Itemize
+לבנות מה שבא לי העיקר ברמה גבוהה וגם תרגילי הבית
+\end_layout
+
+\begin_layout Itemize
+אלק מרצה שלא הרבה מבינים,
+ אז טאהר נאלץ לפעמים לדבר על דברים שטותיים כדי שיהיה את הבסיס
+\end_layout
+
+\begin_layout Itemize
+אז פה אפשר קצת לדלג על הבסיס
+\end_layout
+
+\begin_layout Itemize
+הוא ישלח לי תהרצאות כדי שלא יהיה חיתוך וזה,
+ אבל כל שבוע אם היום יום רביעי אז היום תשלח תהרצאות של שבוע הבא למקרה שצריך לשנות משהו
+\end_layout
+
+\begin_layout Itemize
+טאהר עכשיו עמוס אז באמת לא יצא לו
+\end_layout
+
+\begin_layout Itemize
+מאוד מקווה שמעכשיו יכין כבר תשבועיים הראשונים מראש
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+חצי מהשאלות 
+\bar under
+קשות
+\bar default
+ בתרגיל בית
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+אין ידע כללי מקורס אחר,
+ אי אפשר דוגמאות
+\end_layout
+
+\begin_layout Itemize
+תרגילי בית כל שבוע,
+ מבחינת בדיקה לפחות פידבק
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

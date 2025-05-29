@@ -1,0 +1,1932 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 6"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family sans
+\series bold
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+6
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ פונקציות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+פונקציות
+\end_layout
+
+\begin_layout Definition
+תהיינה 
+\begin_inset Formula $A,B$
+\end_inset
+
+ קבוצות.
+ פונקציה 
+\begin_inset Formula $f$
+\end_inset
+
+ מ-
+\begin_inset Formula $A$
+\end_inset
+
+ ל-
+\begin_inset Formula $B$
+\end_inset
+
+,
+ 
+\begin_inset Formula $f:A\rightarrow B$
+\end_inset
+
+ היא יחס מ-
+\begin_inset Formula $A$
+\end_inset
+
+ ל-
+\begin_inset Formula $B$
+\end_inset
+
+ (
+\begin_inset Formula $f\subseteq A\times B$
+\end_inset
+
+) כך שלכל 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ קיים 
+\begin_inset Formula $b\in B$
+\end_inset
+
+ יחיד כך ש-
+\begin_inset Formula $\left(a,b\right)\in f$
+\end_inset
+
+.
+ עבור 
+\begin_inset Formula $a\in A$
+\end_inset
+
+,
+ נסמן ב-
+\begin_inset Formula $f\left(a\right)$
+\end_inset
+
+ את ה-
+\begin_inset Formula $b\in B$
+\end_inset
+
+ היחיד שמקיים 
+\begin_inset Formula $\left(a,b\right)\in f$
+\end_inset
+
+,
+ ונאמר ש-
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Formula $b$
+\end_inset
+
+ הוא הערך של 
+\begin_inset Formula $f$
+\end_inset
+
+ ב-
+\begin_inset Formula $a$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+,
+ או ש-
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Formula $f$
+\end_inset
+
+ ממפה את 
+\begin_inset Formula $a$
+\end_inset
+
+ ל-
+\begin_inset Formula $b$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ היא התחום (
+\lang english
+domain
+\lang hebrew
+) של 
+\begin_inset Formula $f$
+\end_inset
+
+,
+ 
+\begin_inset Formula $B$
+\end_inset
+
+ היא הטווח (
+\lang english
+range
+\lang hebrew
+) של 
+\begin_inset Formula $f$
+\end_inset
+
+,
+ ונסמן 
+\begin_inset Formula $A:=\text{dom}\left(f\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $B:=\text{range}\left(f\right)$
+\end_inset
+
+.
+ לכל קבוצה 
+\begin_inset Formula $S\subseteq A$
+\end_inset
+
+,
+ נגדיר
+\begin_inset Formula 
+\[
+f\left(S\right):=\left\{ f\left(s\right)\mid s\in S\right\} =\left\{ b\in B\mid\exists a\in A:f\left(a\right)=b\right\} .
+\]
+
+\end_inset
+
+בנוסף,
+ התמונה של 
+\begin_inset Formula $f$
+\end_inset
+
+ מוגדרת להיות 
+\begin_inset Formula $\text{Im}\left(f\right)=f\left(A\right)$
+\end_inset
+
+:
+ אוסף כל התמונות האפשרויות של 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+מצאו את תמונת כל אחת מהפונקציות הבאות.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f:\mathbb{N}\rightarrow\mathbb{Z}$
+\end_inset
+
+,
+ כך שלכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(n\right)=-n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f:\left\{ 0,1\right\} ^{\ast}\rightarrow\mathbb{N}$
+\end_inset
+
+,
+ כך שלכל 
+\begin_inset Formula $w\in\left\{ 0,1\right\} ^{\ast}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(w\right)=\sum_{i=1}^{\left|w\right|}w_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f:\left\{ 0,1\right\} ^{\ast}\rightarrow\mathbb{N}$
+\end_inset
+
+,
+ כך שלכל 
+\begin_inset Formula $w\in\left\{ 0,1\right\} ^{\ast}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(w\right)=\prod_{i=1}^{\left|w\right|}w_{i}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+התמונה של 
+\begin_inset Formula $f$
+\end_inset
+
+ היא אוסף כל השלמים האי-שליליים:
+ 
+\begin_inset Formula $\text{Im}\left(f\right)=\mathbb{Z}_{\le0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+כל מספר טבעי הוא תמונה אפשרית:
+ לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ נבחר את המילה 
+\begin_inset Formula $w=\underset{\text{\ensuremath{n} פעמים}}{\underbrace{\left(1,\dots,1\right)}}=1^{n}\in\left\{ 0,1\right\} ^{\ast}$
+\end_inset
+
+ ונקבל 
+\begin_inset Formula $f\left(w\right)=n$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $\text{Im}\left(f\right)=\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+התמונות היחידות האפשריות הן 
+\begin_inset Formula $0$
+\end_inset
+
+ ו-
+\begin_inset Formula $1$
+\end_inset
+
+,
+ מכיוון שכל תמונה היא מכפלה של 
+\begin_inset Formula $0$
+\end_inset
+
+-ים ו-
+\begin_inset Formula $1$
+\end_inset
+
+-ים.
+ בנוסף,
+ 
+\begin_inset Formula $f\left(0\right)=0$
+\end_inset
+
+ ו-
+\begin_inset Formula $f\left(\varepsilon\right)=1$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\text{Im}\left(f\right)=\left\{ 0,1\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהיינה 
+\begin_inset Formula $A,B$
+\end_inset
+
+ קבוצות ותהי 
+\begin_inset Formula $f:A\rightarrow B$
+\end_inset
+
+ פונקציה.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ היא 
+\emph on
+על
+\emph default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל 
+\begin_inset Formula $b\in B$
+\end_inset
+
+ קיים 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(a\right)=b$
+\end_inset
+
+ (באופן שקול 
+\begin_inset Formula $\text{Im}\left(f\right)=B$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ היא 
+\emph on
+חד-חד ערכית (חח
+\begin_inset Quotes erd
+\end_inset
+
+ע)
+\emph default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל 
+\begin_inset Formula $a\ne a^{\prime}\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(a\right)\ne f\left(a^{\prime}\right)$
+\end_inset
+
+.
+ הקונטרפוזיטיב:
+\begin_inset Formula 
+\[
+\forall a,a^{\prime}\in A:f\left(a\right)=f\left(a^{\prime}\right)\implies a=a^{\prime}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ 
+\emph on
+הפיכה
+\emph default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ קיימת 
+\emph on
+פונקציה הופכית
+\emph default
+ 
+\begin_inset Formula $g:B\rightarrow A$
+\end_inset
+
+ של 
+\begin_inset Formula $f$
+\end_inset
+
+,
+ כלומר לכל 
+\begin_inset Formula $a\in A,b\in A$
+\end_inset
+
+ מתקיים ש-
+\begin_inset Formula $f\left(a\right)=b$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $g\left(b\right)=a$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהיינה 
+\begin_inset Formula $A,B,C$
+\end_inset
+
+ קבוצות ותהיינה 
+\begin_inset Formula $f:A\rightarrow B$
+\end_inset
+
+ ו-
+\begin_inset Formula $g:B\rightarrow C$
+\end_inset
+
+ פונקציות.
+ פונקציית ההרכבה 
+\begin_inset Formula $g\circ f:A\rightarrow C$
+\end_inset
+
+ מוגדרת באופן הבא:
+\begin_inset Formula 
+\[
+\forall a\in A:g\circ f\left(a\right):=g\left(f\left(a\right)\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ היא 
+\emph on
+על
+\emph default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל 
+\begin_inset Formula $b\in B$
+\end_inset
+
+ קיים 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ כ
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+עבור כל אחת מהפונקציות הבאות,
+ קבעו האם היא חח
+\begin_inset Quotes erd
+\end_inset
+
+ע ועל.
+ במידה והפונקציה הפיכה,
+ מצאו את הפונקציה ההופכית.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f:\left(0,\infty\right)\rightarrow\left(0,1\right)$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $x\in\left(0,\infty\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(x\right)=\frac{1}{1+x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g:\left(0,\infty\right)\rightarrow\left(0,\infty\right)$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $x\in\left(0,\infty\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $g\left(x\right)=x+\frac{1}{x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h:\mathcal{P}\left(\mathbb{R}\right)\rightarrow\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $A\in\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $h\left(A\right)=A\cap\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f:\left(0,\infty\right)\rightarrow\left(0,1\right)$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $x\in\left(0,\infty\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(x\right)=\frac{1}{1+x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע:
+ יהיו 
+\begin_inset Formula $x,y\in\left(0,\infty\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(x\right)=f\left(y\right)$
+\end_inset
+
+.
+ אזי,
+\begin_inset Formula 
+\[
+\frac{1}{1+x}=\frac{1}{1+y}\iff1+y=1+x\iff y=x.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ על:
+ יהי 
+\begin_inset Formula $y\in\left(0,1\right)$
+\end_inset
+
+.
+ נרצה למצוא 
+\begin_inset Formula $x\in\left(0,\infty\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+f\left(x\right)=y\iff\frac{1}{1+x}=y\underset{\left(y\ne0\right)}{\iff}\frac{1}{y}=1+x\iff x=\frac{1}{y}-1.
+\]
+
+\end_inset
+
+קיבלנו כי עבור 
+\begin_inset Formula $x=1/y-1$
+\end_inset
+
+ (שנמצא ב-
+\begin_inset Formula $\left(0,\infty\right)$
+\end_inset
+
+ מכיוון ש-
+\begin_inset Formula $0<y<1$
+\end_inset
+
+) מתקיים 
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $f$
+\end_inset
+
+ על.
+\end_layout
+
+\begin_layout Enumerate
+קיבלנו ש-
+\begin_inset Formula $f$
+\end_inset
+
+ הפיכה מכיוון שהיא חח
+\begin_inset Quotes erd
+\end_inset
+
+ע ועל.
+ קודם לכן ראינו שלכל 
+\begin_inset Formula $x\in\left(0,\infty\right),y\in\left(0,1\right)$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+f\left(x\right)=y\iff x=\frac{1}{y}-1.
+\]
+
+\end_inset
+
+לכן,
+ נבחר 
+\begin_inset Formula $g:\left(0,1\right)\rightarrow\left(0,\infty\right)$
+\end_inset
+
+ להיות 
+\begin_inset Formula $g\left(y\right)=1/y-1$
+\end_inset
+
+,
+ ונקבל ש-
+\begin_inset Formula $g$
+\end_inset
+
+ היא הפונקציה ההופכית ל-
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $g:\left(0,\infty\right)\rightarrow\left(0,\infty\right)$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $x\in\left(0,\infty\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $g\left(x\right)=x+\frac{1}{x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $g$
+\end_inset
+
+ אינה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע:
+ למשל 
+\begin_inset Formula $g\left(2\right)=g\left(1/2\right)=2+\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g$
+\end_inset
+
+ אינה על:
+ לכל 
+\begin_inset Formula $x\in\left(0,\infty\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\ge1$
+\end_inset
+
+ או 
+\begin_inset Formula $1/x\ge1$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $1/x+x\ge1$
+\end_inset
+
+ - כלומר אין מקור ל-
+\begin_inset Formula $y=0.5$
+\end_inset
+
+ למשל.
+\end_layout
+
+\begin_layout Enumerate
+הראנו כי 
+\begin_inset Formula $g$
+\end_inset
+
+ אינה על ולכן אינה הפיכה.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $h:\mathcal{P}\left(\mathbb{R}\right)\rightarrow\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $A\in\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $h\left(A\right)=A\cap\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $h$
+\end_inset
+
+ אינה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע:
+ עבור 
+\begin_inset Formula $A=\mathbb{Z},B=\mathbb{Q}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $h\left(A\right)=h\left(B\right)=\mathbb{N}$
+\end_inset
+
+,
+ אבל 
+\begin_inset Formula $A\ne B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h$
+\end_inset
+
+ אינה על:
+ לא קיים מקור ל-
+\begin_inset Formula $Y=\left\{ 0.5\right\} $
+\end_inset
+
+.
+ נניח בשלילה שקיים 
+\begin_inset Formula $X\in\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $h\left(X\right)=Y$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $X\cap\mathbb{N}=\left\{ 0.5\right\} $
+\end_inset
+
+,
+ ומהגדרת חיתוך 
+\begin_inset Formula $0.5\in\mathbb{N}$
+\end_inset
+
+ - סתירה!
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה.
+ פונקציית הזהות של 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ 
+\begin_inset Formula $I_{A}:A\rightarrow A$
+\end_inset
+
+ מוגדרת באופן הבא:
+\begin_inset Formula 
+\[
+\forall a\in A:I_{A}\left(a\right)=a.
+\]
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+תהיינה 
+\begin_inset Formula $X,Y,Z$
+\end_inset
+
+ קבוצות ותהי 
+\begin_inset Formula $f:X\rightarrow Y$
+\end_inset
+
+ פונקציה.
+ הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ היא חח
+\begin_inset Quotes erd
+\end_inset
+
+ע אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ קיימים פונקציה 
+\begin_inset Formula $g:Y\rightarrow X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $g\circ f=I_{X}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ היא על אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ קיימת פונקציה 
+\begin_inset Formula $g:Y\rightarrow X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\circ g=I_{Y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+תהיינה 
+\begin_inset Formula $A,B\subseteq X$
+\end_inset
+
+ תתי-קבוצות.
+ אזי 
+\begin_inset Formula $f\left(A\cup B\right)=f\left(A\right)\cup f\left(B\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע אז לכל 
+\begin_inset Formula $A,B\subseteq X$
+\end_inset
+
+ שמקיימות 
+\begin_inset Formula $f\left(A\right)=f\left(B\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f$
+\end_inset
+
+ היא חח
+\begin_inset Quotes erd
+\end_inset
+
+ע אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ לכל שתי פונקציות 
+\bar under
+שונות
+\bar default
+ 
+\begin_inset Formula $g_{1}:Z\rightarrow X$
+\end_inset
+
+ ו-
+\begin_inset Formula $g_{2}:Z\rightarrow X$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\circ g_{1}\ne f\circ g_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נוכיח את שני כיווני הטענה.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע אז קיימת פונקציה 
+\begin_inset Formula $g:Y\rightarrow X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $g\circ f=I_{X}$
+\end_inset
+
+:
+ נניח ש-
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע,
+ לכל 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+ מתקיים שלא קיים 
+\begin_inset Formula $x\in X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+,
+ או שקיים 
+\begin_inset Formula $x\in X$
+\end_inset
+
+ יחיד כזה.
+ בנוסף,
+ יהי 
+\begin_inset Formula $x_{0}\in X$
+\end_inset
+
+ שרירותי.
+ נגדיר 
+\begin_inset Formula $g$
+\end_inset
+
+ באופן הבא:
+\begin_inset Formula 
+\[
+\forall y\in Y:g\left(y\right)=\begin{cases}
+x & \exists x\in X:f\left(x\right)=y\\
+x_{0} & \text{אחרת}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $x\in X$
+\end_inset
+
+,
+ נסתכל על 
+\begin_inset Formula $g\circ f\left(x\right)=g\left(f\left(x\right)\right)$
+\end_inset
+
+:
+ נסמן 
+\begin_inset Formula $y=f\left(x\right)$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע 
+\begin_inset Formula $x$
+\end_inset
+
+ הוא האיבר היחיד בתחום שממופה ל-
+\begin_inset Formula $y$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $g\circ f\left(x\right)=x$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+אם קיימת פונקציה 
+\begin_inset Formula $g:Y\rightarrow X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $g\circ f=I_{X}$
+\end_inset
+
+,
+ אז 
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נניח שקיימת פונקציה 
+\begin_inset Formula $g:Y\rightarrow X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $g\circ f=I_{X}$
+\end_inset
+
+.
+ יהיו 
+\begin_inset Formula $x,x^{\prime}\in X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(x\right)=f\left(x^{\prime}\right)$
+\end_inset
+
+.
+ אזי,
+\begin_inset Formula 
+\[
+g\circ f\left(x\right)=g\circ f\left(x^{\prime}\right),
+\]
+
+\end_inset
+
+ומכיוון ש-
+\begin_inset Formula $g\circ f=I_{X}$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $x=x^{\prime}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+נוכיח את שני כיווני הטענה.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $f$
+\end_inset
+
+ היא על אז קיימת פונקציה 
+\begin_inset Formula $g:Y\rightarrow X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\circ g=I_{Y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נניח ש-
+\begin_inset Formula $f$
+\end_inset
+
+ היא על.
+ נגדיר פונקציה 
+\begin_inset Formula $g:Y\rightarrow X$
+\end_inset
+
+ באופן הבא:
+ מכיוון ש-
+\begin_inset Formula $f$
+\end_inset
+
+ על,
+ לכל 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+ קיים 
+\begin_inset Formula $x\in X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+.
+ נגדיר את 
+\begin_inset Formula $g\left(y\right)$
+\end_inset
+
+ להיות 
+\begin_inset Formula $x\in X$
+\end_inset
+
+ שרירותי שמקיים זאת.
+\end_layout
+
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+,
+ נסמן 
+\begin_inset Formula $x=g\left(y\right)$
+\end_inset
+
+.
+ מההגדרת 
+\begin_inset Formula $g$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ מקיים 
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $f\circ g\left(y\right)=f\left(g\left(y\right)\right)=f\left(x\right)=y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן 
+\begin_inset Formula $f\circ g=I_{Y}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+אם קיימת פונקציה 
+\begin_inset Formula $g:Y\rightarrow X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\circ g=I_{Y}$
+\end_inset
+
+ אז 
+\begin_inset Formula $f$
+\end_inset
+
+ היא על.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נניח שקיימת פונקציה 
+\begin_inset Formula $g:Y\rightarrow X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\circ g=I_{Y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+.
+ נשים לב שמתקיים 
+\begin_inset Formula $f\left(g\left(y\right)\right)=f\circ g\left(y\right)=y$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $x=g\left(y\right)\in X$
+\end_inset
+
+ ונקבל ש-
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן לכל 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+ קיים 
+\begin_inset Formula $x\in X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(x\right)=y$
+\end_inset
+
+,
+ וכך 
+\begin_inset Formula $f$
+\end_inset
+
+ היא על.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+הוכחה:
+\begin_inset Formula 
+\begin{align*}
+f\left(A\cup B\right) & =\left\{ f\left(x\right)\mid x\in A\cup B\right\} \\
+ & =\left\{ f\left(x\right)\mid x\in A\vee x\in B\right\} \\
+ & =\left\{ f\left(x\right)\mid x\in A\right\} \cup\left\{ f\left(x\right)\mid x\in B\right\} \\
+ & =f\left(A\right)\cup f\left(B\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ נניח ש-
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע.
+ נניח בשלילה שקיימות 
+\begin_inset Formula $A\ne B\subseteq X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(A\right)=f\left(B\right)$
+\end_inset
+
+.
+ נניח בה
+\begin_inset Quotes erd
+\end_inset
+
+כ כי קיים 
+\begin_inset Formula $x\in A\setminus B$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $f\left(x\right)\in A$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע,
+ לכל 
+\begin_inset Formula $x\ne x^{\prime}\in X$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(x\right)\ne f\left(x^{\prime}\right)$
+\end_inset
+
+.
+ לכן,
+ מכיוון ש-
+\begin_inset Formula $x\notin B$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $x^{\prime}\in B$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\left(x\right)\ne f\left(x^{\prime}\right)$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $f\left(x\right)\notin f\left(B\right)$
+\end_inset
+
+,
+ בסתירה לכך ש-
+\begin_inset Formula $f\left(A\right)=f\left(B\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+נוכיח את שני כיווני הטענה.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $f$
+\end_inset
+
+ היא חח
+\begin_inset Quotes erd
+\end_inset
+
+ע אז לכל שתי פונקציות שונות 
+\begin_inset Formula $g_{1}:Z\rightarrow X$
+\end_inset
+
+ ו-
+\begin_inset Formula $g_{2}:Z\rightarrow X$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\circ g_{1}\ne f\circ g_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נניח ש-
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע,
+ ויהיו 
+\begin_inset Formula $g_{1}:Z\rightarrow X$
+\end_inset
+
+ ו-
+\begin_inset Formula $g_{2}:Z\rightarrow X$
+\end_inset
+
+ פונקציות שונות.
+ אזי קיים 
+\begin_inset Formula $z\in Z$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $g_{1}\left(z\right)\ne g_{2}\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $f$
+\end_inset
+
+ חח
+\begin_inset Quotes erd
+\end_inset
+
+ע ו-
+\begin_inset Formula $g_{1}\left(z\right)\ne g_{2}\left(z\right)$
+\end_inset
+
+,
+ נקבל ש-
+\begin_inset Formula $f\circ g_{1}\left(z\right)=f\left(g_{1}\left(z\right)\right)\ne f\left(g_{2}\left(z\right)\right)=f\circ g_{2}\left(z\right)$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $f\circ g_{1}\ne f\circ g_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+אם לכל שתי פונקציות שונות 
+\begin_inset Formula $g_{1}:Z\rightarrow X$
+\end_inset
+
+ ו-
+\begin_inset Formula $g_{2}:Z\rightarrow X$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f\circ g_{1}\ne f\circ g_{2}$
+\end_inset
+
+ אז 
+\begin_inset Formula $f$
+\end_inset
+
+ היא חח
+\begin_inset Quotes erd
+\end_inset
+
+ע.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נניח ש-
+\begin_inset Formula $f$
+\end_inset
+
+ אינה חח
+\begin_inset Quotes erd
+\end_inset
+
+ע,
+ כלומר קיימים 
+\begin_inset Formula $x_{1}\ne x_{2}\in X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f\left(x_{1}\right)=f\left(x_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נגדיר פונקציות 
+\begin_inset Formula $g_{1}:Z\rightarrow X$
+\end_inset
+
+ ו-
+\begin_inset Formula $g_{2}:Z\rightarrow X$
+\end_inset
+
+ באופן הבא:
+\begin_inset Formula 
+\[
+\forall z\in Z:g_{1}\left(z\right)=x_{1},g_{2}\left(z\right)=x_{2}.
+\]
+
+\end_inset
+
+ברור כי 
+\begin_inset Formula $g_{1}\ne g_{2}$
+\end_inset
+
+.
+ עם זאת,
+ לכל 
+\begin_inset Formula $z\in Z$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+f\circ g_{1}\left(z\right)=f\left(g_{1}\left(z\right)\right)=f\left(x_{1}\right)=f\left(x_{2}\right)=f\left(g_{2}\left(z\right)\right)=f\circ g_{2}\left(z\right),
+\]
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $f\circ g_{1}=f\circ g_{2}$
+\end_inset
+
+ - סתירה.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,1582 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 10"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+10
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ גרפים
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+גרף הוא אובייקט מהצורה 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $V$
+\end_inset
+
+ היא קבוצת צמתים ו-
+\begin_inset Formula $E\subseteq V^{2}$
+\end_inset
+
+ קבוצת צלעות.
+ לרוב נדבר על גרפים פשוטים,
+ שהם לא מכילים קשתות כפולות (ולכן 
+\begin_inset Formula $E$
+\end_inset
+
+ היא קבוצה,
+ ולא מכילה מספר מופעים),
+ או קשתות עצמיות,
+ כלומר 
+\begin_inset Formula $E\subseteq V^{2}\setminus\left\{ \left(v,v\right)\mid v\in V\right\} $
+\end_inset
+
+.
+ לרוב נעסוק בגרפים לא מכוונים.
+\end_layout
+
+\begin_layout Standard
+בגרף לא מכוון,
+ הדרגה של קודקוד 
+\begin_inset Formula $u\in V$
+\end_inset
+
+ היא מספר השכנים שלו:
+\begin_inset Formula 
+\[
+\deg\left(u\right):=\left|\left\{ v\in V\mid\left\{ u,v\right\} \in E\right\} \right|.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+בגרף מכוון,
+ נפריד לדרגת כניסה (קשתות שנכנסות לתוך 
+\begin_inset Formula $u$
+\end_inset
+
+) ודרגת יציאה (דרגות שיוצאות מ-
+\begin_inset Formula $u$
+\end_inset
+
+),
+ ונגדיר
+\begin_inset Formula 
+\[
+\text{in-deg}\left(u\right)=\left|\left(V\times\left\{ u\right\} \right)\cap E\right|
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\text{out-deg}\left(u\right)=\left|\left(\left\{ u\right\} \times V\right)\cap E\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+(לחיצת הידיים) יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ אזי,
+\begin_inset Formula 
+\[
+\sum_{v\in V}\deg\left(v\right)=2\cdot\left|E\right|.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+קבעו האם קיים גרף עם 
+\begin_inset Formula $6$
+\end_inset
+
+ קודקודים שדרגותיהם:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $1,2,3,4,5,5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $1,2,3,4,4,5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $1,2,3,3,4,5$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לא אפשרי:
+ מכיוון שקיימים שני צמתים מדרגה 
+\begin_inset Formula $5$
+\end_inset
+
+,
+ הם שכנים של כל שאר הקודקודים,
+ ולכן לכל צומת אחר הדרגה היא לפחות 
+\begin_inset Formula $2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לא אפשרי:
+ סכום הדרגות הוא 
+\begin_inset Formula $19$
+\end_inset
+
+,
+ ולכן לפי משפט לחיצת הידיםי נקבל 
+\begin_inset Formula $19=2\left|E\right|$
+\end_inset
+
+,
+ בסתירה לכך ש-
+\begin_inset Formula $\left|E\right|$
+\end_inset
+
+ שלם.
+\end_layout
+
+\begin_layout Enumerate
+אפשרי.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ מסלול בגרף הוא סדרה 
+\begin_inset Formula $v_{0},e_{1},v_{1},e_{2},v_{2},\dots,e_{k},v_{k}$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $v_{0},\dots,v_{k}\in V$
+\end_inset
+
+ ו-
+\begin_inset Formula $e_{i}=\left(v_{i-1},v_{i}\right)$
+\end_inset
+
+.
+ ניתן לקצר ולהשמיט את הקשתות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+מסלול 
+\begin_inset Formula $v_{0},\dots,v_{k}$
+\end_inset
+
+ הוא
+\emph on
+ מסלול פשוט
+\emph default
+ אם לכל 
+\begin_inset Formula $0\le i\ne j\le k$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $v_{i}\ne v_{j}$
+\end_inset
+
+ (כלומר קודקודים לא חוזרים על עצמם).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף ויהיו 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+.
+ אם קיים מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+ אז קיים מסלול פשוט 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+מעגל הוא מסלול 
+\begin_inset Formula $v_{0},\dots,v_{k}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $v_{0}=v_{k}$
+\end_inset
+
+.
+ במעגל פשוט כל שאר הקודקודים 
+\begin_inset Formula $v_{1},\dots,v_{k-1}$
+\end_inset
+
+ ייחודיים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף כך שלכל 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\deg\left(v\right)\ge2$
+\end_inset
+
+.
+ הוכיחו שקיים ב-
+\begin_inset Formula $G$
+\end_inset
+
+ מעגל פשוט.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ נבחר 
+\begin_inset Formula $v_{0}\in V$
+\end_inset
+
+ שרירותי.
+ נגדיר מסלול באופן הבא:
+ בכל צעד 
+\begin_inset Formula $u\rightarrow v$
+\end_inset
+
+ במסלול,
+ נבחר קשת כלשהי של 
+\begin_inset Formula $v$
+\end_inset
+
+ באופן אקראי,
+ פרט לקשת 
+\begin_inset Formula $\left\{ u,v\right\} $
+\end_inset
+
+.
+ המסלול יימשך עד שנבקר בצומת כלשהי פעמיים (לכל היותר 
+\begin_inset Formula $n$
+\end_inset
+
+ צעדים).
+ נסמן ב-
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ את הצומת הראשון שנבקר בו פעמיים.
+ המסלול הוא מהצורה
+\begin_inset Formula 
+\[
+v_{0},\dots,\underset{P}{\underbrace{v_{i},\dots,v_{i}}}
+\]
+
+\end_inset
+
+נשים לב ש-
+\begin_inset Formula $P$
+\end_inset
+
+ הוא מעגל פשוט:
+ מכיוון ש-
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ זה הצומת הראשון שמבקרים בו פעמיים,
+ כל צומת אחר ב-
+\begin_inset Formula $P$
+\end_inset
+
+ מופיע פעם אחת בלבד,
+ ובנוסף 
+\begin_inset Formula $P$
+\end_inset
+
+ הוא מעגל.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף,
+ ותהי 
+\begin_inset Formula $\delta$
+\end_inset
+
+ הדרגה המינימלית בגרף.
+ אם 
+\begin_inset Formula $\delta\ge1$
+\end_inset
+
+,
+ אז בגרף יש מסלול פשוט מאורך לפחות 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ האם בהכרח יש מעגל פשוט בגרף?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את הטענה באינדוקציה על 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בסיס:
+ עבור 
+\begin_inset Formula $\delta=1$
+\end_inset
+
+,
+ יהי 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ כלשהו.
+ מכיוון ש-
+\begin_inset Formula $\deg\left(v\right)\ge1$
+\end_inset
+
+,
+ קיים לו שכן 
+\begin_inset Formula $u\in V$
+\end_inset
+
+.
+ אזי המסלול 
+\begin_inset Formula $u,v$
+\end_inset
+
+ הוא מסלול פשוט בגרף באורך 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+צעד:
+ נניח את נכונות הטענה עבור 
+\begin_inset Formula $\delta-1\ge1$
+\end_inset
+
+,
+ ונוכיח עבור 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף עם דרגה מינימלית 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $v_{0}\in V$
+\end_inset
+
+ צומת כלשהו.
+ נגדיר 
+\begin_inset Formula $G^{\prime}=\left(V^{\prime},E^{\prime}\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+V^{\prime}=V\setminus\left\{ v_{0}\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E^{\prime}=E\setminus\left\{ \left\{ u,v_{0}\right\} \mid u\in V\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+מכיוון שהורדנו לכל צומת שאינו 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+ קשת אחת לכל היותר,
+ הדרגה המינימלית ב-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ היא לפחות 
+\begin_inset Formula $\delta-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מהנחת האינדוקציה,
+ קיים מסלול פשוט ב-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ באורך 
+\begin_inset Formula $\delta-1$
+\end_inset
+
+.
+ נסמן את המסלול ב-
+\begin_inset Formula $u_{0},\dots,u_{\delta-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+ברור כי 
+\begin_inset Formula $u_{0},\dots,u_{\delta-1}$
+\end_inset
+
+ הוא מסלול ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $\left\{ u_{0},v_{0}\right\} \in E$
+\end_inset
+
+,
+ נקבל שהמסלול 
+\begin_inset Formula $v_{0},u_{0},\dots,u_{\delta-1}$
+\end_inset
+
+ הוא מסלול פשוט באורך 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $\left\{ u_{0},v_{0}\right\} \notin E$
+\end_inset
+
+,
+ נקבל שדרגת 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+ ב-
+\begin_inset Formula $G$
+\end_inset
+
+ שווה לדרגת 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+ ב-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן,
+ קיים 
+\begin_inset Formula $u\in V\setminus\left\{ v_{0},u_{1},\dots,u_{\delta-1}\right\} $
+\end_inset
+
+ כך ש-
+\begin_inset Formula $u$
+\end_inset
+
+ ו-
+\begin_inset Formula $u_{0}$
+\end_inset
+
+ (מכיוון שדרגת 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+ היא 
+\begin_inset Formula $\delta$
+\end_inset
+
+ לפחות,
+ והוא אינו שכן של 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+אזי,
+ המסלול 
+\begin_inset Formula $u,u_{0},\dots,u_{\delta-1}$
+\end_inset
+
+ הוא מסלול פשוט באורך 
+\begin_inset Formula $\delta$
+\end_inset
+
+ ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+גרף 
+\begin_inset Formula $G$
+\end_inset
+
+ נקרא קשיר אם לכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ קיים מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהי גרף 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ נגדיר חלוקה 
+\begin_inset Formula $\mathcal{F}\in\mathcal{P}\left(V\right)$
+\end_inset
+
+ של הקודקודים ל
+\emph on
+רכיבי קשירות
+\emph default
+,
+ כך שלכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+,
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ ו-
+\begin_inset Formula $v$
+\end_inset
+
+ באותה מחלקה ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ אם קיים מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+במידה והגרף הקשיר נקבל ש-
+\begin_inset Formula $\mathcal{F}=\left\{ V\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+עבור גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+,
+ הגרף המשלים של 
+\begin_inset Formula $G$
+\end_inset
+
+ יסומן ב-
+\begin_inset Formula $\bar{G}=\left(V,\bar{E}\right)$
+\end_inset
+
+,
+ כך שלכל 
+\begin_inset Formula $u\ne v\in V$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\{ u,v\right\} \in\bar{E}$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\left\{ u,v\right\} \notin E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף לא קשיר,
+ אזי 
+\begin_inset Formula $\overline{G}$
+\end_inset
+
+ קשיר.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח כי לכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+,
+ קיים מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+ ב-
+\begin_inset Formula $\overline{G}$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $\left\{ u,v\right\} \notin E$
+\end_inset
+
+,
+ מתקיים 
+\begin_inset Formula $\left\{ u,v\right\} \in\overline{E}$
+\end_inset
+
+ ולכן קיים מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+ ב-
+\begin_inset Formula $\overline{G}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $\left\{ u,v\right\} \in E$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $u,v$
+\end_inset
+
+ באותו רכיב קשירות ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left|V\right|>2$
+\end_inset
+
+ (אחרת 
+\begin_inset Formula $G$
+\end_inset
+
+ היה קשיר),
+ ובנוסף,
+ קיים צומת 
+\begin_inset Formula $w\in V$
+\end_inset
+
+ ברכיב קשירות שונה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מכיוון ש-
+\begin_inset Formula $w$
+\end_inset
+
+ ברכיב קשירות שונה מ-
+\begin_inset Formula $u,v$
+\end_inset
+
+,
+ מתקיים 
+\begin_inset Formula $\left\{ u,w\right\} ,\left\{ v,w\right\} \notin E$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left\{ u,w\right\} ,\left\{ v,w\right\} \in\overline{E}$
+\end_inset
+
+ וקיים מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף,
+ ויהיו 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+.
+ המרחק בין 
+\begin_inset Formula $u$
+\end_inset
+
+ ו-
+\begin_inset Formula $v$
+\end_inset
+
+להיות
+\begin_inset Formula 
+\[
+\text{dist}\left(u,v\right):=\begin{cases}
+l & \text{\ensuremath{l} הוא אורך המסלול הקצר ביותר \ensuremath{u\leadsto v}}\\
+\infty & \text{אין מסלול \ensuremath{u\leadsto v}}
+\end{cases}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+בנוסף,
+ ה
+\emph on
+קוטר
+\emph default
+ של 
+\begin_inset Formula $G$
+\end_inset
+
+ מוגדר להיות המרחק המקסימלי בין זוגות קודקודים:
+\begin_inset Formula 
+\[
+\text{diam}\left(G\right)=\max\left\{ \text{dist}\left(u,v\right)\mid u,v\in V\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ הוכיחו כי 
+\begin_inset Formula $G$
+\end_inset
+
+ קשיר אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\text{diam}\left(G\right)<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח את שני כיווני הטענה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(
+\begin_inset Formula $\impliedby$
+\end_inset
+
+) נניח ש-
+\begin_inset Formula $G$
+\end_inset
+
+ קשיר.
+ אזי לכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ קיים מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+ ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+ אזי המסלול הקצר ביותר 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+ הוא בפרט מסלול פשוט,
+ ולכן אורכו קטן מ-
+\begin_inset Formula $\left|V\right|$
+\end_inset
+
+.
+ אזי,
+ לכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\text{dist}\left(u,v\right)<\left|V\right|$
+\end_inset
+
+.
+ לכן מהגדרה 
+\begin_inset Formula $\text{diam}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\text{diam}\left(G\right)<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+(
+\begin_inset Formula $\implies$
+\end_inset
+
+) נניח ש-
+\begin_inset Formula $\text{diam}\left(G\right)<\infty$
+\end_inset
+
+.
+ אזי,
+ לכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\text{dist}\left(u,v\right)<\infty$
+\end_inset
+
+,
+ ולכן מהגדרה קיים מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+.
+ לכן הגרף קשיר.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף כך ש-
+\begin_inset Formula $\left|V\right|=n$
+\end_inset
+
+.
+ הוכיחו כי אם לכל 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\deg\left(v\right)\ge\left(n-1\right)/2$
+\end_inset
+
+,
+ אז 
+\begin_inset Formula $\text{diam}\left(G\right)\le2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+נוכיח כי לכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\text{dist}\left(u,v\right)\le2$
+\end_inset
+
+.
+ יהיו 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $\left\{ u,v\right\} \in E$
+\end_inset
+
+,
+ ברור כי 
+\begin_inset Formula $\text{dist}\left(u,v\right)=1$
+\end_inset
+
+ וסיימנו.
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ 
+\begin_inset Formula $\left\{ u,v\right\} \notin E$
+\end_inset
+
+.
+ נניח בשלילה שלא קיים שכן משותף ל-
+\begin_inset Formula $u$
+\end_inset
+
+ ול-
+\begin_inset Formula $v$
+\end_inset
+
+.
+ אזי,
+ 
+\begin_inset Formula $\Gamma\left(v\right)\cap\Gamma\left(u\right)=\emptyset$
+\end_inset
+
+.
+ לכן,
+\begin_inset Formula 
+\begin{align*}
+\left|V\right| & \ge\left|\left\{ u,v\right\} \right|+\left|\Gamma\left(v\right)\cup\Gamma\left(u\right)\right|\\
+ & =2+\left|\Gamma\left(v\right)\right|+\left|\Gamma\left(u\right)\right|\\
+ & =2+\deg\left(v\right)+\deg\left(u\right)\\
+ & \ge2+\frac{n-1}{2}+\frac{n-1}{2}\\
+ & =2+\left(n-1\right)=n+1.
+\end{align*}
+
+\end_inset
+
+בסתירה לכך ש-
+\begin_inset Formula $\left|V\right|=n$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף.
+ נגדיר גרף חדש 
+\begin_inset Formula $G^{\prime}=\left(E,E^{\prime}\right)$
+\end_inset
+
+ כך שקודקודי 
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ הם הקשתות של 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ בנוסף,
+ יש קשת בין 
+\begin_inset Formula $e_{1},e_{2}\in E$
+\end_inset
+
+ ב-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ יש להן צומת משותפת.
+ כלומר,
+\begin_inset Formula 
+\[
+E^{\prime}=\left\{ \left\{ e_{1},e_{2}\right\} \in E^{2}\mid e_{1}\ne e_{2}\wedge e_{1}\cap e_{2}\ne\emptyset\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+הוכיחו כי אם 
+\begin_inset Formula $G$
+\end_inset
+
+ קשיר אז 
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+ קשיר.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+מכיוון ש-
+\begin_inset Formula $G$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ קיים מסלול 
+\begin_inset Formula $u\leadsto v$
+\end_inset
+
+.
+ אנחנו רוצים להראות שלכל 
+\begin_inset Formula $e_{1},e_{2}\in E$
+\end_inset
+
+ קיים מסלול ב-
+\begin_inset Formula $G^{\prime}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,1419 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\bullet 0 0 14 -1
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+מתמטיקה דיסקרטית - תרגיל בית
+\family roman
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\shape up
+\size largest
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color red
+עם פתרון
+\end_layout
+
+\begin_layout Author
+הגשה ליום חמישי,
+
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+15/8
+\numeric off
+ בשעה
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+23:57
+\numeric off
+,
+ לפי ההנחיות במודל
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+\numeric on
+1
+\numeric off
+.
+ 
+\series default
+תהיינו 
+\begin_inset Formula $A,B,C$
+\end_inset
+
+ קבוצות.
+ הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A^{2}\setminus\left(B\times C\right)=\left(A\setminus B\right)\times\left(A\setminus C\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\times\left(B\cup C\right)=\left(A\times B\right)\cup\left(A\times C\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{P}\left(A\setminus B\right)\subseteq\mathcal{P}\left(A\right)\setminus\left(\mathcal{P}\left(B\right)\setminus\left\{ \emptyset\right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A\triangle C=B\triangle C$
+\end_inset
+
+ אז 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A,B,C\subseteq\mathbb{Z}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\mathcal{P}\left(A\right)\triangle C=\mathcal{P}\left(B\right)\cup C$
+\end_inset
+
+ אז 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הפרכה:
+ עבור 
+\begin_inset Formula $A=\left\{ 1\right\} ,B=\left\{ 1\right\} ,C=\emptyset$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+A^{2}\setminus\left(B\times C\right)=\left\{ \left(1,1\right)\right\} \setminus\emptyset=\left\{ \left(1,1\right)\right\} ,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(A\setminus B\right)\times\left(A\setminus C\right)=\emptyset\times A=\emptyset
+\]
+
+\end_inset
+
+ולכן לא מתקיים שוויון.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ לכל 
+\begin_inset Formula $\left(x,y\right)\in U^{2}$
+\end_inset
+
+ עבור הקבוצה האוניברסלית 
+\begin_inset Formula $U$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\begin{align*}
+\left(x,y\right)\in A\times\left(B\cup C\right) & \iff x\in A\wedge y\in B\cup C\\
+ & \iff x\in A\wedge\left(y\in B\vee y\in C\right)\\
+ & \iff\left(x\in A\wedge y\in B\right)\vee\left(x\in A\wedge y\in C\right)\\
+ & \iff\left(x,y\right)\in A\times B\vee\left(x,y\right)\in A\times C\\
+ & \iff\left(x,y\right)\in\left(A\times B\right)\cup\left(A\times C\right),
+\end{align*}
+
+\end_inset
+
+ולכן הקבוצות שוות.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ תהיינה 
+\begin_inset Formula $A,B$
+\end_inset
+
+ קבוצות ותהי 
+\begin_inset Formula $S\in\mathcal{P}\left(A\setminus B\right)$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $S\subseteq A\setminus B$
+\end_inset
+
+.
+ לכן לכל 
+\begin_inset Formula $x\in S$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\in A\setminus B\iff x\in A\wedge x\notin B$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $S\subseteq A$
+\end_inset
+
+ (מכאן 
+\begin_inset Formula $S\in\mathcal{P}\left(A\right)$
+\end_inset
+
+) וגם 
+\begin_inset Formula $S\cap B=\emptyset$
+\end_inset
+
+ - לכן אם 
+\begin_inset Formula $S\ne\emptyset$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $S\not\subseteq B$
+\end_inset
+
+,
+ ומתקיים 
+\begin_inset Formula $S\notin\mathcal{P}\left(B\right)\setminus\left\{ \emptyset\right\} $
+\end_inset
+
+.
+ בסך הכל,
+ 
+\begin_inset Formula $S\in\mathcal{P}\left(A\right)\setminus\left(\mathcal{P}\left(B\right)\setminus\left\{ \emptyset\right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ ניתן להוכיח כי 
+\begin_inset Formula $C\triangle C=\emptyset$
+\end_inset
+
+.
+ לכן,
+\begin_inset Formula 
+\begin{align*}
+A\triangle C=B\triangle C & \iff\left(A\triangle C\right)\triangle C=\left(B\triangle C\right)\triangle C\\
+\mathrm{\mathrm{{\normalsize {\color{purple}\left(\text{אסוציאטיביות של \ensuremath{\triangle}}\right)}}}} & \iff A\triangle\left(C\triangle C\right)=B\triangle\left(C\triangle C\right)\\
+ & \iff A\triangle\emptyset=B\triangle\emptyset\\
+ & \iff A=B.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ מכיוון ש-
+\begin_inset Formula $B\subseteq\mathbb{Z}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\mathcal{P}\left(B\right)$
+\end_inset
+
+ מכילה קבוצות של שלמים ו-
+\begin_inset Formula $C$
+\end_inset
+
+ מכילה מספרים שלמים - לכן 
+\begin_inset Formula $\mathcal{P}\left(B\right)\cap C=\emptyset$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\mathcal{P}\left(B\right)\triangle C=\left(\mathcal{P}\left(B\right)\cup C\right)\setminus\left(\mathcal{P}\left(B\right)\cap C\right)=\mathcal{P}\left(B\right)\cup C$
+\end_inset
+
+.
+ לכן ידוע כי
+\begin_inset Formula 
+\[
+\mathcal{P}\left(A\right)\triangle C=\mathcal{P}\left(B\right)\cup C=\mathcal{P}\left(B\right)\triangle C,
+\]
+
+\end_inset
+
+ומהסעיף הקודם נקבל ש-
+\begin_inset Formula $\mathcal{P}\left(A\right)=\mathcal{P}\left(B\right)$
+\end_inset
+
+.
+ נניח בשלילה ש-
+\begin_inset Formula $A\ne B$
+\end_inset
+
+,
+ לכן בה
+\begin_inset Quotes erd
+\end_inset
+
+כ קיים 
+\begin_inset Formula $x\in A\setminus B$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left\{ x\right\} \in\mathcal{P}\left(A\right)\setminus\mathcal{P}\left(B\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mathcal{P}\left(A\right)\ne\mathcal{P}\left(B\right)$
+\end_inset
+
+ - סתירה.
+ בסך הכל,
+ הוכחנו כי 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+2
+\series bold
+\numeric off
+.
+ 
+\series default
+הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה ותהי 
+\begin_inset Formula $\mathcal{F}\subseteq\mathcal{P}\left(A\right)$
+\end_inset
+
+ משפחת קבוצות.
+ אזי ,
+\begin_inset Formula 
+\[
+A\cup\bigcap_{S\in\mathcal{F}}S\subseteq\bigcap_{S\in\mathcal{F}}\left(A\cup S\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ 
+\begin_inset Formula $K\subseteq A$
+\end_inset
+
+ תת-קבוצה שלה ותהי 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ חלוקה של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ נגדיר משפחה 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ להיות
+\begin_inset Formula 
+\[
+\mathcal{G}=\left\{ S\triangle K\mid S\in\mathcal{F}\right\} ,
+\]
+
+\end_inset
+
+אזי 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ חלוקה של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכחה:
+ יהי 
+\begin_inset Formula $x\in A\cup\bigcap_{S\in\mathcal{F}}S$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ או 
+\begin_inset Formula $x\in\bigcap_{S\in\mathcal{F}}S$
+\end_inset
+
+.
+ נפריד למקרים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $x\in A$
+\end_inset
+
+,
+ מהגדרת איחוד נקבל שלכל 
+\begin_inset Formula $S\in\mathcal{F}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\in A\cup S$
+\end_inset
+
+,
+ ולכן מהגדרת חיתוך נקבל ש-
+\begin_inset Formula $x\in\bigcap_{S\in\mathcal{F}}\left(A\cup S\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ 
+\begin_inset Formula $x\in\bigcap_{S\in\mathcal{F}}S$
+\end_inset
+
+.
+ לכן לכל 
+\begin_inset Formula $S\in\mathcal{F}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\in S$
+\end_inset
+
+,
+ וכך לכל 
+\begin_inset Formula $S\in\mathcal{F}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\in A\cup S$
+\end_inset
+
+.
+ לכן מהגדרת חיתוך נקבל ש-
+\begin_inset Formula $x\in\bigcap_{S\in\mathcal{F}}\left(A\cup S\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+הפרכה:
+ עבור 
+\begin_inset Formula $A=\left\{ 1\right\} ,K=\left\{ 1\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $\mathcal{F}=\left\{ \left\{ 1\right\} \right\} $
+\end_inset
+
+,
+ נקבל ש-
+\begin_inset Formula 
+\[
+\mathcal{G}=\left\{ \left\{ 1\right\} \triangle\left\{ 1\right\} \right\} =\left\{ \emptyset\right\} ,
+\]
+
+\end_inset
+
+ברור ש-
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ אינה חלוקה (למשל 
+\begin_inset Formula $\emptyset\in\mathcal{G}$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+3
+\series bold
+\numeric off
+.
+ 
+\series default
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ויהיו 
+\begin_inset Formula $R,S\subseteq A\times A$
+\end_inset
+
+ יחסים מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ רפלקסיביים אז 
+\begin_inset Formula $R\setminus S$
+\end_inset
+
+ רפלקסיבי.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ סימטריים אז 
+\begin_inset Formula $R\setminus S$
+\end_inset
+
+ סימטרי.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ טרנזיטיביים אז 
+\begin_inset Formula $R\setminus S$
+\end_inset
+
+ טרנזיטיבי.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ רפלקסיביים אז 
+\begin_inset Formula $R\cup S$
+\end_inset
+
+ רפלקסיבי.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ סימטריים אז 
+\begin_inset Formula $R\cup S$
+\end_inset
+
+ סימטרי.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ טרנזיטיביים אז 
+\begin_inset Formula $R\cup S$
+\end_inset
+
+ טרנזיטיבי.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ רפלקסיביים אז 
+\begin_inset Formula $R\cap S$
+\end_inset
+
+ רפלקסיבי.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ סימטריים אז 
+\begin_inset Formula $R\cap S$
+\end_inset
+
+ סימטרי.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ ו-
+\begin_inset Formula $S$
+\end_inset
+
+ טרנזיטיביים אז 
+\begin_inset Formula $R\cap S$
+\end_inset
+
+ טרנזיטיבי.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הפרכה:
+ עבור 
+\begin_inset Formula $A=\left\{ 1\right\} ,R=S=\left\{ \left(1,1\right)\right\} $
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $R,S$
+\end_inset
+
+ רפלקסיביים (
+\begin_inset Formula $1\mathrel{R}1\wedge1\mathrel{S}1$
+\end_inset
+
+) אבל 
+\begin_inset Formula $R\setminus S=\emptyset$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(1,1\right)\notin R\setminus S$
+\end_inset
+
+,
+ ו-
+\begin_inset Formula $R\setminus S$
+\end_inset
+
+ אינו רפלקסיבי.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ יהיו 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in R\setminus S$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(a,b\right)\notin S$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $R$
+\end_inset
+
+ סימטרי נקבל ש-
+\begin_inset Formula $\left(b,a\right)\in R$
+\end_inset
+
+.
+ בנוסף,
+ 
+\begin_inset Formula $\left(b,a\right)\notin S$
+\end_inset
+
+ (אחרת,
+ מכיוון ש-
+\begin_inset Formula $S$
+\end_inset
+
+ סימטרי נקבל ש-
+\begin_inset Formula $\left(a,b\right)\in S$
+\end_inset
+
+ ונגיע לסתירה).
+ לכן 
+\begin_inset Formula $\left(b,a\right)\in R\setminus S$
+\end_inset
+
+ והיחס סימטרי.
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $A=\left\{ 1,2,3,4\right\} $
+\end_inset
+
+,
+ 
+\begin_inset Formula $R=\left\{ \left(1,2\right),\left(2,3\right),\left(3,1\right)\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula 
+\[
+S=\left\{ \left(1,4\right),\left(4,3\right),\left(3,1\right)\right\} .
+\]
+
+\end_inset
+
+ברור כי 
+\begin_inset Formula $R,S$
+\end_inset
+
+ טרנזיטיביים.
+ עם זאת,
+\begin_inset Formula 
+\[
+R\setminus S=\left\{ \left(1,2\right),\left(2,3\right)\right\} ,
+\]
+
+\end_inset
+
+ויחס זה אינו טרנזיטיבי (
+\begin_inset Formula $\left(1,2\right)\in R\setminus S$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(2,3\right)\in R\setminus S$
+\end_inset
+
+ אבל 
+\begin_inset Formula $\left(3,1\right)\notin R\setminus S$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ יהי 
+\begin_inset Formula $a\in A$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי נקבל ש-
+\begin_inset Formula $\left(a,a\right)\in R$
+\end_inset
+
+,
+ ומהגדרת חיתוך נקבל 
+\begin_inset Formula $\left(a,a\right)\in R\cup S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ יהיו 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in R\cup S$
+\end_inset
+
+.
+ נניח בה
+\begin_inset Quotes erd
+\end_inset
+
+כ כי 
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\left(b,a\right)\in R$
+\end_inset
+
+ ומהגדרת איחוד 
+\begin_inset Formula $\left(b,a\right)\in R\cup S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $A=\left\{ 1,2,3\right\} $
+\end_inset
+
+,
+ 
+\begin_inset Formula $R=\left\{ \left(1,2\right)\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $S=\left\{ \left(2,3\right)\right\} $
+\end_inset
+
+.
+ ברור כי 
+\begin_inset Formula $R,S$
+\end_inset
+
+ טרנזיטיביים.
+ עם זאת,
+ 
+\begin_inset Formula $\left(1,2\right)\in R\cup S$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(2,3\right)\in R\cup S$
+\end_inset
+
+,
+ אבל 
+\begin_inset Formula $\left(3,1\right)\notin R\cup S$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $R\cup S$
+\end_inset
+
+ אינו טרנזיטיבי.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ יהי 
+\begin_inset Formula $a\in A$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $R,S$
+\end_inset
+
+ רפלקסיביים נקבל ש-
+\begin_inset Formula $\left(a,a\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(a,a\right)\in S$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(a,a\right)\in R\cap S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ יהיו 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in R\cap S$
+\end_inset
+
+.
+ אזי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+וגם 
+\begin_inset Formula $\left(a,b\right)\in S$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $R,S$
+\end_inset
+
+ סימטריים נקבל ש-
+\begin_inset Formula $\left(b,a\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(b,a\right)\in S$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(b,a\right)\in R\cap S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ יהיו 
+\begin_inset Formula $a,b,c\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in R\cap S$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(b,c\right)\in R\cap S$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(b,c\right)\in R$
+\end_inset
+
+,
+ ומטרנזטיביות 
+\begin_inset Formula $R$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $\left(a,c\right)\in R$
+\end_inset
+
+.
+ באופן דומה נקבל ש-
+\begin_inset Formula $\left(a,c\right)\in S$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(a,c\right)\in R\cap S$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

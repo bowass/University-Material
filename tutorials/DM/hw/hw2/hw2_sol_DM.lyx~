@@ -1,0 +1,2208 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\bullet 0 0 14 -1
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+מתמטיקה דיסקרטית - תרגיל בית
+\family roman
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+ 
+\color red
+עם פתרון
+\end_layout
+
+\begin_layout Author
+הגשה ליום חמישי,
+
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+8/8
+\numeric off
+ בשעה
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+23:57
+\numeric off
+,
+ לפי ההנחיות במודל
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Description
+תזכורות
+\begin_inset space \space{}
+\end_inset
+
+והגדרות
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+עבור שלמים 
+\begin_inset Formula $n,m$
+\end_inset
+
+,
+ נסמן ב-
+\begin_inset Formula $n\mid m$
+\end_inset
+
+ את הטענה 
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\series bold
+מחלק
+\series default
+ את 
+\begin_inset Formula $m$
+\end_inset
+
+ (קיים 
+\begin_inset Formula $k\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $m=k\cdot n$
+\end_inset
+
+).
+ בנוסף,
+ נסמן ב-
+\begin_inset Formula $n\not|m$
+\end_inset
+
+ את הטענה 
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\series bold
+לא מחלק
+\series default
+ את 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+יהיו 
+\begin_inset Formula $n,r\in\mathbb{Z}$
+\end_inset
+
+ ו-
+\begin_inset Formula $d\in\mathbb{N}^{+}$
+\end_inset
+
+.
+ נאמר ש-
+\series bold
+
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r$
+\end_inset
+
+
+\series default
+ אם 
+\begin_inset Formula $0\le r<d$
+\end_inset
+
+ וקיים 
+\begin_inset Formula $q\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+n=d\cdot q+r.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+למשל,
+ 
+\begin_inset Formula $7$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $2$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $1$
+\end_inset
+
+:
+ 
+\begin_inset Formula $0\le1<2$
+\end_inset
+
+ ועבור 
+\begin_inset Formula $q=3$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $7=2\cdot3+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נאמר ש-
+\begin_inset Formula $q$
+\end_inset
+
+ היא המנה ו-
+\begin_inset Formula $r$
+\end_inset
+
+ היא שארית החלוקה.
+\end_layout
+
+\begin_layout Itemize
+שימו לב שעבור 
+\begin_inset Formula $r=0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+\numeric on
+1
+\numeric off
+.
+ 
+\series default
+הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $a,b,c\in\mathbb{Z}$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $a$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $b$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $c$
+\end_inset
+
+,
+ אז 
+\begin_inset Formula $a$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $c$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\forall a,b,c\in\mathbb{Z}:\left(\left(b\mid a\right)\wedge\left(c\mid b\right)\right)\rightarrow\left(c\mid a\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $a,b,c\in\mathbb{Z}$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $a\cdot b$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $c$
+\end_inset
+
+,
+ אז 
+\begin_inset Formula $a$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $c$
+\end_inset
+
+ או 
+\begin_inset Formula $b$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $c$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\forall a,b,c\in\mathbb{Z}:\left(c\mid\left(a\cdot b\right)\right)\rightarrow\left(c\mid a\vee c\mid b\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\forall a,b\in\mathbb{Z}:\left(b\mid a\wedge a\mid b\right)\rightarrow a=b
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\forall a,b,c\in\mathbb{Z}:\left(c\not|a\cdot b\right)\rightarrow\left(c\not|a\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\forall a,b,c\in\mathbb{Z}:\left(\left(c\mid a\right)\wedge\left(c\not|\left(a+b\right)\right)\right)\rightarrow b\not|c
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\forall a,b\in\mathbb{Z}:\left(b\mid a^{2}\wedge b<a\right)\rightarrow b\mid a
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכחה:
+ יהיו 
+\begin_inset Formula $a,b,c\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $b\mid a$
+\end_inset
+
+ וגם 
+\begin_inset Formula $c\mid b$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+מהגדרת 
+\begin_inset Quotes eld
+\end_inset
+
+מחלק
+\begin_inset Quotes erd
+\end_inset
+
+ קיימים 
+\begin_inset Formula $k_{1},k_{2}\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+a=k_{1}\cdot b,\quad b=k_{2}\cdot c.
+\]
+
+\end_inset
+
+מכאן נקבל ש-
+\begin_inset Formula 
+\[
+a=k_{1}\cdot b=k_{1}\cdot k_{2}\cdot c.
+\]
+
+\end_inset
+
+נגדיר 
+\begin_inset Formula $k=k_{1}\cdot k_{2}\in\mathbb{Z}$
+\end_inset
+
+,
+ ונקבל ש-
+\begin_inset Formula $a=k\cdot c$
+\end_inset
+
+,
+ מכאן מתקיים 
+\begin_inset Formula $c\mid a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $a=2,b=2,c=4$
+\end_inset
+
+.
+ ברור ש-
+\begin_inset Formula $a,b,c\in\mathbb{Z}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $a\cdot b=c$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $c\mid a\cdot b$
+\end_inset
+
+.
+ עם זאת,
+ מכיוון שהמספרים אי-שליליים וגם 
+\begin_inset Formula $c>\max\left\{ a,b\right\} $
+\end_inset
+
+,
+ 
+\begin_inset Formula $c$
+\end_inset
+
+ לא מחלק את 
+\begin_inset Formula $a,b$
+\end_inset
+
+ בנפרד:
+ נניח בשלילה כי 
+\begin_inset Formula $4\mid2$
+\end_inset
+
+,
+ לכן קיים 
+\begin_inset Formula $k\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $2=k\cdot4$
+\end_inset
+
+,
+ וכך 
+\begin_inset Formula $k=1/2\notin\mathbb{Z}$
+\end_inset
+
+ והגענו לסתירה.
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $a=1,b=-1$
+\end_inset
+
+.
+ עבור 
+\begin_inset Formula $k=-1\in\mathbb{Z}$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $a=k\cdot b$
+\end_inset
+
+,
+ לכן 
+\begin_inset Formula $b\mid a$
+\end_inset
+
+,
+ וגם 
+\begin_inset Formula $b=k\cdot a$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $a\mid b$
+\end_inset
+
+.
+ עם זאת,
+ 
+\begin_inset Formula $a\ne b$
+\end_inset
+
+ והטענה לא נכונה.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה - נוכיח את הטענה הקונטרפוזיטיב:
+ יהיו 
+\begin_inset Formula $a,b,c\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $c\mid a$
+\end_inset
+
+,
+ נראה כי 
+\begin_inset Formula $c\mid a\cdot b$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $c\mid a$
+\end_inset
+
+,
+ קיים 
+\begin_inset Formula $k\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+a=k\cdot c.
+\]
+
+\end_inset
+
+נכפיל ב-
+\begin_inset Formula $b$
+\end_inset
+
+ את שני האגפים ונקבל 
+\begin_inset Formula $a\cdot b=k\cdot b\cdot c$
+\end_inset
+
+.
+ נבחר 
+\begin_inset Formula $k^{\prime}=k\cdot b\in\mathbb{Z}$
+\end_inset
+
+ ונקבל 
+\begin_inset Formula $a\cdot b=k^{\prime}\cdot c$
+\end_inset
+
+,
+ ולכן מהגדרה 
+\begin_inset Formula $c\mid a\cdot b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $a=4,b=1,c=2$
+\end_inset
+
+.
+ ברור ש-
+\begin_inset Formula $a,b,c\in\mathbb{Z}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $c\mid a$
+\end_inset
+
+ וגם 
+\begin_inset Formula $c\not|\left(a+b\right)$
+\end_inset
+
+.
+ עם זאת,
+ 
+\begin_inset Formula $b\mid c$
+\end_inset
+
+ והטענה לא נכונה.
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $b=4,a=6$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $a^{2}=36=9b$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $b\mid a^{2}$
+\end_inset
+
+,
+ וגם 
+\begin_inset Formula $b<a$
+\end_inset
+
+,
+ אך 
+\begin_inset Formula $b\not|a$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\series bold
+
+\begin_inset space \space{}
+\end_inset
+
+
+\series default
+\numeric on
+2
+\numeric off
+.
+ בשאלה זו נוכיח את קיום ויחידות השארית.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכיחו כי לכל 
+\begin_inset Formula $n\in\mathbb{Z},d\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית כלשהי,
+ כלומר קיים 
+\begin_inset Formula $r\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכיחו כי לא יכולות להיות שתי שאריות שונות עבור 
+\begin_inset Formula $n,d$
+\end_inset
+
+.
+ כלומר:
+ לכל 
+\begin_inset Formula $n\in\mathbb{Z},d\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ לא קיימים 
+\begin_inset Formula $r_{1},r_{2}\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $r_{1}\ne r_{2}$
+\end_inset
+
+,
+ וגם 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+,
+ וגם 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+סטודנט כתב את ההוכחה הבאה עבור הסעיף הקודם.
+ הסבירו את השגיאה בהוכחה שלהם ומדוע היא אינה נכונה.
+\bar under
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ההוכחה:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+יהיו 
+\begin_inset Formula $n\in\mathbb{Z},d\in\mathbb{N}$
+\end_inset
+
+.
+ נניח בשלילה כי קיימים 
+\begin_inset Formula $r_{1},r_{2}\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $r_{1}\ne r_{2}$
+\end_inset
+
+,
+ וגם 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+,
+ וגם 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+,
+ ולכן קיים 
+\begin_inset Formula $q\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n=d\cdot q+r_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r_{2}$
+\end_inset
+
+,
+ ולכן קיים 
+\begin_inset Formula $q\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n=d\cdot q+r_{2}$
+\end_inset
+
+.
+ אזי,
+\begin_inset Formula 
+\[
+d\cdot q+r_{1}=n=d\cdot q+r_{2}\implies r_{1}=r_{2},
+\]
+
+\end_inset
+
+בסתירה לכך ש-
+\begin_inset Formula $r_{1}\ne r_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+יהיו 
+\begin_inset Formula $n\in\mathbb{Z},d\in\mathbb{N}^{+}$
+\end_inset
+
+.
+ נוכיח כי קיים 
+\begin_inset Formula $r\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ נגדיר את 
+\begin_inset Formula $q\in\mathbb{Z}$
+\end_inset
+
+ להיות המספר השלם המקסימלי כך ש-
+\begin_inset Formula 
+\[
+d\cdot q\le n.
+\]
+
+\end_inset
+
+נבחר 
+\begin_inset Formula $r=n-d\cdot q$
+\end_inset
+
+.
+ תחילה,
+ ברור שמתקיים 
+\begin_inset Formula $n=d\cdot q+r$
+\end_inset
+
+.
+ נותר להראות ש-
+\begin_inset Formula $0\le r<d$
+\end_inset
+
+.
+ עבור 
+\begin_inset Formula $r\ge0$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+r=n-d\cdot q\ge d\cdot q-d\cdot q=0.
+\]
+
+\end_inset
+
+לבסוף,
+ נניח בשלילה כי 
+\begin_inset Formula $r\ge d$
+\end_inset
+
+.
+ אזי
+\begin_inset Formula 
+\[
+n=d\cdot q+r\ge d\cdot q+d=d\cdot\left(q+1\right),
+\]
+
+\end_inset
+
+ולכן עבור השלם 
+\begin_inset Formula $\left(q+1\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $d\cdot\left(q+1\right)\le n$
+\end_inset
+
+.
+ זאת בסתירה לכך ש-
+\begin_inset Formula $q$
+\end_inset
+
+ הוא השלם המקסימלי שמקיים 
+\begin_inset Formula $d\cdot q\le n$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $r<d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ יהיו 
+\begin_inset Formula $n\in\mathbb{Z},d\in\mathbb{N}$
+\end_inset
+
+.
+ נוכיח כי אם עבור 
+\begin_inset Formula $r_{1},r_{2}\in\mathbb{Z}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r_{2}$
+\end_inset
+
+,
+ אז 
+\begin_inset Formula $r_{1}=r_{2}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+,
+ ולכן קיים 
+\begin_inset Formula $q_{1}\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n=d\cdot q_{1}+r_{1}$
+\end_inset
+
+.
+ באופן דומה עבור 
+\begin_inset Formula $r_{2}$
+\end_inset
+
+,
+ קיים 
+\begin_inset Formula $q_{2}\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n=d\cdot q_{2}+r_{2}$
+\end_inset
+
+.
+ בנוסף,
+ 
+\begin_inset Formula $0\le r_{1},r_{2}<d$
+\end_inset
+
+.
+ אזי,
+\begin_inset Formula 
+\[
+d\cdot q_{1}+r_{1}=n=d\cdot q_{2}+r_{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\implies d\left(q_{1}-q_{2}\right)=r_{2}-r_{1}
+\]
+
+\end_inset
+
+מכיוון ש-
+\begin_inset Formula $q_{1},q_{2}\in\mathbb{Z}$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $d$
+\end_inset
+
+ מחלק את 
+\begin_inset Formula $r_{2}-r_{1}$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $0\le r_{1},r_{2}<d$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $-d<r_{2}-r_{1}<d$
+\end_inset
+
+.
+ לכן,
+ הערך האפשרי היחיד של 
+\begin_inset Formula $r_{2}-r_{1}$
+\end_inset
+
+ כך שיתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ הוא 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ מכאן 
+\begin_inset Formula $r_{1}-r_{2}=0$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $r_{1}=r_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+השגיאה בהוכחת הסטונדט היא שהמנה בחלוקה עם כל אחת מהשאריות יכולה להיות שונה.
+ לכן היה עליו להגדיר משתנים שונים עבור כל מנה:
+ קיימים 
+\begin_inset Formula $q_{1},q_{2}\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n=d\cdot q_{1}+r_{1}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $n=d\cdot q_{2}+r_{2}$
+\end_inset
+
+,
+ ולהמשיך משם.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\series bold
+
+\begin_inset space \space{}
+\end_inset
+
+
+\series default
+\numeric on
+3
+\numeric off
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+חשבו את 
+\begin_inset Formula $A\cup B,A\cap B,A\setminus B,A\triangle B$
+\end_inset
+
+ עבור כל אחד מהסעיפים הבאים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ 5,8\right\} ,B=\left\{ 2,\left\{ 8\right\} ,5,10\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\left[6,10\right)\cup\left\{ 5\right\} ,B=\mathbb{N}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ \mathbb{N},\left\{ \emptyset,\left\{ \emptyset\right\} \right\} ,\mathbb{R},\left\{ \mathbb{Q},\mathbb{R}\setminus\mathbb{Q}\right\} \right\} ,B=\left\{ \emptyset,\left\{ \emptyset,\left\{ \emptyset\right\} ,\mathbb{Q}\right\} ,\mathbb{Q},\mathbb{N}\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+בכל סעיף מהבאים נתונות קבוצות 
+\begin_inset Formula $A,B$
+\end_inset
+
+:
+ קבעו האם 
+\begin_inset Formula $A\in B$
+\end_inset
+
+ והאם 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\emptyset,B=\left\{ 1\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ \mathbb{R}\right\} ,B=\left\{ \mathbb{N}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ \left\{ x\right\} \mid x\in\mathbb{N}\right\} ,B=\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=P\left(P\left(\emptyset\right)\right),B=P\left(P\left(P\left(\emptyset\right)\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{Q}\setminus\mathbb{Z},B=P\left(\mathbb{N}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ 5,8\right\} ,B=\left\{ 2,\left\{ 8\right\} ,5,10\right\} $
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+A\cup B=\left\{ 2,\left\{ 8\right\} ,5,10,8\right\} \\
+A\cap B=\left\{ 5\right\} \\
+A\setminus B=\left\{ 8\right\} \\
+A\triangle B=\left\{ 8,\left\{ 8\right\} ,2,\left\{ 10\right\} \right\} 
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\left[6,10\right)\cup\left\{ 5\right\} ,B=\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+A\cup B=\left(6,10\right)\cup\mathbb{N}\\
+A\cap B=\left\{ 5,6,7,8,9\right\} \\
+A\setminus B=\left(6,7\right)\cup\left(7,8\right)\cup\left(8,9\right)\cup\left(9,10\right)\\
+A\triangle B=\left\{ n\in\mathbb{N}\mid n\le4\vee n\ge10\right\} \cup\left(6,7\right)\cup\left(7,8\right)\cup\left(8,9\right)\cup\left(9,10\right)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\left\{ \mathbb{N},\left\{ \emptyset,\left\{ \emptyset\right\} \right\} ,\mathbb{R},\left\{ \mathbb{Q},\mathbb{R}\setminus\mathbb{Q}\right\} \right\} ,B=\left\{ \emptyset,\left\{ \emptyset,\left\{ \emptyset\right\} ,\mathbb{Q}\right\} ,\mathbb{Q},\mathbb{N}\right\} $
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+A\cup B=\left\{ \mathbb{N},\left\{ \emptyset,\left\{ \emptyset\right\} \right\} ,\mathbb{R},\left\{ \mathbb{Q},\mathbb{R}\setminus\mathbb{Q}\right\} ,\emptyset,\left\{ \emptyset,\left\{ \emptyset\right\} ,\mathbb{Q}\right\} ,\mathbb{Q}\right\} \\
+A\cap B=\left\{ \mathbb{N}\right\} \\
+A\setminus B=\left\{ \left\{ \emptyset,\left\{ \emptyset\right\} \right\} ,\mathbb{R},\left\{ \mathbb{Q},\mathbb{R}\setminus\mathbb{Q}\right\} \right\} \\
+A\triangle B=\left\{ \left\{ \emptyset,\left\{ \emptyset\right\} \right\} ,\mathbb{R},\left\{ \mathbb{Q},\mathbb{R}\setminus\mathbb{Q}\right\} ,\emptyset,\left\{ \emptyset,\left\{ \emptyset\right\} ,\mathbb{Q}\right\} ,\mathbb{Q}\right\} 
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A\notin B$
+\end_inset
+
+,
+ 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\notin B$
+\end_inset
+
+,
+ 
+\begin_inset Formula $A\not\subseteq B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\notin B$
+\end_inset
+
+,
+ 
+\begin_inset Formula $A\not\subseteq B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\in B$
+\end_inset
+
+,
+ 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{Q}\setminus\mathbb{Z},B=P\left(\mathbb{N}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\series bold
+
+\begin_inset space \space{}
+\end_inset
+
+
+\series default
+\numeric on
+4
+\numeric off
+.
+ יהיו 
+\begin_inset Formula $A,B,C$
+\end_inset
+
+ קבוצות בקבוצה אוניברסלית 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ הוכיחו או הפריכו את הטענות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A\cap C=B\cap C$
+\end_inset
+
+ אז 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A\cup C=B\cup C$
+\end_inset
+
+ אז 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A\cap C=B\cap C$
+\end_inset
+
+ וגם 
+\begin_inset Formula $A\cup C=B\cup C$
+\end_inset
+
+ אז 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\left(A\setminus B\right)\cap C=\emptyset$
+\end_inset
+
+ אז 
+\begin_inset Formula $A\cap C\subseteq B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A\times B=B\times A$
+\end_inset
+
+ אז 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $A^{c}\subseteq B^{c}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $A^{c}\supseteq B^{c}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\forall x\in A:x\in B$
+\end_inset
+
+ אז 
+\begin_inset Formula $\exists x\in A:x\in B$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הפרכה:
+ 
+\begin_inset Formula $A=\left\{ 1\right\} ,B=\left\{ 2\right\} ,C=\emptyset$
+\end_inset
+
+.
+ 
+\begin_inset Formula $A\cap C=B\cap C=\emptyset$
+\end_inset
+
+ אבל 
+\begin_inset Formula $A\ne B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ 
+\begin_inset Formula $A=\left\{ 1\right\} ,B=\left\{ 2\right\} ,C=\left\{ 1,2\right\} $
+\end_inset
+
+.
+ 
+\begin_inset Formula $A\cup C=B\cup C=C$
+\end_inset
+
+ אבל 
+\begin_inset Formula $A\ne B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ יהיו 
+\begin_inset Formula $A,B,C$
+\end_inset
+
+ קבוצות כך ש-
+\begin_inset Formula $A\cap C=B\cap C$
+\end_inset
+
+ וגם 
+\begin_inset Formula $A\cup C=B\cup C$
+\end_inset
+
+,
+ נוכיח כי 
+\begin_inset Formula $A=B$
+\end_inset
+
+ ע
+\begin_inset Quotes erd
+\end_inset
+
+י הכלה דו-כיוונית.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נוכיח בה
+\begin_inset Quotes erd
+\end_inset
+
+כ כי 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+ - הכיוון השני זהה מקומוטטיביות של איחוד וחיתוך.
+\end_layout
+
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $x\in A$
+\end_inset
+
+.
+ נפריד למקרים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $x\in C$
+\end_inset
+
+.
+ מהגדרת חיתוך 
+\begin_inset Formula $x\in A\cap C$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $x\in B\cap C$
+\end_inset
+
+.
+ מהגדרת חיתוך מתקיים 
+\begin_inset Formula $x\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\notin C$
+\end_inset
+
+.
+ מהגדרת איחוד 
+\begin_inset Formula $x\in A\cup C$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $x\in B\cup C$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $x\in B\vee x\in C$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $x\notin C$
+\end_inset
+
+,
+ נקבל ש-
+\begin_inset Formula $x\in B$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+בכל מקרה קיבלנו כי 
+\begin_inset Formula $x\in B$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בסך הכל,
+ קיבלנו כי 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+הוכחה:
+\begin_inset Formula 
+\begin{align*}
+\left(A\setminus B\right)\cap C & =\left(A\cap B^{c}\right)\cap C\\
+\mathrm{\mathrm{\mathrm{{\normalsize {\color{purple}\left(\text{קומוטטיביות של \ensuremath{\cap}}\right)}}}}} & =C\cap\left(A\cap B^{c}\right)\\
+\mathrm{\mathrm{\mathrm{{\normalsize {\color{purple}\left(\text{אסוציאטיביות של \ensuremath{\cap}}\right)}}}}} & =\left(C\cap A\right)\cap B^{c}\\
+\mathrm{\mathrm{\mathrm{{\normalsize {\color{purple}\left(\text{קומוטטיביות של \ensuremath{\cap}}\right)}}}}} & =\left(A\cap C\right)\cap B^{c}\\
+\mathrm{\mathrm{\mathrm{{\normalsize {\color{purple}\left(\text{הגדרת הפרש}\right)}}}}} & =\left(A\cap C\right)\setminus B
+\end{align*}
+
+\end_inset
+
+לכן אם 
+\begin_inset Formula $\left(A\setminus B\right)\cap C=\emptyset$
+\end_inset
+
+ אז 
+\begin_inset Formula $\left(A\cap C\right)\setminus B=\emptyset$
+\end_inset
+
+.
+ מכאן לכל 
+\begin_inset Formula $x\in A\cap C$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\in B$
+\end_inset
+
+ (אחרת 
+\begin_inset Formula $x\in\left(A\cap C\right)\setminus B$
+\end_inset
+
+),
+ ולכן 
+\begin_inset Formula $A\cap C\subseteq B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $A=\emptyset,B=\left\{ 1\right\} $
+\end_inset
+
+ ונקבל 
+\begin_inset Formula $A\times B=B\times A=\emptyset$
+\end_inset
+
+,
+ אבל 
+\begin_inset Formula $A\ne B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $A=\emptyset,B=\left\{ 1\right\} $
+\end_inset
+
+ ונקבל 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+.
+ עם זאת,
+ 
+\begin_inset Formula $1\in A^{c}$
+\end_inset
+
+ אך 
+\begin_inset Formula $1\notin B^{c}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $A^{c}\not\subseteq B^{c}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ מהגדרת הכלה,
+\begin_inset Formula 
+\begin{align*}
+A\subseteq B & \iff\forall x\in U:\left(x\in A\right)\rightarrow\left(x\in B\right)\\
+\mathrm{\mathrm{\mathrm{{\normalsize {\color{purple}\left(\text{קונטרפוזיטיב}\right)}}}}} & \iff\forall x\in U:\left(x\notin B\right)\rightarrow\left(x\notin A\right)\\
+ & \iff\forall x\in U:\left(x\in B^{c}\right)\rightarrow\left(x\in A^{c}\right)\\
+ & \iff B^{c}\subseteq A^{c}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+הפרכה:
+ נבחר 
+\begin_inset Formula $A=\emptyset,B=\left\{ 1\right\} $
+\end_inset
+
+.
+ מתקיים באופן ריק ש-
+\begin_inset Formula $\forall x\in A:x\in B$
+\end_inset
+
+.
+ עם זאת,
+ מכיוון ש-
+\begin_inset Formula $A$
+\end_inset
+
+ ריקה 
+\begin_inset Formula $\exists x\in A:x\in B$
+\end_inset
+
+ לא מתקיים.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

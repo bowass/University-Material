@@ -1,0 +1,2313 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\bullet 0 0 14 -1
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+מתמטיקה דיסקרטית - תרגיל בית
+\family roman
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\numeric off
+ 
+\color red
+עם פתרון
+\end_layout
+
+\begin_layout Author
+הגשה ליום חמישי,
+
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+22/8
+\numeric off
+ בשעה
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+23:57
+\numeric off
+,
+ לפי ההנחיות במודל
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+1
+\series bold
+\numeric off
+.
+ 
+\series default
+בכל סעיף נתונה קבוצה ויחס מעליה.
+ קבעו (והוכיחו) האם היחס הוא יחס שקילות,
+ יחס סדר חלקי או יחס סדר מלא.
+ במידה והיחס הוא יחס שקילות,
+ מצאו את קבוצת המנה.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $A=\left\{ 1,\dots,n\right\} ^{2}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כלשהו,
+ בו לכל 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a+b=c+d\iff\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a\mathrel{S}b$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ השבר 
+\begin_inset Formula $a/b$
+\end_inset
+
+ לאחר צמצום,
+ מכיל מונה ומכנה אי-זוגיים (למשל,
+ 
+\begin_inset Formula $80/48$
+\end_inset
+
+ לאחר צמצום הוא 
+\begin_inset Formula $5/3$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(80,48\right)\in S$
+\end_inset
+
+,
+ אבל 
+\begin_inset Formula $76/24$
+\end_inset
+
+ הוא 
+\begin_inset Formula $19/6$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(76,24\right)\notin S$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+,
+ בו לכל 
+\begin_inset Formula $A,B\in\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $A\mathrel{\alpha}B$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $A\triangle B$
+\end_inset
+
+ סופית.
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $\beta$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathcal{P}\left(\mathbb{R}\right)\times\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+,
+ בו לכל 
+\begin_inset Formula $\left(A,B\right),\left(C,D\right)\in\mathcal{P}\left(\mathbb{R}\right)\times\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(A,B\right)\mathrel{\beta}\left(C,D\right)$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\left(A\triangle B\right)\cup\left(C\triangle D\right)$
+\end_inset
+
+ סופית.
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\left(\mathbb{N}^{+}\setminus\left\{ 1\right\} \right)^{2}$
+\end_inset
+
+,
+ בו לכל 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in\mathbb{N}^{+}\setminus\left\{ 1\right\} $
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $a\le c$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b\mid d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כלשהו,
+ בו לכל 
+\begin_inset Formula $u,v\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $u\mathrel{R}v$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ סכום האותיות ב-
+\begin_inset Formula $u$
+\end_inset
+
+ שווה לסכום האותיות ב-
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כלשהו,
+ בו לכל 
+\begin_inset Formula $u,v\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $u\mathrel{R}v$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ מספר ה-
+\begin_inset Formula $0$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $u$
+\end_inset
+
+ קטן ממש ממספר ה-
+\begin_inset Formula $0$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ הוא יחס שקילות.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי:
+ יהי 
+\begin_inset Formula $\left(a,b\right)\in A$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $a+b=a+b$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(a,b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ סימטרי:
+ יהיו 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $a+b=c+d$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $c+d=a+b$
+\end_inset
+
+,
+ וכך 
+\begin_inset Formula $\left(c,d\right)\mathrel{R}\left(a,b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right),\left(e,f\right)\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(c,d\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $a+b=c+d$
+\end_inset
+
+ וגם 
+\begin_inset Formula $c+d=e+f$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $a+b=e+f$
+\end_inset
+
+ ומתקיים 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+נמצא את קבוצת המנה:
+ נשים לב שכל הזוגות בעלי סכומים שווים שקולים זה לזה.
+ לכן,
+ ניתן להסתכל על הסכומים בלבד:
+ הסכומים האפשריים הם 
+\begin_inset Formula $2,\dots,2n$
+\end_inset
+
+,
+ וניתן לייצג את הקבוצה באופן הבא:
+\begin_inset Formula 
+\[
+\nicefrac{A}{R}=\left\{ \left[\left(1,1\right)\right]_{R},\left[\left(1,2\right)\right]_{R},\dots,\left[\left(1,n\right)\right]_{R},\left[\left(2,n\right)\right]_{R},\dots,\left[\left(n,n\right)\right]_{R}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+ניתן לייצג כל מספר טבעי 
+\begin_inset Formula $n\in\mathbb{N}^{+}$
+\end_inset
+
+ באופן יחיד באמצעות 
+\begin_inset Formula $n=2^{a}\cdot\left(2b+1\right)$
+\end_inset
+
+,
+ עבור 
+\begin_inset Formula $a,b\in\mathbb{N}$
+\end_inset
+
+ כלשהם.
+ נסמן את 
+\begin_inset Formula $a,b$
+\end_inset
+
+ אלו ב-
+\begin_inset Formula $a\left(n\right),b\left(n\right)$
+\end_inset
+
+.
+ נשים לב שעבור 
+\begin_inset Formula $x,y\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ השבר 
+\begin_inset Formula $x/y$
+\end_inset
+
+ לאחר צמצום מכיל מונה ומכנה אי-זוגיים אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ המעריך בחזקה של 
+\begin_inset Formula $2$
+\end_inset
+
+ בייצוגים של 
+\begin_inset Formula $x,y$
+\end_inset
+
+ שווה - כך יתבטלו כל הגורמים הזוגיים.
+ כלומר,
+ לכל 
+\begin_inset Formula $x,y\in\mathbb{N}^{+}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\mathrel{S}y$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $a\left(x\right)=a\left(y\right)$
+\end_inset
+
+.
+ לכן,
+ קל להוכיח כי 
+\begin_inset Formula $S$
+\end_inset
+
+ הוא יחס שקילות מכיוון ששוויון הוא יחס שקילות.
+ מחלקת השקילות של איבר 
+\begin_inset Formula $x\in\mathbb{N}^{+}$
+\end_inset
+
+ היא אוסף כל האיברים בעלי אותם 
+\begin_inset Formula $a\left(x\right)$
+\end_inset
+
+,
+ כלומר
+\begin_inset Formula 
+\[
+\left[x\right]_{S}=\left\{ 2^{a\left(x\right)}\cdot\left(2y+1\right)\mid y\in\mathbb{N}\right\} \implies\nicefrac{A}{S}=\left\{ \left\{ 2^{i}\cdot\left(2j+1\right)\mid j\in\mathbb{N}\right\} \mid i\in\mathbb{N}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+,
+ בו לכל 
+\begin_inset Formula $A,B\in\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $A\mathrel{\alpha}B$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $A\triangle B$
+\end_inset
+
+ סופית.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\alpha$
+\end_inset
+
+ רפלקסיבי:
+ לכל 
+\begin_inset Formula $A\in\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $A\triangle A=\emptyset$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(A,A\right)\in\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\alpha$
+\end_inset
+
+ סימטרי:
+ לכל 
+\begin_inset Formula $A,B\in\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(A,B\right)\in\alpha$
+\end_inset
+
+ מתקיים ש-
+\begin_inset Formula $A\triangle B$
+\end_inset
+
+ סופית.
+ מקומוטטיביות 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $B\triangle A=A\triangle B$
+\end_inset
+
+ סופית ולכן 
+\begin_inset Formula $\left(B,A\right)\in\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\alpha$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $A,B,C\in\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $A\triangle B$
+\end_inset
+
+ סופית וגם 
+\begin_inset Formula $B\triangle C$
+\end_inset
+
+ סופית.
+ אזי,
+\begin_inset Formula 
+\begin{align*}
+A\triangle C & =\left(A\triangle C\right)\triangle\emptyset\\
+ & =A\triangle\left(C\triangle\emptyset\right)\\
+ & =A\triangle\left(\emptyset\triangle C\right)\\
+ & =A\triangle\left(\left(B\triangle B\right)\triangle C\right)\\
+ & =\left(A\triangle B\right)\triangle\left(B\triangle C\right)\\
+ & \subseteq\left(A\triangle B\right)\cup\left(B\triangle C\right).
+\end{align*}
+
+\end_inset
+
+מכיוון ש-
+\begin_inset Formula $A\triangle B,B\triangle C$
+\end_inset
+
+ סופיות נקבל שאיחודן סופי.
+ לכן,
+ מכיוון ש-
+\begin_inset Formula $A\triangle C\subseteq\left(A\triangle B\right)\cup\left(B\triangle C\right)$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $A\triangle C$
+\end_inset
+
+ סופית ו-
+\begin_inset Formula $\left(A,C\right)\in\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+נמצא את קבוצת המנה:
+ נשים לב שכל שתי קבוצות סופיות ביחס אחת עם השנייה,
+ ולכן כולן נמצאות במחלקת שקילות אחת.
+ בנוסף,
+ מחלקת שקילות זו לא מכילה אף קבוצה אינסופית - תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה סופית,
+ ונניח בשלילה שקיימת 
+\begin_inset Formula $B$
+\end_inset
+
+ אינסופית כך ש-
+\begin_inset Formula $B\mathrel{\alpha}A$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $B\triangle A=\left(B\cup A\right)\setminus\left(B\cap A\right)$
+\end_inset
+
+ סופית.
+ מכיוון ש-
+\begin_inset Formula $B\cap A$
+\end_inset
+
+ סופית נקבל שגם 
+\begin_inset Formula $B\cup A$
+\end_inset
+
+ סופית - בסתירה לכך ש-
+\begin_inset Formula $B$
+\end_inset
+
+ אינסופית.
+ עבור קבוצה אינסופית 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ כל קבוצה (אינסופית) שביחס איתה היא מהצורה 
+\begin_inset Formula $\left(A\cup B\right)\setminus C$
+\end_inset
+
+ עבור קבוצות סופיות 
+\begin_inset Formula $B,C$
+\end_inset
+
+ כלשהן.
+ לכן,
+\begin_inset Formula 
+\begin{align*}
+\nicefrac{A}{R} & =\left\{ X\subseteq\mathbb{Q}\mid\text{\ensuremath{X} סופית}\right\} \cup\left\{ \left\{ \left(A\cup B\right)\setminus C\mid\text{\ensuremath{B,C\subseteq\mathbb{Q}} סופיות}\right\} \mid\text{\ensuremath{A\subseteq\mathbb{Q}} אינסופית}\right\} \\
+ & =\left\{ \left\{ \left(A\cup B\right)\setminus C\mid\text{\ensuremath{B,C\subseteq\mathbb{Q}} סופיות}\right\} \mid A\subseteq\mathbb{Q}\right\} .
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $\beta$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathcal{P}\left(\mathbb{R}\right)\times\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+,
+ בו לכל 
+\begin_inset Formula $\left(A,B\right),\left(C,D\right)\in\mathcal{P}\left(\mathbb{R}\right)\times\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(A,B\right)\mathrel{\beta}\left(C,D\right)$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\left(A\triangle B\right)\cup\left(C\triangle D\right)$
+\end_inset
+
+ סופית.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\beta$
+\end_inset
+
+ אינו רפלקסיבי:
+ עבור 
+\begin_inset Formula $\left(\mathbb{N},\emptyset\right)\in\mathcal{P}\left(\mathbb{R}\right)\times\mathcal{P}\left(\mathbb{R}\right)$
+\end_inset
+
+ מתקיים ש-
+\begin_inset Formula $\left(\mathbb{N}\triangle\emptyset\right)\cup\left(\mathbb{N}\triangle\emptyset\right)=\mathbb{N}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(\left(\mathbb{N},\emptyset\right),\left(\mathbb{N},\emptyset\right)\right)\notin\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן 
+\begin_inset Formula $\beta$
+\end_inset
+
+ אינו יחס שקילות או יחס סדר חלקי (ולכן בפרט אינו יחס סדר מלא).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\left(\mathbb{N}^{+}\setminus\left\{ 1\right\} \right)^{2}$
+\end_inset
+
+,
+ בו לכל 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in\left(\mathbb{N}^{+}\setminus\left\{ 1\right\} \right)^{2}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $a\le c$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b\mid d$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי:
+ לכל 
+\begin_inset Formula $\left(a,b\right)\in\left(\mathbb{N}^{+}\setminus\left\{ 1\right\} \right)^{2}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\le a$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(a,b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ אנטי-סימטרי חלש:
+ יהיו 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in\left(\mathbb{N}^{+}\setminus\left\{ 1\right\} \right)^{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(c,d\right)\mathrel{R}\left(a,b\right)$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $a\le c$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b\mid d$
+\end_inset
+
+ וגם 
+\begin_inset Formula $c\le a$
+\end_inset
+
+ וגם 
+\begin_inset Formula $d\mid b$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $a=c\wedge b=d$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(a,b\right)=\left(c,d\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $\left(a,b\right),\left(c,d\right)\in\left(\mathbb{N}^{+}\setminus\left\{ 1\right\} \right)^{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(c,d\right)$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(c,d\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $a\le c\wedge b\mid d$
+\end_inset
+
+ וגם 
+\begin_inset Formula $c\le e\wedge d\mid f$
+\end_inset
+
+.
+ מטרנזיטיביות 
+\begin_inset Formula $\le$
+\end_inset
+
+ וחלוקה ונקבל ש-
+\begin_inset Formula $a\le e$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b\mid f$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(a,b\right)\mathrel{R}\left(e,f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+בסך הכל,
+ 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס סדר חלקי.
+ בנוסף,
+ 
+\begin_inset Formula $R$
+\end_inset
+
+ אינו יחס סדר מלא:
+ עבור 
+\begin_inset Formula $\left(1,2\right),\left(1,3\right)$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $2\not|3$
+\end_inset
+
+ וגם 
+\begin_inset Formula $3\not|2$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(\left(1,2\right),\left(1,3\right)\right),\left(\left(1,3\right),\left(1,2\right)\right)\notin R$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כלשהו,
+ בו לכל 
+\begin_inset Formula $u,v\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $u\mathrel{R}v$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ סכום האותיות ב-
+\begin_inset Formula $u$
+\end_inset
+
+ שווה לסכום האותיות ב-
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+קל להוכיח ש-
+\begin_inset Formula $R$
+\end_inset
+
+ הוא יחס שקילות - נובע ישירות מכך ששוויון הוא יחס שקילות.
+\end_layout
+
+\begin_layout Itemize
+נמצא את קבוצת המנה:
+ תהי 
+\begin_inset Formula $w\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מילה כלשהי.
+ כל מילה 
+\begin_inset Formula $u\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ שביחס עם 
+\begin_inset Formula $w$
+\end_inset
+
+ מקיימת שמספר ה-
+\begin_inset Formula $1$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $w$
+\end_inset
+
+ שווה למספר ה-
+\begin_inset Formula $1$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $u$
+\end_inset
+
+.
+ נסמן ב-
+\begin_inset Formula $t$
+\end_inset
+
+ את מספר ה-
+\begin_inset Formula $1$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $w$
+\end_inset
+
+,
+ אזי עבור 
+\begin_inset Formula $v=\left(\underset{\text{\ensuremath{t} פעמים}}{\underbrace{1,\dots,1}},\underset{\text{\ensuremath{n-t} פעמים}}{\underbrace{0,\dots,0}}\right)=1^{t}0^{n-t}$
+\end_inset
+
+ נקבל 
+\begin_inset Formula $\left(v,w\right)\in R$
+\end_inset
+
+.
+ לכן,
+\begin_inset Formula 
+\[
+\nicefrac{\left\{ 0,1\right\} ^{n}}{R}=\left\{ \left[1^{t}0^{n-t}\right]_{R}\mid0\le t\le n\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+היחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כלשהו,
+ בו לכל 
+\begin_inset Formula $u,v\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $u\mathrel{R}v$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ מספר ה-
+\begin_inset Formula $0$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $u$
+\end_inset
+
+ קטן ממש ממספר ה-
+\begin_inset Formula $0$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $R$
+\end_inset
+
+ אנטי-רפלקסיבי:
+ לכל מילה 
+\begin_inset Formula $u\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים שמספר ה-
+\begin_inset Formula $0$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $u$
+\end_inset
+
+ לא קטן ממש ממספר ה-
+\begin_inset Formula $0$
+\end_inset
+
+-ים ב-
+\begin_inset Formula $u$
+\end_inset
+
+.
+ לכן בפרט 
+\begin_inset Formula $R$
+\end_inset
+
+ אינו רפלקסיבי.
+ לכן 
+\begin_inset Formula $R$
+\end_inset
+
+ אינו יחס שקילות,
+ סדר חלקי או סדר מלא.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\begin_inset space \space{}
+\end_inset
+
+
+\numeric on
+2
+\series bold
+\numeric off
+.
+ 
+\series default
+הוכיחו או הפריכו כל אחד מהסעיפים הבאים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ויהיו 
+\begin_inset Formula $R,S$
+\end_inset
+
+ יחסי שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ מתרגיל בית
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ניתן להסיק כי גם 
+\begin_inset Formula $T=R\cap S$
+\end_inset
+
+ הוא יחס שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי,
+ לכל מחלקת שקילות 
+\begin_inset Formula $K$
+\end_inset
+
+ של 
+\begin_inset Formula $T$
+\end_inset
+
+,
+ קיימות מחלת שקילות 
+\begin_inset Formula $L$
+\end_inset
+
+ של 
+\begin_inset Formula $R$
+\end_inset
+
+ ומחלקת שקילות 
+\begin_inset Formula $M$
+\end_inset
+
+ של 
+\begin_inset Formula $S$
+\end_inset
+
+ ש-
+\begin_inset Formula $K\subseteq L\cap M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה,
+ ויהי 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי מתקיים
+\begin_inset Formula 
+\[
+R=\bigcup_{K\in\nicefrac{A}{R}}K^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכחה:
+ תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה ויהיו 
+\begin_inset Formula $R,S$
+\end_inset
+
+ יחסי שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ תהי 
+\begin_inset Formula $K$
+\end_inset
+
+ מחלקת שקילות של יחס השקילות 
+\begin_inset Formula $T=R\cap S$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left[a\right]_{T}=K$
+\end_inset
+
+.
+ אזי,
+\begin_inset Formula 
+\[
+K=\left[a\right]_{T}=\left\{ b\in A\mid\left(b,a\right)\in T\right\} .
+\]
+
+\end_inset
+
+נגדיר 
+\begin_inset Formula $L=\left[a\right]_{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $M=\left[a\right]_{S}$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $b\in K$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\left(b,a\right)\in T$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(b,a\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(b,a\right)\in S$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $b\in\left[a\right]_{R}=L$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b\in\left[a\right]_{S}=M$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $b\in L\cap M$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $K\subseteq L\cap M$
+\end_inset
+
+ והוכחנו את הטענה.
+\end_layout
+
+\begin_layout Enumerate
+הוכחה:
+ באמצעות הכלה דו-כיוונית.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+יהיו 
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $a\in\left[b\right]_{R}$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי מתקיים 
+\begin_inset Formula $b\in\left[b\right]_{R}$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(a,b\right)\in\left[b\right]_{R}^{2}$
+\end_inset
+
+.
+ לכן קיימת מחלקת שקילות 
+\begin_inset Formula $K\in\nicefrac{A}{R}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in K^{2}$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(a,b\right)\in\bigcup_{K\in\nicefrac{A}{R}}K^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+יהיו 
+\begin_inset Formula $\left(a,b\right)\in\bigcup_{K\in\nicefrac{A}{R}}K^{2}$
+\end_inset
+
+,
+ אזי קיים 
+\begin_inset Formula $K\in\nicefrac{A}{R}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in K^{2}$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $a,b\in K$
+\end_inset
+
+ ומתקיים 
+\begin_inset Formula $K=\left[a\right]_{R}=\left[b\right]_{R}$
+\end_inset
+
+.
+ לכן,
+ מכיוון ש-
+\begin_inset Formula $a\in\left[b\right]_{R}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:q3"
+
+\end_inset
+
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה ותהי 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ חלוקה של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ אזי קיים יחס שקילות 
+\begin_inset Formula $R$
+\end_inset
+
+ מעל 
+\begin_inset Formula $A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\nicefrac{A}{R}=\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+שאלה
+\series bold
+
+\begin_inset space \space{}
+\end_inset
+
+
+\series default
+\numeric on
+3
+\series bold
+\numeric off
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+הוכיחו את משפט 
+\color blue
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:q3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\color inherit
+.
+\end_layout
+
+\begin_layout Enumerate
+הוכיחו את הכיוון ההפוך של משפט 
+\color blue
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:q3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\color inherit
+:
+ לכל קבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ ויחס שקילות 
+\begin_inset Formula $R$
+\end_inset
+
+ מעליה,
+ קיימת חלוקה 
+\begin_inset Formula $\mathcal{F}\subseteq\mathcal{P}\left(A\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\nicefrac{A}{R}=\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה ותהי 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ חלוקה של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ נגדיר יחס שקילות 
+\begin_inset Formula $R$
+\end_inset
+
+ באופן הבא:
+\begin_inset Formula 
+\[
+R=\left\{ \left(a,b\right)\in A^{2}\mid\text{\ensuremath{a} ו-\ensuremath{b} באותה מחלקה ב-\ensuremath{\mathcal{F}}}\right\} .
+\]
+
+\end_inset
+
+תחילה,
+ נוכיח כי 
+\begin_inset Formula $R$
+\end_inset
+
+ הוא יחס שקילות:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי:
+ לכל 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ מתקיים ש-
+\begin_inset Formula $a$
+\end_inset
+
+ באותה מחלקה ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left(a,a\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ סימטרי:
+ יהיו 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $a$
+\end_inset
+
+ ו-
+\begin_inset Formula $b$
+\end_inset
+
+ באותה מחלקה ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $b$
+\end_inset
+
+ ו-
+\begin_inset Formula $a$
+\end_inset
+
+ באותה מחלקה ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ ומתקיים 
+\begin_inset Formula $\left(b,a\right)\in R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $a,b,c\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(b,c\right)\in R$
+\end_inset
+
+.
+ אזי המחלקות של 
+\begin_inset Formula $a$
+\end_inset
+
+ ו-
+\begin_inset Formula $b$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ שוות והמחלקות של 
+\begin_inset Formula $b$
+\end_inset
+
+ ו-
+\begin_inset Formula $c$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ שוות.
+ מטרנזיטיביות שוויון נקבל שהמחלקות של 
+\begin_inset Formula $a$
+\end_inset
+
+ ו-
+\begin_inset Formula $c$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ שוות ולכן 
+\begin_inset Formula $\left(a,c\right)\in\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+כעת,
+ נתבונן בקבוצת המנה 
+\begin_inset Formula $\nicefrac{A}{R}$
+\end_inset
+
+:
+ לכל 
+\begin_inset Formula $a\in A$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left[a\right]_{R}$
+\end_inset
+
+ מכיל את אוסף האיברים שבאותה מחלקה כמו 
+\begin_inset Formula $a$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+,
+ כלומר בסך הכל את המחלקה של 
+\begin_inset Formula $a$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+.
+ מכאן,
+ אוסף כל מחלקות השקילות הוא בדיוק אוסף כל המחלקות בחלוקה 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ עצמה.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה ו-
+\begin_inset Formula $R$
+\end_inset
+
+ יחס שקילות מעליה.
+ נגדיר 
+\begin_inset Formula $\mathcal{F}=\nicefrac{A}{R}\subseteq\mathcal{P}\left(A\right)$
+\end_inset
+
+,
+ ונוכיח כי 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ היא חלוקה:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+לכל 
+\begin_inset Formula $S\in\mathcal{F}$
+\end_inset
+
+ קיים 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left[a\right]_{R}=S$
+\end_inset
+
+.
+ לכן,
+ מרפלקסיביות 
+\begin_inset Formula $R$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $a\in\left[a\right]_{R}=S$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $S\ne\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+יהי 
+\begin_inset Formula $a\in A$
+\end_inset
+
+.
+ מרפלקסיביות 
+\begin_inset Formula $R$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $a\in\left[a\right]_{R}$
+\end_inset
+
+,
+ ולכן עבור 
+\begin_inset Formula $S=\left[a\right]_{R}\in\mathcal{F}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\in A$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $\bigcup_{S\in\mathcal{F}}S=A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+יהיו 
+\begin_inset Formula $S\ne T\in\mathcal{F}$
+\end_inset
+
+.
+ נסמן ב-
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ איברים כך ש-
+\begin_inset Formula $\left[a\right]_{R}=S$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left[b\right]_{R}=T$
+\end_inset
+
+.
+ נניח בשלילה שקיים 
+\begin_inset Formula $c\in S\cap T$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $c\in\left[a\right]_{R}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $c\in\left[b\right]_{R}$
+\end_inset
+
+.
+ לכן,
+ בנוסף לכך ש-
+\begin_inset Formula $R$
+\end_inset
+
+ סימטרי,
+ נקבל ש-
+\begin_inset Formula $\left(a,c\right)\in R$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\left(c,b\right)\in R$
+\end_inset
+
+.
+ מטרנזיטיביות 
+\begin_inset Formula $R$
+\end_inset
+
+ נקבל ש-
+\begin_inset Formula $\left(a,b\right)\in R$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\left[a\right]_{R}=\left[b\right]_{R}$
+\end_inset
+
+,
+ בסתירה לכך ש-
+\begin_inset Formula $S\ne T$
+\end_inset
+
+ - לכן 
+\begin_inset Formula $S\cap T=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

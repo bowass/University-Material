@@ -1,0 +1,1603 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\definecolor{cyan}{RGB}{0, 180, 180}
+\definecolor{yellow}{RGB}{211,211,0}
+\definecolor{red}{RGB}{120,0,0}
+\definecolor{green}{RGB}{0, 120, 0}
+\definecolor{blue}{RGB}{0, 0, 120}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows, calc, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth, % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+% fix hyperref bug
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+algorithm2e
+theorems-ams-bytype
+theorems-named
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 66
+PackageOptions algorithm2e linesnumbered, ruled, vlined
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "Taamey Frank CLM"
+\font_sans "default" "Frank Ruehl CLM"
+\font_typewriter "default" "Miriam Mono CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement t
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Discrete Mathematics - Tutorial 4"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 5cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tablestyle default
+\bulletLaTeX 1 "-"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מתמטיקה דיסקרטית - תרגול
+\family sans
+\series bold
+\shape up
+\size largest
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\end_layout
+
+\begin_layout Date
+סמסטר קיץ תשפ
+\begin_inset Quotes erd
+\end_inset
+
+ד
+\end_layout
+
+\begin_layout Description
+נושאים:
+ יחסי שקילות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+יחסי שקילות
+\end_layout
+
+\begin_layout Definition
+יחס 
+\begin_inset Formula $R$
+\end_inset
+
+ הוא 
+\emph on
+יחס שקילות
+\emph default
+ אם הוא רפלקסיבי,
+ סימטרי וטרנזיטיבי.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה ויהי 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $a\in A$
+\end_inset
+
+.
+ מחלקת השקילות של 
+\begin_inset Formula $a$
+\end_inset
+
+ ביחס ל-
+\begin_inset Formula $R$
+\end_inset
+
+ מוגדרת להיות
+\begin_inset Formula 
+\[
+\left[a\right]_{R}:=\left\{ b\in A\mid b\mathrel{R}a\right\} ,
+\]
+
+\end_inset
+
+כלומר - כל האיברים ב-
+\begin_inset Formula $A$
+\end_inset
+
+ שהם ביחס 
+\begin_inset Formula $R$
+\end_inset
+
+ עם 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי ולכן 
+\begin_inset Formula $a\in\left[a\right]_{R}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $\left[a\right]_{R}\ne\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $a\mathrel{R}b$
+\end_inset
+
+ אז 
+\begin_inset Formula $\left[a\right]_{R}=\left[b\right]_{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\left(a,b\right)\notin R$
+\end_inset
+
+ אז 
+\begin_inset Formula $\left[a\right]_{R}\cap\left[b\right]_{R}=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהי 
+\begin_inset Formula $A$
+\end_inset
+
+ קבוצה ויהי 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס שקילות מעל 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ נגדיר את קבוצת המנה להיות
+\begin_inset Formula 
+\[
+\nicefrac{A}{R}=\left\{ \left[a\right]_{R}\mid a\in A\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נשים לב שמחלקות השקילות הן אוסף קבוצות לא ריקות,
+ זרות,
+ שאיחודן הוא כל הקבוצה.
+\end_layout
+
+\begin_layout Theorem
+כל יחס שקילות משרה חלוקה של 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ וכל חלוקה של 
+\begin_inset Formula $A$
+\end_inset
+
+ משרה יחס שקילות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+נגדיר 
+\begin_inset Formula $A=\left\{ 1,2,3,4,5\right\} $
+\end_inset
+
+ וחלוקה 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ שלה:
+\begin_inset Formula 
+\[
+\mathcal{F}=\left\{ \left\{ 1,2,3\right\} ,\left\{ 4,5\right\} \right\} .
+\]
+
+\end_inset
+
+נסמן את יחס השקילות המושרה מ-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ ב-
+\begin_inset Formula $R_{\mathcal{F}}$
+\end_inset
+
+.
+ נרצה שמחלקות השקילות של 
+\begin_inset Formula $R_{\mathcal{F}}$
+\end_inset
+
+ יהיו המחלקות שנמצאות בחלוקה 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+.
+ מכאן,
+ נרצה שלכל 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ יתקיים ש-
+\begin_inset Formula $a,b$
+\end_inset
+
+ באותה מחלקה ב-
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\left[a\right]_{R_{\mathcal{F}}}=\left[b\right]_{R_{\mathcal{F}}}$
+\end_inset
+
+ (כלומר 
+\begin_inset Formula $a\mathrel{R_{\mathcal{F}}}b$
+\end_inset
+
+).
+ מכאן,
+ היחס הוא
+\begin_inset Formula 
+\begin{align*}
+R_{\mathcal{F}}= & \left\{ \left(1,1\right),\left(1,2\right),\left(1,3\right),\left(2,2\right),\left(2,1\right),\left(2,3\right),\left(3,1\right),\left(3,2\right),\left(3,3\right)\right\} \cup\\
+ & \left\{ \left(4,4\right),\left(4,5\right),\left(5,4\right),\left(5,5\right)\right\} .
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+בכל סעיף נתונה קבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ ויחס 
+\begin_inset Formula $R$
+\end_inset
+
+ מעליה.
+ בדקו האם 
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי,
+ אנטי-רפלקסיבי,
+ סימטרי,
+ אנטי-סימטרי חלש,
+ אנטי-סימטרי חזק או טרנזיטיבי.
+ במידה ו-
+\begin_inset Formula $R$
+\end_inset
+
+ הוא יחס שקילות,
+ מצאו את 
+\begin_inset Formula $\nicefrac{A}{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{R}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x^{2}=y^{2}\iff x\mathrel{R}y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $X\cap\mathbb{Z}=Y\cap\mathbb{Z}\iff X\mathrel{R}Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left(a-2\right)\cdot\left(b-2\right)\ge0\iff a\mathrel{R}b$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{R}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x^{2}=y^{2}\iff x\mathrel{R}y$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי:
+ לכל 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x^{2}=x^{2}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $x\mathrel{R}x$
+\end_inset
+
+ (לכן בפרט לא אנטי-רפלקסיבי).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ סימטרי:
+ לכל 
+\begin_inset Formula $x,y\in A$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+x\mathrel{R}y\iff x^{2}=y^{2}\iff y^{2}=x^{2}\iff y\mathrel{R}x.
+\]
+
+\end_inset
+
+לכן בפרט 
+\begin_inset Formula $R$
+\end_inset
+
+ לא אנטי-סימטרי.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $x,y,z\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\mathrel{R}y$
+\end_inset
+
+ וגם 
+\begin_inset Formula $y\mathrel{R}z$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $x^{2}=y^{2}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $y^{2}=z^{2}$
+\end_inset
+
+.
+ מטרנזיטיביות שוויון מתקיים 
+\begin_inset Formula $x^{2}=z^{2}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $x\mathrel{R}z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס שקילות.
+ יהי 
+\begin_inset Formula $x\in A$
+\end_inset
+
+.
+ לכל 
+\begin_inset Formula $y\in A$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x^{2}=y^{2}\iff x\mathrel{R}y$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $x=\pm y$
+\end_inset
+
+.
+ לכן
+\begin_inset Formula 
+\[
+\nicefrac{A}{R}=\left\{ \left\{ x,-x\right\} \mid x\in\mathbb{R}_{\ge0}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathcal{P}\left(\mathbb{Q}\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $X\cap\mathbb{Z}=Y\cap\mathbb{Z}\iff X\mathrel{R}Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי:
+ לכל 
+\begin_inset Formula $X\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $X\cap\mathbb{Z}=X\cap\mathbb{Z}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $X\mathrel{R}X$
+\end_inset
+
+ (לכן בפרט לא אנטי-רפלקסיבי).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ סימטרי:
+ לכל 
+\begin_inset Formula $X,Y\in A$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+X\mathrel{R}Y\iff X\cap\mathbb{Z}=Y\cap\mathbb{Z}\iff Y\cap\mathbb{Z}=X\cap\mathbb{Z}\iff Y\mathrel{R}X,
+\]
+
+\end_inset
+
+לכן בפרט 
+\begin_inset Formula $R$
+\end_inset
+
+ לא אנטי-סימטרי.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $X,Y,Z\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $X\mathrel{R}Y$
+\end_inset
+
+ וגם 
+\begin_inset Formula $Y\mathrel{R}Z$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $X\cap\mathbb{Z}=Y\cap\mathbb{Z}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $Y\cap\mathbb{Z}=Z\cap\mathbb{Z}$
+\end_inset
+
+.
+ מטרנזיטיביות שוויון מתקיים 
+\begin_inset Formula $X\cap\mathbb{Z}=Z\cap\mathbb{Z}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $X\mathrel{R}Z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס שקילות.
+ יהי 
+\begin_inset Formula $X\in A$
+\end_inset
+
+.
+ כל האיברים שביחס עם 
+\begin_inset Formula $X$
+\end_inset
+
+ הם אלו שמכילים את אותם מספרים שלמים כמו 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ לכן
+\begin_inset Formula 
+\[
+\nicefrac{A}{R}=\left\{ \left\{ S\in\mathcal{P}\left(\mathbb{Q}\right)\mid S\cap\mathbb{Z}=C\right\} \mid C\subseteq\mathbb{Z}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A=\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left(a-2\right)\cdot\left(b-2\right)\ge0\iff a\mathrel{R}b$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ רפלקסיבי:
+ לכל 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(a-2\right)\cdot\left(a-2\right)=\left(a-2\right)^{2}\ge0$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $a\mathrel{R}a$
+\end_inset
+
+.
+ (לכן בפרט לא אנטי-רפלקסיבי).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ סימטרי:
+ לכל 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+a\mathrel{R}b\iff\left(a-2\right)\cdot\left(b-2\right)\ge0\iff\left(b-2\right)\cdot\left(a-2\right)\ge0\iff b\mathrel{R}a.
+\]
+
+\end_inset
+
+לכן בפרט 
+\begin_inset Formula $R$
+\end_inset
+
+ לא אנטי-סימטרי.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ טרנזיטיבי:
+ יהיו 
+\begin_inset Formula $a,b,c\in A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a\mathrel{R}b$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b\mathrel{R}c$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(a-2\right)\cdot\left(b-2\right)\ge0$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(a-2\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left(b-2\right)$
+\end_inset
+
+ שווי סימן.
+ באותו האופן 
+\begin_inset Formula $\left(b-2\right)\cdot\left(c-2\right)\ge0$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left(b-2\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left(c-2\right)$
+\end_inset
+
+ שווי סימן.
+ מכאן,
+ גם 
+\begin_inset Formula $\left(a-2\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left(c-2\right)$
+\end_inset
+
+ שווי סימן ומתקיים 
+\begin_inset Formula $\left(a-2\right)\cdot\left(c-2\right)\ge0$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $a\mathrel{R}c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכן 
+\begin_inset Formula $R$
+\end_inset
+
+ יחס שקילות.
+ יהי 
+\begin_inset Formula $x\in A$
+\end_inset
+
+.
+ כל 
+\begin_inset Formula $y\in A$
+\end_inset
+
+ הוא ביחס עם 
+\begin_inset Formula $x$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\left(x-2\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left(y-2\right)$
+\end_inset
+
+ שווי סימן.
+ 
+\begin_inset Formula $x=1$
+\end_inset
+
+ הוא האיבר היחיד ב-
+\begin_inset Formula $A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left(x-2\right)$
+\end_inset
+
+ שלילי,
+ ולכן 
+\begin_inset Formula $\left[1\right]_{R}=\left\{ 1\right\} $
+\end_inset
+
+.
+ לכל 
+\begin_inset Formula $1\ne x\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(x-2\right)$
+\end_inset
+
+ אי-שלילי,
+ ולכן
+\begin_inset Formula 
+\[
+\nicefrac{A}{R}=\left\{ \left\{ 1\right\} ,\underset{\left\{ 2,3,\dots\right\} }{\underbrace{\mathbb{N}^{+}\setminus\left\{ 1\right\} }}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+מחלקות השקילות של יחס החפיפה מודולו 
+\begin_inset Formula $d$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהיו 
+\begin_inset Formula $n\in\mathbb{Z},d\in\mathbb{N}^{+},r\in\mathbb{N}$
+\end_inset
+
+.
+ נאמר ש-
+\series bold
+
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r$
+\end_inset
+
+
+\series default
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $r<d$
+\end_inset
+
+ וקיים 
+\begin_inset Formula $q\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n=d\cdot q+r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+סימון:
+ יהי 
+\begin_inset Formula $n\in\mathbb{Z},d\in\mathbb{N}^{+}$
+\end_inset
+
+.
+ הוכח בתרגיל הבית כי קיים 
+\begin_inset Formula $r\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r$
+\end_inset
+
+,
+ ושמספר זה הוא יחיד (אין שניים שונים כאלה).
+ נסמן מספר זה ב-
+\begin_inset Formula $n\mod d$
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $n$
+\end_inset
+
+ מודולו 
+\begin_inset Formula $d$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+יחס החפיפה מודולו 
+\begin_inset Formula $d$
+\end_inset
+
+ מוגדר מעל 
+\begin_inset Formula $\mathbb{Z}$
+\end_inset
+
+ ויסומן ב-
+\begin_inset Formula $\equiv_{d}$
+\end_inset
+
+.
+ לכל 
+\begin_inset Formula $m,n\in\mathbb{Z}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $m\equiv_{d}n$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $d\mid\left(m-n\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset CommandInset label
+LatexCommand label
+name "clm:equiv_mod_d"
+
+\end_inset
+
+יהי 
+\begin_inset Formula $d\in\mathbb{N}^{+}$
+\end_inset
+
+.
+ לכל 
+\begin_inset Formula $m,n\in\mathbb{Z}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $m\equiv_{d}n$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ קיים 
+\begin_inset Formula $r\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $m\mod d=r$
+\end_inset
+
+ וגם 
+\begin_inset Formula $n\mod d=r$
+\end_inset
+
+ (כלומר 
+\begin_inset Formula $n\mod d=m\mod d$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+יהי 
+\begin_inset Formula $d\in\mathbb{N}^{+}$
+\end_inset
+
+ ויהיו 
+\begin_inset Formula $m,n\in\mathbb{Z}$
+\end_inset
+
+,
+ נוכיח את שני כיווני הטענה.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $m\equiv_{d}n$
+\end_inset
+
+ אז 
+\begin_inset Formula $n\mod d=m\mod d$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+נסמן 
+\begin_inset Formula $r=m\mod d$
+\end_inset
+
+ ו-
+\begin_inset Formula $s=n\mod d$
+\end_inset
+
+,
+ ונניח בה
+\begin_inset Quotes erd
+\end_inset
+
+כ כי 
+\begin_inset Formula $r\ge s$
+\end_inset
+
+.
+ מהגדרת חלוקה עם שארית,
+ קיימים 
+\begin_inset Formula $p,q\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $m=d\cdot p+r$
+\end_inset
+
+ ו-
+\begin_inset Formula $n=d\cdot q+s$
+\end_inset
+
+.
+ אזי,
+\begin_inset Formula 
+\[
+m-n=\left(d\cdot p+r\right)-\left(d\cdot q+s\right)=d\cdot\left(p-q\right)+\left(r-s\right).
+\]
+
+\end_inset
+
+לכן,
+ מהגדרת חלוקה עם שארית,
+ 
+\begin_inset Formula $m-n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r-s$
+\end_inset
+
+.
+ בנוסף,
+ הוכחנו בתרגיל הבית ש-
+\begin_inset Formula $m-n$
+\end_inset
+
+ לא יכול להתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שתי שאריות שונות.
+ מכאן
+\begin_inset Formula 
+\[
+r-s=0\implies r=s.
+\]
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $n\mod d=m\mod d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $n\mod d=m\mod d$
+\end_inset
+
+ אז 
+\begin_inset Formula $m\equiv_{d}n$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+נסמן 
+\begin_inset Formula $r=m\mod d$
+\end_inset
+
+.
+ מהגדרת חלוקה עם שארית,
+ קיימים 
+\begin_inset Formula $p,q\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $m=d\cdot p+r$
+\end_inset
+
+ ו-
+\begin_inset Formula $n=d\cdot q+r$
+\end_inset
+
+.
+ מכאן
+\begin_inset Formula 
+\[
+m-n=\left(d\cdot p+r\right)-\left(d\cdot q+r\right)=d\cdot\left(p-q\right).
+\]
+
+\end_inset
+
+לכן עבור 
+\begin_inset Formula $p-q\in\mathbb{Z}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $m-n=d\cdot\left(p-q\right)$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $d\mid\left(m-n\right)$
+\end_inset
+
+ ומתקיים 
+\begin_inset Formula $m\equiv_{d}n$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+יהי 
+\begin_inset Formula $d\in\mathbb{N}^{+}$
+\end_inset
+
+ ויהי 
+\begin_inset Formula $d>r\in\mathbb{N}$
+\end_inset
+
+.
+ מחלקת השקילות 
+\begin_inset Formula $\left[r\right]$
+\end_inset
+
+ של 
+\begin_inset Formula $\equiv_{d}$
+\end_inset
+
+ היא קבוצת כל המספרים השלמים שמתחלקים ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ בנוסף,
+ כל מחלקות השקילות של 
+\begin_inset Formula $\equiv_{d}$
+\end_inset
+
+ הן מהצורה הזו.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+יהי 
+\begin_inset Formula $d\in\mathbb{N}^{+}$
+\end_inset
+
+ ויהי 
+\begin_inset Formula $d>r\in\mathbb{N}$
+\end_inset
+
+.
+ נוכיח שלכל 
+\begin_inset Formula $n\in\mathbb{Z}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $n\in\left[r\right]$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ידוע ש-
+\begin_inset Formula $n\in\left[r\right]$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $n\equiv_{d}r$
+\end_inset
+
+,
+ ומטענה 
+\color blue
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "clm:equiv_mod_d"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\color inherit
+ ש-
+\begin_inset Formula $n\equiv_{d}r$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $n\mod d=r\mod d$
+\end_inset
+
+.
+ בנוסף,
+ 
+\begin_inset Formula $r\mod d=r$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $n$
+\end_inset
+
+ מתחלק ב-
+\begin_inset Formula $d$
+\end_inset
+
+ עם שארית 
+\begin_inset Formula $r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+כדי להוכיח שכל מחלקות השקילות של 
+\begin_inset Formula $\equiv_{d}$
+\end_inset
+
+ הן מצורה זו,
+ נראה שלכל 
+\begin_inset Formula $n\in\mathbb{Z}$
+\end_inset
+
+ קיים 
+\begin_inset Formula $r<d$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left[n\right]=\left[r\right]$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $n\in\mathbb{Z}$
+\end_inset
+
+.
+ נבחר 
+\begin_inset Formula $r=n\mod d$
+\end_inset
+
+ ונקבל 
+\begin_inset Formula $\left[n\right]=\left[r\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\color{blue}{\normalsize \mathrm{\mathrm{\mathrm{\phantom{}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
